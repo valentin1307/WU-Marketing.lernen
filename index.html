@@ -1040,10 +1040,11 @@ async function doRegister() {
     showErr(error.message === 'User already registered' ? 'Diese E-Mail ist bereits registriert.' : error.message); return;
   }
 
-  // Prüfen ob kostenloser Zugang (NACH der Registrierung)
-  const isFree = await checkFreeAccess(email);
-  if (isFree) {
-    setLoading('reg-btn', false);
+  setLoading('reg-btn', false);
+
+  // Kostenlose Email → direkt rein
+  const FREE_EMAILS = ['valentin@buehringuhle.de'];
+  if (FREE_EMAILS.includes(email.toLowerCase())) {
     if (data.session) {
       await loginSuccess(data.user);
     } else {
@@ -1053,9 +1054,7 @@ async function doRegister() {
     return;
   }
 
-  // Direkt zu Stripe Payment Link weiterleiten
-  setLoading('reg-btn', false);
-  // User ID als Parameter mitgeben damit Webhook den Account freischalten kann
+  // Alle anderen → Stripe
   window.location.href = `https://buy.stripe.com/4gM4gzb6o2nO58jeQfdIA00?prefilled_email=${encodeURIComponent(email)}&client_reference_id=${data.user.id}`;
 }
 
