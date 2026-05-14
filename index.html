@@ -1041,10 +1041,12 @@ async function doRegister() {
   }
 
   setLoading('reg-btn', false);
+  alert('DEBUG: Account angelegt! User ID: ' + (data.user ? data.user.id : 'NULL'));
 
   // Kostenlose Email → direkt rein
   const FREE_EMAILS = ['valentin@buehringuhle.de'];
   if (FREE_EMAILS.includes(email.toLowerCase())) {
+    alert('DEBUG: Kostenloser Zugang!');
     if (data.session) {
       await loginSuccess(data.user);
     } else {
@@ -1054,6 +1056,7 @@ async function doRegister() {
     return;
   }
 
+  alert('DEBUG: Weiterleitung zu Stripe...');
   // Alle anderen → Stripe
   window.location.href = `https://buy.stripe.com/4gM4gzb6o2nO58jeQfdIA00?prefilled_email=${encodeURIComponent(email)}&client_reference_id=${data.user.id}`;
 }
