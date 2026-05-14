@@ -892,12 +892,17 @@ MODS.forEach(m => S.scores[m.id] = {c:0, t:0});
 // ─── SUPABASE SCORE PERSISTENCE ──────────────────────────────────────────────
 async function loadScoresFromDB(userId) {
   try {
-    // Timeout nach 4 Sekunden
     const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 4000));
-    const query = sb.from('user_scores').select('scores').eq('user_id', userId).single();
-    const { data } = await Promise.race([query, timeout]);
-    if (data && data.scores) {
-      S.scores = data.scores;
+    const query = sb.from('user_scores').select('scores').eq('user_id', userId).maybeSingle();
+    const result = await Promise.race([query, timeout]);
+    if (result && result.data && result.data.scores) {
+      // Gespeicherte Scores laden — für jeden Modul die Werte übernehmen
+      const saved = result.data.scores;
+      MODS.forEach(m => {
+        if (saved[m.id]) {
+          S.scores[m.id] = saved[m.id];
+        }
+      });
     }
   } catch(e) {
     // Kein Score oder Timeout — defaults verwenden
@@ -910,9 +915,12 @@ async function saveScoresNow() {
   if (!CU) return;
   clearTimeout(saveTimeout);
   try {
+    // Scores als sauberes Objekt speichern
+    const scoresToSave = {};
+    MODS.forEach(m => { scoresToSave[m.id] = S.scores[m.id]; });
     const { error } = await sb.from('user_scores').upsert({
       user_id: CU.id,
-      scores: S.scores,
+      scores: scoresToSave,
       updated_at: new Date().toISOString()
     }, { onConflict: 'user_id' });
     if (error) console.error('saveScoresNow error:', error);
@@ -924,9 +932,11 @@ function saveScoresToDB() {
   clearTimeout(saveTimeout);
   saveTimeout = setTimeout(async () => {
     try {
+      const scoresToSave = {};
+      MODS.forEach(m => { scoresToSave[m.id] = S.scores[m.id]; });
       const { error } = await sb.from('user_scores').upsert({
         user_id: CU.id,
-        scores: S.scores,
+        scores: scoresToSave,
         updated_at: new Date().toISOString()
       }, { onConflict: 'user_id' });
       if (error) console.error('saveScoresToDB error:', error);
