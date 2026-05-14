@@ -1405,25 +1405,39 @@ function rImpressum() {
 }
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────
+function showLogin() {
+  document.getElementById('login-screen').classList.remove('hide');
+  document.getElementById('loading-overlay').classList.add('hide');
+}
+
+// Fallback: nach 5 Sekunden immer Login zeigen
+const initTimeout = setTimeout(showLogin, 5000);
+
 (async () => {
   try {
     const { data: { session } } = await sb.auth.getSession();
+    clearTimeout(initTimeout);
     if (session) {
-      await loginSuccess(session.user);
+      try {
+        await loginSuccess(session.user);
+      } catch(e) {
+        showLogin();
+      }
     } else {
-      document.getElementById('login-screen').classList.remove('hide');
+      showLogin();
     }
   } catch(e) {
-    document.getElementById('login-screen').classList.remove('hide');
-  } finally {
-    document.getElementById('loading-overlay').classList.add('hide');
+    clearTimeout(initTimeout);
+    showLogin();
   }
 })();
 
-// Listen for auth state changes (e.g. tab focus after email confirmation)
+// Auth state changes (z.B. nach E-Mail-Bestätigung)
 sb.auth.onAuthStateChange(async (event, session) => {
   if (event === 'SIGNED_IN' && session && !CU) {
-    await loginSuccess(session.user);
+    try {
+      await loginSuccess(session.user);
+    } catch(e) {}
     document.getElementById('loading-overlay').classList.add('hide');
   } else if (event === 'SIGNED_OUT') {
     CU = null;
