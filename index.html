@@ -910,12 +910,13 @@ async function saveScoresNow() {
   if (!CU) return;
   clearTimeout(saveTimeout);
   try {
-    await sb.from('user_scores').upsert({
+    const { error } = await sb.from('user_scores').upsert({
       user_id: CU.id,
       scores: S.scores,
       updated_at: new Date().toISOString()
-    });
-  } catch(e) {}
+    }, { onConflict: 'user_id' });
+    if (error) console.error('saveScoresNow error:', error);
+  } catch(e) { console.error('saveScoresNow exception:', e); }
 }
 
 function saveScoresToDB() {
@@ -923,12 +924,13 @@ function saveScoresToDB() {
   clearTimeout(saveTimeout);
   saveTimeout = setTimeout(async () => {
     try {
-      await sb.from('user_scores').upsert({
+      const { error } = await sb.from('user_scores').upsert({
         user_id: CU.id,
         scores: S.scores,
         updated_at: new Date().toISOString()
-      });
-    } catch(e) {}
+      }, { onConflict: 'user_id' });
+      if (error) console.error('saveScoresToDB error:', error);
+    } catch(e) { console.error('saveScoresToDB exception:', e); }
   }, 1000);
 }
 
