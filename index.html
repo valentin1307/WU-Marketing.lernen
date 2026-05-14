@@ -1053,9 +1053,10 @@ async function doRegister() {
     return;
   }
 
-  // Direkt zu Stripe weiterleiten — kein await nötig
+  // Direkt zu Stripe Payment Link weiterleiten
   setLoading('reg-btn', false);
-  startStripeCheckout(email, data.user.id);
+  // User ID als Parameter mitgeben damit Webhook den Account freischalten kann
+  window.location.href = `https://buy.stripe.com/4gM4gzb6o2nO58jeQfdIA00?prefilled_email=${encodeURIComponent(email)}&client_reference_id=${data.user.id}`;
 }
 
 async function startStripeCheckout(email, userId) {
