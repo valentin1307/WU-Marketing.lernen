@@ -1535,9 +1535,17 @@ const initTimeout = setTimeout(showLogin, 5000);
 // Auth state changes (z.B. nach E-Mail-Bestätigung)
 sb.auth.onAuthStateChange(async (event, session) => {
   if (event === 'SIGNED_IN' && session && !CU) {
-    try {
-      await loginSuccess(session.user);
-    } catch(e) {}
+    // Prüfe ob bezahlt bevor eingeloggt wird
+    const isFree = await checkFreeAccess(session.user.email);
+    const isPaid = await checkPaidAccess(session.user.id);
+    if (isFree || isPaid) {
+      try {
+        await loginSuccess(session.user);
+      } catch(e) {}
+    } else {
+      // Nicht bezahlt → sofort wieder ausloggen
+      await sb.auth.signOut();
+    }
     document.getElementById('loading-overlay').classList.add('hide');
   } else if (event === 'SIGNED_OUT') {
     CU = null;
