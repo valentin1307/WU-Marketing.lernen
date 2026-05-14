@@ -233,17 +233,6 @@ html,body{height:100%;font-family:var(--f);font-size:13px;color:var(--t);backgro
       <h1>Marketing<br>Lernapp</h1>
       <p>Prüfungsvorbereitung · Grundlagen des Marketing</p>
     </div>
-    <div style="background:#162035;border:1px solid #1e2d47;border-radius:var(--r2);padding:12px 16px;margin-bottom:16px;text-align:center">
-      <div style="font-size:10px;font-weight:700;color:#4d7cff;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px">Noch kein Zugang?</div>
-      <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:8px">Marketing Lernapp — einmalig <span style="color:#4d7cff">9,99€</span></div>
-      <div style="font-size:11px;color:#4b5a78;margin-bottom:10px">✓ 8 Module &nbsp;·&nbsp; ✓ 60+ Karteikarten &nbsp;·&nbsp; ✓ Klausur-Simulation</div>
-      <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=valentin%40buehringuhle.de&amount=9.99&currency_code=EUR&item_name=Marketing+Lernapp+Zugang&no_note=1&no_shipping=1" target="_blank"
-        style="display:block;background:linear-gradient(135deg,#0070ba,#003087);color:#fff;border-radius:var(--r2);padding:10px;font-size:13px;font-weight:700;text-decoration:none;transition:opacity .15s"
-        onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
-        💳 Jetzt kaufen via PayPal
-      </a>
-      <div style="font-size:10px;color:#2e4068;margin-top:8px">Nach der Zahlung erhältst du per E-Mail deine Zugangsdaten.</div>
-    </div>
     <div id="ltabs-wrap">
     <div class="ltabs">
       <button class="ltab on" id="tab-login" onclick="switchTab('login')">Anmelden</button>
@@ -1025,9 +1014,9 @@ async function doLogin() {
   if (isFree || isPaid) {
     await loginSuccess(data.user);
   } else {
-    // Noch nicht bezahlt → Zahlungsseite zeigen
+    // Noch nicht bezahlt → Stripe Checkout starten
     await sb.auth.signOut();
-    showPaywall(email);
+    await startStripeCheckout(email, data.user.id);
   }
 }
 
