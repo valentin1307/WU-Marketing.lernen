@@ -1033,19 +1033,17 @@ async function doRegister() {
   if (pass !== pass2) { showErr('Passwörter stimmen nicht überein.'); return; }
   setLoading('reg-btn', true);
 
-  // Prüfen ob kostenloser Zugang
-  const isFree = await checkFreeAccess(email);
-
   // Account anlegen
   const { data, error } = await sb.auth.signUp({ email, password: pass });
   if (error) {
     setLoading('reg-btn', false);
     showErr(error.message === 'User already registered' ? 'Diese E-Mail ist bereits registriert.' : error.message); return;
   }
-  setLoading('reg-btn', false);
 
-  // Kostenloser Zugang → direkt einloggen
+  // Prüfen ob kostenloser Zugang (NACH der Registrierung)
+  const isFree = await checkFreeAccess(email);
   if (isFree) {
+    setLoading('reg-btn', false);
     if (data.session) {
       await loginSuccess(data.user);
     } else {
@@ -1055,8 +1053,9 @@ async function doRegister() {
     return;
   }
 
-  // Bezahlter Zugang → Stripe Checkout öffnen
-  await startStripeCheckout(email, data.user.id);
+  // Direkt zu Stripe weiterleiten — kein await nötig
+  setLoading('reg-btn', false);
+  startStripeCheckout(email, data.user.id);
 }
 
 async function startStripeCheckout(email, userId) {
