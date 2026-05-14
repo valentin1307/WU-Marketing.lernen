@@ -1041,12 +1041,10 @@ async function doRegister() {
   }
 
   setLoading('reg-btn', false);
-  alert('DEBUG: Account angelegt! User ID: ' + (data.user ? data.user.id : 'NULL'));
 
   // Kostenlose Email → direkt rein
   const FREE_EMAILS = ['valentin@buehringuhle.de'];
   if (FREE_EMAILS.includes(email.toLowerCase())) {
-    alert('DEBUG: Kostenloser Zugang!');
     if (data.session) {
       await loginSuccess(data.user);
     } else {
@@ -1056,8 +1054,7 @@ async function doRegister() {
     return;
   }
 
-  alert('DEBUG: Weiterleitung zu Stripe...');
-  // Alle anderen → Stripe
+  // Alle anderen → Stripe Payment Link
   window.location.href = `https://buy.stripe.com/4gM4gzb6o2nO58jeQfdIA00?prefilled_email=${encodeURIComponent(email)}&client_reference_id=${data.user.id}`;
 }
 
@@ -1533,6 +1530,32 @@ const initTimeout = setTimeout(showLogin, 5000);
 
 (async () => {
   try {
+    // Nach Stripe-Zahlung: ?payment=success in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('payment') === 'success') {
+      clearTimeout(initTimeout);
+      // URL bereinigen
+      window.history.replaceState({}, '', window.location.pathname);
+      // Aktuellen eingeloggten User holen
+      const { data: { session } } = await sb.auth.getSession();
+      if (session) {
+        // Warten bis Webhook paid_users eingetragen hat (max 5 Versuche)
+        let paid = false;
+        for (let i = 0; i < 5; i++) {
+          const { data } = await sb.from('paid_users').select('user_id').eq('user_id', session.user.id).maybeSingle();
+          if (data) { paid = true; break; }
+          await new Promise(r => setTimeout(r, 2000)); // 2 Sekunden warten
+        }
+        if (paid) {
+          await loginSuccess(session.user);
+          return;
+        }
+      }
+      showLogin();
+      showSuc('✅ Zahlung erfolgreich! Du kannst dich jetzt einloggen.');
+      return;
+    }
+
     const { data: { session } } = await sb.auth.getSession();
     clearTimeout(initTimeout);
     if (session) {
