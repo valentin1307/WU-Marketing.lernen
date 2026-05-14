@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>WU Marketing Lernapp</title>
+<title>Marketing Lernapp</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
@@ -220,7 +220,7 @@ html,body{height:100%;font-family:var(--f);font-size:13px;color:var(--t);backgro
 
 <!-- Loading Overlay -->
 <div class="loading-overlay" id="loading-overlay">
-  <div class="wu-lbl">WU Wien</div>
+  <div class="wu-lbl">Marketing Lernapp</div>
   <div class="loading-spin"></div>
   <p>Bitte warten...</p>
 </div>
@@ -229,9 +229,9 @@ html,body{height:100%;font-family:var(--f);font-size:13px;color:var(--t);backgro
 <div class="ls hide" id="login-screen">
   <div class="lb">
     <div class="ll">
-      <div class="wu-b">WU Wien</div>
+      <div class="wu-b">Marketing</div>
       <h1>Marketing<br>Lernapp</h1>
-      <p>Prüfungsvorbereitung · Mag. Dr. Margit Kastner</p>
+      <p>Prüfungsvorbereitung · Grundlagen des Marketing</p>
     </div>
     <div class="ltabs">
       <button class="ltab on" id="tab-login" onclick="switchTab('login')">Anmelden</button>
@@ -251,8 +251,7 @@ html,body{height:100%;font-family:var(--f);font-size:13px;color:var(--t);backgro
     <div id="reg-form" style="display:none">
       <div class="lf"><label>E-Mail</label><input id="r-email" type="email" placeholder="deine@email.com"></div>
       <div class="lf"><label>Passwort wählen</label><input id="r-pass" type="password" placeholder="Mindestens 6 Zeichen..."></div>
-      <div class="lf"><label>Passwort bestätigen</label><input id="r-pass2" type="password" placeholder="Passwort wiederholen..."></div>
-      <div class="lf"><label>Zugangscode</label><input id="r-code" type="text" placeholder="z.B. TEST-2024-ABCD" autocomplete="off" onkeydown="if(event.key==='Enter')doRegister()" style="text-transform:uppercase;letter-spacing:1px"></div>
+      <div class="lf"><label>Passwort bestätigen</label><input id="r-pass2" type="password" placeholder="Passwort wiederholen..." onkeydown="if(event.key==='Enter')doRegister()"></div>
       <button class="lbtn" id="reg-btn" onclick="doRegister()">Account erstellen →</button>
     </div>
   </div>
@@ -262,7 +261,7 @@ html,body{height:100%;font-family:var(--f);font-size:13px;color:var(--t);backgro
 <div class="app">
 <div class="sb">
   <div class="sb-logo">
-    <div class="wu">WU Wien</div>
+    <div class="wu">Marketing</div>
     <h1>Marketing<br>Lernapp</h1>
     <p>Prüfungsvorbereitung</p>
   </div>
@@ -899,6 +898,18 @@ async function loadScoresFromDB(userId) {
 }
 
 let saveTimeout = null;
+
+async function saveScoresNow() {
+  if (!CU) return;
+  clearTimeout(saveTimeout);
+  try {
+    await sb.from('user_scores').upsert({
+      user_id: CU.id,
+      scores: S.scores,
+      updated_at: new Date().toISOString()
+    });
+  } catch(e) {}
+}
 function saveScoresToDB() {
   if (!CU) return;
   clearTimeout(saveTimeout);
@@ -944,26 +955,15 @@ async function doRegister() {
   const email = document.getElementById('r-email').value.trim();
   const pass = document.getElementById('r-pass').value;
   const pass2 = document.getElementById('r-pass2').value;
-  const code = document.getElementById('r-code').value.trim().toUpperCase();
-  if (!email || !pass || !code) { showErr('Bitte alle Felder ausfüllen.'); return; }
+  if (!email || !pass) { showErr('Bitte alle Felder ausfüllen.'); return; }
   if (pass.length < 6) { showErr('Passwort muss mindestens 6 Zeichen haben.'); return; }
   if (pass !== pass2) { showErr('Passwörter stimmen nicht überein.'); return; }
   setLoading('reg-btn', true);
-  // Check access code
-  const { data: codeData, error: codeError } = await sb
-    .from('access_codes').select('*').eq('code', code).eq('used', false).single();
-  if (codeError || !codeData) {
-    setLoading('reg-btn', false);
-    showErr('Ungültiger oder bereits verwendeter Zugangscode.'); return;
-  }
-  // Register
   const { data, error } = await sb.auth.signUp({ email, password: pass });
   if (error) {
     setLoading('reg-btn', false);
     showErr(error.message === 'User already registered' ? 'Diese E-Mail ist bereits registriert.' : error.message); return;
   }
-  // Mark code as used
-  await sb.from('access_codes').update({ used: true, used_by: data.user.id }).eq('id', codeData.id);
   setLoading('reg-btn', false);
   if (data.session) {
     await loginSuccess(data.user);
@@ -975,14 +975,47 @@ async function doRegister() {
 
 async function loginSuccess(user) {
   CU = user;
+  // Single-Session: neuen Token generieren und speichern
+  const token = Math.random().toString(36).slice(2) + Date.now().toString(36);
+  sessionStorage.setItem('session_token', token);
+  try {
+    await sb.from('user_scores').upsert({
+      user_id: user.id,
+      session_token: token,
+      updated_at: new Date().toISOString()
+    });
+  } catch(e) {}
   await loadScoresFromDB(user.id);
   document.getElementById('login-screen').classList.add('hide');
   updateTopbar();
+  startSessionWatch();
   render();
 }
 
+let sessionWatchInterval = null;
+function startSessionWatch() {
+  if (sessionWatchInterval) clearInterval(sessionWatchInterval);
+  sessionWatchInterval = setInterval(async () => {
+    if (!CU) return;
+    try {
+      const { data } = await sb.from('user_scores').select('session_token').eq('user_id', CU.id).single();
+      const localToken = sessionStorage.getItem('session_token');
+      if (data && data.session_token && data.session_token !== localToken) {
+        clearInterval(sessionWatchInterval);
+        alert('⚠️ Dein Account wurde auf einem anderen Gerät geöffnet. Du wirst jetzt ausgeloggt.');
+        await sb.auth.signOut();
+        CU = null;
+        MODS.forEach(m => S.scores[m.id] = {c:0, t:0});
+        document.getElementById('login-screen').classList.remove('hide');
+        document.getElementById('user-badge-wrap').style.display = 'none';
+        switchTab('login');
+      }
+    } catch(e) {}
+  }, 30000); // alle 30 Sekunden prüfen
+}
+
 async function logout() {
-  saveScoresToDB();
+  await saveScoresNow();
   await sb.auth.signOut();
   CU = null;
   MODS.forEach(m => S.scores[m.id] = {c:0, t:0});
@@ -1063,7 +1096,7 @@ function rHome() {
   }).join('');
   return `<div class="hero">
     <h2>Willkommen zurück!</h2>
-    <p>WU Wien · Marketing · ${QQ.length} Fragen · ${CARDS.length} Karteikarten · Klausur: 60 MC in 60 Min</p>
+    <p>Grundlagen des Marketing · ${QQ.length} Fragen · ${CARDS.length} Karteikarten · Klausur: 60 MC in 60 Min</p>
     <div class="hstats">
       <div class="hs"><div class="v">${pct}%</div><div class="l">Gesamtquote</div></div>
       <div class="hs"><div class="v">${ms}/8</div><div class="l">Module geübt</div></div>
@@ -1306,7 +1339,7 @@ function rTips() {
     <li><strong>7 Phasen Innovation:</strong> Idee → Screen → Konzept → Wirtschaftlichkeit → Entwicklung → Test → Markt</li>
     <li><strong>Maslow:</strong> Physiologisch → Sicherheit → Sozial → Prestige → Selbstverwirklichung</li>
   </ul></div>
-  <div class="card tc"><h3 style="color:var(--blue)">📋 Prüfungsinfos WU Wien</h3><ul>
+  <div class="card tc"><h3 style="color:var(--blue)">📋 Prüfungsinfos</h3><ul>
     <li><strong>Format:</strong> Multiple Choice, 60 Fragen, 60 Minuten</li>
     <li><strong>Achtung:</strong> Nach 10 Minuten kein Zutritt mehr möglich!</li>
     <li><strong>Sehr Gut:</strong> ab 90%</li>
@@ -1342,16 +1375,20 @@ function rImpressum() {
       <p>E-Mail: <a href="mailto:tazkdome@gmail.com">tazkdome@gmail.com</a></p>
     </div>
     <div class="imp-section">
-      <h3>Haftungsausschluss</h3>
-      <p>Die Inhalte dieser Lernapp wurden sorgfältig erstellt und basieren auf dem Lehrmaterial der Lehrveranstaltung Marketing an der WU Wien (Mag. Dr. Margit Kastner). Trotz sorgfältiger Bearbeitung übernehmen wir keine Gewähr für die Vollständigkeit, Richtigkeit und Aktualität der bereitgestellten Inhalte. Diese App dient ausschließlich zur Prüfungsvorbereitung und ersetzt nicht das Studium der Originalunterlagen.</p>
+      <h3>Hinweis zur Unabhängigkeit</h3>
+      <p>Diese Lernapp ist ein <b>privates, unabhängiges Lernprojekt</b> und steht in keiner Verbindung mit der Wirtschaftsuniversität Wien oder einer anderen Bildungseinrichtung. Die App wird nicht von einer Universität oder Hochschule betrieben, empfohlen oder unterstützt.</p>
+    </div>
+    <div class="imp-section">
+      <h3>Inhalt & Haftungsausschluss</h3>
+      <p>Die Inhalte dieser App basieren auf allgemein zugänglichem Marketingwissen und gängigen Lehrbuchinhalten (u.a. Meffert et al., Marketing, Springer Gabler). Sie wurden eigenständig aufbereitet und zusammengefasst. Trotz sorgfältiger Erstellung wird keine Gewähr für Vollständigkeit, Richtigkeit oder Aktualität übernommen. Die App dient ausschließlich zur persönlichen Lernunterstützung und ersetzt nicht das Studium von Originalunterlagen oder offiziellen Lehrveranstaltungen.</p>
     </div>
     <div class="imp-section">
       <h3>Urheberrecht</h3>
-      <p>Die in dieser App enthaltenen Inhalte und Werke sind urheberrechtlich geschützt. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des Betreibers.</p>
+      <p>Die eigenständig erstellten Inhalte, das Design und die Struktur dieser App sind urheberrechtlich geschützt. Die Vervielfältigung, Weitergabe oder kommerzielle Nutzung ohne ausdrückliche Zustimmung des Betreibers ist nicht gestattet. Inhalte die auf allgemein zugänglichen wissenschaftlichen Quellen basieren, werden als solche genutzt und sind nicht als Originalwerke Dritter zu verstehen.</p>
     </div>
     <div class="imp-section">
       <h3>Datenschutz</h3>
-      <p>Diese App verwendet Supabase zur Speicherung von Anmeldedaten und Lernfortschritt. Es werden ausschließlich E-Mail-Adresse und Lernfortschrittsdaten gespeichert. Eine Weitergabe an Dritte findet nicht statt. Für weitere Informationen wende dich an: <a href="mailto:tazkdome@gmail.com">tazkdome@gmail.com</a></p>
+      <p>Diese App verwendet Supabase (supabase.com) zur sicheren Speicherung von Zugangsdaten und Lernfortschritt. Es werden ausschließlich E-Mail-Adresse und Lernfortschrittsdaten gespeichert. Eine Weitergabe an Dritte findet nicht statt. Du kannst jederzeit die Löschung deiner Daten per E-Mail beantragen: <a href="mailto:tazkdome@gmail.com">tazkdome@gmail.com</a></p>
     </div>
   </div>`;
 }
