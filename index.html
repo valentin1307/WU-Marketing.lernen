@@ -906,12 +906,10 @@ let saveTimeout = null;
 async function saveScoresNow() {
   if (!CU) return;
   clearTimeout(saveTimeout);
-  const token = sessionStorage.getItem('session_token');
   try {
     await sb.from('user_scores').upsert({
       user_id: CU.id,
       scores: S.scores,
-      session_token: token,
       updated_at: new Date().toISOString()
     });
   } catch(e) {}
@@ -921,12 +919,10 @@ function saveScoresToDB() {
   if (!CU) return;
   clearTimeout(saveTimeout);
   saveTimeout = setTimeout(async () => {
-    const token = sessionStorage.getItem('session_token');
     try {
       await sb.from('user_scores').upsert({
         user_id: CU.id,
         scores: S.scores,
-        session_token: token,
         updated_at: new Date().toISOString()
       });
     } catch(e) {}
@@ -984,22 +980,10 @@ async function doRegister() {
 
 async function loginSuccess(user) {
   CU = user;
-  // Scores zuerst laden
   await loadScoresFromDB(user.id);
-  // Single-Session: Token generieren und MIT Scores speichern
-  const token = Math.random().toString(36).slice(2) + Date.now().toString(36);
-  sessionStorage.setItem('session_token', token);
-  try {
-    await sb.from('user_scores').upsert({
-      user_id: user.id,
-      scores: S.scores,
-      session_token: token,
-      updated_at: new Date().toISOString()
-    });
-  } catch(e) {}
   document.getElementById('login-screen').classList.add('hide');
+  document.getElementById('loading-overlay').classList.add('hide');
   updateTopbar();
-  startSessionWatch();
   render();
 }
 
