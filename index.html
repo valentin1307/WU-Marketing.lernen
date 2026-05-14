@@ -956,7 +956,7 @@ async function doLogin() {
   setLoading('login-btn', true);
   const { data, error } = await sb.auth.signInWithPassword({ email, password: pass });
   setLoading('login-btn', false);
-  if (error) { showErr('Falsches E-Mail oder Passwort.'); return; }
+  if (error) { showErr('Fehler: ' + error.message); return; }
   await loginSuccess(data.user);
 }
 
