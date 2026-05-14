@@ -1,1 +1,1386 @@
-# WU-Marketing.lernen
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WU Marketing Lernapp</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f0f2f7;--sur:#fff;--sb:#0f1623;--sb2:#162035;
+  --blue:#2563eb;--blue2:#1d4ed8;--bl:#eff4ff;
+  --green:#059669;--gl:#ecfdf5;
+  --red:#dc2626;--rl:#fef2f2;
+  --amb:#d97706;--al:#fffbeb;
+  --pur:#7c3aed;--pl:#f5f3ff;
+  --t:#0f1623;--t2:#4b5563;--t3:#9ca3af;
+  --bd:#e5e7eb;--r:10px;--r2:7px;
+  --sh:0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06);
+  --sh2:0 8px 32px rgba(0,0,0,.12);
+  --f:'Sora',sans-serif;--m:'JetBrains Mono',monospace;
+}
+html,body{height:100%;font-family:var(--f);font-size:13px;color:var(--t);background:var(--bg)}
+.app{display:flex;height:100vh;overflow:hidden}
+.sb{width:210px;flex-shrink:0;background:var(--sb);display:flex;flex-direction:column;overflow:hidden}
+.sb-logo{padding:18px 16px 16px;border-bottom:1px solid #1e2d47}
+.sb-logo .wu{font-size:10px;font-weight:700;color:#4d7cff;letter-spacing:2px;text-transform:uppercase}
+.sb-logo h1{font-size:14px;font-weight:700;color:#fff;line-height:1.3;margin-top:3px}
+.sb-logo p{font-size:11px;color:#4b5a78;margin-top:1px}
+.sb-nav{flex:1;padding:12px 10px;overflow-y:auto;display:flex;flex-direction:column;gap:2px}
+.sb-sec{font-size:9px;font-weight:700;color:#2e4068;letter-spacing:1.5px;text-transform:uppercase;padding:10px 8px 4px}
+.ni{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:var(--r2);cursor:pointer;color:#7b8db0;font-size:12px;font-weight:500;border:none;background:none;width:100%;text-align:left;transition:all .15s}
+.ni:hover{background:#162035;color:#cbd5e1}
+.ni.on{background:var(--blue);color:#fff}
+.ni .ic{width:18px;text-align:center;font-size:14px;flex-shrink:0}
+.sb-bot{padding:12px 14px;border-top:1px solid #1e2d47}
+.exam-btn{width:100%;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;border:none;border-radius:var(--r2);padding:9px;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--f)}
+.exam-btn:hover{opacity:.88}
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.top{background:var(--sur);border-bottom:1px solid var(--bd);padding:14px 22px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.top-l h2{font-size:15px;font-weight:700}
+.top-l p{font-size:11px;color:var(--t2);margin-top:1px}
+.pills{display:flex;gap:7px}
+.pil{font-size:11px;font-weight:600;padding:4px 11px;border-radius:20px;font-family:var(--m)}
+.pil.b{background:var(--bl);color:var(--blue)}
+.pil.g{background:var(--gl);color:var(--green)}
+.cnt{flex:1;overflow-y:auto;padding:18px 22px}
+.card{background:var(--sur);border-radius:var(--r);border:1px solid var(--bd);padding:16px;box-shadow:var(--sh)}
+.card+.card{margin-top:10px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mc{background:var(--sur);border-radius:var(--r);border:1px solid var(--bd);padding:14px;cursor:pointer;transition:all .18s;position:relative;overflow:hidden}
+.mc:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.mc .mn{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}
+.mc .mt{font-size:12px;font-weight:600;line-height:1.3;margin-bottom:8px}
+.mc .ms{font-size:10px;color:var(--t3)}
+.mpb{height:3px;background:var(--bd);border-radius:2px;margin-top:7px}
+.mpf{height:100%;border-radius:2px;transition:width .4s}
+.ch{background:var(--sur);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;margin-bottom:8px}
+.ch-h{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;cursor:pointer;font-weight:600;font-size:12px;user-select:none;transition:background .15s}
+.ch-h:hover{background:#f9fafb}
+.ch-b{padding:14px 16px;display:none;border-top:1px solid var(--bd)}
+.ch-b.op{display:block}
+.arr{font-size:11px;color:var(--t3);transition:transform .2s}
+.ch-h.op .arr{transform:rotate(180deg)}
+.drow{display:flex;gap:10px;margin-bottom:8px;align-items:flex-start}
+.dt{font-weight:600;font-size:11px;min-width:160px;flex-shrink:0;color:var(--t);padding-top:1px}
+.dv{font-size:12px;color:var(--t2);flex:1;line-height:1.5}
+.al{border-radius:var(--r2);padding:9px 13px;font-size:12px;line-height:1.5;margin:8px 0;display:flex;gap:9px;align-items:flex-start}
+.al.trap{background:var(--rl);color:#991b1b;border-left:3px solid var(--red)}
+.al.tip{background:var(--gl);color:#065f46;border-left:3px solid var(--green)}
+.al.info{background:var(--bl);color:#1e40af;border-left:3px solid var(--blue)}
+.al.warn{background:var(--al);color:#92400e;border-left:3px solid var(--amb)}
+.al-ic{font-size:13px;flex-shrink:0;margin-top:1px}
+.tbl{width:100%;border-collapse:collapse;font-size:11px;margin:7px 0}
+.tbl th{background:#f3f4f6;padding:6px 9px;text-align:left;font-weight:600;color:var(--t2);font-size:10px}
+.tbl td{padding:6px 9px;border-bottom:1px solid var(--bd);vertical-align:top;line-height:1.4}
+.tbl tr:last-child td{border-bottom:none}
+.step-box{background:linear-gradient(135deg,var(--sb),var(--sb2));border-radius:var(--r2);padding:10px 14px;margin:6px 0;color:#fff;font-size:12px}
+.step-box .step-num{font-size:10px;font-weight:700;color:#4d7cff;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.step-box .step-q{font-size:11px;color:#9aa3b5;margin-top:3px}
+.step-box .step-detail{font-size:11px;color:#cbd5e1;margin-top:4px;padding-top:4px;border-top:1px solid #1e2d47}
+.formula-box{background:#0f1623;border-radius:var(--r2);padding:10px 14px;margin:6px 0;font-family:var(--m);font-size:12px;color:#5b8cff;border-left:3px solid #2563eb}
+.formula-box .formula-lbl{font-size:10px;color:#4b5a78;margin-bottom:4px;font-family:var(--f);font-style:normal}
+.formula-box small{color:#9aa3b5;font-size:10px;font-family:var(--f)}
+.kv-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.kv-item{background:var(--bl);border-radius:var(--r2);padding:8px 11px}
+.kv-item .kv-t{font-size:10px;font-weight:700;color:var(--blue);margin-bottom:2px}
+.kv-item .kv-v{font-size:11px;color:var(--t2);line-height:1.4}
+.kv-item.green{background:var(--gl)}.kv-item.green .kv-t{color:var(--green)}
+.kv-item.red{background:var(--rl)}.kv-item.red .kv-t{color:var(--red)}
+.kv-item.amber{background:var(--al)}.kv-item.amber .kv-t{color:var(--amb)}
+.kv-item.pur{background:var(--pl)}.kv-item.pur .kv-t{color:var(--pur)}
+.badge-row{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
+.badge{display:inline-block;padding:3px 9px;border-radius:12px;font-size:10px;font-weight:600}
+.badge.b{background:var(--bl);color:var(--blue)}
+.badge.g{background:var(--gl);color:var(--green)}
+.badge.r{background:var(--rl);color:var(--red)}
+.badge.a{background:var(--al);color:var(--amb)}
+.badge.p{background:var(--pl);color:var(--pur)}
+.sect-head{font-size:11px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.8px;margin:12px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--bd)}
+.fc-wrap{perspective:1200px;width:100%;max-width:500px;margin:0 auto 20px;height:250px;cursor:pointer}
+.fc-in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.fc-in.fl{transform:rotateY(180deg)}
+.fc-fr,.fc-bk{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center}
+.fc-fr{background:var(--sb);color:#fff}
+.fc-bk{background:var(--sur);color:var(--t);transform:rotateY(180deg);border:1px solid var(--bd);box-shadow:var(--sh2)}
+.fc-lbl{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:.45;margin-bottom:10px}
+.fc-term{font-size:16px;font-weight:700;line-height:1.3}
+.fc-def{font-size:12px;color:var(--t2);line-height:1.5}
+.fc-hint{font-size:10px;opacity:.35;margin-top:10px}
+.qcard{background:var(--sur);border-radius:var(--r);border:1px solid var(--bd);padding:20px;box-shadow:var(--sh)}
+.qpb{height:4px;background:var(--bd);border-radius:2px;margin-bottom:18px}
+.qpf{height:100%;background:var(--blue);border-radius:2px;transition:width .3s}
+.qt{font-size:14px;font-weight:600;line-height:1.5;margin-bottom:16px}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{padding:11px 14px;border:1.5px solid var(--bd);border-radius:var(--r2);font-size:12px;cursor:pointer;text-align:left;background:var(--sur);color:var(--t);line-height:1.4;transition:all .15s;display:flex;gap:10px;align-items:flex-start;font-family:var(--f)}
+.opt:hover:not(:disabled){border-color:var(--blue);background:var(--bl)}
+.opt.ok{border-color:var(--green);background:var(--gl);color:#065f46}
+.opt.no{border-color:var(--red);background:var(--rl);color:#991b1b}
+.opt:disabled{cursor:default}
+.olet{width:22px;height:22px;border-radius:5px;background:var(--bg);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;font-family:var(--m)}
+.qexp{margin-top:14px;padding:12px 14px;background:var(--bl);border-left:3px solid var(--blue);border-radius:0 var(--r2) var(--r2) 0;font-size:11px;color:#1e40af;line-height:1.6}
+.qfoot{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+.btn{padding:8px 16px;border-radius:var(--r2);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--f);border:none;transition:all .15s}
+.btn-p{background:var(--blue);color:#fff}.btn-p:hover{background:var(--blue2)}
+.btn-g{background:var(--sur);color:var(--t);border:1px solid var(--bd)}.btn-g:hover{background:var(--bg)}
+.btn-r{background:var(--red);color:#fff}
+.res{text-align:center;padding:32px 16px;max-width:440px;margin:0 auto}
+.res-ring{width:100px;height:100px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;font-family:var(--m)}
+.res-g{font-size:20px;font-weight:700;margin-bottom:6px}
+.res-s{font-size:12px;color:var(--t2);margin-bottom:20px;line-height:1.5}
+.rbar{display:flex;align-items:center;gap:8px;margin-bottom:7px;font-size:11px}
+.rblab{width:55px;color:var(--t2);font-size:10px}
+.rbt{flex:1;height:6px;background:var(--bd);border-radius:3px}
+.rbf{height:100%;border-radius:3px}
+.rbp{width:32px;text-align:right;font-weight:600;font-family:var(--m);font-size:11px}
+.hero{background:linear-gradient(135deg,#0f1623 0%,#162035 100%);border-radius:var(--r);padding:22px 26px;color:#fff;margin-bottom:16px;position:relative;overflow:hidden}
+.hero::after{content:'M';position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:90px;font-weight:800;color:#1a2540;pointer-events:none;font-family:var(--m)}
+.hero h2{font-size:17px;font-weight:700;position:relative}
+.hero p{font-size:11px;color:#6b7fa8;position:relative;margin-top:3px}
+.hstats{display:flex;gap:20px;margin-top:14px;position:relative}
+.hs .v{font-size:22px;font-weight:700;font-family:var(--m);color:#4d7cff}
+.hs .l{font-size:10px;color:#4b5a78;margin-top:1px}
+.exh{background:var(--sb);border-radius:var(--r);padding:13px 18px;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;color:#fff}
+.timer{font-family:var(--m);font-size:22px;font-weight:700;color:#4d7cff}
+.timer.w{color:#fbbf24}.timer.d{color:#f87171}
+.tg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tc h3{font-size:12px;font-weight:700;margin-bottom:9px;display:flex;align-items:center;gap:7px}
+.tc ul{padding-left:15px}
+.tc li{font-size:11px;color:var(--t2);margin-bottom:5px;line-height:1.5}
+.tc li strong{color:var(--t)}
+.mt-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.mt-tab{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--bd);background:var(--sur);color:var(--t2);transition:all .15s}
+.mt-tab.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.fcnav{display:flex;align-items:center;gap:14px;justify-content:center;margin-bottom:14px}
+.fnb{background:var(--sur);border:1px solid var(--bd);border-radius:var(--r2);width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:var(--t2);transition:all .15s}
+.fnb:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.fc-ctr{font-size:12px;font-weight:600;color:var(--t2);font-family:var(--m)}
+.stat{background:var(--sur);border-radius:var(--r);border:1px solid var(--bd);padding:14px;text-align:center}
+.stat .v{font-size:22px;font-weight:700;font-family:var(--m)}
+.stat .l{font-size:10px;color:var(--t2);margin-top:2px}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--bd);border-radius:3px}
+.c0{color:#2563eb}.c1{color:#059669}.c2{color:#d97706}.c3{color:#7c3aed}
+.c4{color:#dc2626}.c5{color:#0891b2}.c6{color:#be185d}.c7{color:#65a30d}
+.b0::before{background:#2563eb}.b1::before{background:#059669}.b2::before{background:#d97706}.b3::before{background:#7c3aed}
+.b4::before{background:#dc2626}.b5::before{background:#0891b2}.b6::before{background:#be185d}.b7::before{background:#65a30d}
+.f0{background:#2563eb}.f1{background:#059669}.f2{background:#d97706}.f3{background:#7c3aed}
+.f4{background:#dc2626}.f5{background:#0891b2}.f6{background:#be185d}.f7{background:#65a30d}
+/* ── LOADING ── */
+.loading-overlay{position:fixed;inset:0;background:var(--sb);display:flex;align-items:center;justify-content:center;z-index:99999;flex-direction:column;gap:14px}
+.loading-overlay.hide{display:none}
+.loading-spin{width:36px;height:36px;border:3px solid #1e2d47;border-top-color:#4d7cff;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-overlay p{color:#4b5a78;font-size:12px;font-family:var(--f)}
+.loading-overlay .wu-lbl{font-size:10px;font-weight:700;color:#4d7cff;letter-spacing:2px;text-transform:uppercase}
+/* ── LOGIN ── */
+.ls{position:fixed;inset:0;background:var(--sb);display:flex;align-items:center;justify-content:center;z-index:9999}
+.ls.hide{display:none}
+.lb{width:100%;max-width:400px;padding:0 24px}
+.ll{text-align:center;margin-bottom:28px}
+.ll .wu-b{display:inline-block;background:#162035;border:1px solid #1e2d47;border-radius:var(--r2);padding:6px 14px;font-size:10px;font-weight:700;color:#4d7cff;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.ll h1{font-size:20px;font-weight:700;color:#fff;line-height:1.2}
+.ll p{font-size:11px;color:#4b5a78;margin-top:3px}
+.ltabs{display:flex;background:#162035;border-radius:var(--r2);padding:3px;margin-bottom:20px;border:1px solid #1e2d47}
+.ltab{flex:1;padding:8px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:transparent;color:#4b5a78;font-family:var(--f);transition:all .15s}
+.ltab.on{background:var(--blue);color:#fff}
+.lf{margin-bottom:12px}
+.lf label{display:block;font-size:10px;font-weight:700;color:#7b8db0;margin-bottom:4px;letter-spacing:.5px;text-transform:uppercase}
+.lf input{width:100%;background:#162035;border:1px solid #1e2d47;border-radius:var(--r2);padding:10px 13px;font-size:13px;color:#fff;font-family:var(--f);outline:none;transition:border-color .15s}
+.lf input:focus{border-color:var(--blue)}
+.lf input::placeholder{color:#2e4068}
+.lbtn{width:100%;background:linear-gradient(135deg,#2563eb,#7c3aed);border:none;border-radius:var(--r2);padding:11px;font-size:13px;font-weight:700;color:#fff;cursor:pointer;font-family:var(--f);margin-top:4px;transition:opacity .15s}
+.lbtn:hover{opacity:.88}
+.lbtn:disabled{opacity:.5;cursor:not-allowed}
+.lerr{background:#2a1010;border:1px solid #7f1d1d;border-radius:var(--r2);padding:9px 13px;font-size:12px;color:#fca5a5;margin-bottom:12px;display:none}
+.lerr.show{display:block}
+.lsuc{background:#0a2018;border:1px solid #065f46;border-radius:var(--r2);padding:9px 13px;font-size:12px;color:#6ee7b7;margin-bottom:12px;display:none}
+.lsuc.show{display:block}
+/* topbar user */
+.ubadge{display:flex;align-items:center;gap:8px}
+.uav{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
+.uname{font-size:12px;font-weight:600;color:var(--t);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.logoutb{font-size:11px;color:var(--t3);cursor:pointer;padding:3px 8px;border:1px solid var(--bd);border-radius:4px;background:none;font-family:var(--f);transition:all .15s}
+.logoutb:hover{color:var(--red);border-color:var(--red)}
+/* Impressum */
+.imp-section{margin-bottom:24px}
+.imp-section h3{font-size:13px;font-weight:700;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--bd)}
+.imp-section p,.imp-section a{font-size:12px;color:var(--t2);line-height:1.7}
+.imp-section a{color:var(--blue);text-decoration:none}
+.imp-section a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<!-- Loading Overlay -->
+<div class="loading-overlay" id="loading-overlay">
+  <div class="wu-lbl">WU Wien</div>
+  <div class="loading-spin"></div>
+  <p>Bitte warten...</p>
+</div>
+
+<!-- LOGIN SCREEN -->
+<div class="ls hide" id="login-screen">
+  <div class="lb">
+    <div class="ll">
+      <div class="wu-b">WU Wien</div>
+      <h1>Marketing<br>Lernapp</h1>
+      <p>Prüfungsvorbereitung · Mag. Dr. Margit Kastner</p>
+    </div>
+    <div class="ltabs">
+      <button class="ltab on" id="tab-login" onclick="switchTab('login')">Anmelden</button>
+      <button class="ltab" id="tab-reg" onclick="switchTab('reg')">Registrieren</button>
+    </div>
+    <div class="lerr" id="lerr"></div>
+    <div class="lsuc" id="lsuc"></div>
+
+    <!-- Login Form -->
+    <div id="login-form">
+      <div class="lf"><label>E-Mail</label><input id="l-email" type="email" placeholder="deine@email.com" autocomplete="email"></div>
+      <div class="lf"><label>Passwort</label><input id="l-pass" type="password" placeholder="Passwort..." autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"></div>
+      <button class="lbtn" id="login-btn" onclick="doLogin()">Anmelden →</button>
+    </div>
+
+    <!-- Register Form -->
+    <div id="reg-form" style="display:none">
+      <div class="lf"><label>E-Mail</label><input id="r-email" type="email" placeholder="deine@email.com"></div>
+      <div class="lf"><label>Passwort wählen</label><input id="r-pass" type="password" placeholder="Mindestens 6 Zeichen..."></div>
+      <div class="lf"><label>Passwort bestätigen</label><input id="r-pass2" type="password" placeholder="Passwort wiederholen..."></div>
+      <div class="lf"><label>Zugangscode</label><input id="r-code" type="text" placeholder="z.B. TEST-2024-ABCD" autocomplete="off" onkeydown="if(event.key==='Enter')doRegister()" style="text-transform:uppercase;letter-spacing:1px"></div>
+      <button class="lbtn" id="reg-btn" onclick="doRegister()">Account erstellen →</button>
+    </div>
+  </div>
+</div>
+
+<!-- APP -->
+<div class="app">
+<div class="sb">
+  <div class="sb-logo">
+    <div class="wu">WU Wien</div>
+    <h1>Marketing<br>Lernapp</h1>
+    <p>Prüfungsvorbereitung</p>
+  </div>
+  <div class="sb-nav">
+    <div class="sb-sec">Navigation</div>
+    <button class="ni on" id="n-home" onclick="nav('home')"><span class="ic">🏠</span><span>Dashboard</span></button>
+    <button class="ni" id="n-learn" onclick="nav('learn')"><span class="ic">📚</span><span>Lernen</span></button>
+    <button class="ni" id="n-cards" onclick="nav('cards')"><span class="ic">🃏</span><span>Karteikarten</span></button>
+    <button class="ni" id="n-quiz" onclick="nav('quiz')"><span class="ic">📝</span><span>Quiz</span></button>
+    <div class="sb-sec">Extras</div>
+    <button class="ni" id="n-tips" onclick="nav('tips')"><span class="ic">💡</span><span>Prüfungstipps</span></button>
+    <button class="ni" id="n-impressum" onclick="nav('impressum')"><span class="ic">📄</span><span>Impressum</span></button>
+  </div>
+  <div class="sb-bot">
+    <button class="exam-btn" onclick="startExam()">⏱ Klausur-Simulation</button>
+  </div>
+</div>
+<div class="main">
+  <div class="top">
+    <div class="top-l"><h2 id="tt">Dashboard</h2><p id="ts">Dein Lernfortschritt auf einen Blick</p></div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="pills"><div class="pil b" id="p1">0 / 0</div><div class="pil g" id="p2">—</div></div>
+      <div id="user-badge-wrap" class="ubadge" style="display:none"></div>
+    </div>
+  </div>
+  <div class="cnt" id="cnt"></div>
+</div>
+</div>
+
+<script>
+// ─── SUPABASE CONFIG ─────────────────────────────────────────────────────────
+// ERSETZE DIESE ZWEI WERTE MIT DEINEN SUPABASE-DATEN:
+const SUPABASE_URL = 'https://uteddyxlglrfczojjyuv.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV0ZWRkeXhsZ2xyZmN6b2pqeXV2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3NDcwNTYsImV4cCI6MjA5NDMyMzA1Nn0.WRji74iy8mOV-T_UaXAuIZpdIJWD3KplhUnRek7b0r4';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// ─── DATEN ───────────────────────────────────────────────────────────────────
+const MODS=[
+  {id:0,code:'LM 1',name:'Grundlagen',full:'Grundlagen des Marketing',co:'#2563eb'},
+  {id:1,code:'LM 2',name:'Verhalten',full:'Verhaltensgrundlagen',co:'#059669'},
+  {id:2,code:'LM 3',name:'Informationen',full:'Informationsgrundlagen',co:'#d97706'},
+  {id:3,code:'LM 4',name:'Strategie',full:'Strategische Planung',co:'#7c3aed'},
+  {id:4,code:'LM 5',name:'Produkt',full:'Produkt- & Programmpolitik',co:'#dc2626'},
+  {id:5,code:'LM 6',name:'Preis',full:'Preispolitik',co:'#0891b2'},
+  {id:6,code:'LM 7',name:'Distribution',full:'Distributionspolitik',co:'#be185d'},
+  {id:7,code:'LM 8',name:'Kommunikation',full:'Kommunikationspolitik',co:'#65a30d'}
+];
+
+function ri(it){
+  if(it.y==='h') return `<div class="sect-head">${it.v}</div>`;
+  if(it.y==='def') return `<div class="drow"><div class="dt">${it.k}</div><div class="dv">${it.v}</div></div>`;
+  if(it.y==='trap') return `<div class="al trap"><span class="al-ic">⚠️</span><div>${it.v}</div></div>`;
+  if(it.y==='tip') return `<div class="al tip"><span class="al-ic">💡</span><div>${it.v}</div></div>`;
+  if(it.y==='info') return `<div class="al info"><span class="al-ic">📌</span><div>${it.v}</div></div>`;
+  if(it.y==='warn') return `<div class="al warn"><span class="al-ic">⚡</span><div>${it.v}</div></div>`;
+  if(it.y==='step') return `<div class="step-box"><div class="step-num">Schritt ${it.n} — ${it.q}</div><div style="font-size:12px;font-weight:600;color:#fff">${it.t}</div>${it.d?`<div class="step-detail">${it.d}</div>`:''}</div>`;
+  if(it.y==='formula') return `<div class="formula-box"><div class="formula-lbl">${it.lbl}</div>${it.f}${it.note?`<br><small>${it.note}</small>`:''}</div>`;
+  if(it.y==='kv') return `<div class="kv-grid">${it.items.map(i=>`<div class="kv-item ${i.c||''}"><div class="kv-t">${i.k}</div><div class="kv-v">${i.v}</div></div>`).join('')}</div>`;
+  if(it.y==='badges') return `<div class="badge-row">${it.items.map(i=>`<span class="badge ${i.c||'b'}">${i.v}</span>`).join('')}</div>`;
+  if(it.y==='tbl'){
+    const ths=it.heads.map(h=>`<th>${h}</th>`).join('');
+    const rows=it.rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('');
+    return `<div style="overflow-x:auto;margin:6px 0"><table class="tbl"><thead><tr>${ths}</tr></thead><tbody>${rows}</tbody></table></div>`;
+  }
+  return '';
+}
+
+const LEARN=[
+{mod:0,chs:[
+{t:'Was ist Marketing? — Grundkonzepte & Austausch',items:[
+  {y:'info',v:'<b>Marketing entsteht aus Austauschbeziehungen.</b> Austausch findet statt, wenn für BEIDE Seiten ein Nettonutzen entsteht — also der Nutzen die Kosten überwiegt.'},
+  {y:'def',k:'Nettonutzen',v:'<b>Bruttonutzen − Kosten der Kaufentscheidung.</b> Kunden kaufen ein Produkt NUR, wenn der Nettonutzen positiv ist. Kosten = Zeit, Geld, Energie des Kaufs.'},
+  {y:'def',k:'Gratifikationsprinzip',v:'Welche Anreize bestehen für Anbieter und Nachfrager? Der Tausch muss sich für BEIDE lohnen.'},
+  {y:'def',k:'Kapazitätsprinzip',v:'Welche Ressourcen werden benötigt? Der Anbieter muss die Kapazitäten aufbauen um das Nutzenversprechen zu erfüllen.'},
+  {y:'trap',v:'<b>PRÜFUNGSFALLE: "Der Kunde ist König" ist FALSCH!</b> Kosten und Konkurrenz müssen IMMER berücksichtigt werden — Austausch muss für BEIDE Seiten einen positiven Nettonutzen bringen.'}
+]},
+{t:'5 Marketingverständnisse — auswendig!',items:[
+  {y:'warn',v:'Das instrumentell-verkürzte Verständnis ist die häufigste FALSCH-Antwort in der Klausur. Marketing ist NICHT nur Werbung!'},
+  {y:'tbl',heads:['#','Verständnis','Kernaussage'],rows:[
+    ['1','<b>Instrumentell-verkürzt</b>','Marketing = nur EIN Instrument (Werbung, Verkauf). FALSCH & veraltet!'],
+    ['2','<b>Klassisch-ökonomisch</b>','"Kunde ist König" — systematischer Entscheidungsprozess, ökon. Ziele im Vordergrund'],
+    ['3','<b>Modern-erweitert</b>','Alle Austauscharten, kommerziell UND nicht-kommerziell (z.B. NGOs, Parteien) — AMA-Definition'],
+    ['4','<b>Generisch</b>','Marketing als Sozialtechnik für JEDEN Austauschprozess in der Gesellschaft'],
+    ['5','<b>Nachhaltigkeitsorientiert</b>','Marketing trägt Verantwortung für Gesellschaft, Umwelt und Transformationsprozesse'],
+  ]}
+]},
+{t:'Markt- und ressourcenbasierter Ansatz',items:[
+  {y:'info',v:'Die zwei grundlegenden Perspektiven, wie ein Unternehmen Wettbewerbsvorteile aufbaut:'},
+  {y:'kv',items:[
+    {k:'Marktbasierter Ansatz (Market-Based View)',v:'Ausgangspunkt: Attraktivität des Marktes. Unternehmen richtet sich nach Marktchancen und Kundenbedürfnissen aus. Kernfrage: <i>"In welchen Märkten wollen wir aktiv sein?"</i>',c:''},
+    {k:'Ressourcenbasierter Ansatz (Resource-Based View)',v:'Ausgangspunkt: interne Ressourcen und Fähigkeiten des Unternehmens. Wettbewerbsvorteil entsteht aus einzigartigen, nicht imitierbaren Kernkompetenzen. Kernfrage: <i>"Was können wir besonders gut?"</i>',c:'green'},
+  ]},
+  {y:'tip',v:'<b>Merkhilfe:</b> Marktbasiert = von außen nach innen (Markt → Unternehmen). Ressourcenbasiert = von innen nach außen (Unternehmen → Markt).'}
+]},
+{t:'AMA-Definition — 6 Merkmale des modernen Marketing',items:[
+  {y:'info',v:'<b>AMA-Definition:</b> "Marketing is an organizational function and a set of processes for creating, communicating and delivering value to customers and for managing customer relationships in ways that benefit the organization and its stakeholders."'},
+  {y:'tbl',heads:['#','Merkmal','Was bedeutet das konkret?'],rows:[
+    ['1','<b>Duales Führungskonzept</b>','Marketing ist (a) <i>Leitbild des gesamten Managements</i> (Denkhaltung, die alle Entscheidungen prägt) UND (b) eine <i>gleichberechtigte Unternehmensfunktion</i> neben z.B. Produktion und Finanzen.'],
+    ['2','<b>Informations- & Aktionsorientierung</b>','Marketing ist die <i>Schnittstelle zwischen Markt und Unternehmen</i>: Informationen vom Markt aufnehmen (außengerichtet) UND auf den Markt einwirken (innengerichtet).'],
+    ['3','<b>Kundennutzenorientierung</b>','<i>Nettonutzen = Bruttonutzen − Kosten</i>. Kauf findet nur statt, wenn der Nettonutzen positiv ist. Das Produkt muss den Kunden einen echten Mehrwert bieten.'],
+    ['4','<b>Beziehungsorientierung</b>','Übergang von transaktions- (einmaliger Kauf) zu <i>beziehungsorientiertem Marketing</i> (langfristige Anbieter-Nachfrager-Beziehung) seit Anfang der 90er. Stichwort: Customer Lifetime Value, Kundenbindungsinstrumente.'],
+    ['5','<b>Wertorientierung</b>','Der Kundenstamm ist eine <i>finanzielle Ressource</i> des Unternehmens → Quelle der Gewinnerzielung. Messgrößen: Umsatz, Gewinn, RoI, EVA.'],
+    ['6','<b>Stakeholderorientierung</b>','Marketing berücksichtigt <i>alle betroffenen Personen und Organisationen</i>: Aktionäre, Bürger, Umweltschutzverbände, Journalisten, staatliche Institutionen — nicht nur Kunden.'],
+  ]},
+  {y:'tip',v:'<b>Merkhilfe D-I-K-B-W-S:</b> <b>D</b>ual · <b>I</b>nfo/Aktion · <b>K</b>undennutzen · <b>B</b>eziehung · <b>W</b>ert · <b>S</b>takeholder'}
+]},
+{t:'Aufgaben des Marketing Managements',items:[
+  {y:'info',v:'<b>Marketing-Management-Prozess:</b> Die 6 Aufgaben bilden einen Kreislauf — das Ergebnis des Controllings fließt wieder in die Situationsanalyse ein.'},
+  {y:'step',n:1,q:'Wo stehen wir?',t:'Situationsanalyse',d:'Sammeln relevanter Informationen über die unternehmensinterne und -externe Situation. Konzepte: SWOT-Analyse, Exponentielle Glättung, Prognosen.'},
+  {y:'step',n:2,q:'Was wollen wir erreichen?',t:'Marketingziele festlegen',d:'Festlegung langfristiger Ziele: Ökonomische Ziele (Gewinn, Umsatz), Soziale Ziele, Ökologische Ziele, Vorökonomische/Psychographische Ziele (z.B. Bekanntheit, Image).'},
+  {y:'step',n:3,q:'Wie erreichen wir es?',t:'Marketingstrategie entwickeln',d:'Langfristige Grundsatzentscheidungen: Welche Märkte bearbeiten? Welche Positionierung? Welcher Wettbewerbsvorteil soll aufgebaut werden?'},
+  {y:'step',n:4,q:'Welche Marketingmaßnahmen ergreifen wir?',t:'Operative Marketingplanung (4P / 7P)',d:'<b>4P:</b> Product, Price, Place, Promotion. <b>+ 3P bei Dienstleistungen:</b> People, Processes, Physical Facilities.'},
+  {y:'step',n:5,q:'Wer ist für die Umsetzung verantwortlich?',t:'Marketingimplementierung',d:'Zielgerichtete Realisierung der geplanten Maßnahmen. Verantwortlichkeiten, Führungskonzepte und Budgets.'},
+  {y:'step',n:6,q:'Wurden die Ziele erreicht?',t:'Marketingcontrolling',d:'Erfassung von Erfolgswirkungen. Soll-Ist-Vergleich → Anpassungen.'},
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> Reihenfolge wird sehr häufig geprüft! Situationsanalyse kommt IMMER zuerst, dann Ziele, dann Strategie.'}
+]},
+{t:'Marktgrößen MIT FORMELN',items:[
+  {y:'def',k:'Marktpotenzial',v:'Gesamtheit aller <b>möglichen</b> Absatzmengen des Marktes (theoretisches Maximum)'},
+  {y:'def',k:'Marktvolumen',v:'Menge der Marktleistung, die <b>gegenwärtig von allen Anbietern</b> tatsächlich abgesetzt wird'},
+  {y:'def',k:'Absatzvolumen',v:'Absatzmenge eines <b>einzelnen Unternehmens</b>'},
+  {y:'formula',lbl:'Sättigungsgrad',f:'Sättigungsgrad (%) = Marktvolumen / Marktpotenzial × 100',note:'Zeigt, wie viel des theoretischen Potenzials bereits genutzt wird.'},
+  {y:'formula',lbl:'Marktanteil',f:'Marktanteil (%) = Absatzvolumen eigenes Unternehmen / Marktvolumen × 100'},
+  {y:'formula',lbl:'Relativer Marktanteil — für BCG!',f:'Relativer Marktanteil = Marktanteil eigenes Unternehmen / Marktanteil stärkster Konkurrent',note:'>1 = Marktführer. 0,5x = halb so groß wie Marktführer.'},
+]},
+{t:'Institutionelle Ansätze & Unternehmensumwelt',items:[
+  {y:'tbl',heads:['Merkmal','Konsumgütermarketing','Investitionsgütermarketing'],rows:[
+    ['Nachfrage','<b>Originär</b> (direkt vom Endverbraucher)','<b>Derivativ</b> (vom Endprodukt abgeleitet!)'],
+    ['Entscheider','Natürliche Person / Familie','Organisation → <b>Buying Center</b>'],
+    ['Markt','Anonym, Massenmarkt','Persönlicher Kontakt, Langfristbeziehung'],
+  ]},
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> Investitionsgüter haben DERIVATIVE Nachfrage! Sie werden nicht für sich selbst nachgefragt, sondern weil damit andere Güter produziert werden.'},
+  {y:'def',k:'Makroumwelt (nicht steuerbar)',v:'Ökonomische + politisch-rechtliche + soziokulturelle + technologische Umwelt'},
+  {y:'def',k:'Mikroumwelt (beeinflussbar)',v:'Absatzmarkt (Kunden, Handel), Beschaffungsmarkt (Lieferanten), Wettbewerber'},
+  {y:'def',k:'Wettbewerbsvorteil — 3 Bedingungen',v:'Muss für Nachfrager <b>bedeutsam + wahrnehmbar</b> sein UND gegenüber der Konkurrenz <b>dauerhaft verteidigbar</b>'}
+]}
+]},
+{mod:1,chs:[
+{t:'Paradigma des Käuferverhaltens — 7 W-Fragen',items:[
+  {y:'tbl',heads:['W-Frage','Was wird untersucht?'],rows:[
+    ['<b>Wer?</b>','Kaufakteure, Träger der Kaufentscheidung'],
+    ['<b>Was?</b>','Kaufobjekte'],
+    ['<b>Warum?</b>','Kaufmotive'],
+    ['<b>Wie?</b>','Kaufentscheidungsprozess'],
+    ['<b>Wie viel?</b>','Kaufmenge'],
+    ['<b>Wann?</b>','Kaufzeitpunkt und -häufigkeit'],
+    ['<b>Wo/Bei wem?</b>','Einkaufsstätten- und Lieferantenwahl'],
+  ]},
+  {y:'tip',v:'<b>Merkhilfe:</b> Wer? Was? Warum? Wie? Wie viel? Wann? Wo/Bei wem? → alle 7 Fragen kennen!'}
+]},
+{t:'Forschungsansätze des Käuferverhaltens',items:[
+  {y:'kv',items:[
+    {k:'S-R-Modelle (Behavioristisch)',v:'<b>Stimulus → Black Box → Reaktion</b><br>Das Innere des Käufers bleibt unbekannt. Bsp: Impulskauf.'},
+    {k:'S-O-R-Modelle (Neobehavioristisch)',v:'<b>Stimulus → Organismus → Reaktion</b><br>Der Organismus (Einstellungen, Motive) ist messbar. Häufigste Methode!',c:'green'},
+  ]},
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> S-R ≠ S-O-R! Beim S-R-Modell bleibt der Organismus eine unbekannte Black Box. Beim S-O-R-Modell wird der Organismus messbar.'}
+]},
+{t:'Kaufentscheidungstypen (Haushalt) — Howard & Sheth',items:[
+  {y:'tbl',heads:['Typ','Wie es läuft','Wann?'],rows:[
+    ['<b>Echte Kaufentscheidung</b>','Großer Informationsbedarf, viele Alternativen, lange Dauer','Auto, Haus'],
+    ['<b>Habituelle Kaufentscheidung</b>','Gewohnheitsmäßig, keine Suche nach Alternativen','Lieblingsjoghurt'],
+    ['<b>Impulsive Kaufentscheidung</b>','Spontane Reaktion am Point of Sale, affektgesteuert','An der Kasse'],
+    ['<b>Limitierte Kaufentscheidung</b>','Mehrere in engerer Auswahl, begrenzter Aufwand','Neues Produkt in bekannter Kategorie'],
+  ]}
+]},
+{t:'Kaufentscheidungstypen (Unternehmen) & Buying Center',items:[
+  {y:'kv',items:[
+    {k:'Erstkauf',v:'Völlig neue Problemstellung. Großer Informationsbedarf.'},
+    {k:'Modifizierter Wiederholungskauf',v:'Ähnliche, aber veränderte Situation. Zusatzinfos nötig.',c:'amber'},
+    {k:'Reiner Wiederholungskauf',v:'Routinebeschaffung. Automatisierter Vorgang.',c:'green'},
+  ]},
+  {y:'def',k:'Buying Center',v:'Gruppe von Personen im Unternehmen, die an einer Kaufentscheidung beteiligt sind. Eine Person kann mehrere Rollen einnehmen!'},
+  {y:'tbl',heads:['Rolle','Funktion'],rows:[
+    ['<b>Benutzer</b>','Arbeitet täglich mit dem Produkt'],
+    ['<b>Einkäufer</b>','Erstellt Ausschreibungen, wickelt Kauf ab'],
+    ['<b>Entscheider</b>','Trifft die endgültige Kaufentscheidung'],
+    ['<b>Einflussagenten</b>','Beeinflussen durch Normen und Fachwissen'],
+    ['<b>Gatekeeper</b>','Kontrolliert Informationsfluss'],
+  ]}
+]},
+{t:'Intrapersonale Bestimmungsfaktoren — 13 Faktoren',items:[
+  {y:'tbl',heads:['#','Faktor','Kurzerklärung'],rows:[
+    ['1','<b>Wahrnehmung & Kognition</b>','Subjektive Aufnahme, Selektion und Interpretation von Reizen.'],
+    ['2','<b>Aktiviertheit/Aktivierung</b>','Innerer Erregungszustand. 3 Reizarten: affektiv, kognitiv, physisch.'],
+    ['3','<b>Involvement</b>','Grad der Ich-Beteiligung bei einer Kaufentscheidung.'],
+    ['4','<b>Anspruchsniveau & Symbolischer Markennutzen</b>','Anspruchsniveau = verbindlicher Standard der Zielerreichung.'],
+    ['5','<b>Emotionen</b>','Innere physiologische Erregungszustände. Primär (universell) vs. Sekundär (kulturell).'],
+    ['6','<b>Lernen & Gedächtnis</b>','Systematische Verhaltensänderung durch Erfahrung.'],
+    ['7','<b>Motive & Motivation</b>','Motiv = Ausdruck von Bedürfnissen. Hat Aktivierungs- und kognitive Komponente.'],
+    ['8','<b>Einstellungen & Images</b>','Einstellungen = innere Bereitschaften konsistent zu reagieren. Image = System von Einstellungen.'],
+    ['9','<b>Risiko & Vertrauen</b>','5 Risikoarten: finanziell, funktional, gesundheitlich, sozial, psychisch.'],
+    ['10','<b>Zufriedenheit</b>','Übereinstimmung zwischen Erwartung und Erfahrung.'],
+    ['11','<b>Persönliche Werte</b>','3 Ebenen: Basiswerte, Bereichswerte, produktbezogene Bewertungen.'],
+    ['12','<b>Lebensstil & Normen</b>','Lebensstil = A-I-O: Activities, Interests, Opinions.'],
+    ['13','<b>Persönlichkeit</b>','Stabile, individuelle Eigenschaften einer Person.'],
+  ]},
+  {y:'tip',v:'<b>Fishbein (kompensatorisch):</b> A_ij = Σ B_ijk × a_ijk. Schlechte Merkmale werden durch gute ausgeglichen.<br><b>Trommsdorff (nicht-kompensatorisch):</b> E_ij = Σ |B_ijk − I_ik|. Je kleiner der Unterschied zwischen Realeindruck und Idealbild, desto positiver.'}
+]},
+{t:'Maslow & Interpersonale Faktoren',items:[
+  {y:'tbl',heads:['Stufe','Bedürfnis','Motivtyp'],rows:[
+    ['5 (oben)','<b>Selbstverwirklichung</b>','Wachstumsmotiv'],
+    ['4','<b>Prestigebedürfnisse (Ich)</b>','Wachstumsmotiv'],
+    ['3','<b>Soziale Bedürfnisse</b>','Defizitmotiv'],
+    ['2','<b>Sicherheitsbedürfnisse</b>','Defizitmotiv'],
+    ['1 (unten)','<b>Physiologische Bedürfnisse</b>','Defizitmotiv'],
+  ]},
+  {y:'tbl',heads:['Interpersonaler Faktor','Inhalt'],rows:[
+    ['<b>1. Kultur & Subkultur</b>','Gesellschaftlich übereinstimmende Verhaltensmuster. Mussnormen vs. Soll-/Kann-Normen.'],
+    ['<b>2. Soziale Schicht</b>','Oberschicht (20%), Mittelschicht (60%), Unterschicht (20%).'],
+    ['<b>3. Gruppen</b>','Meinungsführer (Opinion Leader) beeinflussen andere.'],
+    ['<b>4. Familie</b>','Großer Einfluss auf Kaufentscheidungen.'],
+  ]},
+  {y:'trap',v:'<b>Intrapersonal</b> (innerhalb der Person) ≠ <b>Interpersonal</b> (zwischen Personen/soziale Umwelt). Häufiger Klausurfehler!'}
+]}
+]},
+{mod:2,chs:[
+{t:'Marketingforschung ≠ Marktforschung',items:[
+  {y:'kv',items:[
+    {k:'Marketingforschung',v:'Systematische Erfassung über die <b>Marketingsituationen und Entscheidungen</b> (umfassender Begriff)'},
+    {k:'Marktforschung',v:'Systematische Gewinnung über die <b>Absatz- und Beschaffungsmärkte</b> (engerer Begriff)',c:'amber'},
+  ]},
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> Marktforschung ≠ Marketingforschung! Marktforschung ist nur ein Teilbereich der Marketingforschung.'}
+]},
+{t:'7 Funktionen der Marketingforschung',items:[
+  {y:'tbl',heads:['#','Funktion','Erklärung'],rows:[
+    ['1','<b>Selektion</b>','Auswahl marketingrelevanter Informationen'],
+    ['2','<b>Frühwarnung</b>','Frühzeitige Erkennung von Risiken'],
+    ['3','<b>Innovation</b>','Erkennen und Nutzen von Chancen'],
+    ['4','<b>Strukturierung</b>','Gewinnung, Analyse, Interpretation und Empfehlungen'],
+    ['5','<b>Unsicherheitsreduktion</b>','Präzisieren und Objektivieren von Sachverhalten'],
+    ['6','<b>Kontrolle</b>','Erforschung der Ursachen von (Miss-)Erfolgen'],
+    ['7','<b>Intelligenzverstärkung</b>','Unterstützung bei komplexen Entscheidungen'],
+  ]},
+  {y:'tip',v:'<b>Merkhilfe S-F-I-S-U-K-I:</b> Selektion, Frühwarnung, Innovation, Strukturierung, Unsicherheitsreduktion, Kontrolle, Intelligenzverstärkung.'}
+]},
+{t:'Phasen & Gütekriterien der Marketingforschung',items:[
+  {y:'tbl',heads:['Phase','Inhalt'],rows:[
+    ['<b>1. Problemdefinition</b>','Was soll untersucht werden?'],
+    ['<b>2. Informationsgewinnung</b>','Datenquelle, Erhebungsmethode, Stichprobenplan, Erhebungszeitpunkt'],
+    ['<b>3. Informationsverarbeitung</b>','Auswertungsplan, Analyseverfahren, Interpretation'],
+    ['<b>4. Kommunikation der Ergebnisse</b>','Präsentation, Handlungsempfehlungen'],
+  ]},
+  {y:'tbl',heads:['Gütekriterium','Leitfrage'],rows:[
+    ['<b>Reliabilität</b>','Ist die Messung wiederholbar und fehlerfrei?'],
+    ['<b>Validität</b>','Misst das Instrument, was es messen soll?'],
+    ['<b>Reaktivität</b>','Beeinflusst die Situation das Messergebnis?'],
+    ['<b>Objektivität</b>','Sind Ergebnisse unabhängig vom Durchführenden?'],
+  ]}
+]},
+{t:'Primär- vs. Sekundärforschung & Beobachtung',items:[
+  {y:'tbl',heads:['','Primärforschung','Sekundärforschung'],rows:[
+    ['Definition','Neue Daten eigens erheben','Vorhandene Daten nutzen und analysieren'],
+    ['Vorteil','Aktuell, spezifisch, maßgeschneidert','Schnell, günstig, einfach zugänglich'],
+    ['Nachteil','Teuer, zeitaufwendig','Oft veraltet, nicht problemspezifisch'],
+  ]},
+  {y:'def',k:'Mystery Shopping',v:'Forscher/innen treten als normale Kunden auf und nehmen reale Kundensituationen wahr. Varianten: Mystery Calling, Mystery Mailing.'},
+  {y:'def',k:'Panelerhebung — 3 Einschränkungen',v:'<b>Panelsterblichkeit</b> (Fluktuation), <b>Paneleffekt</b> (Verhaltensänderung durch Selbstkontrolle), <b>Panelerstarrung</b> (Zusammensetzung ≠ Grundgesamtheit)'}
+]},
+{t:'Befragung — Fragetypen & Skalenarten',items:[
+  {y:'tbl',heads:['Verfahren','Beschreibung'],rows:[
+    ['<b>Semantisches Differential</b>','Gegensatzpaare auf Skala bewerten'],
+    ['<b>Likert-Skala</b>','Zustimmungsgrad angeben'],
+    ['<b>Ballon-Test</b>','Leere Sprechblase in Cartoon ausfüllen → enthüllt unbewusste Meinungen'],
+    ['<b>Wortassoziation</b>','Welches Wort fällt Ihnen zuerst ein, wenn Sie X hören?'],
+  ]},
+  {y:'tbl',heads:['Skala','Eigenschaft','Beispiel'],rows:[
+    ['<b>Nominal</b>','Klassifikation','Geschlecht, PLZ'],
+    ['<b>Ordinal</b>','Rangordnung','Schulnoten, Windstärke'],
+    ['<b>Intervall</b>','Rangordnung + Abstände; KEIN absoluter Nullpunkt','Temperatur °C, IQ'],
+    ['<b>Ratio</b>','Wie Intervall + absoluter Nullpunkt','Alter, Umsatz, Gewicht'],
+  ]},
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> 0°C ist NICHT "keine Temperatur" → Intervallskala. 0 kg = kein Gewicht → Ratioskala. Hierarchie: Nominal < Ordinal < Intervall < Ratio.'}
+]},
+{t:'Experiment & Absatzprognosen',items:[
+  {y:'def',k:'Experiment',v:'Einzige Methode zur Feststellung <b>ursächlicher Beziehungen (Kausalität)</b>. Feld (natürliche Umgebung, höhere Validität) vs. Labor (künstlich, mehr Kontrolle).'},
+  {y:'tbl',heads:['Methode','Beschreibung'],rows:[
+    ['<b>Gleitender Durchschnitt</b>','Prognose = Durchschnitt der letzten n Perioden. Reagiert träge auf Trends.'],
+    ['<b>Exponentielle Glättung</b>','Neuere Perioden stärker gewichtet (Glättungsparameter α).'],
+    ['<b>Delphi-Methode</b>','Mehrere Experten in mehreren anonymen Runden bis Konsens. Für Langfristprognosen.'],
+  ]}
+]}
+]},
+{mod:3,chs:[
+{t:'SWOT-Analyse & Unternehmensziele',items:[
+  {y:'tbl',heads:['SWOT','Kategorie','Inhalt'],rows:[
+    ['<b>S — Strengths</b>','Intern','Stärken des Unternehmens'],
+    ['<b>W — Weaknesses</b>','Intern','Schwächen des Unternehmens'],
+    ['<b>O — Opportunities</b>','Extern','Chancen im Marktumfeld'],
+    ['<b>T — Threats</b>','Extern','Risiken im Marktumfeld'],
+  ]},
+  {y:'def',k:'SMART-Regel',v:'<b>S</b>pezifisch · <b>M</b>essbar · <b>A</b>nspruchsvoll · <b>R</b>ealistisch · <b>T</b>erminiert'},
+  {y:'tbl',heads:['Kategorie','Beispiele'],rows:[
+    ['<b>Marktleistungsziele</b>','Produktqualität, Servicequalität'],
+    ['<b>Marktstellungsziele</b>','Umsatz, Marktanteil'],
+    ['<b>Rentabilitätsziele</b>','Gewinn, RoI, Unternehmenswert'],
+    ['<b>Finanzielle Ziele</b>','Liquidität, Kreditwürdigkeit'],
+    ['<b>Macht- und Prestigeziele</b>','Image, Unabhängigkeit'],
+    ['<b>Gesellschaftsbez. Ziele</b>','Sponsoringleistungen'],
+    ['<b>Umweltschutzziele</b>','Reduktion von Emissionen'],
+  ]}
+]},
+{t:'BCG-Portfolio — vollständig',items:[
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> X-Achse = Relativer Marktanteil steigt von RECHTS nach LINKS! 10x ganz LINKS = hoch. Y-Achse = Marktwachstum steigt nach oben.'},
+  {y:'tbl',heads:['Feld','Wachstum','Rel. MA','Cashflow','Normstrategie'],rows:[
+    ['⭐ <b>Stars</b>','Hoch','Hoch','Ausgeglichen','Investitionsstrategie'],
+    ['❓ <b>Question Marks</b>','Hoch','Niedrig','Negativ','Investition ODER Desinvestition'],
+    ['🐄 <b>Cash Cows</b>','Niedrig','Hoch','Positiv','Abschöpfungsstrategie'],
+    ['🐕 <b>Poor Dogs</b>','Niedrig','Niedrig','Ev. positiv','Desinvestition oder Abschöpfung'],
+  ]},
+  {y:'formula',lbl:'Relativer Marktanteil (X-Achse)',f:'Rel. MA = Marktanteil eigenes Unternehmen / Marktanteil GRÖSSTER Konkurrent',note:'> 1 = Marktführer. = 0,5 bedeutet: halb so groß wie der Marktführer.'}
+]},
+{t:'McKinsey-Portfolio & Erfahrungskurve',items:[
+  {y:'info',v:'<b>McKinsey-Portfolio (9-Felder-Matrix):</b> Y-Achse = Marktattraktivität. X-Achse = Eigene Wettbewerbsstärke.'},
+  {y:'def',k:'Erfahrungskurve',v:'Reale Stückkosten sinken um <b>20–30%</b>, sobald sich die kumulierte Produktionsmenge <b>verdoppelt</b>. Ursachen: Lerneffekte, Skalenerträge, technologischer Fortschritt.'}
+]},
+{t:'Lebenszyklus & Ansoff-Matrix',items:[
+  {y:'tbl',heads:['Phase','Merkmale','Strategie'],rows:[
+    ['<b>Einführung</b>','Langsames Wachstum, hohe Kosten','Bekanntheit aufbauen'],
+    ['<b>Wachstum</b>','Zunehmende Marktakzeptanz','Marktanteile sichern'],
+    ['<b>Reife/Sättigung</b>','Stagnation, Wettbewerbsdruck','Differenzieren, Kosten senken'],
+    ['<b>Rückgang</b>','Schrumpfendes Volumen','Elimination oder Relaunch'],
+  ]},
+  {y:'tbl',heads:['','Gegenwärtige Produkte','Neue Produkte'],rows:[
+    ['<b>Gegenwärtige Märkte</b>','<b>Marktdurchdringung</b>','<b>Produktentwicklung</b>'],
+    ['<b>Neue Märkte</b>','<b>Marktentwicklung</b>','<b>Diversifikation</b> (risikoreich!)'],
+  ]},
+  {y:'trap',v:'<b>4 Kritikpunkte Ansoff:</b> Nur Wachstum. Keine Konkurrenz. Stärken/Schwächen nicht systematisch. SGE-Ressourcen unberücksichtigt.'}
+]},
+{t:'Marktsegmentierung — vollständig',items:[
+  {y:'def',k:'Marktsegmentierung',v:'Gesamtmarkt wird in <b>intern homogene Teilmärkte (Segmente)</b> unterteilt, die mit segmentspezifischen Marketingprogrammen bearbeitet werden.'},
+  {y:'tbl',heads:['Kriterium','Unterarten'],rows:[
+    ['<b>1. Geographisch</b>','Makro (international/national) vs. Mikro (Wohngebietszellen)'],
+    ['<b>2. Soziodemographisch</b>','Demographisch (Alter, Geschlecht) + Sozioökonomisch (Einkommen, Bildung)'],
+    ['<b>3. Psychographisch</b>','Einstellungen, Motive, Benefit-Segmentierung!, Lebensstil (AIO)'],
+    ['<b>4. Verhaltensorientiert</b>','Informationsverhalten, Produktverhalten, Einkaufsstättenverhalten'],
+  ]},
+  {y:'badges',items:[
+    {v:'Kaufverhaltensrelevanz',c:'b'},{v:'Messbarkeit',c:'b'},{v:'Erreichbarkeit',c:'b'},
+    {v:'Handlungsfähigkeit',c:'b'},{v:'Wirtschaftlichkeit',c:'b'},{v:'Zeitliche Stabilität',c:'b'}
+  ]}
+]},
+{t:'Markenpolitische Strategien',items:[
+  {y:'tbl',heads:['Strategie','Beschreibung','Vorteile','Nachteile'],rows:[
+    ['<b>Einzelmarken</b>','Für jedes Produkt eigene Marke','Klare Positionierung, keine Ausstrahlungseffekte','Keine Synergien, teuer'],
+    ['<b>Mehrmarken</b>','Mindestens 2 Marken im selben Bereich','Verschiedene Zielgruppen','Kannibalisierung, Komplexität'],
+    ['<b>Dachmarken</b>','Alle Produkte unter einem Namen','Synergieeffekte, schnelle Akzeptanz','Keine individuelle Positionierung'],
+    ['<b>Familienmarken</b>','Verwandte Produkte unter einem Namen','Synergien, Imagestärkung','Markenverwässerung möglich'],
+  ]}
+]}
+]},
+{mod:4,chs:[
+{t:'Produkt- und Programmpolitik — Grundlagen',items:[
+  {y:'tbl',heads:['Nutzenart','Beschreibung','Beispiel'],rows:[
+    ['<b>Grundnutzen</b>','Technisch-funktionale Basiseigenschaften','Auto transportiert Personen'],
+    ['<b>Zusatznutzen</b>','Zusatzleistungen (After-Sales, Garantie)','Kostenloser Service'],
+    ['<b>Erbauungsnutzen</b>','Ästhetische Wirkungen','Schönes Design'],
+    ['<b>Geltungsnutzen</b>','Soziale Wirkung (Status, Prestige)','Rolex signalisiert Erfolg'],
+  ]},
+  {y:'trap',v:'<b>Produktvariation vs. Differenzierung:</b> Variation = ersetzt altes Produkt. Differenzierung = altes bleibt, neue Varianten kommen dazu.'}
+]},
+{t:'Verbundeffekt-Typen',items:[
+  {y:'tbl',heads:['Typ','Definition'],rows:[
+    ['<b>1. Bedarfsverbund</b>','Gemeinsamer Ge-/Verbrauch von Gütern in komplementärem Zusammenhang.'],
+    ['<b>2. Nachfrageverbund</b>','Bestreben der Nachfrager, alles in einem Geschäft zu erledigen.'],
+    ['<b>3. Kaufverbund</b>','Gleichzeitiger Kauf mehrerer Artikel am PoS. Bezieht sich auf EINEN Kaufakt.'],
+    ['<b>4. Informationsverbund (Goodwill-Transfer)</b>','Positive Informationen über Produkt X übertragen sich auf Produkt Y desselben Herstellers.'],
+  ]}
+]},
+{t:'Innovationstypen & 7-Phasen-Prozess',items:[
+  {y:'tbl',heads:['Innovationstyp','Produktkonzept','Verknüpfung','Beispiel'],rows:[
+    ['<b>Inkremental</b>','Bestätigt (bekannt)','Unverändert','Neue iPhone-Version'],
+    ['<b>Modular</b>','Verworfen (neu)','Unverändert','Digitalkamera ersetzt Filmkamera'],
+    ['<b>Architekturale</b>','Bestätigt (bekannt)','Verändert','Laptop = PC-Technologie neu kombiniert'],
+    ['<b>Radikal</b>','Verworfen (neu)','Verändert','iPhone 2007'],
+  ]},
+  {y:'step',n:1,q:'Woher kommen neue Ideen?',t:'Ideengewinnung',d:'Intern: F&E, Mitarbeiter. Extern: Kundenbefragung, Marktforschung.'},
+  {y:'step',n:2,q:'Welche Ideen verfolgen wir?',t:'Ideenscreening & -bewertung',d:'Filtern nach Marktpotenzial, Ressourcen, strategischer Eignung.'},
+  {y:'step',n:3,q:'Was genau wollen wir anbieten?',t:'Konzeptentwicklung und -test',d:'Detailliertes Produktkonzept bei potenziellen Kunden testen.'},
+  {y:'step',n:4,q:'Rechnet es sich?',t:'Wirtschaftlichkeitsanalyse (Break-Even)',d:'N > M → Einführen. N < M → Ablehnen.'},
+  {y:'step',n:5,q:'Wie bauen wir es?',t:'Produktentwicklung und -test',d:'Prototyp erstellen, Produkttests.'},
+  {y:'step',n:6,q:'Bestätigt der Markt es?',t:'Testmarketing',d:'Produkt in begrenztem Testmarkt einführen. PHASE 6 — nicht 7!'},
+  {y:'step',n:7,q:'Vollständiger Rollout!',t:'Markteinführung',d:'Entscheidungen über Gestaltungsmaßnahmen. Vollständiger Rollout.'},
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> Testmarketing ist Phase 6 (nicht Phase 7!). Die Markteinführung = Phase 7.'}
+]},
+{t:'Adoptionsmodell Rogers & Verpackungsbegriffe',items:[
+  {y:'tbl',heads:['Gruppe','Anteil','Charakteristik'],rows:[
+    ['<b>Innovatoren</b>','2,5%','Risikofreudig, technologiebegeistert'],
+    ['<b>Frühadopter</b>','13,5%','Meinungsführer, hohes Ansehen'],
+    ['<b>Frühe Mehrheit</b>','34%','Pragmatisch, etwas vor Durchschnitt'],
+    ['<b>Späte Mehrheit</b>','34%','Skeptisch, übernehmen bei sozialem Druck'],
+    ['<b>Nachzügler</b>','16%','Habituell risikoscheu, traditionalistisch'],
+  ]},
+  {y:'tbl',heads:['Begriff','Definition'],rows:[
+    ['<b>Verpackung</b>','Sammelbegriff für jegliche Art von Umhüllung'],
+    ['<b>Packung</b>','Umhüllung einer EINZELNEN Produkteinheit bis zum Verbrauch'],
+    ['<b>Verkaufsverpackung</b>','Als EINE Verkaufseinheit angeboten, fällt beim ENDVERBRAUCHER an'],
+    ['<b>Transportverpackung</b>','Fällt beim VERTREIBER an (nicht Endverbraucher)'],
+  ]}
+]}
+]},
+{mod:5,chs:[
+{t:'Preispolitik — Grundlagen & Elastizität',items:[
+  {y:'info',v:'<b>2 Grundtatbestände:</b> (1) Erstmalige Preisfestlegung, (2) Preisänderungen. <b>3 Bestimmungsfaktoren:</b> Kosten, Nachfrage, Wettbewerb/Marktform.'},
+  {y:'formula',lbl:'Preiselastizität der Nachfrage',f:'η = (Δx/x) / (Δp/p)',note:'η meist negativ. η > −1: unelastisch (Preiserhöhung → Umsatz steigt). η < −1: elastisch (Preiserhöhung → Umsatz sinkt).'},
+  {y:'tbl',heads:['Elastizität','Bedeutung','Bei Preiserhöhung'],rows:[
+    ['<b>η > -1</b> (unelastisch)','Nachfrage reagiert kaum','Umsatzsteigerung'],
+    ['<b>η = -1</b>','Einheitliche Elastizität','Konstanter Umsatz'],
+    ['<b>η < -1</b> (elastisch)','Nachfrage reagiert stark','Umsatzsenkung'],
+  ]}
+]},
+{t:'Behavioral Pricing',items:[
+  {y:'def',k:'Preisinteresse',v:'Bedürfnis, nach Preisinformationen zu suchen. Preiswürdigkeit betonen → Preisinteresse steigt. Qualitätsvorteile betonen → Preisinteresse sinkt.'},
+  {y:'def',k:'Referenzpreise (= Preisanker)',v:'Intern gespeicherte oder extern wahrgenommene Preise. <b>5 Steuerungseffekte:</b> Preisauslobungseffekt, Mondpreiseffekt, Preisgegenüberstellungseffekt, Nettopreiseffekt, Preisplatzierungseffekt.'},
+  {y:'tbl',heads:['Psychologische Preisart','Wirkung'],rows:[
+    ['<b>Gebrochene Preise</b> (z.B. 9,99€)','Wirkt günstiger als tatsächlich'],
+    ['<b>Runde Preise</b> (z.B. 9,90€)','Neutral'],
+    ['<b>Glatte Preise</b> (z.B. 10€)','Signalisiert Qualität/Exklusivität'],
+  ]}
+]},
+{t:'Preisstrategien & Preisdifferenzierung',items:[
+  {y:'tbl',heads:['','Penetrationsstrategie','Skimmingstrategie'],rows:[
+    ['<b>Vorgehen</b>','Niedriger Startpreis → schnelle Durchdringung','Hoher Startpreis → sinkt mit zunehmender Markterschließung'],
+    ['<b>Empfehlenswert bei</b>','Hohe Preiselastizität, Massenmarkt','Viele Innovatoren, geringe Substituierbarkeit'],
+  ]},
+  {y:'tbl',heads:['Form der Preisdifferenzierung','Beispiel'],rows:[
+    ['<b>Zeitlich</b>','Happy Hour, Frühbucherrabatt'],
+    ['<b>Räumlich</b>','Österreich teurer als Deutschland'],
+    ['<b>Personell</b>','Studentenrabatt, Seniorenermäßigung'],
+    ['<b>Preisbündelung (Bundling)</b>','Telefon+Internet+TV als Paket'],
+    ['<b>Revenue/Yield Management</b>','Flugtickets, Hotels — dynamische Preise'],
+  ]},
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> Skonto ≠ Mengenrabatt! Skonto = schnell zahlen (z.B. 2% in 10 Tagen). Mengenrabatt = viel bestellen.'}
+]}
+]},
+{mod:6,chs:[
+{t:'Distributionspolitik — Überblick',items:[
+  {y:'trap',v:'<b>SCHLÜSSELUNTERSCHIED:</b> Absatzmittler (Groß-/Einzelhändler) = <b>EIGENTUMSÜBERGANG!</b> Absatzhelfer (Spediteur, Makler, Bank) = <b>KEIN Eigentumsübergang.</b>'},
+  {y:'tbl',heads:['Distributionsstrategie','Merkmal','Produkte'],rows:[
+    ['<b>Intensive Distribution</b>','So viele Händler wie möglich','Massenartikel (Coca-Cola, Milch)'],
+    ['<b>Selektive Distribution</b>','Ausgewählte Händler','Mittlere Qualität (Marken-Sportartikel)'],
+    ['<b>Exklusive Distribution</b>','Alleinverkaufsrecht + keine Konkurrenzprodukte','Luxusgüter (Rolex, Ferrari)'],
+  ]}
+]},
+{t:'Direkter & indirekter Vertrieb',items:[
+  {y:'tbl',heads:['Typ','Merkmale'],rows:[
+    ['<b>Fachgeschäft</b>','Breites Sortiment, persönliche Beratung'],
+    ['<b>Fachmarkt</b>','Breites Sortiment, verkehrsgünstig, niedriger Personalkostenanteil'],
+    ['<b>Discounter</b>','Aggressive Preispolitik, Verkauf = Lager'],
+    ['<b>Off-Price-Retailer</b>','Schnäppchen/Restposten, Factory Outlets'],
+  ]}
+]},
+{t:'Franchising & Push/Pull',items:[
+  {y:'def',k:'Franchisesystem',v:'Umfassend geregelte langfristige Beziehung. Franchisegeber: erlaubt Nutzung von Name/Warenzeichen. Franchisenehmer: zahlt fixe Eintrittsgebühr + variable Zahlungen.'},
+  {y:'kv',items:[
+    {k:'Push-Strategie',v:'Hersteller bietet Absatzmittlern Anreize → Händler überzeugt → verkauft weiter.'},
+    {k:'Pull-Strategie',v:'Hersteller spricht Nachfrager direkt an → Nachfrager fragt beim Händler nach → Händler sieht sich gezwungen, Produkt zu listen.',c:'green'},
+  ]},
+  {y:'trap',v:'<b>Messen</b> (B2B, FACHBESUCHER) ≠ <b>Ausstellungen</b> (B2C, ALLGEMEINES PUBLIKUM).'}
+]}
+]},
+{mod:7,chs:[
+{t:'Kommunikationspolitik — Grundlagen & Integration',items:[
+  {y:'tbl',heads:['Integrationsform','Inhalt','Ziel'],rows:[
+    ['<b>Formal</b>','Einheitliche Zeichen, Logos, Slogans, Farben','Wiedererkennung'],
+    ['<b>Zeitlich</b>','Kontinuität der Kommunikation','Lernen und Vertrauen'],
+    ['<b>Inhaltlich</b>','Einheitliche Botschaft über alle Instrumente','Positionierung stärken'],
+  ]},
+  {y:'tbl',heads:['Kommunikationsziel','Frage','Beispiele'],rows:[
+    ['<b>Kognitiv</b>','Was weiß der Kunde?','Markenbekanntheit, Produkteigenschaften'],
+    ['<b>Affektiv</b>','Wie fühlt der Kunde?','Markenimage, emotionale Bindung'],
+    ['<b>Konativ</b>','Was tut der Kunde?','Kauf, Weiterempfehlung'],
+  ]}
+]},
+{t:'Out-of-Home-Medien & Mediakennzahlen',items:[
+  {y:'tbl',heads:['Typ','Beschreibung'],rows:[
+    ['<b>Plakatwerbung</b>','Klassische Plakate (Litfaßsäulen, Großflächen)'],
+    ['<b>Transport-/Verkehrsmedien</b>','Öffentliche Verkehrsmittel, LKWs, Taxis'],
+    ['<b>Ambient Medien ⚠️</b>','UNKONVENTIONELLE Träger: Toiletten, Zapfpistolen, Gepäckbänder, Kanaldeckel'],
+    ['<b>Digital Out-of-Home</b>','Digitale Großbildflächen, Flachbildschirme'],
+  ]},
+  {y:'trap',v:'<b>PRÜFUNGSFALLE AMBIENT MEDIEN:</b> Hinterleuchtete Plakate/Aufsteller = KEIN Ambient! Diese gehören zu den Standardkanälen.'},
+  {y:'tbl',heads:['Kennzahl','Definition'],rows:[
+    ['<b>Nettoreichweite</b>','Bruttoreichweite − Überschneidungen. Bsp: 160k + 130k − 40k = 250k'],
+    ['<b>TKP</b>','Kosten um 1.000 Personen der Zielgruppe zu erreichen'],
+    ['<b>Wear-out-Effekt</b>','Ermüdung durch zu häufige Wiederholung → Reaktanz'],
+    ['<b>Primacy-Recency-Effekt</b>','Höhere Erinnerung am ANFANG und ENDE eines Werbeblocks'],
+  ]}
+]},
+{t:'Kommunikationsinstrumente: Überblick',items:[
+  {y:'tbl',heads:['Instrument','Besonderheit'],rows:[
+    ['<b>Klassische Werbung</b>','TV, Print, Radio, Kino, Plakat — Above the line'],
+    ['<b>Online-Kommunikation</b>','Web 2.0: Weblogs, Wikis, Social Networks, Microblogging'],
+    ['<b>Direktkommunikation</b>','Personalisierte Ansprache, Direct Mailing, Kundenbindungsprogramme'],
+    ['<b>Verkaufsförderung</b>','Zeitlich befristet, Price deals vs. Non-price deals'],
+    ['<b>Sponsoring</b>','Imagetransfer — "Fit" wichtig! Abgrenzung: Ambushing'],
+    ['<b>Product Placement</b>','Unbewusste Wahrnehmung. Reaktion auf Informationsüberlastung.'],
+    ['<b>PR/Öffentlichkeitsarbeit</b>','Vertrauensaufbau, glaubwürdiger als Werbung'],
+  ]}
+]}
+]}
+];
+
+const CARDS=[
+  {m:0,t:'Nettonutzen',d:'Bruttonutzen − Kosten der Kaufentscheidung. Kauf NUR bei Nettonutzen > 0.'},
+  {m:0,t:'Marktbasierter Ansatz',d:'Ausgangspunkt: Attraktivität des Marktes. Kernfrage: "In welchen Märkten wollen wir sein?"'},
+  {m:0,t:'Ressourcenbasierter Ansatz',d:'Ausgangspunkt: interne Ressourcen & Kernkompetenzen. Kernfrage: "Was können wir besonders gut?"'},
+  {m:0,t:'AMA 6 Merkmale (Merkhilfe)',d:'D-I-K-B-W-S: Dual · Info/Aktion · Kundennutzen · Beziehung · Wert · Stakeholder'},
+  {m:0,t:'Customer Lifetime Value',d:'Finanzieller Wert der gesamten Kundenbeziehung (diskontierte Ein- und Auszahlungen).'},
+  {m:0,t:'Customer Equity',d:'Summe aller Customer Lifetime Values aller aktuellen Kunden = Kundenstammwert'},
+  {m:0,t:'Brand Equity',d:'Customer Equity + immaterielle Werte (Bekanntheitsgrad, Distributionsgrad)'},
+  {m:0,t:'Sättigungsgrad',d:'Marktvolumen / Marktpotenzial × 100 (%)'},
+  {m:0,t:'Marktanteil',d:'Absatzvolumen eigenes Unternehmen / Marktvolumen × 100 (%)'},
+  {m:0,t:'Relativer Marktanteil',d:'Eigener Marktanteil / Marktanteil des GRÖSSTEN Konkurrenten. Für BCG!'},
+  {m:0,t:'Wettbewerbsvorteil — 3 Bedingungen',d:'(1) Bedeutsam für Nachfrager, (2) wahrnehmbar, (3) dauerhaft verteidigbar'},
+  {m:0,t:'Instrumentell-verkürztes Marketing',d:'Marketing = nur Werbung/Verkauf → FALSCH & veraltet!'},
+  {m:0,t:'7P (Dienstleistungen)',d:'4P + People (Personal), Processes (Erstellungsprozess), Physical Facilities (Gebäude, Fuhrpark)'},
+  {m:1,t:'Paradigma des Kaufverhaltens',d:'7 W-Fragen: Wer? Was? Warum? Wie? Wie viel? Wann? Wo/Bei wem?'},
+  {m:1,t:'S-R-Ansatz (Behavioristisch)',d:'Stimulus → Black Box → Reaktion. Inneres unbekannt.'},
+  {m:1,t:'S-O-R-Ansatz (Neobehavioristisch)',d:'Stimulus → Organismus (Einstellungen, Motive) → Reaktion. Häufigste Methode!'},
+  {m:1,t:'Involvement',d:'Grad der Ich-Beteiligung. Beeinflusst von: personenspezifisch, situationsspezifisch, reizspezifisch.'},
+  {m:1,t:'Echte vs. Habituelle Kaufentscheidung',d:'Echte: großer Informationsbedarf, viele Alternativen. Habituell: Gewohnheit, automatisch.'},
+  {m:1,t:'Buying Center — 5 Rollen',d:'Benutzer, Einkäufer, Entscheider, Einflussagenten, Gatekeeper'},
+  {m:1,t:'Fishbein-Modell',d:'A_ij = Σ B_ijk × a_ijk. KOMPENSATORISCH: schlechte Merkmale werden durch gute ausgeglichen.'},
+  {m:1,t:'Trommsdorff-Modell',d:'E_ij = Σ |B_ijk − I_ik|. NICHT-KOMPENSATORISCH: je kleiner der Unterschied, desto positiver.'},
+  {m:1,t:'Bedürfnispyramide Maslow',d:'Von unten: Physiologisch → Sicherheit → Sozial → Prestige → Selbstverwirklichung. Defizitmotive (1-3) vs. Wachstumsmotive (4-5).'},
+  {m:1,t:'Interpersonale Faktoren (4)',d:'(1) Kultur/Subkultur, (2) Soziale Schicht, (3) Gruppen, (4) Familie'},
+  {m:1,t:'Intrapersonale Faktoren (13)',d:'Wahrnehmung, Aktivierung, Involvement, Anspruchsniveau, Emotionen, Lernen, Motive, Einstellungen, Risiko, Zufriedenheit, Werte, Lebensstil, Persönlichkeit'},
+  {m:2,t:'Marketingforschung vs. Marktforschung',d:'Marketingforschung (übergeordnet) = Infos über Marketingsituationen. Marktforschung (enger) = Infos über Absatz- und Beschaffungsmärkte.'},
+  {m:2,t:'7 Funktionen Marketingforschung',d:'S-F-I-S-U-K-I: Selektion, Frühwarnung, Innovation, Strukturierung, Unsicherheitsreduktion, Kontrolle, Intelligenzverstärkung'},
+  {m:2,t:'Marktforschungsprozess',d:'P-I-I-K: Problemdefinition → Informationsgewinnung → Informationsverarbeitung → Kommunikation'},
+  {m:2,t:'Reliabilität',d:'Zuverlässigkeit: Messung ist wiederholbar und fehlerfrei.'},
+  {m:2,t:'Validität',d:'Gültigkeit: Das Instrument misst das, was es messen soll.'},
+  {m:2,t:'Panelerhebung — 3 Einschränkungen',d:'Panelsterblichkeit, Paneleffekt (Verhaltensänderung), Panelerstarrung'},
+  {m:2,t:'Ratioskala',d:'Wie Intervallskala + absoluter Nullpunkt. Bsp: Alter, Umsatz.'},
+  {m:2,t:'Delphi-Methode',d:'Experten in mehreren anonymen Runden bis Konsens. Für Langfristprognosen.'},
+  {m:2,t:'Mystery Shopping',d:'Forscher treten als normale Kunden auf. Varianten: Mystery Calling, Mystery Mailing.'},
+  {m:2,t:'Experiment',d:'Einzige Methode für KAUSALITÄT. Feld (natürlich, hohe Validität) vs. Labor (künstlich, mehr Kontrolle).'},
+  {m:3,t:'BCG — relativer Marktanteil',d:'Eigener MA / MA des GRÖSSTEN Konkurrenten. X-Achse geht von RECHTS nach LINKS!'},
+  {m:3,t:'SWOT — intern vs. extern',d:'S/W = unternehmensintern. O/T = unternehmensextern.'},
+  {m:3,t:'SMART-Regel',d:'Spezifisch · Messbar · Anspruchsvoll · Realistisch · Terminiert'},
+  {m:3,t:'Erfahrungskurve',d:'Stückkosten sinken um 20–30% bei Verdoppelung der kumulierten Produktionsmenge.'},
+  {m:3,t:'Ansoff-Matrix (4 Felder)',d:'Marktdurchdringung (alt/alt), Produktentwicklung (neu/alt), Marktentwicklung (alt/neu), Diversifikation (neu/neu — risikoreich!)'},
+  {m:3,t:'6 Segmentierungs-Anforderungen',d:'Kaufverhaltensrelevanz · Messbarkeit · Erreichbarkeit · Handlungsfähigkeit · Wirtschaftlichkeit · Zeitliche Stabilität'},
+  {m:4,t:'Geltungsnutzen',d:'Soziale Wirkung (Status, Prestige). Bsp: Rolex signalisiert Erfolg.'},
+  {m:4,t:'Produktvariation vs. Differenzierung',d:'Variation: altes wird ERSETZT. Differenzierung: neue Varianten NEBEN dem alten Produkt (altes bleibt!).'},
+  {m:4,t:'Testmarketing',d:'Phase 6 (nicht 7!) des Innovationsprozesses.'},
+  {m:4,t:'4 Verbundeffekt-Typen',d:'(1) Bedarfsverbund, (2) Nachfrageverbund, (3) Kaufverbund, (4) Informationsverbund/Goodwill-Transfer'},
+  {m:4,t:'4 Innovationstypen',d:'Inkremental, Modular, Architekturale, Radikal (erstes iPhone = radikal!)'},
+  {m:4,t:'Rogers Adoptionsgruppen',d:'Innovatoren 2,5% · Frühadopter 13,5% · Frühe Mehrheit 34% · Späte Mehrheit 34% · Nachzügler 16%'},
+  {m:5,t:'Skimming vs. Penetration',d:'Skimming: hoher Startpreis → sinkt. Penetration: niedriger Startpreis → schnelle Durchdringung.'},
+  {m:5,t:'Preiselastizität — Formel',d:'η = (Δx/x) / (Δp/p). η > −1: unelastisch. η < −1: elastisch.'},
+  {m:5,t:'Referenzpreise — 5 Effekte',d:'Preisauslobungseffekt · Mondpreiseffekt · Preisgegenüberstellungseffekt · Nettopreiseffekt · Preisplatzierungseffekt'},
+  {m:5,t:'Skonto vs. Mengenrabatt',d:'Skonto = schnell zahlen (z.B. 2% in 10 Tagen). Mengenrabatt = viel bestellen.'},
+  {m:5,t:'7 Formen der Preisdifferenzierung',d:'Zeitlich · Räumlich · Personell · Mehr-Personen · Preisbündelung · Quantitativ · Revenue/Yield Management'},
+  {m:6,t:'Absatzmittler vs. Absatzhelfer',d:'Mittler = Eigentumsübergang (Groß-/Einzelhändler). Helfer = KEIN Eigentumsübergang (Spediteur, Makler, Bank).'},
+  {m:6,t:'Intensive vs. Exklusive Distribution',d:'Intensiv: so viele Händler wie möglich (Massenartikel). Exklusiv: Alleinverkaufsrecht + keine Konkurrenzprodukte (Luxusgüter).'},
+  {m:6,t:'Franchisesystem',d:'Langfristige Beziehung. Geber: Name/Warenzeichen. Nehmer: fixe Eintrittsgebühr + variable Zahlungen.'},
+  {m:6,t:'Push vs. Pull',d:'Push: Hersteller überzeugt Händler. Pull: Werbung an Endkunden zwingt Händler zur Listung.'},
+  {m:7,t:'Kognitive → Affektive → Konative Ziele',d:'"Was weiß?" → "Wie fühlt?" → "Was tut der Kunde?"'},
+  {m:7,t:'Nettoreichweite',d:'Bruttoreichweite − Überschneidungen. Bsp: 160k + 130k − 40k = 250k.'},
+  {m:7,t:'Wear-out-Effekt',d:'Ermüdung durch zu häufige Wiederholung → Reaktanz. Kampagnen müssen erneuert werden.'},
+  {m:7,t:'Ambient Medien',d:'Unkonventionelle Träger (Toiletten, Gepäckbänder, Zapfpistolen). NICHT: hinterleuchtete Plakate!'},
+  {m:7,t:'Primacy-Recency-Effekt',d:'Höhere Erinnerung am ANFANG und ENDE eines Werbeblocks.'},
+  {m:7,t:'3 Integrationsformen Kommunikation',d:'Formal (Logos/Zeichen), Zeitlich (Kontinuität), Inhaltlich (einheitliche Botschaft)'},
+  {m:7,t:'Sponsoring vs. Ambushing',d:'Sponsoring: offizielle Förderung gegen Kommunikationsrechte. Ambushing: Verbindung ohne Förderung.'},
+];
+
+const QQ=[
+  {m:0,q:'Welche Aussage zum Nettonutzen ist KORREKT?',o:['Kunden kaufen unabhängig vom Nettonutzen','Nettonutzen = Bruttonutzen + Kosten','Kunden kaufen NUR wenn Nettonutzen > 0','Nettonutzen ist nur im B2B relevant'],a:2,e:'Kunden kaufen nur bei positivem Nettonutzen: Bruttonutzen muss die Kosten der Kaufentscheidung (Zeit, Geld, Energie) übersteigen.'},
+  {m:0,q:'Was beschreibt der RESSOURCENBASIERTE Ansatz?',o:['Unternehmen richtet sich nach Marktchancen aus','Wettbewerbsvorteil entsteht aus internen, schwer imitierbaren Kernkompetenzen','Marketing = nur Werbung und Verkauf','Kundenbedürfnisse stehen immer an erster Stelle'],a:1,e:'Ressourcenbasierter Ansatz: Ausgangspunkt sind interne Ressourcen und Fähigkeiten. Wettbewerbsvorteil aus einzigartigen, nicht imitierbaren Kernkompetenzen.'},
+  {m:0,q:'Welche 3 Ps kommen bei Dienstleistungen zu den klassischen 4P hinzu?',o:['Profit, Partnership, Positioning','People, Processes, Physical Facilities','Planning, Performance, Perception','Partners, Platform, Promotion'],a:1,e:'7P = 4P + People (Personal), Processes (Dienstleistungserstellungsprozess), Physical Facilities (Gebäude, Ausstattung, Fuhrpark).'},
+  {m:0,q:'Was ist der korrekte ERSTE Schritt im Marketing-Management-Prozess?',o:['Marketingziele festlegen','Marketingstrategie entwickeln','Situationsanalyse (SWOT, Prognosen)','Marketinginstrumente wählen (4P)'],a:2,e:'Reihenfolge: (1) Situationsanalyse → (2) Ziele → (3) Strategie → (4) Instrumente → (5) Implementierung → (6) Controlling. Situationsanalyse kommt IMMER zuerst!'},
+  {m:0,q:'Was ist der Sättigungsgrad eines Marktes?',o:['Marktanteil / Marktvolumen','Marktvolumen / Marktpotenzial × 100','Absatzvolumen / Marktvolumen × 100','Marktpotenzial − Marktvolumen'],a:1,e:'Sättigungsgrad (%) = Marktvolumen / Marktpotenzial × 100. ≠ Marktanteil (= Absatzvolumen / Marktvolumen).'},
+  {m:0,q:'Was ist "derivative Nachfrage" bei Investitionsgütern?',o:['Direktnachfrage vom Endverbraucher','Nachfrage die sich vom Endprodukt ableitet','Nachfrage aus Werbemaßnahmen','Nachfrage in der Sättigungsphase'],a:1,e:'Investitionsgüter haben DERIVATIVE Nachfrage: Sie werden nicht für sich selbst nachgefragt, sondern weil damit andere Güter produziert werden.'},
+  {m:0,q:'Was ist der Customer Equity?',o:['CLV eines einzelnen Kunden','Summe aller CLVs aller aktuellen Kunden = Kundenstammwert','Der Markenwert eines Unternehmens','Gewinn aus einer einzelnen Transaktion'],a:1,e:'Customer Equity = Summe aller Customer Lifetime Values aller aktuellen Kunden.'},
+  {m:0,q:'Welches Marketingverständnis ist FALSCH und veraltet?',o:['Modern-erweitertes Verständnis','Nachhaltigkeitsorientiertes Verständnis','Instrumentell-verkürztes Verständnis (Marketing = nur Werbung)','Generisches Verständnis'],a:2,e:'Das instrumentell-verkürzte Verständnis ist FALSCH und veraltet. Marketing umfasst alle Austauschbeziehungen, nicht nur Kommunikationsinstrumente.'},
+  {m:0,q:'Welche Aussage zum Wettbewerbsvorteil ist RICHTIG?',o:['Muss nur für den Anbieter messbar sein','"Kunde ist König" — Kundenwünsche haben immer Vorrang','Muss bedeutsam + wahrnehmbar + dauerhaft verteidigbar sein','Wettbewerbsvorteile sind nur im B2B relevant'],a:2,e:'"Der Kunde ist König" ist FALSCH. Wettbewerbsvorteile müssen: (1) bedeutsam, (2) wahrnehmbar, (3) dauerhaft verteidigbar sein.'},
+  {m:1,q:'Was beschreibt das "Paradigma des Kaufverhaltens"?',o:['Ein Modell des Kaufprozesses in 5 Stufen','7 grundlegende W-Fragen: Wer? Was? Warum? Wie? Wie viel? Wann? Wo/Bei wem?','Das S-O-R-Modell','Die 4 Kaufentscheidungstypen'],a:1,e:'Das Paradigma des Kaufverhaltens stellt 7 grundlegende Forschungsfragen.'},
+  {m:1,q:'Was unterscheidet den S-R-Ansatz vom S-O-R-Ansatz?',o:['S-R hat einen Organismus dazwischen','S-R = Black Box (inneres unbekannt); S-O-R = messbarer Organismus dazwischen','Beide sind identisch','S-O-R ist älter als S-R'],a:1,e:'S-R: Inneres = Black Box. S-O-R: Organismus mit inneren Zuständen (Einstellungen, Motive) ist messbar.'},
+  {m:1,q:'Welche 4 Kaufentscheidungstypen nennt Howard & Sheth?',o:['Extensiv, intensiv, normal, impulsiv','Echte, Habituelle, Impulsive, Limitierte Kaufentscheidung','Erstkauf, Wiederholungskauf, Impulskauf, Routine','Hoch/Niedrig-Involvement, Komplex, Simpel'],a:1,e:'(1) Echte (großer Informationsbedarf), (2) Habituelle (Gewohnheit), (3) Impulsive (PoS-Reiz), (4) Limitierte (begrenzter Aufwand).'},
+  {m:1,q:'Was sind die 5 Rollen im Buying Center?',o:['Käufer, Verkäufer, Manager, Techniker, Logistiker','Benutzer, Einkäufer, Entscheider, Einflussagenten, Gatekeeper','Initiator, Beeinflusser, Entscheider, Käufer, Nutzer','Produzent, Händler, Makler, Berater, Endkunde'],a:1,e:'5 Rollen: Benutzer, Einkäufer, Entscheider, Einflussagenten, Gatekeeper. Eine Person kann mehrere Rollen einnehmen!'},
+  {m:1,q:'Was unterscheidet Fishbein von Trommsdorff?',o:['Beide identisch','Fishbein = kompensatorisch (A = Σ B×a); Trommsdorff = nicht-kompensatorisch (E = Σ|B−I|)','Fishbein ist ein Marktforschungsmodell','Fishbein hat keine Formel'],a:1,e:'Fishbein: KOMPENSATORISCH. Trommsdorff: NICHT-KOMPENSATORISCH — Orientierung am Idealbild.'},
+  {m:1,q:'Was sind INTRAPERSONALE Bestimmungsfaktoren?',o:['Soziale Faktoren wie Gruppen und Familie','Interne, psychologische Konstrukte innerhalb des Nachfragers','Faktoren aus der sozialen Umwelt','Demografische Merkmale'],a:1,e:'Intrapersonale Faktoren = 13 interne Faktoren innerhalb der Person. NICHT verwechseln mit interpersonalen (sozialen) Faktoren!'},
+  {m:1,q:'Welche Stufe steht an der SPITZE der Maslow-Pyramide?',o:['Sicherheitsbedürfnisse','Soziale Bedürfnisse','Prestigebedürfnisse','Selbstverwirklichung'],a:3,e:'Maslow von unten: Physiologisch → Sicherheit → Sozial → Prestige → Selbstverwirklichung. Stufen 4-5 = Wachstumsmotive.'},
+  {m:2,q:'Was ist der Unterschied zwischen Marketingforschung und Marktforschung?',o:['Beide identisch','Marktforschung ist der übergeordnete Begriff','Marketingforschung (übergeordnet) = Infos über Marketingsituationen; Marktforschung (enger) = Absatz-/Beschaffungsmärkte','Marktforschung = nur quantitativ'],a:2,e:'Marketingforschung ≠ Marktforschung! Marketingforschung ist der übergeordnete Begriff.'},
+  {m:2,q:'Welche Funktion beschreibt die "frühzeitige Erkennung von Risiken"?',o:['Selektion','Frühwarnung','Unsicherheitsreduktion','Kontrolle'],a:1,e:'Frühwarnung = Funktion Nr. 2: frühzeitige Erkennung und Abschätzung von Risiken.'},
+  {m:2,q:'Was beschreibt "Validität"?',o:['Messung ist wiederholbar','Das Instrument misst das, was es messen soll','Situation beeinflusst das Ergebnis nicht','Ergebnisse unabhängig vom Durchführenden'],a:1,e:'Validität (Gültigkeit) = Instrument misst tatsächlich das Gewollte. Reliabilität = Wiederholbarkeit.'},
+  {m:2,q:'Was ist der "Paneleffekt"?',o:['Panelsterblichkeit','Teilnehmer ändern ihr Verhalten durch ständige Selbstkontrolle','Zusammensetzung ≠ Grundgesamtheit','Zu viele Panels gleichzeitig'],a:1,e:'Paneleffekt = (un)bewusste Verhaltensänderung durch Selbstkontrolle → Panelreaktivität.'},
+  {m:2,q:'Welche Skalenart hat einen absoluten Nullpunkt?',o:['Nominalskala','Ordinalskala','Intervallskala','Ratio-/Verhältnisskala'],a:3,e:'Ratio-Skala: absoluter Nullpunkt + alle Operationen. Bsp: Alter, Umsatz. Intervallskala: kein absoluter Nullpunkt (0°C ≠ keine Temperatur).'},
+  {m:3,q:'Im BCG-Portfolio: Wie steigt der relative Marktanteil?',o:['Y-Achse, von unten nach oben','X-Achse, von links nach rechts','X-Achse, von RECHTS nach LINKS','Y-Achse, von oben nach unten'],a:2,e:'PRÜFUNGSFALLE: X-Achse, aber von RECHTS nach LINKS! 10x ganz links = sehr hoher relativer Marktanteil.'},
+  {m:3,q:'Was sind "Cash Cows" und die empfohlene Strategie?',o:['Hoch Wachstum + hoch MA → investieren','Niedrig Wachstum + niedrig MA → desinvestieren','Niedrig Wachstum + hoch MA → ABSCHÖPFEN','Hoch Wachstum + niedrig MA → selektieren'],a:2,e:'Cash Cows: niedriges Wachstum + hoher relativer MA. Abschöpfen → Cash für Stars und Question Marks.'},
+  {m:3,q:'Was ist die "Diversifikationsstrategie" in der Ansoff-Matrix?',o:['Bestehende Produkte in bestehenden Märkten','Bestehende Produkte in neue Märkte','Neue Produkte für bestehende Märkte','Neue Produkte in neue Märkte — höchstes Risiko!'],a:3,e:'Diversifikation = neu/neu. Höchstes Risiko weil sowohl Produkt als auch Markt neu sind.'},
+  {m:3,q:'Was beschreibt die Erfahrungskurve?',o:['Kosten steigen mit Erfahrung','Stückkosten sinken um 20-30% bei Verdoppelung der kumulierten Produktionsmenge','Preise fallen bei wachsendem Wettbewerb','Qualität steigt mit Produktionsdauer'],a:1,e:'Erfahrungskurve: Stückkosten sinken um 20–30% bei Verdoppelung der kumulierten Menge. Ursachen: Lerneffekte, Skalenerträge, technologischer Fortschritt.'},
+  {m:3,q:'Was sind "Einzelmarken" und ihr Hauptnachteil?',o:['Alle Produkte unter einem Namen — Nachteil: Ausstrahlungseffekte','Für jedes Produkt eigene Marke — Nachteil: keine Synergieeffekte und teuer','Marken für Teilbereiche — Nachteil: Komplexität','Mindestens 2 Marken — Nachteil: Kannibalisierung'],a:1,e:'Einzelmarken: eigene Marke pro Produkt. Vorteil: klare Positionierung. Nachteil: keine Synergien, teuer.'},
+  {m:4,q:'Was ist der Unterschied zwischen Grundnutzen und Geltungsnutzen?',o:['Grundnutzen = sozialer Status; Geltungsnutzen = technische Funktion','Grundnutzen = technisch-funktionale Basis; Geltungsnutzen = soziale Wirkung (Status, Prestige)','Beide identisch','Grundnutzen = Ästhetik; Geltungsnutzen = Funktion'],a:1,e:'Grundnutzen = Funktion. Erbauungsnutzen = Ästhetik. Geltungsnutzen = soziale Wirkung (Rolex signalisiert Erfolg).'},
+  {m:4,q:'In welcher Phase findet Testmarketing statt?',o:['Phase 2','Phase 4','Phase 6','Phase 7'],a:2,e:'Testmarketing = Phase 6 (nicht 7!). Markteinführung = Phase 7.'},
+  {m:4,q:'Was ist "Produktdifferenzierung" vs. "Produktvariation"?',o:['Beide identisch','Variation = Produkt vom Markt nehmen','Variation = ersetzt alte Version; Differenzierung = neue Varianten neben dem alten (altes bleibt!)','Differenzierung = verbessern; Variation = Varianten'],a:2,e:'Variation: altes wird ERSETZT. Differenzierung: altes bleibt, neue Varianten kommen dazu.'},
+  {m:4,q:'Was ist eine "Radikale Innovation"?',o:['Kleine Verbesserung','Bestehende Technologie neu kombiniert','Einzelne Komponenten neu, Konzept bleibt','Produktkonzept verworfen UND Komponentenverknüpfung verändert — alles neu'],a:3,e:'Radikal: Konzept verworfen (neu) + Verknüpfung verändert (neu). Beispiel: erstes iPhone (2007).'},
+  {m:5,q:'Was sind die 2 Grundtatbestände der Preispolitik?',o:['Kostenorientierung und Nachfrageorientierung','Erstmalige Preisfestlegung und Preisänderungen','Skimming und Penetration','Rabatte und Preisbündelung'],a:1,e:'(1) Erstmalige Preisfestlegung und (2) Preisänderungen.'},
+  {m:5,q:'Was ist der Unterschied zwischen Skimming und Penetration?',o:['Beide starten mit niedrigem Preis','Skimming: niedrig → steigt; Penetration: hoch → sinkt','Skimming: hoher Startpreis → sinkt; Penetration: niedriger Startpreis → schnelle Durchdringung','Beide für Luxusgüter'],a:2,e:'Skimming: hoher Preis → sinkt. Penetration: niedriger Preis → schnelle Marktdurchdringung.'},
+  {m:5,q:'Was ist der Unterschied zwischen Mengenrabatt und Skonto?',o:['Beide identisch','Mengenrabatt bei großen Bestellmengen; Skonto bei frühzeitiger Zahlung','Skonto für treue Kunden','Nur Skonto ist Konditionenpolitik'],a:1,e:'Mengenrabatt: Preisnachlass für große Bestellmengen. Skonto: Preisnachlass für schnelle Zahlung. NICHT verwechseln!'},
+  {m:5,q:'Was bedeutet η > -1 (Preiselastizität)?',o:['Elastisch — Preiserhöhung senkt Umsatz','Einheitliche Elastizität','Unelastisch — Preiserhöhung steigert Umsatz','Preis spielt keine Rolle'],a:2,e:'η > −1 = unelastisch. Preiserhöhung → proportional geringere Absatzmengenreduktion → Umsatz steigt.'},
+  {m:6,q:'Was ist der entscheidende Unterschied zwischen Absatzmittlern und Absatzhelfern?',o:['Absatzmittler sind teurer','Absatzmittler kaufen Ware (EIGENTUMSÜBERGANG!); Absatzhelfer ohne Eigentumsübergang','Beide kaufen und verkaufen','Absatzhelfer nur digital'],a:1,e:'SCHLÜSSELUNTERSCHIED: Absatzmittler = Eigentumsübergang! Absatzhelfer = kein Eigentumsübergang.'},
+  {m:6,q:'Was ist exklusive Distribution?',o:['So viele Händler wie möglich','Ausgewählte Händler nach Qualitätskriterien','Alleinverkaufsrecht + Pflicht keine Konkurrenzprodukte zu führen','Direktvertrieb'],a:2,e:'Exklusiv: Alleinverkaufsrecht + keine Konkurrenzprodukte. Für Luxusmarken (Rolex, Ferrari).'},
+  {m:6,q:'Was unterscheidet Messen von Ausstellungen?',o:['Messen für allgemeines Publikum','Messen für FACHBESUCHER (B2B); Ausstellungen für ALLGEMEINES PUBLIKUM (B2C)','Beide identisch','Messen nur für Großunternehmen'],a:1,e:'Messen: Fachbesucher, B2B, Wettbewerbsvergleich. Ausstellungen: allgemeines Publikum, B2C, Absatzziele.'},
+  {m:7,q:'Was sind die 3 Kommunikationsziele?',o:['Preis, Qualität, Marke','Kognitiv (Wissen), Affektiv (Einstellung), Konativ (Verhalten)','Reichweite, Frequenz, Kosten','Werbung, PR, Sponsoring'],a:1,e:'(1) Kognitiv = Wissen, (2) Affektiv = Einstellungen, (3) Konativ = Verhalten. Hierarchie: Wissen → Einstellung → Kauf.'},
+  {m:7,q:'Was sind Ambient Medien und was ist KEIN Beispiel?',o:['Werbung auf Gepäckbändern = Ambient','Hinterleuchtete Plakate/Aufsteller = KEIN Ambient (Standardkanäle!)','Zapfpistolen = Ambient','Kanaldeckel = Ambient'],a:1,e:'PRÜFUNGSWARNUNG: Ambient Medien = unkonventionell (Toiletten, Gepäckbänder, Zapfpistolen). Hinterleuchtete Plakate/Aufsteller = KEINE Ambient Medien!'},
+  {m:7,q:'Was ist die "Nettoreichweite"?',o:['Gesamte Bruttoreichweite','Bruttoreichweite minus Überschneidungen (Doppelkontakte)','Anzahl der Werbespots','Kosten/Reichweite = TKP'],a:1,e:'Nettoreichweite = Bruttoreichweite − Doppelkontakte. Bsp: 160k + 130k − 40k = 250k.'},
+  {m:7,q:'Was ist der "Wear-out-Effekt"?',o:['Rückgang der Reichweite nach Kampagnenende','Ermüdung und Reaktanz durch zu häufige Wiederholung','Qualitätsverfall von Printmedien','Marktanteilsverlust durch Konkurrenz'],a:1,e:'Wear-out: zu häufige Wiederholung → Ermüdung → Reaktanz. Kampagnen müssen regelmäßig erneuert werden.'},
+  {m:7,q:'Was sind die 3 Integrationsformen der Kommunikation?',o:['Intern, extern, digital','Formal, zeitlich, inhaltlich','Kognitiv, affektiv, konativ','Push, Pull, Pull-Through'],a:1,e:'(1) Formal = Logos/Zeichen → Wiedererkennung. (2) Zeitlich = Kontinuität → Vertrauen. (3) Inhaltlich = einheitliche Botschaft → Positionierung.'},
+  {m:7,q:'Was ist "Ambushing" im Gegensatz zu Sponsoring?',o:['Ambushing = intensive Werbung bei Events','Ambushing = mit Event in Verbindung gebracht werden ohne zu fördern; Sponsoring = offizielle Unterstützung','Beide identisch','Ambushing ist teurer'],a:1,e:'Sponsoring: offizielle Förderung gegen Kommunikationsrechte. Ambushing: Verbindung ohne Förderung (z.B. Nike-Werbung bei Adidas-gesponsertem Event).'},
+];
+
+// ─── APP STATE ───────────────────────────────────────────────────────────────
+let CU = null; // current Supabase user object
+let S = {
+  sc:'home', lMod:-1,
+  cMod:-1, cIdx:0, cFlip:false,
+  qMod:-1, qIdx:0, qAns:false, qSel:null, qScore:0,
+  ex:false, exQ:[], exIdx:0, exAns:false, exSel:null, exScore:0, exTime:3600, exTimer:null, exAnswers:[],
+  scores:{}
+};
+MODS.forEach(m => S.scores[m.id] = {c:0, t:0});
+
+// ─── SUPABASE SCORE PERSISTENCE ──────────────────────────────────────────────
+async function loadScoresFromDB(userId) {
+  try {
+    const { data, error } = await sb.from('user_scores').select('scores').eq('user_id', userId).single();
+    if (data && data.scores) {
+      S.scores = data.scores;
+    }
+  } catch(e) {
+    // No scores yet — use defaults
+  }
+}
+
+let saveTimeout = null;
+function saveScoresToDB() {
+  if (!CU) return;
+  clearTimeout(saveTimeout);
+  saveTimeout = setTimeout(async () => {
+    try {
+      await sb.from('user_scores').upsert({
+        user_id: CU.id,
+        scores: S.scores,
+        updated_at: new Date().toISOString()
+      });
+    } catch(e) { /* silent fail */ }
+  }, 1000);
+}
+
+// ─── AUTH FUNCTIONS ───────────────────────────────────────────────────────────
+function showErr(msg) {
+  const e = document.getElementById('lerr');
+  e.textContent = msg; e.classList.add('show');
+  document.getElementById('lsuc').classList.remove('show');
+}
+function showSuc(msg) {
+  const e = document.getElementById('lsuc');
+  e.textContent = msg; e.classList.add('show');
+  document.getElementById('lerr').classList.remove('show');
+}
+function setLoading(btnId, loading) {
+  const btn = document.getElementById(btnId);
+  if (btn) { btn.disabled = loading; btn.textContent = loading ? 'Bitte warten...' : (btnId==='login-btn' ? 'Anmelden →' : 'Account erstellen →'); }
+}
+
+async function doLogin() {
+  const email = document.getElementById('l-email').value.trim();
+  const pass = document.getElementById('l-pass').value;
+  if (!email || !pass) { showErr('Bitte E-Mail und Passwort eingeben.'); return; }
+  setLoading('login-btn', true);
+  const { data, error } = await sb.auth.signInWithPassword({ email, password: pass });
+  setLoading('login-btn', false);
+  if (error) { showErr('Falsches E-Mail oder Passwort.'); return; }
+  await loginSuccess(data.user);
+}
+
+async function doRegister() {
+  const email = document.getElementById('r-email').value.trim();
+  const pass = document.getElementById('r-pass').value;
+  const pass2 = document.getElementById('r-pass2').value;
+  const code = document.getElementById('r-code').value.trim().toUpperCase();
+  if (!email || !pass || !code) { showErr('Bitte alle Felder ausfüllen.'); return; }
+  if (pass.length < 6) { showErr('Passwort muss mindestens 6 Zeichen haben.'); return; }
+  if (pass !== pass2) { showErr('Passwörter stimmen nicht überein.'); return; }
+  setLoading('reg-btn', true);
+  // Check access code
+  const { data: codeData, error: codeError } = await sb
+    .from('access_codes').select('*').eq('code', code).eq('used', false).single();
+  if (codeError || !codeData) {
+    setLoading('reg-btn', false);
+    showErr('Ungültiger oder bereits verwendeter Zugangscode.'); return;
+  }
+  // Register
+  const { data, error } = await sb.auth.signUp({ email, password: pass });
+  if (error) {
+    setLoading('reg-btn', false);
+    showErr(error.message === 'User already registered' ? 'Diese E-Mail ist bereits registriert.' : error.message); return;
+  }
+  // Mark code as used
+  await sb.from('access_codes').update({ used: true, used_by: data.user.id }).eq('id', codeData.id);
+  setLoading('reg-btn', false);
+  if (data.session) {
+    await loginSuccess(data.user);
+  } else {
+    showSuc('✅ Registrierung erfolgreich! Bitte prüfe deine E-Mails und bestätige deinen Account, dann kannst du dich anmelden.');
+    switchTab('login');
+  }
+}
+
+async function loginSuccess(user) {
+  CU = user;
+  await loadScoresFromDB(user.id);
+  document.getElementById('login-screen').classList.add('hide');
+  updateTopbar();
+  render();
+}
+
+async function logout() {
+  saveScoresToDB();
+  await sb.auth.signOut();
+  CU = null;
+  MODS.forEach(m => S.scores[m.id] = {c:0, t:0});
+  document.getElementById('login-screen').classList.remove('hide');
+  document.getElementById('user-badge-wrap').style.display = 'none';
+  document.getElementById('lerr').classList.remove('show');
+  document.getElementById('lsuc').classList.remove('show');
+  document.getElementById('l-email').value = '';
+  document.getElementById('l-pass').value = '';
+  switchTab('login');
+}
+
+function switchTab(tab) {
+  document.getElementById('tab-login').classList.toggle('on', tab === 'login');
+  document.getElementById('tab-reg').classList.toggle('on', tab === 'reg');
+  document.getElementById('login-form').style.display = tab === 'login' ? '' : 'none';
+  document.getElementById('reg-form').style.display = tab === 'reg' ? '' : 'none';
+  document.getElementById('lerr').classList.remove('show');
+  document.getElementById('lsuc').classList.remove('show');
+}
+
+function updateTopbar() {
+  if (!CU) return;
+  const email = CU.email || '';
+  const initials = email.slice(0, 2).toUpperCase();
+  const ub = document.getElementById('user-badge-wrap');
+  ub.style.display = 'flex';
+  ub.innerHTML = `<div class="uav">${initials}</div><span class="uname">${email}</span><button class="logoutb" onclick="logout()">Abmelden</button>`;
+}
+
+// ─── NAVIGATION ──────────────────────────────────────────────────────────────
+function nav(s) {
+  saveScoresToDB();
+  S.sc = s;
+  document.querySelectorAll('.ni').forEach(el => el.classList.remove('on'));
+  const el = document.getElementById('n-' + s);
+  if (el) el.classList.add('on');
+  const titles = {home:'Dashboard', learn:'Lernen', cards:'Karteikarten', quiz:'Quiz', tips:'Prüfungstipps', impressum:'Impressum'};
+  const subs = {home:'Dein Lernfortschritt auf einen Blick', learn:'Alle Inhalte strukturiert — direkt aus den Folien', cards:'Begriff vorne, Definition hinten — anklicken zum Umdrehen', quiz:'Multiple-Choice mit sofortigem Feedback', tips:'Prüfungsstrategie, Fallen & Lernplan', impressum:'Rechtliche Informationen'};
+  document.getElementById('tt').textContent = titles[s] || s;
+  document.getElementById('ts').textContent = subs[s] || '';
+  render();
+}
+
+function updPills() {
+  let tc = 0, tq = 0;
+  Object.values(S.scores).forEach(s => { tc += s.c; tq += s.t; });
+  document.getElementById('p1').textContent = tc + ' / ' + tq;
+  document.getElementById('p2').textContent = tq > 0 ? Math.round(tc / tq * 100) + '%' : '—';
+}
+
+function render() {
+  updPills();
+  const c = document.getElementById('cnt');
+  if (S.sc === 'home') c.innerHTML = rHome();
+  else if (S.sc === 'learn') c.innerHTML = rLearn();
+  else if (S.sc === 'cards') c.innerHTML = rCards();
+  else if (S.sc === 'quiz') c.innerHTML = rQuiz();
+  else if (S.sc === 'tips') c.innerHTML = rTips();
+  else if (S.sc === 'exam') c.innerHTML = rExam();
+  else if (S.sc === 'impressum') c.innerHTML = rImpressum();
+}
+
+// ─── RENDER FUNCTIONS ─────────────────────────────────────────────────────────
+function rHome() {
+  let tc = 0, tq = 0; Object.values(S.scores).forEach(s => { tc += s.c; tq += s.t; });
+  const pct = tq > 0 ? Math.round(tc / tq * 100) : 0;
+  const ms = MODS.filter(m => S.scores[m.id].t > 0).length;
+  const mg = MODS.map(m => {
+    const sc = S.scores[m.id]; const p = sc.t > 0 ? Math.round(sc.c / sc.t * 100) : 0;
+    const nq = QQ.filter(q => q.m === m.id).length; const nch = LEARN[m.id].chs.length;
+    return `<div class="mc b${m.id}" onclick="S.lMod=${m.id};nav('learn')">
+      <div class="mn c${m.id}">${m.code}</div><div class="mt">${m.full}</div>
+      <div class="ms">${nq} Fragen · ${nch} Kapitel</div>
+      <div class="mpb"><div class="mpf f${m.id}" style="width:${p}%"></div></div>
+      <div style="font-size:10px;color:var(--t3);margin-top:4px">${sc.t > 0 ? p + '% richtig (' + sc.t + ' geübt)' : 'Noch nicht geübt'}</div>
+    </div>`;
+  }).join('');
+  return `<div class="hero">
+    <h2>Willkommen zurück!</h2>
+    <p>WU Wien · Marketing · ${QQ.length} Fragen · ${CARDS.length} Karteikarten · Klausur: 60 MC in 60 Min</p>
+    <div class="hstats">
+      <div class="hs"><div class="v">${pct}%</div><div class="l">Gesamtquote</div></div>
+      <div class="hs"><div class="v">${ms}/8</div><div class="l">Module geübt</div></div>
+      <div class="hs"><div class="v">${tq}</div><div class="l">Fragen gesamt</div></div>
+      <div class="hs"><div class="v">${tc}</div><div class="l">Richtig</div></div>
+    </div></div>
+  <div style="font-size:10px;font-weight:700;color:var(--t3);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Module — Klick zum Lernen</div>
+  <div class="g4" style="margin-bottom:14px">${mg}</div>
+  <div class="g3">
+    <div class="card" style="cursor:pointer;transition:transform .15s" onmouseenter="this.style.transform='translateY(-2px)'" onmouseleave="this.style.transform=''" onclick="nav('cards')">
+      <div style="font-size:22px;margin-bottom:8px">🃏</div>
+      <div style="font-weight:700;margin-bottom:3px">Karteikarten</div>
+      <div style="font-size:11px;color:var(--t2)">${CARDS.length} Begriffe · Flip-Karten</div>
+    </div>
+    <div class="card" style="cursor:pointer;transition:transform .15s" onmouseenter="this.style.transform='translateY(-2px)'" onmouseleave="this.style.transform=''" onclick="nav('quiz')">
+      <div style="font-size:22px;margin-bottom:8px">📝</div>
+      <div style="font-weight:700;margin-bottom:3px">Modulquiz</div>
+      <div style="font-size:11px;color:var(--t2)">${QQ.length} Fragen · Sofort-Feedback</div>
+    </div>
+    <div class="card" style="cursor:pointer;background:linear-gradient(135deg,#0f1623,#162035);border-color:#1e2d47;transition:transform .15s" onmouseenter="this.style.transform='translateY(-2px)'" onmouseleave="this.style.transform=''" onclick="startExam()">
+      <div style="font-size:22px;margin-bottom:8px">⏱️</div>
+      <div style="font-weight:700;margin-bottom:3px;color:#fff">Klausur-Simulation</div>
+      <div style="font-size:11px;color:#4b5a78">60 Fragen · 60 Min · Note</div>
+    </div>
+  </div>`;
+}
+
+function rLearn() {
+  if (S.lMod < 0) {
+    const g = MODS.map(m => `<div class="mc b${m.id}" onclick="S.lMod=${m.id};render()">
+      <div class="mn c${m.id}">${m.code}</div><div class="mt">${m.full}</div>
+      <div class="ms">${LEARN[m.id].chs.length} Kapitel</div></div>`).join('');
+    return `<div style="font-size:10px;font-weight:700;color:var(--t3);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Modul wählen</div><div class="g4">${g}</div>`;
+  }
+  const mod = MODS[S.lMod]; const data = LEARN[S.lMod];
+  const chs = data.chs.map(ch => {
+    const body = ch.items.map(it => ri(it)).join('');
+    return `<div class="ch">
+      <div class="ch-h" onclick="this.classList.toggle('op');this.nextElementSibling.classList.toggle('op')">
+        <span style="color:${mod.co}">${ch.t}</span><span class="arr">▼</span>
+      </div>
+      <div class="ch-b">${body}</div>
+    </div>`;
+  }).join('');
+  return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+    <button class="btn btn-g" onclick="S.lMod=-1;render()" style="padding:6px 12px;font-size:11px">← Zurück</button>
+    <div><div style="font-size:10px;font-weight:700;color:${mod.co};text-transform:uppercase;letter-spacing:1px">${mod.code}</div>
+    <div style="font-size:14px;font-weight:700">${mod.full}</div></div>
+    <button class="btn btn-p" onclick="startModQuiz(${S.lMod})" style="margin-left:auto;font-size:11px">Quiz starten →</button>
+  </div>${chs}`;
+}
+
+function rCards() {
+  const pool = S.cMod >= 0 ? CARDS.filter(c => c.m === S.cMod) : CARDS;
+  if (!pool.length) return '<div style="text-align:center;padding:40px;color:var(--t3)">Keine Karten</div>';
+  const idx = ((S.cIdx % pool.length) + pool.length) % pool.length;
+  const card = pool[idx]; const mod = MODS[card.m];
+  const tabs = `<button class="mt-tab ${S.cMod < 0 ? 'on' : ''}" onclick="S.cMod=-1;S.cIdx=0;S.cFlip=false;render()">Alle (${CARDS.length})</button>`
+    + MODS.map(m => `<button class="mt-tab ${S.cMod === m.id ? 'on' : ''}" onclick="S.cMod=${m.id};S.cIdx=0;S.cFlip=false;render()">${m.code}</button>`).join('');
+  return `<div class="mt-row">${tabs}</div>
+  <div class="fc-wrap" onclick="S.cFlip=!S.cFlip;render()">
+    <div class="fc-in ${S.cFlip ? 'fl' : ''}">
+      <div class="fc-fr"><div class="fc-lbl" style="color:${mod.co}">${mod.code} — ${mod.full}</div>
+        <div class="fc-term">${card.t}</div><div class="fc-hint">Anklicken zum Umdrehen ↩</div></div>
+      <div class="fc-bk"><div class="fc-lbl" style="color:${mod.co}">Definition</div>
+        <div class="fc-def">${card.d}</div><div class="fc-hint">Anklicken zum Zurückdrehen</div></div>
+    </div></div>
+  <div class="fcnav">
+    <button class="fnb" onclick="S.cIdx--;S.cFlip=false;render()">←</button>
+    <div class="fc-ctr">${idx + 1} / ${pool.length}</div>
+    <button class="fnb" onclick="S.cIdx++;S.cFlip=false;render()">→</button>
+  </div>
+  <div style="text-align:center;display:flex;gap:8px;justify-content:center">
+    <button class="btn btn-g" onclick="S.cIdx=Math.floor(Math.random()*${pool.length});S.cFlip=false;render()" style="font-size:11px">🔀 Zufällig</button>
+    <button class="btn btn-g" onclick="S.cIdx=0;S.cFlip=false;render()" style="font-size:11px">↺ Von vorne</button>
+  </div>`;
+}
+
+function rQuiz() {
+  if (S.qMod < 0) {
+    const g = MODS.map(m => {
+      const nq = QQ.filter(q => q.m === m.id).length; const sc = S.scores[m.id]; const p = sc.t > 0 ? Math.round(sc.c / sc.t * 100) : null;
+      return `<div class="mc b${m.id}" onclick="startModQuiz(${m.id})">
+        <div class="mn c${m.id}">${m.code}</div><div class="mt">${m.full}</div>
+        <div class="ms">${nq} Fragen · ${p !== null ? p + '% zuletzt' : 'Nicht geübt'}</div></div>`;
+    }).join('');
+    return `<div style="font-size:10px;font-weight:700;color:var(--t3);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Modul wählen</div>
+    <div class="g4" style="margin-bottom:14px">${g}</div>
+    <div style="text-align:center"><button class="btn btn-p" onclick="startAllQuiz()" style="padding:10px 24px">Alle Module (${QQ.length} Fragen)</button></div>`;
+  }
+  const qs = S.qMod === 99 ? QQ : QQ.filter(q => q.m === S.qMod);
+  if (S.qIdx >= qs.length) return rQRes(qs);
+  const q = qs[S.qIdx]; const mod = MODS[q.m]; const pct = Math.round(S.qIdx / qs.length * 100);
+  const opts = q.o.map((o, i) => {
+    let cls = 'opt', dis = '';
+    if (S.qAns) { dis = 'disabled'; if (i === q.a) cls += ' ok'; else if (i === S.qSel && i !== q.a) cls += ' no'; }
+    return `<button class="${cls}" ${dis} onclick="ansQ(${i})"><span class="olet">${['A','B','C','D'][i]}</span><span>${o}</span></button>`;
+  }).join('');
+  return `<div class="qcard">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <span style="font-size:10px;font-weight:700;color:${mod.co};text-transform:uppercase;letter-spacing:1px">${mod.code} — ${mod.full}</span>
+      <span style="font-size:11px;color:var(--t3);font-family:var(--m)">${S.qScore} / ${S.qIdx} · Frage ${S.qIdx + 1}/${qs.length}</span>
+    </div>
+    <div class="qpb"><div class="qpf" style="width:${pct}%"></div></div>
+    <div class="qt">${q.q}</div>
+    <div class="opts">${opts}</div>
+    ${S.qAns ? `<div class="qexp">💡 ${q.e}</div>` : ''}
+    <div class="qfoot">
+      <button class="btn btn-g" onclick="S.qMod=-1;S.qIdx=0;S.qScore=0;S.qAns=false;render()" style="font-size:11px">← Modulwahl</button>
+      ${S.qAns ? `<button class="btn btn-p" onclick="nxQ()">Weiter →</button>` : ''}
+    </div></div>`;
+}
+
+function startModQuiz(id) { S.qMod = id; S.qIdx = 0; S.qScore = 0; S.qAns = false; S.qSel = null; nav('quiz'); }
+function startAllQuiz() { S.qMod = 99; S.qIdx = 0; S.qScore = 0; S.qAns = false; S.qSel = null; render(); }
+
+function ansQ(i) {
+  if (S.qAns) return; S.qAns = true; S.qSel = i;
+  const qs = S.qMod === 99 ? QQ : QQ.filter(q => q.m === S.qMod);
+  const q = qs[S.qIdx];
+  if (i === q.a) { S.qScore++; S.scores[q.m].c++; } S.scores[q.m].t++;
+  saveScoresToDB(); updPills(); render();
+}
+function nxQ() { S.qIdx++; S.qAns = false; S.qSel = null; render(); }
+
+function rQRes(qs) {
+  const pct = qs.length > 0 ? Math.round(S.qScore / qs.length * 100) : 0;
+  let g, gc, gn;
+  if (pct >= 90) { g = 'Sehr Gut'; gc = '#059669'; gn = 'Note 1 🎉'; }
+  else if (pct >= 80) { g = 'Gut'; gc = '#2563eb'; gn = 'Note 2 — Ziel erreicht!'; }
+  else if (pct >= 70) { g = 'Befriedigend'; gc = '#d97706'; gn = 'Note 3 — knapp darunter'; }
+  else if (pct >= 60) { g = 'Genügend'; gc = '#dc2626'; gn = 'Note 4 — mehr üben!'; }
+  else { g = 'Nicht Genügend'; gc = '#dc2626'; gn = 'Note 5 — weiterüben!'; }
+  return `<div class="res">
+    <div class="res-ring" style="background:${gc}20;color:${gc}">${pct}%</div>
+    <div class="res-g" style="color:${gc}">${g}</div>
+    <div class="res-s">${S.qScore} von ${qs.length} richtig<br>${gn}</div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+      <button class="btn btn-p" onclick="startModQuiz(S.qMod)">Nochmal</button>
+      <button class="btn btn-g" onclick="S.qMod=-1;S.qIdx=0;S.qScore=0;render()">Anderes Modul</button>
+    </div></div>`;
+}
+
+function startExam() {
+  if (S.exTimer) clearInterval(S.exTimer);
+  const pool = [...QQ].sort(() => Math.random() - .5);
+  S.exQ = pool.slice(0, Math.min(60, pool.length));
+  S.exIdx = 0; S.exAns = false; S.exSel = null; S.exScore = 0; S.exTime = 3600; S.exAnswers = []; S.ex = true;
+  S.exTimer = setInterval(() => {
+    S.exTime--;
+    const el = document.getElementById('etimer');
+    if (el) { el.textContent = fmt(S.exTime); el.className = 'timer' + (S.exTime < 600 ? ' d' : S.exTime < 1200 ? ' w' : ''); }
+    if (S.exTime <= 0) { clearInterval(S.exTimer); finExam(); }
+  }, 1000);
+  S.sc = 'exam';
+  document.getElementById('tt').textContent = 'Klausur-Simulation';
+  document.getElementById('ts').textContent = '60 Fragen · 60 Minuten · echte Prüfungsbedingungen';
+  document.querySelectorAll('.ni').forEach(el => el.classList.remove('on'));
+  render();
+}
+function fmt(s) { return Math.floor(s / 60) + ':' + (s % 60 < 10 ? '0' : '') + s % 60; }
+
+function rExam() {
+  if (!S.ex || S.exIdx >= S.exQ.length) return rExRes();
+  const q = S.exQ[S.exIdx]; const mod = MODS[q.m]; const pct = Math.round(S.exIdx / S.exQ.length * 100);
+  const opts = q.o.map((o, i) => {
+    let cls = 'opt', dis = '';
+    if (S.exAns) { dis = 'disabled'; if (i === q.a) cls += ' ok'; else if (i === S.exSel && i !== q.a) cls += ' no'; }
+    return `<button class="${cls}" ${dis} onclick="ansEx(${i})"><span class="olet">${['A','B','C','D'][i]}</span><span>${o}</span></button>`;
+  }).join('');
+  return `<div class="exh">
+    <div><div style="font-size:10px;color:#4b5a78">KLAUSUR-SIMULATION</div><div style="color:#fff;font-weight:700">Frage ${S.exIdx + 1} / ${S.exQ.length}</div></div>
+    <div id="etimer" class="timer">${fmt(S.exTime)}</div>
+    <div style="text-align:right"><div style="font-size:10px;color:#4b5a78">Richtig</div><div style="color:#4d7cff;font-size:18px;font-weight:700;font-family:var(--m)">${S.exScore}</div></div>
+  </div>
+  <div class="qpb" style="margin-bottom:14px"><div class="qpf" style="width:${pct}%"></div></div>
+  <div class="qcard">
+    <div style="font-size:10px;font-weight:700;color:${mod.co};text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">${mod.code} — ${mod.full}</div>
+    <div class="qt">${q.q}</div>
+    <div class="opts">${opts}</div>
+    ${S.exAns ? `<div class="qexp">💡 ${q.e}</div>` : ''}
+    <div class="qfoot">
+      <button class="btn btn-r" onclick="finExam()" style="font-size:11px">Klausur beenden</button>
+      ${S.exAns ? `<button class="btn btn-p" onclick="nxEx()">Nächste →</button>` : ''}
+    </div></div>`;
+}
+function ansEx(i) {
+  if (S.exAns) return; S.exAns = true; S.exSel = i;
+  const q = S.exQ[S.exIdx]; if (i === q.a) S.exScore++;
+  S.exAnswers.push({ q, sel: i, ok: i === q.a }); render();
+}
+function nxEx() { S.exIdx++; S.exAns = false; S.exSel = null; render(); }
+function finExam() { if (S.exTimer) clearInterval(S.exTimer); S.ex = false; render(); }
+
+function rExRes() {
+  const tot = S.exAnswers.length; const pct = tot > 0 ? Math.round(S.exScore / tot * 100) : 0;
+  let g, gc, gn;
+  if (pct >= 90) { g = 'Sehr Gut'; gc = '#059669'; gn = 'Note 1 — Hervorragend!'; }
+  else if (pct >= 80) { g = 'Gut'; gc = '#2563eb'; gn = 'Note 2 — Ziel erreicht!'; }
+  else if (pct >= 70) { g = 'Befriedigend'; gc = '#d97706'; gn = 'Note 3 — knapp unter dem Ziel'; }
+  else if (pct >= 60) { g = 'Genügend'; gc = '#dc2626'; gn = 'Note 4 — mehr üben!'; }
+  else { g = 'Nicht Genügend'; gc = '#dc2626'; gn = 'Note 5 — weiterüben!'; }
+  const bars = MODS.map(m => {
+    const mq = S.exAnswers.filter(a => a.q.m === m.id); if (!mq.length) return '';
+    const mc = mq.filter(a => a.ok).length; const mp = Math.round(mc / mq.length * 100);
+    return `<div class="rbar"><div class="rblab">${m.code}</div><div class="rbt"><div class="rbf f${m.id}" style="width:${mp}%"></div></div><div class="rbp" style="color:${mp >= 80 ? '#059669' : '#dc2626'}">${mp}%</div></div>`;
+  }).join('');
+  return `<div class="res">
+    <div class="res-ring" style="background:${gc}20;color:${gc}">${pct}%</div>
+    <div class="res-g" style="color:${gc}">${g}</div>
+    <div class="res-s">${S.exScore} von ${tot} richtig<br>${gn}</div>
+    <div style="margin:0 auto 20px;text-align:left;min-width:280px">${bars}</div>
+    <div style="display:flex;gap:8px;justify-content:center">
+      <button class="btn btn-p" onclick="startExam()">Neue Simulation</button>
+      <button class="btn btn-g" onclick="nav('home')">Dashboard</button>
+    </div></div>`;
+}
+
+function rTips() {
+  return `<div class="tg">
+  <div class="card tc"><h3 style="color:var(--red)">⚠️ Top-Prüfungsfallen</h3><ul>
+    <li><strong>BCG X-Achse:</strong> Relativer Marktanteil steigt von RECHTS nach LINKS!</li>
+    <li><strong>"Kunde ist König":</strong> FALSCH! Kosten und Konkurrenz immer berücksichtigen.</li>
+    <li><strong>Ambient Medien:</strong> Hinterleuchtete Plakate/Aufsteller = KEIN Ambient!</li>
+    <li><strong>Skonto ≠ Mengenrabatt:</strong> Skonto = schnell zahlen. Mengenrabatt = viel bestellen.</li>
+    <li><strong>S-R ≠ S-O-R:</strong> S-R = Black Box. S-O-R = messbarer Organismus.</li>
+    <li><strong>Investitionsgüter:</strong> Derivative (nicht originäre!) Nachfrage.</li>
+    <li><strong>Produktvariation:</strong> ersetzt alte Version. Differenzierung: altes bleibt!</li>
+    <li><strong>Testmarketing:</strong> Phase 6 (nicht Phase 7!) des Innovationsprozesses.</li>
+    <li><strong>Marketingforschung ≠ Marktforschung!</strong> Marktforschung ist der engere Begriff.</li>
+    <li><strong>Intrapersonal ≠ Interpersonal:</strong> Intra = innerhalb der Person.</li>
+  </ul></div>
+  <div class="card tc"><h3 style="color:var(--green)">💡 Merkhilfen</h3><ul>
+    <li><strong>AMA 6 Merkmale:</strong> D-I-K-B-W-S</li>
+    <li><strong>Marktforschung:</strong> P-I-I-K</li>
+    <li><strong>7 Funktionen:</strong> S-F-I-S-U-K-I</li>
+    <li><strong>Management-Prozess:</strong> Analyse → Ziele → Strategie → 4P → Implementierung → Controlling</li>
+    <li><strong>BCG:</strong> Stars ⭐ (oben links), Q-Marks ❓ (oben rechts), Cows 🐄 (unten links), Dogs 🐕 (unten rechts)</li>
+    <li><strong>Kommunikationsziele:</strong> Kognitiv → Affektiv → Konativ</li>
+    <li><strong>7 Phasen Innovation:</strong> Idee → Screen → Konzept → Wirtschaftlichkeit → Entwicklung → Test → Markt</li>
+    <li><strong>Maslow:</strong> Physiologisch → Sicherheit → Sozial → Prestige → Selbstverwirklichung</li>
+  </ul></div>
+  <div class="card tc"><h3 style="color:var(--blue)">📋 Prüfungsinfos WU Wien</h3><ul>
+    <li><strong>Format:</strong> Multiple Choice, 60 Fragen, 60 Minuten</li>
+    <li><strong>Achtung:</strong> Nach 10 Minuten kein Zutritt mehr möglich!</li>
+    <li><strong>Sehr Gut:</strong> ab 90%</li>
+    <li><strong>Gut (dein Ziel!):</strong> ab 80%</li>
+    <li><strong>Befriedigend:</strong> ab 70%</li>
+    <li><strong>Genügend:</strong> ab 60%</li>
+    <li><strong>Nicht Genügend:</strong> unter 60%</li>
+    <li><strong>Bonuspunkte:</strong> max. 5 Punkte möglich</li>
+    <li><strong>Strategie:</strong> Erst alle Fragen überfliegen, leichte zuerst!</li>
+  </ul></div>
+  <div class="card tc"><h3 style="color:var(--amb)">⏱️ 4-Wochen-Plan</h3><ul>
+    <li><strong>Woche 1:</strong> LM 1, 2, 3 — 30-45 Min/Tag.</li>
+    <li><strong>Woche 2:</strong> LM 4, 5 — Strategie + Produkt.</li>
+    <li><strong>Woche 3:</strong> LM 6, 7, 8 — Preis, Distribution, Kommunikation.</li>
+    <li><strong>Woche 4:</strong> Wiederholung + täglich Klausur-Simulation.</li>
+    <li><strong>Ziel:</strong> Mindestens 80% im Quiz pro Modul.</li>
+  </ul></div>
+</div>`;
+}
+
+function rImpressum() {
+  return `<div class="card" style="max-width:600px">
+    <div class="imp-section">
+      <h3>Impressum</h3>
+      <p>Angaben gemäß § 5 ECG (E-Commerce-Gesetz)</p>
+    </div>
+    <div class="imp-section">
+      <h3>Betreiber</h3>
+      <p>Valentin Bühring-Uhle</p>
+    </div>
+    <div class="imp-section">
+      <h3>Kontakt</h3>
+      <p>E-Mail: <a href="mailto:tazkdome@gmail.com">tazkdome@gmail.com</a></p>
+    </div>
+    <div class="imp-section">
+      <h3>Haftungsausschluss</h3>
+      <p>Die Inhalte dieser Lernapp wurden sorgfältig erstellt und basieren auf dem Lehrmaterial der Lehrveranstaltung Marketing an der WU Wien (Mag. Dr. Margit Kastner). Trotz sorgfältiger Bearbeitung übernehmen wir keine Gewähr für die Vollständigkeit, Richtigkeit und Aktualität der bereitgestellten Inhalte. Diese App dient ausschließlich zur Prüfungsvorbereitung und ersetzt nicht das Studium der Originalunterlagen.</p>
+    </div>
+    <div class="imp-section">
+      <h3>Urheberrecht</h3>
+      <p>Die in dieser App enthaltenen Inhalte und Werke sind urheberrechtlich geschützt. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des Betreibers.</p>
+    </div>
+    <div class="imp-section">
+      <h3>Datenschutz</h3>
+      <p>Diese App verwendet Supabase zur Speicherung von Anmeldedaten und Lernfortschritt. Es werden ausschließlich E-Mail-Adresse und Lernfortschrittsdaten gespeichert. Eine Weitergabe an Dritte findet nicht statt. Für weitere Informationen wende dich an: <a href="mailto:tazkdome@gmail.com">tazkdome@gmail.com</a></p>
+    </div>
+  </div>`;
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+(async () => {
+  try {
+    const { data: { session } } = await sb.auth.getSession();
+    if (session) {
+      await loginSuccess(session.user);
+    } else {
+      document.getElementById('login-screen').classList.remove('hide');
+    }
+  } catch(e) {
+    document.getElementById('login-screen').classList.remove('hide');
+  } finally {
+    document.getElementById('loading-overlay').classList.add('hide');
+  }
+})();
+
+// Listen for auth state changes (e.g. tab focus after email confirmation)
+sb.auth.onAuthStateChange(async (event, session) => {
+  if (event === 'SIGNED_IN' && session && !CU) {
+    await loginSuccess(session.user);
+    document.getElementById('loading-overlay').classList.add('hide');
+  } else if (event === 'SIGNED_OUT') {
+    CU = null;
+  }
+});
+</script>
+</body>
+</html>
