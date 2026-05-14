@@ -575,73 +575,235 @@ const LEARN=[
 ]},
 {mod:3,chs:[
 {t:'SWOT-Analyse & Unternehmensziele',items:[
+  {y:'info',v:'<b>SWOT-Analyse:</b> Instrument um die aktuelle Unternehmenssituation transparent zu machen und strategische Maßnahmen abzuleiten. S/W = unternehmensintern. O/T = unternehmensextern.'},
   {y:'tbl',heads:['SWOT','Kategorie','Inhalt'],rows:[
     ['<b>S — Strengths</b>','Intern','Stärken des Unternehmens'],
     ['<b>W — Weaknesses</b>','Intern','Schwächen des Unternehmens'],
     ['<b>O — Opportunities</b>','Extern','Chancen im Marktumfeld'],
     ['<b>T — Threats</b>','Extern','Risiken im Marktumfeld'],
   ]},
-  {y:'def',k:'SMART-Regel',v:'<b>S</b>pezifisch · <b>M</b>essbar · <b>A</b>nspruchsvoll · <b>R</b>ealistisch · <b>T</b>erminiert'},
+  {y:'def',k:'SMART-Regel',v:'<b>S</b>pezifisch (Inhalt + Ausmaß) · <b>M</b>essbar · <b>A</b>nspruchsvoll · <b>R</b>ealistisch · <b>T</b>erminiert'},
+  {y:'h',v:'8 Kategorien von Unternehmenszielen (Oberziele):'},
   {y:'tbl',heads:['Kategorie','Beispiele'],rows:[
-    ['<b>Marktleistungsziele</b>','Produktqualität, Servicequalität'],
-    ['<b>Marktstellungsziele</b>','Umsatz, Marktanteil'],
+    ['<b>Marktleistungsziele</b>','Produktqualität, Servicequalität, Sortimentskompetenz'],
+    ['<b>Marktstellungsziele</b>','Umsatz, Marktanteil, Neue Märkte'],
     ['<b>Rentabilitätsziele</b>','Gewinn, RoI, Unternehmenswert'],
-    ['<b>Finanzielle Ziele</b>','Liquidität, Kreditwürdigkeit'],
-    ['<b>Macht- und Prestigeziele</b>','Image, Unabhängigkeit'],
-    ['<b>Gesellschaftsbez. Ziele</b>','Sponsoringleistungen'],
-    ['<b>Umweltschutzziele</b>','Reduktion von Emissionen'],
+    ['<b>Finanzielle Ziele</b>','Liquidität, Kreditwürdigkeit, Kapitalstruktur'],
+    ['<b>Macht- und Prestigeziele</b>','Image, Unabhängigkeit, Unternehmensreputation'],
+    ['<b>Soziale Ziele</b>','Arbeitszufriedenheit, Einkommen, persönliche Entwicklung'],
+    ['<b>Gesellschaftsbez. Ziele</b>','Sponsoringleistungen für gesellschaftliche Institutionen'],
+    ['<b>Umweltschutzziele</b>','Reduktion von Emissionen, Recyclingquoten'],
+  ]},
+  {y:'kv',items:[
+    {k:'Ökonomische Marketingziele',v:'Umsatz, Absatz, Gewinn, Kapazitätsauslastung, Marktanteil, Deckungsbeitrag, Rendite'},
+    {k:'Psychologische Marketingziele',v:'Bekanntheitsgrad, Markentreue, Markenimage, Kundenzufriedenheit, Kundenbindung, Einkaufsstättentreue',c:'green'},
+  ]}
+]},
+{t:'3 Strategieebenen & Marktabdeckungsstrategie',items:[
+  {y:'tbl',heads:['Ebene','Leitfrage'],rows:[
+    ['<b>Unternehmensstrategie</b>','In welchen Geschäftsfeldern möchte das Unternehmen aktiv sein? Gesamtmarkt oder Teilmarkt?'],
+    ['<b>Geschäftsfeldstrategie</b>','Wie soll der Wettbewerb in diesen Geschäftsfeldern bestritten werden?'],
+    ['<b>Funktionsbereichsstrategie</b>','Wie kann die Wettbewerbsstrategie implementiert werden?'],
+  ]},
+  {y:'def',k:'Strategische Geschäftseinheit (SGE)',v:'Eigenständige Teilbereiche eines Unternehmens mit spezifischen Märkten, Wettbewerbern und Ressourcen. Jede SGE hat eigene Marke. Beispiel Melitta: 5 SGE → Melitta, Toppits, Swirl, Aclimat, Cilia.'},
+  {y:'h',v:'4 Marktabdeckungsstrategien:'},
+  {y:'tbl',heads:['Strategie','Inhalt'],rows:[
+    ['<b>Gesamtmarktabdeckungsstrategie</b>','Allen Konsumentinnen wird die vollständige Produktpalette mit verschiedenen Technologien angeboten'],
+    ['<b>Zielgruppenspezialisierung (Marktspezialisierung)</b>','Einer Kundengruppe wird die vollständige Produktpalette angeboten'],
+    ['<b>Bedürfnisspezialisierung (Produktspezialisierung)</b>','Allen Konsumentinnen wird ein enges Produktprogramm angeboten'],
+    ['<b>Technologiespezialisierung</b>','Allen Konsumentinnen wird ein breites Produktprogramm mit einer speziellen Technologie angeboten'],
   ]}
 ]},
 {t:'BCG-Portfolio — vollständig',items:[
-  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> X-Achse = Relativer Marktanteil steigt von RECHTS nach LINKS! 10x ganz LINKS = hoch. Y-Achse = Marktwachstum steigt nach oben.'},
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> X-Achse = Relativer Marktanteil steigt von RECHTS nach LINKS! 10x ganz LINKS = hoch. Y-Achse = Marktwachstum steigt nach oben. Trennlinie X-Achse bei 1x, Y-Achse bei 10%.'},
   {y:'tbl',heads:['Feld','Wachstum','Rel. MA','Cashflow','Normstrategie'],rows:[
-    ['⭐ <b>Stars</b>','Hoch','Hoch','Ausgeglichen','Investitionsstrategie'],
-    ['❓ <b>Question Marks</b>','Hoch','Niedrig','Negativ','Investition ODER Desinvestition'],
-    ['🐄 <b>Cash Cows</b>','Niedrig','Hoch','Positiv','Abschöpfungsstrategie'],
-    ['🐕 <b>Poor Dogs</b>','Niedrig','Niedrig','Ev. positiv','Desinvestition oder Abschöpfung'],
+    ['⭐ <b>Stars</b>','Hoch','Hoch','Ausgeglichen','Investitionsstrategie — fördern und investieren'],
+    ['❓ <b>Question Marks</b>','Hoch','Niedrig','Negativ','Investition (wenn Chance) ODER Desinvestition (wenn erfolglos)'],
+    ['🐄 <b>Cash Cows</b>','Niedrig','Hoch','Positiv','Abschöpfungsstrategie — Position halten, Cash generieren'],
+    ['🐕 <b>Poor Dogs</b>','Niedrig','Niedrig','Ev. positiv','Bei Verlust: Desinvestition. Bei pos. Cashflow: Abschöpfung'],
   ]},
-  {y:'formula',lbl:'Relativer Marktanteil (X-Achse)',f:'Rel. MA = Marktanteil eigenes Unternehmen / Marktanteil GRÖSSTER Konkurrent',note:'> 1 = Marktführer. = 0,5 bedeutet: halb so groß wie der Marktführer.'}
+  {y:'formula',lbl:'Relativer Marktanteil (X-Achse)',f:'Rel. MA = Marktanteil eigenes Unternehmen / Marktanteil GRÖSSTER Konkurrent',note:'> 1 = Marktführer. = 0,5 bedeutet: halb so groß wie der Marktführer.'},
+  {y:'formula',lbl:'Marktwachstum (Y-Achse)',f:'MW (in %) = (Marktvolumen aktuell − Marktvolumen Vorjahr) / Marktvolumen Vorjahr × 100',note:'Kreisgröße im BCG-Portfolio = Umsatzvolumen der SGE'},
+  {y:'h',v:'5 Kritikpunkte am BCG-Portfolio:'},
+  {y:'tbl',heads:['#','Kritikpunkt'],rows:[
+    ['1','Keine Berücksichtigung von Substitutionsprodukten'],
+    ['2','Wachstum und relativer Marktanteil für neue Produkte schwer prognostizierbar'],
+    ['3','Meist existiert nur ein Anbieter mit rel. MA > 1'],
+    ['4','Nicht geeignet für Nischenprodukte (Wachstum der SGE ≈ Marktwachstum)'],
+    ['5','Nur 2 Faktoren für Strategieableitung → großes Risiko'],
+  ]},
+  {y:'h',v:'Zusammenhang BCG & Produktlebenszyklus:'},
+  {y:'tbl',heads:['BCG-Feld','Lebenszyklusphase','Investitionen','Deckungsbeitrag'],rows:[
+    ['⭐ Stars','Wachstum','Mittel','Mittel'],
+    ['❓ Question Marks','Einführung','Hoch','Gering'],
+    ['🐄 Cash Cows','Reife','Gering','Hoch'],
+    ['🐕 Poor Dogs','Rückgang','Gering','Gering'],
+  ]}
 ]},
 {t:'McKinsey-Portfolio & Erfahrungskurve',items:[
-  {y:'info',v:'<b>McKinsey-Portfolio (9-Felder-Matrix):</b> Y-Achse = Marktattraktivität. X-Achse = Eigene Wettbewerbsstärke.'},
-  {y:'def',k:'Erfahrungskurve',v:'Reale Stückkosten sinken um <b>20–30%</b>, sobald sich die kumulierte Produktionsmenge <b>verdoppelt</b>. Ursachen: Lerneffekte, Skalenerträge, technologischer Fortschritt.'}
+  {y:'info',v:'<b>McKinsey-Portfolio (9-Felder-Matrix):</b> Y-Achse = Marktattraktivität (hoch/mittel/gering). X-Achse = Eigene Wettbewerbsstärke (stark/mittel/schwach). Kreisfläche = Größe des Marktes. Weiße Kreisfläche = Marktanteil der SGE.'},
+  {y:'tbl',heads:['Achse','Faktoren'],rows:[
+    ['<b>Marktattraktivität (Y)</b>','Marktvolumen, Marktgröße, Marktwachstum, Branchenrentabilität, Lebenszyklusphase, Innovationspotenzial, Konjunktur, Staatseingriff, Wertewandel'],
+    ['<b>Eigene Wettbewerbsstärke (X) — Markt</b>','Marktanteil, Größe, Wachstum, Preis'],
+    ['<b>Eigene Wettbewerbsstärke (X) — Technologie</b>','F&E-Personal, Patente, Erfahrung, Kreativität'],
+    ['<b>Eigene Wettbewerbsstärke (X) — Produktion</b>','Qualität, Kosten, Standort, Umwelt'],
+    ['<b>Eigene Wettbewerbsstärke (X) — Management</b>','Kultur, Ziele, Motivation, Qualifikation'],
+  ]},
+  {y:'tbl',heads:['Zone','Strategie'],rows:[
+    ['<b>Hohe Attraktivität + starke Position</b>','Investitionsstrategie'],
+    ['<b>Mittlere Positionen</b>','Selektive Strategien (Offensiv-, Defensiv- und Übergangsstrategien)'],
+    ['<b>Niedrige Attraktivität + schwache Position</b>','Abschöpfungs-/Desinvestitionsstrategien'],
+  ]},
+  {y:'h',v:'3 Kritikpunkte McKinsey:'},
+  {y:'tbl',heads:['#','Kritik'],rows:[
+    ['1','Subjektive Auswahl der Faktoren und deren Gewichtung'],
+    ['2','Wechselwirkungen zwischen einzelnen Geschäftsfeldern bleiben unberücksichtigt'],
+    ['3','Neue Wettbewerber unberücksichtigt'],
+  ]},
+  {y:'h',v:'Erfahrungskurve:'},
+  {y:'def',k:'Erfahrungskurve',v:'Die realen Stückkosten eines Produktes gehen jedes Mal um <b>20–30 Prozent zurück</b>, sobald sich die in Produktmengen ausgedrückte Produkterfahrung <b>verdoppelt</b>. Ursachen: Lerneffekte, Skalenerträge, technologischer Fortschritt.'},
+  {y:'h',v:'5 Nutzen der Erfahrungskurve (Normstrategien):'},
+  {y:'tbl',heads:['#','Nutzen'],rows:[
+    ['1','Langfristige Prognose der Kostenentwicklung'],
+    ['2','Langfristige Prognose der Preisentwicklung'],
+    ['3','Ermittlung des preispolitischen Spielraums der Konkurrenten'],
+    ['4','Langfristige Prognose von Gewinnpotenzialen'],
+    ['5','Fundierung von Make-or-Buy-Entscheidungen'],
+  ]},
+  {y:'info',v:'Um langfristig Erfahrungskurveneffekte zu erzielen wird kurzfristig auf weniger ertragreiche SGE verzichtet während in andere investiert wird → Investitions- und Desinvestitionsstrategien.'}
 ]},
-{t:'Lebenszyklus & Ansoff-Matrix',items:[
+{t:'Lebenszyklus & Normstrategien',items:[
   {y:'tbl',heads:['Phase','Merkmale','Strategie'],rows:[
-    ['<b>Einführung</b>','Langsames Wachstum, hohe Kosten','Bekanntheit aufbauen'],
-    ['<b>Wachstum</b>','Zunehmende Marktakzeptanz','Marktanteile sichern'],
-    ['<b>Reife/Sättigung</b>','Stagnation, Wettbewerbsdruck','Differenzieren, Kosten senken'],
-    ['<b>Rückgang</b>','Schrumpfendes Volumen','Elimination oder Relaunch'],
+    ['<b>Einführung</b>','Langsames Wachstum, hohe Kosten, keine Gewinne','Bekanntheit aufbauen'],
+    ['<b>Wachstum</b>','Zunehmende Marktakzeptanz, Gewinnzuwächse, Absatz/Umsatz im Maximum','Marktanteile sichern, Distribution ausbauen'],
+    ['<b>Reife/Sättigung</b>','Stagnation, kaum neue Käufer, Wettbewerbsdruck','Differenzieren, Kosten senken, Verteidigung'],
+    ['<b>Rückgang</b>','Schrumpfendes Volumen, Gewinn gering','Elimination oder Relaunch'],
   ]},
+  {y:'h',v:'Normstrategien auf Basis der Lebenszykluskurve:'},
+  {y:'kv',items:[
+    {k:'Junge Märkte (Wachstumsphase)',v:'Pionierstrategie: Gesamtmarktabdeckung, frühzeitiger Aufbau von Markt-Knowhow. Frühe/späte Folgerstrategie: Möglichkeit von Fehlern zu lernen. Markteintritt oft kooperativ (Joint Venture).'},
+    {k:'Stagnierende Märkte (Sättigungs-/Reifephase)',v:'Konzentrationsstrategie (Verkleinerung auf enge Zielgruppe), Abschöpfungsstrategie (langfristiger Rückzug, Desinvestitionen in Marktkommunikation), Zerschlagungsstrategie (schnelle Einstellung).',c:'amber'},
+  ]}
+]},
+{t:'Marketingstrategien — Überblick',items:[
+  {y:'info',v:'Marketingstrategien = globaler Verhaltensplan zur Erreichung der Unternehmens- und Marketingziele, wobei SGF (Strategische Geschäftsfelder) die Bezugsebene bilden.'},
+  {y:'h',v:'2 Basisstrategien:'},
+  {y:'kv',items:[
+    {k:'Marktwahlstrategien',v:'Welche Märkte werden bearbeitet? Umfasst: Marktfeldstrategie (Ansoff), Marktarealstrategie (regional bis global), Marktsegmentierungsstrategie (Zielgruppen).'},
+    {k:'Marktteilnehmerstrategien',v:'Wie verhält man sich gegenüber Marktteilnehmern? Umfasst: Abnehmergerichtete, Konkurrenzgerichtete, Absatzmittlergerichtete, Anspruchsgruppengerichtete Strategie.',c:'green'},
+  ]}
+]},
+{t:'Marktfeldstrategien (Ansoff) & Kritik',items:[
+  {y:'h',v:'Ansoff-Matrix (Produkt-Markt-Expansionsraster):'},
   {y:'tbl',heads:['','Gegenwärtige Produkte','Neue Produkte'],rows:[
-    ['<b>Gegenwärtige Märkte</b>','<b>Marktdurchdringung</b>','<b>Produktentwicklung</b>'],
-    ['<b>Neue Märkte</b>','<b>Marktentwicklung</b>','<b>Diversifikation</b> (risikoreich!)'],
+    ['<b>Gegenwärtige Märkte</b>','<b>Marktdurchdringungsstrategie</b> — mehr verkaufen in bekannten Märkten','<b>Produktentwicklungsstrategie</b> — neue Produkte für bestehende Märkte'],
+    ['<b>Neue Märkte</b>','<b>Marktentwicklungsstrategie</b> — bestehende Produkte in neue Märkte','<b>Diversifikationsstrategie</b> — neue Produkte in neue Märkte (risikoreichste Option!)'],
   ]},
-  {y:'trap',v:'<b>4 Kritikpunkte Ansoff:</b> Nur Wachstum. Keine Konkurrenz. Stärken/Schwächen nicht systematisch. SGE-Ressourcen unberücksichtigt.'}
+  {y:'h',v:'4 Kritikpunkte an den Marktfeldstrategien:'},
+  {y:'tbl',heads:['#','Kritik'],rows:[
+    ['1','Nur auf Wachstum ausgerichtet (stagnierende/schrumpfende Märkte unberücksichtigt)'],
+    ['2','Konkurrenz nicht berücksichtigt'],
+    ['3','Stärken und Schwächen des Unternehmens werden nicht systematisch aufgespürt'],
+    ['4','Abstimmung der einzelnen SGE bezüglich Ressourcen bzw. Risiko unberücksichtigt'],
+  ]},
+  {y:'trap',v:'<b>Diversifikation</b> = höchstes Risiko! Sowohl Produkt als auch Markt sind neu → doppelte Unsicherheit.'}
+]},
+{t:'Marktarealstrategie — Länderselektion & Markteintritt',items:[
+  {y:'info',v:'Marktarealstrategie legt fest, welche Absatzräume (lokal/regional/national/international/multinational/global) bearbeitet werden.'},
+  {y:'h',v:'Länderselektion — 3 Stufen:'},
+  {y:'step',n:1,q:'Welche Länder scheiden aus?',t:'Vorauswahl',d:'Sachliche Gründe (kein Bedarf), spezifische Werthaltungen des Managements, strategische Vorentscheidungen (z.B. Triade-Länder), Mindestanforderungen (Pro-Kopf-Einkommen, HDI-Index: Lebenserwartung, Bildung, Lebensstandard).'},
+  {y:'step',n:2,q:'Welche Länder sind attraktiv?',t:'Feinauswahl',d:'Länderattraktivität (Marktvolumen, Marktwachstum, Abnehmerstruktur). Marktbarrieren: ökonomische, protektionistische (Zölle, Subventionen), verhaltensbedingte (Konsumpatriotismus). Länderrisiko: politisch (Enteignung, Auflagen), wirtschaftlich (Zahlungs-, Währungsrisiko).'},
+  {y:'step',n:3,q:'Wie werden Segmente abgegrenzt?',t:'Marktselektion',d:'Intranationale Segmentierung (Segmente innerhalb einzelner Länder) vs. Integrale Segmentierung (länderübergreifende Zielgruppen).'},
+  {y:'h',v:'4 Formen des internationalen Markteintritts:'},
+  {y:'tbl',heads:['Form','Inhalt'],rows:[
+    ['<b>Indirekter Export</b>','Über einheimische Exportintermediäre — kein direkter Kontakt zum Auslandsmarkt (Leistungserstellung im Inland)'],
+    ['<b>Direkter Export</b>','Direkte Kontakte zum Auslandsmarkt über eigene Exportabteilung (Leistungserstellung im Inland)'],
+    ['<b>Internationale Vertragsformen</b>','Lizenzvereinbarungen, Franchising (Leistungserstellung im Ausland)'],
+    ['<b>Direktinvestition</b>','Vollbeherrschte Auslandsgesellschaften ODER International Joint Venture (Leistungserstellung im Ausland)'],
+  ]}
+]},
+{t:'Marktarealstrategie — Timing & Länderstrategien',items:[
+  {y:'h',v:'Länderübergreifende Timingstrategie:'},
+  {y:'tbl',heads:['Strategie','Vorgehen','Vorteile','Nachteile'],rows:[
+    ['<b>Wasserfall-Strategie</b>','Auslandsmärkte NACHEINANDER erschließen','Geringes Risiko, stärkere Konzentration auf Länderspezifika, Lerneffekte nutzbar','Sukzessives Vorgehen wird von Wettbewerbern wahrgenommen und vergolten'],
+    ['<b>Sprinkler-Strategie</b>','Auslandsmärkte GLEICHZEITIG erschließen','Schnelle Penetration, kürzere Amortisation, Risikoausgleich durch Länderstreuung','Oft geringe Marktintensität, unzureichende Berücksichtigung von Marktbesonderheiten'],
+  ]},
+  {y:'h',v:'Länderspezifische Timingstrategie:'},
+  {y:'tbl',heads:['Strategie','Vorteile','Nachteile'],rows:[
+    ['<b>Pionierstrategie</b>','Markt-Knowhow, Erfahrungskurveneffekte, früher Aufbau von Marktpositionen, Markentreue, technologisches Image, gute Mitarbeiter/innen','Höhere Kosten der Markterschließung, Fehleinschätzungsgefahr, Free-Rider-Effekt (Follower profitieren von Investitionen des Pioniers)'],
+    ['<b>Folgerstrategie</b>','Geringeres Risiko, geringere F&E-Kosten, Marktforschung entfällt, Lerneffekte von Pionierfehlern','Überwindung von Markteintrittsbarrieren, Kosten für vertrauensbildende Maßnahmen, Nachteil auf Erfahrungskurve'],
+  ]}
 ]},
 {t:'Marktsegmentierung — vollständig',items:[
-  {y:'def',k:'Marktsegmentierung',v:'Gesamtmarkt wird in <b>intern homogene Teilmärkte (Segmente)</b> unterteilt, die mit segmentspezifischen Marketingprogrammen bearbeitet werden.'},
-  {y:'tbl',heads:['Kriterium','Unterarten'],rows:[
-    ['<b>1. Geographisch</b>','Makro (international/national) vs. Mikro (Wohngebietszellen)'],
-    ['<b>2. Soziodemographisch</b>','Demographisch (Alter, Geschlecht) + Sozioökonomisch (Einkommen, Bildung)'],
-    ['<b>3. Psychographisch</b>','Einstellungen, Motive, Benefit-Segmentierung!, Lebensstil (AIO)'],
-    ['<b>4. Verhaltensorientiert</b>','Informationsverhalten, Produktverhalten, Einkaufsstättenverhalten'],
+  {y:'def',k:'Marktsegmentierung',v:'Gesamtmarkt besteht aus Nachfragern mit unterschiedlichen Bedürfnissen. Er wird in <b>intern homogene Teilmärkte (Segmente)</b> unterteilt, die mit segmentspezifischen Marketingprogrammen bearbeitet werden.'},
+  {y:'kv',items:[
+    {k:'Markterfassung',v:'Kaufverhaltensorientierter Ansatz (Analyse des Käuferverhaltens, Segmentierungsmerkmale) + Methodenorientierter Ansatz (Cluster-, Diskriminanz-, Faktorenanalyse, MDS, Conjoint)'},
+    {k:'Marktbearbeitung (Targeting)',v:'Auswahl der Zielsegmente, segmentspezifisches Marketing-Mix-Programm. Wichtig: Kosten-Nutzen-Abwägungen.',c:'green'},
   ]},
+  {y:'h',v:'6 Anforderungen an Segmentierungskriterien:'},
   {y:'badges',items:[
-    {v:'Kaufverhaltensrelevanz',c:'b'},{v:'Messbarkeit',c:'b'},{v:'Erreichbarkeit',c:'b'},
+    {v:'Kaufverhaltensrelevanz',c:'b'},{v:'Messbarkeit (Operationalität)',c:'b'},{v:'Erreichbarkeit/Zugänglichkeit',c:'b'},
     {v:'Handlungsfähigkeit',c:'b'},{v:'Wirtschaftlichkeit',c:'b'},{v:'Zeitliche Stabilität',c:'b'}
   ]}
 ]},
+{t:'4 Segmentierungskriterien',items:[
+  {y:'tbl',heads:['Kriterium','Unterarten','Vor/Nachteil'],rows:[
+    ['<b>1. Geographisch</b>','Makrogeographisch (international/national/regional). Mikrogeographisch (Wohngebietszellen, Nachbarschafts-Affinität → Database-Marketing nötig)','+ günstige Datenbeschaffung − nur indirekte Bezugnahme auf Kaufverhalten'],
+    ['<b>2. Soziodemographisch</b>','Demographisch (Alter, Geschlecht, Familienstand, Haushaltsgröße). Sozioökonomisch (Einkommen, Bildung, Beruf, soziale Schicht)','+ leicht messbar, hohe zeitliche Stabilität − geringe Relevanz für Kaufverhaltens-Prognose'],
+    ['<b>3. Psychographisch</b>','Einstellungen (allgemein + produktspezifisch → Benefit-Segmentierung!). Persönlichkeitsmerkmale (Lebensstil/AIO, soziale Orientierung). Nutzenvorstellungen (Haley 1968)','+ hohe Kaufverhaltensrelevanz − schwer messbar'],
+    ['<b>4. Verhaltensorientiert</b>','Informations-/Kommunikationsverhalten (Mediennutzung, Meinungsführer, Targeting). Produktbezogene Verhaltensmkm (Markenwahl, Nutzungsintensität). Einkaufsstättenverhalten (Betriebstypen, Geschäftstreue)','+ kaufrelevant − kann zeitlich instabil sein'],
+  ]},
+  {y:'h',v:'3-stufiger Zielgruppenauswahlprozess:'},
+  {y:'step',n:1,q:'Passt es?',t:'Segment und Unternehmensziele vergleichen',d:'Passt das Segment zu den Unternehmenszielen?'},
+  {y:'step',n:2,q:'Ist es attraktiv?',t:'Kriterien prüfen',d:'Größe/Wachstum des Segments. Strukturelle Charakteristika (Eintrittsbarrieren, Konkurrenz, Risiken). Ressourcen (Synergien, ROI, Gewinnspannen, Marktanteil, Kosten).'},
+  {y:'step',n:3,q:'Wie viele?',t:'Anzahl und Auswahl der Segmente',d:'Qualifikationen der Mitarbeiter, verfügbare Händler, rechtliche Beschränkungen.'},
+  {y:'h',v:'4 Marktbearbeitungsstrategien:'},
+  {y:'tbl',heads:['Strategie','Inhalt'],rows:[
+    ['<b>Undifferenziertes Marketing</b>','Vollständige Abdeckung + undifferenziert = Massenmarketing: ein Angebot für alle'],
+    ['<b>Differenziertes Marketing</b>','Vollständige Abdeckung + differenziert: für jeden Teilmarkt spezifisches Angebot'],
+    ['<b>Konzentriertes Marketing (Nischenstrategie)</b>','Teilweise Abdeckung + undifferenziert: ein Angebot für ein Segment'],
+    ['<b>Differenziertes Marketing (einzelne Segmente)</b>','Teilweise Abdeckung + differenziert: einzelne Segmente spezifisch bearbeiten'],
+  ]}
+]},
+{t:'Marktteilnehmerstrategien — alle 5',items:[
+  {y:'info',v:'Nach Präzisierung der Markt- und Wettbewerbsarena werden Marktteilnehmer und Verhaltensweisen gegenüber diesen identifiziert. 4 Strategiearten:'},
+  {y:'h',v:'1. Abnehmergerichtete Strategie:'},
+  {y:'tbl',heads:['Art','Inhalt'],rows:[
+    ['<b>Präferenzstrategie (Leistungsvorteil)</b>','Differenzierungsstrategie (Qualitätsführerschaft) für Gesamtmarkt. Produkt-Segment-Spezialisierung für Teilmarkt.'],
+    ['<b>Preis-Mengen-Strategie (Kostenvorteil)</b>','Aggressive Preisstrategie für Gesamtmarkt. Niedrigpreisstrategie für Teilmarkt.'],
+  ]},
+  {y:'h',v:'2. Konkurrenzgerichtete Strategie:'},
+  {y:'tbl',heads:['','Innovativ','Imitativ'],rows:[
+    ['<b>Wettbewerbsvermeidend</b>','Ausweichen','Anpassung'],
+    ['<b>Wettbewerbsstellend</b>','Konflikt','Kooperativ'],
+  ]},
+  {y:'info',v:'Passiv: Aktivitäten der Konkurrenz werden nicht einbezogen. Aktiv: werden einbezogen (Ausweichen, Anpassung, Konflikt, Kooperation).'},
+  {y:'h',v:'3. Absatzmittlergerichtete Strategie:'},
+  {y:'kv',items:[
+    {k:'Push-Strategie',v:'Hersteller bieten Absatzmittlern Anreize → Händler gelistet → Händler verkauft weiter. Händlergerichtete Anreize.'},
+    {k:'Pull-Strategie',v:'Hersteller spricht Nachfrager direkt an → Nachfrager fragt beim Händler nach → Händler gezwungen zu listen.',c:'green'},
+  ]},
+  {y:'tbl',heads:['Gestaltung der Absatzwege','Reaktion des Handels passiv','Reaktion des Handels aktiv'],rows:[
+    ['<b>Passiv</b>','Anpassung (Machtduldung)','Konflikt (Machtkampf)'],
+    ['<b>Aktiv</b>','Kooperation (Machterwerb)','Umgehung/Ausweichen (Machtumgehung)'],
+  ]},
+  {y:'h',v:'4. Anspruchsgruppengerichtete Strategie:'},
+  {y:'tbl',heads:['Unternehmensstärke','Einfluss hoch','Einfluss gering'],rows:[
+    ['<b>Gering</b>','Anpassung/Ausweichen durch Rückzug','Ausweichen durch Problemverlagerung'],
+    ['<b>Hoch</b>','Innovation','Widerstand/Passivität'],
+  ]},
+  {y:'info',v:'<b>Unternehmensintern:</b> Abteilungen, Tochtergesellschaften, Mitarbeiter/innen, Eigenkapitalgeber. <b>Unternehmensextern:</b> Gesellschaft, zukünftige Generationen, Staat, Kunden, Lieferanten, Konkurrenten, Fremdkapitalgeber.'}
+]},
 {t:'Markenpolitische Strategien',items:[
+  {y:'def',k:'Marke',v:'Nutzenbündel mit spezifischen Merkmalen, wodurch man ein Produkt eines Unternehmens vom Produkt eines anderen Unternehmens unterscheiden kann.'},
   {y:'tbl',heads:['Strategie','Beschreibung','Vorteile','Nachteile'],rows:[
-    ['<b>Einzelmarken</b>','Für jedes Produkt eigene Marke','Klare Positionierung, keine Ausstrahlungseffekte','Keine Synergien, teuer'],
-    ['<b>Mehrmarken</b>','Mindestens 2 Marken im selben Bereich','Verschiedene Zielgruppen','Kannibalisierung, Komplexität'],
-    ['<b>Dachmarken</b>','Alle Produkte unter einem Namen','Synergieeffekte, schnelle Akzeptanz','Keine individuelle Positionierung'],
-    ['<b>Familienmarken</b>','Verwandte Produkte unter einem Namen','Synergien, Imagestärkung','Markenverwässerung möglich'],
+    ['<b>Einzelmarken</b>','Für jedes Produkt wird eine eigene Marke geschaffen','Individuelle/klare Positionierung, keine negativen Ausstrahlungseffekte','Keine Synergieeffekte, langsamer Imageaufbau, hohe Kosten'],
+    ['<b>Mehrmarken</b>','Mindestens 2 Marken im selben Produktbereich','Ansprache div. Zielgruppen, Markteintrittsbarrieren, Marktabdeckung','Komplexität, Kannibalisierung, Übersegmentierung, hohe Kosten'],
+    ['<b>Dachmarken</b>','Sämtliche Produkte unter einem einheitlichen Namen','Schnellere Akzeptanz neuer Produkte, Synergieeffekte, Ausstrahlungseffekte','Keine individuelle Positionierung, auch negative Ausstrahlungseffekte möglich'],
+    ['<b>Familienmarken</b>','Mehrere verwandte Produkte unter einem einheitlichen Namen','Kosten verteilt, Synergieeffekte, Imagestärkung durch neue Produkte','Gefahr bei Nichtakzeptanz neuer Produkte, Markenverwässerung'],
   ]}
 ]}
-]},
-{mod:4,chs:[
+]},{mod:4,chs:[
 {t:'Produkt- und Programmpolitik — Grundlagen',items:[
   {y:'tbl',heads:['Nutzenart','Beschreibung','Beispiel'],rows:[
     ['<b>Grundnutzen</b>','Technisch-funktionale Basiseigenschaften','Auto transportiert Personen'],
@@ -833,6 +995,21 @@ const CARDS=[
   {m:3,t:'SMART-Regel',d:'Spezifisch · Messbar · Anspruchsvoll · Realistisch · Terminiert'},
   {m:3,t:'Erfahrungskurve',d:'Stückkosten sinken um 20–30% bei Verdoppelung der kumulierten Produktionsmenge.'},
   {m:3,t:'Ansoff-Matrix (4 Felder)',d:'Marktdurchdringung (alt/alt), Produktentwicklung (neu/alt), Marktentwicklung (alt/neu), Diversifikation (neu/neu — risikoreich!)'},
+  {m:3,t:'3 Strategieebenen',d:'(1) Unternehmensstrategie: In welchen Geschäftsfeldern aktiv sein? (2) Geschäftsfeldstrategie: Wie Wettbewerb bestreiten? (3) Funktionsbereichsstrategie: Wie implementieren?'},
+  {m:3,t:'4 Marktabdeckungsstrategien',d:'Gesamtmarktabdeckung (alle + vollständige Palette). Zielgruppenspezialisierung (eine Gruppe + vollständige Palette). Bedürfnisspezialisierung (alle + enges Programm). Technologiespezialisierung (alle + breites Programm mit einer Technologie).'},
+  {m:3,t:'BCG Berechnungsformel MW',d:'MW (%) = (Marktvolumen aktuell − Marktvolumen Vorjahr) / Marktvolumen Vorjahr × 100. Kreisgröße = Umsatzvolumen der SGE.'},
+  {m:3,t:'Zusammenhang BCG & Lebenszyklus',d:'Question Marks = Einführung. Stars = Wachstum. Cash Cows = Reife. Poor Dogs = Rückgang.'},
+  {m:3,t:'McKinsey — Wettbewerbsstärke Faktoren',d:'Markt: Marktanteil, Größe, Wachstum, Preis. Technologie: F&E-Personal, Patente, Erfahrung. Produktion: Qualität, Kosten, Standort. Management: Kultur, Ziele, Motivation, Qualifikation.'},
+  {m:3,t:'Normstrategien Lebenszyklus',d:'Junge Märkte: Pionier- oder Folgerstrategie, kooperative Markteintrittsformen. Stagnierende Märkte: Konzentrationsstrategie, Abschöpfungsstrategie, Zerschlagungsstrategie.'},
+  {m:3,t:'Marktfeldstrategien Kritik',d:'(1) Nur Wachstum ausgerichtet. (2) Konkurrenz nicht berücksichtigt. (3) Stärken/Schwächen nicht aufgespürt. (4) SGE-Abstimmung bzgl. Ressourcen unberücksichtigt.'},
+  {m:3,t:'Wasserfall vs. Sprinkler',d:'Wasserfall = NACHEINANDER (geringes Risiko, Lerneffekte). Sprinkler = GLEICHZEITIG (schnelle Penetration, Risikoausgleich). Länderspezifisch: Pionier vs. Folger.'},
+  {m:3,t:'3 Stufen Länderselektion',d:'(1) Vorauswahl: sachliche Gründe, Werthaltungen, HDI-Index. (2) Feinauswahl: Länderattraktivität, Marktbarrieren, Länderrisiko. (3) Marktselektion: intranationale vs. integrale Segmentierung.'},
+  {m:3,t:'4 Formen internationaler Markteintritt',d:'Indirekter Export (Intermediäre). Direkter Export (eigene Abteilung). Internationale Vertragsformen (Lizenz, Franchising). Direktinvestition (Auslandsgesellschaft, Joint Venture).'},
+  {m:3,t:'Psychographische Segmentierung',d:'3 Unterarten: (1) Einstellungen (allgemein + produktspezifisch → Benefit-Segmentierung). (2) Persönlichkeitsmerkmale (Lebensstil/AIO, soziale Orientierung). (3) Nutzenvorstellungen (= Benefit-Segmentierung nach Haley 1968).'},
+  {m:3,t:'Abnehmergerichtete Strategie',d:'Präferenzstrategie (Leistungsvorteil): Differenzierung/Qualitätsführerschaft für Gesamtmarkt, Produkt-Segment-Spezialisierung für Teilmarkt. Preis-Mengen-Strategie (Kostenvorteil): Aggressive Preisstrategie/Niedrigpreisstrategie.'},
+  {m:3,t:'Konkurrenzgerichtete Strategie',d:'Passiv (nicht einbeziehen). Aktiv: Ausweichen (innovativ, wettbewerbsvermeidend), Anpassung (imitativ, vermeidend), Konflikt (innovativ, wettbewerbsstellend), Kooperativ (imitativ, stellend).'},
+  {m:3,t:'Absatzmittlergerichtete Strategie',d:'Push: Hersteller überzeugt Händler (händlergerichtete Anreize). Pull: Werbung an Endkunden zwingt Händler. Machtverhältnisse: Anpassung, Konflikt, Kooperation, Umgehung.'},
+  {m:3,t:'Anspruchsgruppengerichtete Strategie',d:'Hoher Einfluss + geringe Stärke → Anpassung/Rückzug. Hoher Einfluss + hohe Stärke → Innovation. Geringer Einfluss + hohe Stärke → Widerstand/Passivität. Geringer Einfluss + geringe Stärke → Problemverlagerung.'},
   {m:3,t:'6 Segmentierungs-Anforderungen',d:'Kaufverhaltensrelevanz · Messbarkeit · Erreichbarkeit · Handlungsfähigkeit · Wirtschaftlichkeit · Zeitliche Stabilität'},
   {m:4,t:'Geltungsnutzen',d:'Soziale Wirkung (Status, Prestige). Bsp: Rolex signalisiert Erfolg.'},
   {m:4,t:'Produktvariation vs. Differenzierung',d:'Variation: altes wird ERSETZT. Differenzierung: neue Varianten NEBEN dem alten Produkt (altes bleibt!).'},
@@ -884,6 +1061,16 @@ const QQ=[
   {m:3,q:'Was sind "Cash Cows" und die empfohlene Strategie?',o:['Hoch Wachstum + hoch MA → investieren','Niedrig Wachstum + niedrig MA → desinvestieren','Niedrig Wachstum + hoch MA → ABSCHÖPFEN','Hoch Wachstum + niedrig MA → selektieren'],a:2,e:'Cash Cows: niedriges Wachstum + hoher relativer MA. Abschöpfen → Cash für Stars und Question Marks.'},
   {m:3,q:'Was ist die "Diversifikationsstrategie" in der Ansoff-Matrix?',o:['Bestehende Produkte in bestehenden Märkten','Bestehende Produkte in neue Märkte','Neue Produkte für bestehende Märkte','Neue Produkte in neue Märkte — höchstes Risiko!'],a:3,e:'Diversifikation = neu/neu. Höchstes Risiko weil sowohl Produkt als auch Markt neu sind.'},
   {m:3,q:'Was beschreibt die Erfahrungskurve?',o:['Kosten steigen mit Erfahrung','Stückkosten sinken um 20-30% bei Verdoppelung der kumulierten Produktionsmenge','Preise fallen bei wachsendem Wettbewerb','Qualität steigt mit Produktionsdauer'],a:1,e:'Erfahrungskurve: Stückkosten sinken um 20–30% bei Verdoppelung der kumulierten Menge. Ursachen: Lerneffekte, Skalenerträge, technologischer Fortschritt.'},
+  {m:3,q:'Was sind die 3 Strategieebenen?',o:['Planung, Kontrolle, Umsetzung','Unternehmensstrategie (Geschäftsfelder?), Geschäftsfeldstrategie (Wettbewerb?), Funktionsbereichsstrategie (Implementierung?)','Marketing, Produktion, Finanzen','Analyse, Strategie, Controlling'],a:1,e:'3 Ebenen: (1) Unternehmensstrategie = In welchen Geschäftsfeldern aktiv sein? (2) Geschäftsfeldstrategie = Wie Wettbewerb bestreiten? (3) Funktionsbereichsstrategie = Wie implementieren?'},
+  {m:3,q:'Was beschreibt die Bedürfnisspezialisierung (Produktspezialisierung)?',o:['Einer Kundengruppe wird die vollständige Produktpalette angeboten','Allen Konsumentinnen wird ein enges Produktprogramm angeboten','Allen Konsumentinnen wird breites Programm mit einer Technologie angeboten','Allen Konsumentinnen wird vollständige Palette mit allen Technologien angeboten'],a:1,e:'Bedürfnisspezialisierung = Allen Konsumentinnen wird ein enges Produktprogramm angeboten. ≠ Zielgruppenspezialisierung (einer Gruppe + vollständige Palette).'},
+  {m:3,q:'Wie berechnet sich das Marktwachstum für das BCG-Portfolio?',o:['Eigener MA / MA des größten Konkurrenten','(Marktvolumen aktuell − Marktvolumen Vorjahr) / Marktvolumen Vorjahr × 100','Absatzvolumen / Marktvolumen × 100','Marktvolumen / Marktpotenzial × 100'],a:1,e:'MW (%) = (Marktvolumen aktuell − Marktvolumen Vorjahr) / Marktvolumen Vorjahr × 100. Die Kreisgröße im BCG-Diagramm repräsentiert das Umsatzvolumen der SGE.'},
+  {m:3,q:'Welchem BCG-Feld entspricht die Einführungsphase des Lebenszyklus?',o:['Stars','Cash Cows','Question Marks','Poor Dogs'],a:2,e:'Question Marks = Einführungsphase (hohes Wachstum, niedriger Marktanteil). Stars = Wachstum. Cash Cows = Reife. Poor Dogs = Rückgang.'},
+  {m:3,q:'Was ist der Hauptkritikpunkt an den Marktfeldstrategien (Ansoff)?',o:['Zu viele Variablen, schwer anwendbar','Nur auf Wachstum ausgerichtet — stagnierende/schrumpfende Märkte unberücksichtigt','Zu teuer in der Umsetzung','Keine Unterscheidung zwischen Produkten'],a:1,e:'4 Kritikpunkte: (1) Nur Wachstum, (2) Konkurrenz nicht berücksichtigt, (3) Stärken/Schwächen nicht systematisch aufgespürt, (4) SGE-Abstimmung bzgl. Ressourcen unberücksichtigt.'},
+  {m:3,q:'Was ist der Unterschied zwischen Wasserfall- und Sprinkler-Strategie?',o:['Wasserfall = gleichzeitig, Sprinkler = nacheinander','Wasserfall = NACHEINANDER erschließen, Sprinkler = GLEICHZEITIG erschließen','Beide sind identisch','Wasserfall für große Märkte, Sprinkler für kleine'],a:1,e:'Wasserfall = Länderübergreifend NACHEINANDER (geringes Risiko, Lerneffekte). Sprinkler = GLEICHZEITIG (schnelle Penetration, aber ressourcenintensiv).'},
+  {m:3,q:'Was ist der Free-Rider-Effekt bei der Pionierstrategie?',o:['Pionier kann günstigere Preise anbieten','Folger profitieren von Investitionen des Pioniers ohne selbst zu investieren','Pionier erhält staatliche Subventionen','Pionier kann Patente kostenlos nutzen'],a:1,e:'Free-Rider-Effekt = Follower profitieren von den teuren Markterschließungsinvestitionen des Pioniers (z.B. Marktforschung, Kundenerziehung) ohne selbst diese Kosten zu tragen. Das ist ein Nachteil der Pionierstrategie.'},
+  {m:3,q:'Was ist die Benefit-Segmentierung?',o:['Segmentierung nach geographischen Merkmalen','Segmentierung nach Nutzenvorstellungen der Kunden (Haley 1968) — ein psychographisches Kriterium','Segmentierung nach Alter und Einkommen','Segmentierung nach Kaufhäufigkeit'],a:1,e:'Benefit-Segmentierung = Nutzensegmentierung (Haley 1968) — ein psychographisches Kriterium. Segmentiert nach Nutzenvorstellungen der Kunden. Hohe Kaufverhaltensrelevanz → hohe Aussagekraft für Marketinginstrumente.'},
+  {m:3,q:'Was kennzeichnet die Anpassungsstrategie in der konkurrenzgerichteten Strategie?',o:['Innovativ und wettbewerbsstellend','Imitativ und wettbewerbsvermeidend','Innovativ und wettbewerbsvermeidend','Imitativ und wettbewerbsstellend'],a:1,e:'Konkurrenzgerichtete Strategien: Ausweichen (innovativ, vermeidend), Anpassung (imitativ, vermeidend), Konflikt (innovativ, stellend), Kooperation (imitativ, stellend).'},
+  {m:3,q:'Was ist die Machtumgehungsstrategie in der absatzmittlergerichteten Strategie?',o:['Passive Reaktion + aktive Gestaltung der Absatzwege','Aktive Reaktion + aktive Gestaltung = Umgehung/Ausweichen des Handels (z.B. Direktvertrieb)','Passive Reaktion + passive Gestaltung = Anpassung','Aktive Reaktion + passive Gestaltung = Kooperation'],a:1,e:'Absatzmittlergerichtete Strategie: Anpassung (passiv/passiv), Konflikt (passiv/aktiv), Kooperation (aktiv/passiv), Umgehung/Ausweichen (aktiv/aktiv). Umgehung = Hersteller umgeht Handel z.B. durch Direktvertrieb.'},
   {m:3,q:'Was sind "Einzelmarken" und ihr Hauptnachteil?',o:['Alle Produkte unter einem Namen — Nachteil: Ausstrahlungseffekte','Für jedes Produkt eigene Marke — Nachteil: keine Synergieeffekte und teuer','Marken für Teilbereiche — Nachteil: Komplexität','Mindestens 2 Marken — Nachteil: Kannibalisierung'],a:1,e:'Einzelmarken: eigene Marke pro Produkt. Vorteil: klare Positionierung. Nachteil: keine Synergien, teuer.'},
   {m:4,q:'Was ist der Unterschied zwischen Grundnutzen und Geltungsnutzen?',o:['Grundnutzen = sozialer Status; Geltungsnutzen = technische Funktion','Grundnutzen = technisch-funktionale Basis; Geltungsnutzen = soziale Wirkung (Status, Prestige)','Beide identisch','Grundnutzen = Ästhetik; Geltungsnutzen = Funktion'],a:1,e:'Grundnutzen = Funktion. Erbauungsnutzen = Ästhetik. Geltungsnutzen = soziale Wirkung (Rolex signalisiert Erfolg).'},
   {m:4,q:'In welcher Phase findet Testmarketing statt?',o:['Phase 2','Phase 4','Phase 6','Phase 7'],a:2,e:'Testmarketing = Phase 6 (nicht 7!). Markteinführung = Phase 7.'},
