@@ -1012,15 +1012,21 @@ async function doLogin() {
   const { data, error } = await sb.auth.signInWithPassword({ email, password: pass });
   setLoading('login-btn', false);
   if (error) { showErr('Fehler: ' + error.message); return; }
-  // Prüfe ob kostenloser oder bezahlter Zugang
-  const isFree = await checkFreeAccess(email);
+  // Kostenlose Emails (statisch)
+  const FREE_EMAILS = ['valentin@buehringuhle.de'];
+  if (FREE_EMAILS.includes(email.toLowerCase())) {
+    await loginSuccess(data.user);
+    return;
+  }
+
+  // Prüfe ob bezahlt
   const isPaid = await checkPaidAccess(data.user.id);
-  if (isFree || isPaid) {
+  if (isPaid) {
     await loginSuccess(data.user);
   } else {
-    // Noch nicht bezahlt → Stripe Checkout starten
+    // Nicht bezahlt → zu Stripe
     await sb.auth.signOut();
-    await startStripeCheckout(email, data.user.id);
+    window.location.href = `https://buy.stripe.com/4gM4gzb6o2nO58jeQfdIA00?prefilled_email=${encodeURIComponent(email)}&client_reference_id=${data.user.id}`;
   }
 }
 
@@ -1560,7 +1566,20 @@ const initTimeout = setTimeout(showLogin, 5000);
     clearTimeout(initTimeout);
     if (session) {
       try {
-        await loginSuccess(session.user);
+        // Kostenlose Emails
+        const FREE_EMAILS = ['valentin@buehringuhle.de'];
+        if (FREE_EMAILS.includes(session.user.email.toLowerCase())) {
+          await loginSuccess(session.user);
+          return;
+        }
+        // Bezahlcheck
+        const isPaid = await checkPaidAccess(session.user.id);
+        if (isPaid) {
+          await loginSuccess(session.user);
+        } else {
+          await sb.auth.signOut();
+          showLogin();
+        }
       } catch(e) {
         showLogin();
       }
