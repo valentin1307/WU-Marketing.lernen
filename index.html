@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Marketing Lernapp</title>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
@@ -293,6 +293,10 @@ html,body{height:100%;font-family:var(--f);font-size:13px;color:var(--t);backgro
 
 <script>
 // ─── SUPABASE CONFIG ─────────────────────────────────────────────────────────
+if (typeof supabase === 'undefined') {
+  document.getElementById('loading-overlay').innerHTML = '<div style="color:#f87171;font-size:14px;text-align:center;padding:20px">⚠️ Verbindungsfehler.<br>Bitte Seite neu laden.</div>';
+  throw new Error('Supabase CDN nicht geladen');
+}
 // ERSETZE DIESE ZWEI WERTE MIT DEINEN SUPABASE-DATEN:
 const SUPABASE_URL = 'https://uteddyxlglrfczojjyuv.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV0ZWRkeXhsZ2xyZmN6b2pqeXV2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3NDcwNTYsImV4cCI6MjA5NDMyMzA1Nn0.WRji74iy8mOV-T_UaXAuIZpdIJWD3KplhUnRek7b0r4';
