@@ -892,12 +892,15 @@ MODS.forEach(m => S.scores[m.id] = {c:0, t:0});
 // ─── SUPABASE SCORE PERSISTENCE ──────────────────────────────────────────────
 async function loadScoresFromDB(userId) {
   try {
-    const { data, error } = await sb.from('user_scores').select('scores').eq('user_id', userId).single();
+    // Timeout nach 4 Sekunden
+    const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 4000));
+    const query = sb.from('user_scores').select('scores').eq('user_id', userId).single();
+    const { data } = await Promise.race([query, timeout]);
     if (data && data.scores) {
       S.scores = data.scores;
     }
   } catch(e) {
-    // No scores yet — use defaults
+    // Kein Score oder Timeout — defaults verwenden
   }
 }
 
