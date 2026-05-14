@@ -1062,21 +1062,33 @@ async function doRegister() {
 async function startStripeCheckout(email, userId) {
   setLoading('reg-btn', true);
   try {
-    // Stripe Checkout Session erstellen
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
     const response = await fetch('https://uteddyxlglrfczojjyuv.supabase.co/functions/v1/create-checkout', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV0ZWRkeXhsZ2xyZmN6b2pqeXV2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3NDcwNTYsImV4cCI6MjA5NDMyMzA1Nn0.WRji74iy8mOV-T_UaXAuIZpdIJWD3KplhUnRek7b0r4'
       },
-      body: JSON.stringify({ email, userId, priceId: 'price_1TX3QnFn4l9NVPYi9uy2VmkB' })
+      body: JSON.stringify({ email, userId, priceId: 'price_1TX3QnFn4l9NVPYi9uy2VmkB' }),
+      signal: controller.signal
     });
-    const { url, error } = await response.json();
-    if (error) { showErr('Fehler beim Checkout: ' + error); return; }
-    // Zu Stripe Checkout weiterleiten
-    window.location.href = url;
+    clearTimeout(timeout);
+    const text = await response.text();
+    let json;
+    try { json = JSON.parse(text); } catch(e) { showErr('Ungültige Antwort: ' + text.slice(0, 100)); return; }
+    if (json.error) { showErr('Checkout Fehler: ' + json.error); return; }
+    if (json.url) {
+      window.location.href = json.url;
+    } else {
+      showErr('Keine Checkout-URL erhalten. Antwort: ' + text.slice(0, 100));
+    }
   } catch(e) {
-    showErr('Verbindungsfehler. Bitte versuche es erneut.');
+    if (e.name === 'AbortError') {
+      showErr('Zeitüberschreitung — Edge Function antwortet nicht. Bitte versuche es erneut.');
+    } else {
+      showErr('Verbindungsfehler: ' + e.message);
+    }
   } finally {
     setLoading('reg-btn', false);
   }
