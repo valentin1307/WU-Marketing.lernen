@@ -233,9 +233,46 @@ html,body{height:100%;font-family:var(--f);font-size:13px;color:var(--t);backgro
       <h1>Marketing<br>Lernapp</h1>
       <p>Prüfungsvorbereitung · Grundlagen des Marketing</p>
     </div>
+    <div style="background:#162035;border:1px solid #1e2d47;border-radius:var(--r2);padding:12px 16px;margin-bottom:16px;text-align:center">
+      <div style="font-size:10px;font-weight:700;color:#4d7cff;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px">Noch kein Zugang?</div>
+      <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:8px">Marketing Lernapp — einmalig <span style="color:#4d7cff">9,99€</span></div>
+      <div style="font-size:11px;color:#4b5a78;margin-bottom:10px">✓ 8 Module &nbsp;·&nbsp; ✓ 60+ Karteikarten &nbsp;·&nbsp; ✓ Klausur-Simulation</div>
+      <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=valentin%40buehringuhle.de&amount=9.99&currency_code=EUR&item_name=Marketing+Lernapp+Zugang&no_note=1&no_shipping=1" target="_blank"
+        style="display:block;background:linear-gradient(135deg,#0070ba,#003087);color:#fff;border-radius:var(--r2);padding:10px;font-size:13px;font-weight:700;text-decoration:none;transition:opacity .15s"
+        onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+        💳 Jetzt kaufen via PayPal
+      </a>
+      <div style="font-size:10px;color:#2e4068;margin-top:8px">Nach der Zahlung erhältst du per E-Mail deine Zugangsdaten.</div>
+    </div>
+    <div id="ltabs-wrap">
     <div class="ltabs">
       <button class="ltab on" id="tab-login" onclick="switchTab('login')">Anmelden</button>
       <button class="ltab" id="tab-reg" onclick="switchTab('reg')">Registrieren</button>
+    </div>
+    </div>
+
+    <!-- Paywall -->
+    <div id="paywall" style="display:none">
+      <div style="text-align:center;margin-bottom:16px">
+        <div style="font-size:32px;margin-bottom:8px">🔒</div>
+        <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:6px">Zugang erforderlich</div>
+        <div style="font-size:11px;color:#4b5a78;margin-bottom:4px">Dein Account (<span id="paywall-email" style="color:#4d7cff"></span>)</div>
+        <div style="font-size:11px;color:#4b5a78">wurde angelegt. Bitte schließe die Zahlung ab um fortzufahren.</div>
+      </div>
+      <div style="background:#162035;border:1px solid #1e2d47;border-radius:var(--r2);padding:12px;margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-size:12px;color:#cbd5e1">Marketing Lernapp</span>
+          <span style="font-size:16px;font-weight:700;color:#4d7cff">9,99€</span>
+        </div>
+        <div style="font-size:10px;color:#4b5a78">✓ 8 Module &nbsp;·&nbsp; ✓ 60+ Karteikarten &nbsp;·&nbsp; ✓ Klausur-Simulation &nbsp;·&nbsp; ✓ Einmalzahlung</div>
+      </div>
+      <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=valentin%40buehringuhle.de&amount=9.99&currency_code=EUR&item_name=Marketing+Lernapp+Zugang&no_note=1&no_shipping=1" target="_blank"
+        style="display:block;background:linear-gradient(135deg,#0070ba,#003087);color:#fff;border-radius:var(--r2);padding:11px;font-size:13px;font-weight:700;text-decoration:none;text-align:center;margin-bottom:10px"
+        onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+        💳 Jetzt 9,99€ bezahlen via PayPal
+      </a>
+      <div style="font-size:10px;color:#2e4068;text-align:center;margin-bottom:12px">Nach der Zahlung schickst du bitte eine kurze E-Mail an<br><a href="mailto:tazkdome@gmail.com" style="color:#4d7cff">tazkdome@gmail.com</a> — wir schalten deinen Zugang innerhalb von 24h frei.</div>
+      <button onclick="showPaywallLogin()" style="width:100%;background:none;border:1px solid #1e2d47;border-radius:var(--r2);padding:9px;font-size:12px;color:#4b5a78;cursor:pointer;font-family:var(--f)">← Zurück zum Login</button>
     </div>
     <div class="lerr" id="lerr"></div>
     <div class="lsuc" id="lsuc"></div>
@@ -960,6 +997,20 @@ function setLoading(btnId, loading) {
   if (btn) { btn.disabled = loading; btn.textContent = loading ? 'Bitte warten...' : (btnId==='login-btn' ? 'Anmelden →' : 'Account erstellen →'); }
 }
 
+async function checkFreeAccess(email) {
+  try {
+    const { data } = await sb.from('free_access').select('email').eq('email', email.toLowerCase()).maybeSingle();
+    return !!data;
+  } catch(e) { return false; }
+}
+
+async function checkPaidAccess(userId) {
+  try {
+    const { data } = await sb.from('paid_users').select('user_id').eq('user_id', userId).maybeSingle();
+    return !!data;
+  } catch(e) { return false; }
+}
+
 async function doLogin() {
   const email = document.getElementById('l-email').value.trim();
   const pass = document.getElementById('l-pass').value;
@@ -968,7 +1019,16 @@ async function doLogin() {
   const { data, error } = await sb.auth.signInWithPassword({ email, password: pass });
   setLoading('login-btn', false);
   if (error) { showErr('Fehler: ' + error.message); return; }
-  await loginSuccess(data.user);
+  // Prüfe ob kostenloser oder bezahlter Zugang
+  const isFree = await checkFreeAccess(email);
+  const isPaid = await checkPaidAccess(data.user.id);
+  if (isFree || isPaid) {
+    await loginSuccess(data.user);
+  } else {
+    // Noch nicht bezahlt → Zahlungsseite zeigen
+    await sb.auth.signOut();
+    showPaywall(email);
+  }
 }
 
 async function doRegister() {
@@ -1035,6 +1095,22 @@ async function logout() {
   document.getElementById('lsuc').classList.remove('show');
   document.getElementById('l-email').value = '';
   document.getElementById('l-pass').value = '';
+  switchTab('login');
+}
+
+function showPaywall(email) {
+  document.getElementById('lerr').classList.remove('show');
+  document.getElementById('lsuc').classList.remove('show');
+  document.getElementById('login-form').style.display = 'none';
+  document.getElementById('reg-form').style.display = 'none';
+  document.getElementById('ltabs-wrap').style.display = 'none';
+  document.getElementById('paywall').style.display = '';
+  document.getElementById('paywall-email').textContent = email;
+}
+
+function showPaywallLogin() {
+  document.getElementById('paywall').style.display = 'none';
+  document.getElementById('ltabs-wrap').style.display = '';
   switchTab('login');
 }
 
@@ -1390,7 +1466,7 @@ function rImpressum() {
     </div>
     <div class="imp-section">
       <h3>Inhalt & Haftungsausschluss</h3>
-      <p>Die Inhalte dieser App basieren auf allgemein zugänglichem Marketingwissen und gängigen Lehrbuchinhalten (u.a. Meffert et al., Marketing, Springer Gabler). Sie wurden eigenständig aufbereitet und zusammengefasst. Trotz sorgfältiger Erstellung wird keine Gewähr für Vollständigkeit, Richtigkeit oder Aktualität übernommen. Die App dient ausschließlich zur persönlichen Lernunterstützung und ersetzt nicht das Studium von Originalunterlagen oder offiziellen Lehrveranstaltungen.</p>
+      <p>Die Inhalte dieser App basieren auf <b>persönlich angeeignetem Wissen</b> aus dem Studium der Marketinggrundlagen sowie auf allgemein zugänglichen Lehrbuchinhalten (u.a. Meffert et al., Marketing, Springer Gabler). Sämtliche Inhalte wurden eigenständig erarbeitet, formuliert und didaktisch aufbereitet. Es handelt sich ausdrücklich um eigenes, angeeignetes Wissen — nicht um kopierte oder reproduzierte Inhalte Dritter. Trotz sorgfältiger Erstellung wird keine Gewähr für Vollständigkeit, Richtigkeit oder Aktualität übernommen. Die App dient ausschließlich zur persönlichen Lernunterstützung und ersetzt nicht das Studium von Originalunterlagen oder offiziellen Lehrveranstaltungen.</p>
     </div>
     <div class="imp-section">
       <h3>Urheberrecht</h3>
