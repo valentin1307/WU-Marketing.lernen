@@ -988,15 +988,19 @@ function setLoading(btnId, loading) {
 
 async function checkFreeAccess(email) {
   try {
-    const { data } = await sb.from('free_access').select('email').eq('email', email.toLowerCase()).maybeSingle();
-    return !!data;
+    const timeout = new Promise((resolve) => setTimeout(() => resolve(null), 3000));
+    const query = sb.from('free_access').select('email').eq('email', email.toLowerCase()).maybeSingle();
+    const result = await Promise.race([query, timeout]);
+    return !!(result && result.data);
   } catch(e) { return false; }
 }
 
 async function checkPaidAccess(userId) {
   try {
-    const { data } = await sb.from('paid_users').select('user_id').eq('user_id', userId).maybeSingle();
-    return !!data;
+    const timeout = new Promise((resolve) => setTimeout(() => resolve(null), 3000));
+    const query = sb.from('paid_users').select('user_id').eq('user_id', userId).maybeSingle();
+    const result = await Promise.race([query, timeout]);
+    return !!(result && result.data);
   } catch(e) { return false; }
 }
 
