@@ -1040,37 +1040,283 @@ const LEARN=[
 ]}
 ]},
 {mod:5,chs:[
-{t:'Preispolitik — Grundlagen & Elastizität',items:[
-  {y:'info',v:'<b>2 Grundtatbestände:</b> (1) Erstmalige Preisfestlegung, (2) Preisänderungen. <b>3 Bestimmungsfaktoren:</b> Kosten, Nachfrage, Wettbewerb/Marktform.'},
-  {y:'formula',lbl:'Preiselastizität der Nachfrage',f:'η = (Δx/x) / (Δp/p)',note:'η meist negativ. η > −1: unelastisch (Preiserhöhung → Umsatz steigt). η < −1: elastisch (Preiserhöhung → Umsatz sinkt).'},
-  {y:'tbl',heads:['Elastizität','Bedeutung','Bei Preiserhöhung'],rows:[
-    ['<b>η > -1</b> (unelastisch)','Nachfrage reagiert kaum','Umsatzsteigerung'],
-    ['<b>η = -1</b>','Einheitliche Elastizität','Konstanter Umsatz'],
-    ['<b>η < -1</b> (elastisch)','Nachfrage reagiert stark','Umsatzsenkung'],
-  ]}
-]},
-{t:'Behavioral Pricing',items:[
-  {y:'def',k:'Preisinteresse',v:'Bedürfnis, nach Preisinformationen zu suchen. Preiswürdigkeit betonen → Preisinteresse steigt. Qualitätsvorteile betonen → Preisinteresse sinkt.'},
-  {y:'def',k:'Referenzpreise (= Preisanker)',v:'Intern gespeicherte oder extern wahrgenommene Preise. <b>5 Steuerungseffekte:</b> Preisauslobungseffekt, Mondpreiseffekt, Preisgegenüberstellungseffekt, Nettopreiseffekt, Preisplatzierungseffekt.'},
-  {y:'tbl',heads:['Psychologische Preisart','Wirkung'],rows:[
-    ['<b>Gebrochene Preise</b> (z.B. 9,99€)','Wirkt günstiger als tatsächlich'],
-    ['<b>Runde Preise</b> (z.B. 9,90€)','Neutral'],
-    ['<b>Glatte Preise</b> (z.B. 10€)','Signalisiert Qualität/Exklusivität'],
-  ]}
-]},
-{t:'Preisstrategien & Preisdifferenzierung',items:[
-  {y:'tbl',heads:['','Penetrationsstrategie','Skimmingstrategie'],rows:[
-    ['<b>Vorgehen</b>','Niedriger Startpreis → schnelle Durchdringung','Hoher Startpreis → sinkt mit zunehmender Markterschließung'],
-    ['<b>Empfehlenswert bei</b>','Hohe Preiselastizität, Massenmarkt','Viele Innovatoren, geringe Substituierbarkeit'],
+{t:'Aspekte, Ziele & Entscheidungsanlässe der Preispolitik',items:[
+  {y:'def',k:'Preispolitik',v:'Umfasst alle Entscheidungen über das <b>Entgelt des Leistungsangebots</b>. Flexibel, wirkt schnell und stark, schwer revidierbar — hat an Bedeutung zugenommen.'},
+  {y:'h',v:'4 Teilbereiche der Preispolitik:'},
+  {y:'badges',items:[
+    {v:'Bestimmungsfaktoren preispolitischer Entscheidungen',c:'b'},
+    {v:'Preispolitische Strategien',c:'b'},
+    {v:'Methoden der Preisfindung',c:'b'},
+    {v:'Konditionenpolitik',c:'b'}
   ]},
-  {y:'tbl',heads:['Form der Preisdifferenzierung','Beispiel'],rows:[
-    ['<b>Zeitlich</b>','Happy Hour, Frühbucherrabatt'],
-    ['<b>Räumlich</b>','Österreich teurer als Deutschland'],
-    ['<b>Personell</b>','Studentenrabatt, Seniorenermäßigung'],
-    ['<b>Preisbündelung (Bundling)</b>','Telefon+Internet+TV als Paket'],
+  {y:'h',v:'Preispolitische Ziele:'},
+  {y:'kv',items:[
+    {k:'Gewinnmaximierung',v:'Übergeordnetes ökonomisches Ziel.'},
+    {k:'Marktgerichtete Ziele',v:'Kundenbindung, Gewinnung von Marktanteilen, Aufbau eines Preisimages.',c:'green'},
+    {k:'Betriebsgerichtete Ziele',v:'Optimale Kostenstruktur, Kapazitätsauslastung.',c:'amber'},
+  ]},
+  {y:'h',v:'2 grundlegende Tatbestände der Preispolitik:'},
+  {y:'kv',items:[
+    {k:'(1) Erstmalige Festlegung des Preises',v:'Bei Einführung eines neuen Produktes oder Erschließung neuer Märkte.'},
+    {k:'(2) Preisänderungen',v:'Reaktion auf veränderte Markt- oder Kostensituation.',c:'green'},
+  ]},
+  {y:'h',v:'7 Entscheidungsanlässe für Preisänderungen:'},
+  {y:'badges',items:[
+    {v:'Produktinnovationen/-variationen/-differenzierungen',c:'b'},
+    {v:'Markterschließung',c:'b'},
+    {v:'Kostenveränderung',c:'b'},
+    {v:'Programmänderung',c:'b'},
+    {v:'Konkurrenzreaktionen',c:'b'},
+    {v:'Veränderungen des Absatzvolumens',c:'b'},
+    {v:'Veränderungen des Marktvolumens',c:'b'},
+  ]}
+]},
+{t:'Preiselastizität — Formel, Wirkung & Determinanten',items:[
+  {y:'info',v:'Preiselastizität = Quantifizierung der Wirkungen von Preisänderungen auf Umsatz und Gewinn. <b>η ist meist negativ</b>, da Preiserhöhung zu zurückgehender Absatzmenge führt. <b>⚠️ Achtung: Fehler bei Formel im Buch (S. 474)!</b>'},
+  {y:'formula',lbl:'Preiselastizität Gut i',f:'η = rel. Absatzänderung / rel. Preisänderung = (Δxi/xi) : (Δpi/pi) = (Δxi/Δpi) · (pi/xi)',note:'η = Preiselastizität. pi = Preis Gut i. xi = Absatzmenge Gut i. Δpi = abs. Preisänderung (p2−p1). Δxi = abs. Änderung der Nachfragemenge (x2−x1).'},
+  {y:'tbl',heads:['Elastizität','Bei Preiserhöhung','Bei Preissenkung'],rows:[
+    ['<b>η > −1</b> (unelastisch)','Umsatzsteigerung','Umsatzsenkung'],
+    ['<b>η = −1</b> (einheitlich)','Konstanter Umsatz','Konstanter Umsatz'],
+    ['<b>η < −1</b> (elastisch)','Umsatzsenkung','Umsatzsteigerung'],
+  ]},
+  {y:'h',v:'6 Elastizitätsdeterminanten:'},
+  {y:'tbl',heads:['Determinante','Wirkung'],rows:[
+    ['<b>1. Verfügbarkeit von Substitutionsgütern</b>','Schwer ersetzbar → <b>preisunelastisch</b>'],
+    ['<b>2. Vergleichbarkeit von Substitutionsgütern</b>','Schwer vergleichbar → <b>preisunelastisch</b>'],
+    ['<b>3. Leichtigkeit der Nachfragebefriedigung</b>','Leichte Bedürfnisbefriedigung → <b>preisunelastisch</b>'],
+    ['<b>4. Dauerhaftigkeit des Gutes</b>','Dauerhafter → <b>preiselastisch</b> (Kaufaufschub möglich)'],
+    ['<b>5. Dringlichkeit der Bedürfnisse</b>','Hohe Dringlichkeit → <b>preisunelastisch</b>'],
+    ['<b>6. Vermarktung des Produktes</b>','Preisfokussierte Verkaufsförderung → <b>preiselastisch</b>'],
+  ]},
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> η > −1 = UNELASTISCH (Preiserhöhung → Umsatz STEIGT). η < −1 = ELASTISCH (Preiserhöhung → Umsatz SINKT). Das Vorzeichen verwirrt viele!'}
+]},
+{t:'Behavioral Pricing — Konstrukte & Preisinteresse',items:[
+  {y:'info',v:'<b>Verhaltenstheoretische Preistheorie ("Behavioral Pricing"):</b> Nachfragereaktionen auf Preis(änderungen) sind von <b>psychologischen und sozialen Faktoren</b> abhängig.'},
+  {y:'h',v:'7 zentrale Konstrukte des Behavioral Pricing:'},
+  {y:'badges',items:[
+    {v:'Preisinteresse',c:'b'},{v:'Preiskenntnis/Preiswissen',c:'b'},
+    {v:'Referenzpreise',c:'b'},{v:'Preisschwellen & Preisspannweite',c:'b'},
+    {v:'Psychologische Preise',c:'b'},{v:'Preisgünstigkeit & Preiswürdigkeit',c:'b'},
+    {v:'Prozess der Preisbeurteilung',c:'b'}
+  ]},
+  {y:'h',v:'Preisinteresse:'},
+  {y:'def',k:'Preisinteresse',v:'Bedürfnis, nach <b>Preisinformationen</b> zu suchen und bei Kaufentscheidungen zu berücksichtigen. Beeinflusst die Preisbereitschaft bei: Markenwahl, Packungsgrößen-/Mengenwahl, Distributionskanal- und Einkaufsstättenwahl, Wahl des Einkaufszeitpunktes.'},
+  {y:'h',v:'Steuerung des Preisinteresses durch Anbieter:'},
+  {y:'tbl',heads:['Maßnahme','Wirkung'],rows:[
+    ['Unterstreichung der eigenen Preiswürdigkeit','→ <b>Steigerung</b> des Preisinteresses'],
+    ['Hervorhebung von Qualitäts- und Servicevorteilen','→ <b>Senkung</b> des Preisinteresses'],
+    ['Einführung einer billigeren Zweitmarke','→ <b>Lenkung</b> des Preisinteresses'],
+  ]},
+  {y:'h',v:'Verhaltenstrends der Nachfrager:'},
+  {y:'kv',items:[
+    {k:'Smart Shopping',v:'Besonders <b>starkes Preisinteresse</b> → hoher Suchaufwand, um günstigste Bezugsquelle der präferierten Marke zu finden. Geringe Markentreue. Wahl der Geschäftsstätte und des Einkaufszeitpunktes zur Ausnutzung von Preisunterschieden am Markt (<b>Arbitrage</b>).'},
+    {k:'Preishybrides Kaufverhalten',v:'Preisinteresse stark von der <b>Produktkategorie</b> abhängig — selbe Person kauft bei Alltagsprodukten günstig, bei Statusprodukten teuer.',c:'amber'},
+  ]}
+]},
+{t:'Preiskenntnis, Referenzpreise & Preisschwellen',items:[
+  {y:'h',v:'Preiskenntnis bzw. Preiswissen:'},
+  {y:'def',k:'Preiskenntnis',v:'Preisbezogene Informationen (Produkt, Geschäftsstätte, Marke...), die im Gedächtnis der Nachfrager gespeichert sind.'},
+  {y:'kv',items:[
+    {k:'Explizite Preiskenntnis',v:'Bewusste Erinnerung — akkurate, auf Zahlen basierende Preiskenntnis.'},
+    {k:'Implizite Preiskenntnis',v:'Keine exakte Preiserinnerung, vage und ungenaue Gedächtnisinhalte.',c:'amber'},
+  ]},
+  {y:'tbl',heads:['Inhalt der Preiskenntnis','Beschreibung'],rows:[
+    ['Allgemein verwendbar','z.B. teuerstes und günstigster Preis'],
+    ['Markenbezogen','Preise einer Marke bzw. Preisrangfolge'],
+    ['Geschäftsbezogen','Preise der Produkte in verschiedenen Geschäften'],
+    ['Preisaktionsbezogen','Häufigkeit, Zeitpunkte und Ausmaß von Preisaktionen'],
+  ]},
+  {y:'h',v:'Referenzpreise (= Preisanker):'},
+  {y:'kv',items:[
+    {k:'Interne Referenzpreise',v:'Im Gedächtnis gespeicherte Preise aus vergangenen Kauferfahrungen.'},
+    {k:'Externe Referenzpreise',v:'Aktuell wahrgenommene Vergleichspreise (z.B. durchgestrichener "Originalpreis").',c:'green'},
+  ]},
+  {y:'info',v:'Nachfrager haben meist <b>mehrere Referenzpreise</b>, mit denen sie einen subjektiven Mittelwert (≈ geometrischer Mittelwert) bilden.'},
+  {y:'h',v:'5 Effekte zur Steuerung von Referenzpreisen durch Anbieter:'},
+  {y:'badges',items:[
+    {v:'Preisauslobungseffekt',c:'b'},{v:'Mondpreiseffekt',c:'b'},
+    {v:'Preisgegenüberstellungseffekt',c:'b'},{v:'Nettopreiseffekt',c:'b'},
+    {v:'Preisplatzierungseffekt',c:'b'}
+  ]},
+  {y:'h',v:'Preisschwellen:'},
+  {y:'def',k:'Preisschwellen',v:'Preispunkte, bei denen sich die <b>Preisbereitschaft der Nachfrager ändert</b>.'},
+  {y:'kv',items:[
+    {k:'Absolute Preisschwelle',v:'Preisobergrenze (fehlende Kaufkraft → kein Kauf) und Preisuntergrenze (Zweifel an der Qualität → kein Kauf). Dazwischen: <b>akzeptierte Preisspannweite</b> → Produktkauf.'},
+    {k:'Relative Preisschwelle',v:'Preise innerhalb einer Warengruppe werden in unterschiedlich große Kategorien unterteilt.',c:'green'},
+  ]}
+]},
+{t:'Psychologische Preise, Preiswürdigkeit & Qualitätsbeurteilung',items:[
+  {y:'h',v:'3 Formen psychologischer Preise:'},
+  {y:'tbl',heads:['Preisform','Endung','Wirkung'],rows:[
+    ['<b>Gebrochene Preise</b>','Enden auf Ziffer 1–9 (z.B. 9,99€)','Wirkt günstiger als tatsächlich → höhere Absatzmenge'],
+    ['<b>Runde Preise</b>','Enden auf volle 10 Cent (z.B. 9,90€)','Neutral'],
+    ['<b>Glatte Preise</b>','Enden auf ganze Euro (z.B. 10€)','Signalisiert Qualität/Exklusivität'],
+  ]},
+  {y:'h',v:'Preisgünstigkeit vs. Preiswürdigkeit:'},
+  {y:'kv',items:[
+    {k:'Preisgünstigkeitsurteil',v:'Basiert <b>ausschließlich auf unterschiedlichen Preisen</b> (Qualität NICHT berücksichtigt). Für Produkte, die als austauschbar wahrgenommen werden.'},
+    {k:'Preiswürdigkeitsurteil',v:'Basiert auf dem <b>Preis-Leistungs-Verhältnis (Nettonutzen)</b>. Konsument/innen beurteilen Teilnutzen der Produkte.',c:'green'},
+  ]},
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> Preisgünstigkeit ≠ Preiswürdigkeit! Preisgünstigkeit = nur Preisvergleich. Preiswürdigkeit = Preis-Leistungs-Verhältnis (Nettonutzen).'},
+  {y:'h',v:'Preisabhängige Qualitätsbeurteilung:'},
+  {y:'def',k:'Preisabhängige Qualitätsbeurteilung',v:'Objektive Beurteilung aufgrund Produktkomplexität schwierig → daher <b>Vereinfachungsstrategie</b>: Preis als Qualitätsindikator.'},
+  {y:'h',v:'2 Hauptgründe für Qualitätsbeurteilung über Preis:'},
+  {y:'kv',items:[
+    {k:'(1) Produktionskosten-Annahme',v:'Nachfrager hält Produktionskosten für hauptausschlaggebend für den Produktpreis.'},
+    {k:'(2) Kaufrisiko',v:'Nachfrager verbindet Kauf mit Risiko → höherer Preis = höhere Qualität = geringeres Risiko.',c:'amber'},
+  ]},
+  {y:'info',v:'Preis wird <b>weniger als Qualitätsindikator</b> angesehen, je größer die Kauf- und Produkterfahrung, je größer das Vertrauen zum Anbieter, je stärker die Markenloyalität.'}
+]},
+{t:'Marktform & Preispositionierung',items:[
+  {y:'h',v:'Marktform als Bestimmungsfaktor der Preispolitik:'},
+  {y:'tbl',heads:['Marktform','Preispolitischer Spielraum'],rows:[
+    ['<b>Monopol</b>','Hersteller muss nur Reaktionen der Nachfrager beachten → <b>maximaler Spielraum</b>'],
+    ['<b>Oligopol</b>','Hersteller muss Reaktionen der Nachfrager UND Konkurrenten beachten → <b>eingeschränkter Spielraum</b>'],
+    ['<b>Polypol</b>','Hersteller hat aufgrund der Vielzahl der Konkurrenten <b>KEINEN Spielraum</b> bei der Preisbildung → weitgehender Verzicht auf eigene Preispolitik!'],
+  ]},
+  {y:'h',v:'Preispositionierung — 3 × 3 Matrix (relatives Preisniveau vs. relatives Leistungsqualitätsniveau):'},
+  {y:'tbl',heads:['Preisniveau ↓ / Qualität →','Niedriges Preisniveau','Mittleres Preisniveau','Hohes Preisniveau'],rows:[
+    ['<b>Hohes Qualitätsniveau</b>','<b>Discountstrategie</b> 🟡 (hohes Preis-Leistungsverhältnis)','—','<b>Hochpreis</b> 🔵'],
+    ['<b>Mittleres Qualitätsniveau</b>','—','<b>Mittelpreis</b> 🔵','<b>Übervorteilungsstrategie</b> 🟡 (schlechtes Preis-Leistungsverhältnis)'],
+    ['<b>Niedriges Qualitätsniveau</b>','<b>Niedrigpreis</b> 🔵','—','—'],
+  ]},
+  {y:'info',v:'<b>Diagonale (blau):</b> Hochpreis, Mittelpreis, Niedrigpreis = Preis entspricht Qualität → Normalposition. <b>Discountstrategie (gelb, oben links):</b> viel Qualität, niedriger Preis → vorteilhaft für Kunden. <b>Übervorteilungsstrategie (gelb, unten rechts):</b> wenig Qualität, hoher Preis → nachteilig für Kunden.'},
+  {y:'def',k:'Preispositionierung',v:'Grundsätzliche Richtung der Preisstrategie bezüglich der <b>Höhe des Preises in Kombination mit Nutzenüberlegungen</b> aus Kundensicht.'}
+]},
+{t:'Penetrations- & Skimmingstrategie',items:[
+  {y:'h',v:'Penetrationsstrategie:'},
+  {y:'def',k:'Penetrationsstrategie',v:'Ziel: durch relativ <b>niedrige Preise schnelle Diffusion</b> eines Neuproduktes bzw. Erschließung von Massenmärkten. Penetrationspreis: in Einführungsphase deutlich unter dem gewinnmaximalen Preis. Gewinne erst in späteren Phasen.'},
+  {y:'tbl',heads:['Empfehlenswert bei…','⚠️ Vorsicht bei…'],rows:[
+    ['Hohe Preiselastizität der Nachfrage (Konkurrenzprodukte am Markt)','Lange Amortisationsdauer'],
+    ['Möglichkeit, Markteintrittsbarrieren aufzubauen','Spätere Preiserhöhungen sind problematisch'],
+    ['Preissensible Marktsegmente',''],
+    ['Keine Konflikte mit Markenimage',''],
+  ]},
+  {y:'h',v:'Skimmingstrategie (Abschöpfungsstrategie):'},
+  {y:'def',k:'Skimmingstrategie',v:'Ziel: möglichst <b>schnelle Amortisation</b> von hohen Neuproduktinvestitionen. Abschöpfung der <b>Konsumentenrente</b> von Nachfragern mit überdurchschnittlicher Bedarfsdringlichkeit. Anfangs relativ hoher Preis bei niedrigen Absatzmengen → sukzessive Preissenkung mit zunehmender Markterschließung.'},
+  {y:'tbl',heads:['Empfehlenswert bei…','⚠️ Vorsicht bei…'],rows:[
+    ['Große Anzahl von elitären Innovatoren','Gute Gewinnchancen locken Konkurrenz'],
+    ['Gefahr der raschen Veralterung des Produktes',''],
+    ['Geringe Substituierbarkeit',''],
+    ['Finanzierung der Einführungsanstrengungen durch hohe Deckungsbeiträge',''],
+    ['Beschränkte Produktions- und Vertriebskapazitäten',''],
+  ]},
+  {y:'tip',v:'<b>Merkhilfe:</b> Penetration = niedrig rein, hoch raus (Markt durchdringen). Skimming = hoch rein, niedrig raus (Rahm abschöpfen).'}
+]},
+{t:'Handlungsoptionen bei Konkurrenzeintritt',items:[
+  {y:'info',v:'Bei drohendem Konkurrenzeintritt hat ein Unternehmen 3 grundlegende Handlungsoptionen:'},
+  {y:'tbl',heads:['Option','Vorgehen','Strategie'],rows:[
+    ['<b>Proaktive Preissenkung</b>','Preissenkung VOR dem Eintritt der Konkurrenz','Kurzfristiges "Opfern" des Gewinns, aber langfristige Verteidigung der Marktposition'],
+    ['<b>Reaktive Preissenkung</b>','Preissenkung NACH dem Eintritt der Konkurrenz','Versuch, den bedrohten Marktanteil zu verteidigen'],
+    ['<b>Beibehaltung des Preises</b>','Beibehalten des hohen Preises nach dem Eintritt der Konkurrenz','Inkaufnahme des Rückgangs des Marktanteils'],
+  ]}
+]},
+{t:'Preisdifferenzierungsstrategie — Konzept & Formen',items:[
+  {y:'def',k:'Preisdifferenzierungsstrategie',v:'(Fast) <b>identische Produkte werden zu unterschiedlich hohen Preisen</b> angeboten. Ziel: Gewinnsteigerung durch Abschöpfung der <b>Konsumentenrente</b> bzw. individueller Preisbereitschaften der Nachfrager.'},
+  {y:'def',k:'Konsumentenrente',v:'Jener Betrag, den ein Nachfrager für ein bestimmtes Produkt <b>weniger zahlen muss</b>, als er aufgrund seiner Präferenz bereit wäre dafür zu zahlen. Idealfall: individuelles Aushandeln der Preise (orientalischer Basar).'},
+  {y:'info',v:'<b>Rechenbeispiel:</b> Keine Preisdifferenzierung: Maximalgewinn = (7 − 4) · 30 = 90. Mit 2 Segmenten: Gewinn Segment 1 = (8 − 4) · 20 = 80, Zusätzl. Gewinn Segment 2 = (6 − 4) · 20 = 40. Gesamtgewinn = 120 → <b>Gewinnsteigerung auf 120!</b>'},
+  {y:'h',v:'2 Formen der Preisdifferenzierung:'},
+  {y:'kv',items:[
+    {k:'Vertikale Preisdifferenzierung (gegebene Marktaufteilung)',v:'Jeder Teilmarkt umfasst Nachfrager <b>aller (oder mehrerer) Preisschichten</b>.'},
+    {k:'Horizontale Preisdifferenzierung (willkürliche Marktaufteilung)',v:'Jeder Teilmarkt enthält nur Nachfrager mit <b>gleicher (oder ähnlicher) Preisbereitschaft</b>.',c:'green'},
+  ]},
+  {y:'h',v:'3 Voraussetzungen für erfolgreiche Preisdifferenzierung:'},
+  {y:'tbl',heads:['#','Voraussetzung'],rows:[
+    ['1','Unterschiedliche Preisbereitschaften der Nachfrager'],
+    ['2','Identifizierbare und gezielt bearbeitbare Preissegmente'],
+    ['3','Unternehmen verfügt über monopolistischen Spielraum bzw. "akquisitorisches Potenzial"'],
+  ]},
+  {y:'h',v:'7 Erscheinungsformen der Preisdifferenzierung:'},
+  {y:'tbl',heads:['Form','Beispiel'],rows:[
+    ['<b>Zeitliche Preisdifferenzierung</b>','Happy Hour, Frühbucherrabatt, Saisonpreise'],
+    ['<b>Räumliche Preisdifferenzierung</b>','Österreich teurer als Deutschland'],
+    ['<b>Personelle Preisdifferenzierung</b>','Studentenrabatt, Seniorenermäßigung'],
+    ['<b>Mehr-Personen-Preisbildung</b>','Familienticket, Gruppenrabatt'],
+    ['<b>Preisbündelung (Bundling)</b>','Telefon + Internet + TV als Paket'],
+    ['<b>Quantitative Preisdifferenzierung</b>','Mengenrabatt, Großpackung günstiger'],
     ['<b>Revenue/Yield Management</b>','Flugtickets, Hotels — dynamische Preise'],
   ]},
-  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> Skonto ≠ Mengenrabatt! Skonto = schnell zahlen (z.B. 2% in 10 Tagen). Mengenrabatt = viel bestellen.'}
+  {y:'h',v:'Internetbasierte Preisstrategien:'},
+  {y:'kv',items:[
+    {k:'Dynamic Pricing (Echtzeitpricing)',v:'Kann durch Online-Kaufhistorie optimiert werden. Auch offline möglich durch digitale Preisauszeichnung.'},
+    {k:'Versioning',v:'Leistungsbezogene Preisdifferenzierung (z.B. Basic/Premium-Tarife).',c:'green'},
+    {k:'Online-Auktionen',v:'Individuelles Preisfindungsverfahren.',c:'amber'},
+  ]}
+]},
+{t:'Methoden der Preisfindung — kostenorientiert & konkurrenzorientiert',items:[
+  {y:'h',v:'3 Methoden der Preisfindung:'},
+  {y:'badges',items:[
+    {v:'Kostenorientierte Preisfindung',c:'b'},{v:'Nachfrageorientierte Preisfindung',c:'g'},{v:'Konkurrenzorientierte Preisfindung',c:'a'}
+  ]},
+  {y:'h',v:'Kostenorientierte Preisfindung — Kosten-plus-Preisbildung:'},
+  {y:'formula',lbl:'Kosten-plus-Preisbildung',f:'P = gesamte od. variable Stückkosten · (1 + Gewinnzuschlag)',note:'Verkaufspreise werden mittels Aufschlag auf vorkalkulierte Stückkosten bestimmt.'},
+  {y:'h',v:'Preisuntergrenzen:'},
+  {y:'kv',items:[
+    {k:'Kurzfristige Preisuntergrenze (Kostenrechnung)',v:'Annahme: Teilkostendeckung (variable Kosten) reicht vorübergehend aus. <b>p > kv</b> (Preis muss variable Stückkosten übersteigen).'},
+    {k:'Langfristige Preisuntergrenze (Investitionsrechnung)',v:'<b>Kapitalwert der Ein- und Auszahlungen muss Null sein</b> (Vollkostendeckung inkl. Kapitalkosten).',c:'green'},
+  ]},
+  {y:'h',v:'Target Costing (nachfrage-/kostenorientiert):'},
+  {y:'info',v:'Integriertes Verfahren: Ermittlung des Marktpreises → Zielrendite → Zulässige Kosten ↔ Kostenvergleich ↔ Geschätzte/geplante Kosten. <b>zulässige > geschätzte</b> → größere Rendite. <b>geschätzte > zulässige</b> → Maßnahmen für Kostensenkung suchen. <b>zulässige = geschätzte</b> → Wert wird als Zielkosten (target costs) festgelegt.'},
+  {y:'h',v:'Konkurrenzorientierte Preisfindung:'},
+  {y:'def',k:'Leitpreis',v:'In der Praxis oft Erstarrung der Preispolitik auf Oligopolmärkten und zu einseitige Orientierung an Preisen der Konkurrenz.'},
+  {y:'h',v:'5 Möglichkeiten für Oligopolisten, um Preiskampf zu entgehen:'},
+  {y:'tbl',heads:['Maßnahme'],rows:[
+    ['Keine Überreaktion, wenn Konkurrenz Preise ändert'],
+    ['Keine Preissenkungen, wenn Wettbewerber nachziehen würden'],
+    ['Verschleierung eigener Preise (z.B. durch Preisbündelung)'],
+    ['Einführung einer preisaggressiven Zweitmarke zum Schutz der Hauptmarke'],
+    ['Schaffung von Zusatznutzen'],
+  ]}
+]},
+{t:'Nachfrageorientierte Preisfindung & Gewinnmaximierung',items:[
+  {y:'h',v:'Nachfrageorientierte Preisfindung — Preis-Absatz-Funktion:'},
+  {y:'formula',lbl:'Preis-Absatz-Funktion (lineare Form)',f:'p = a − bx',note:'a = Höchstpreis (Prohibitivpreis). b = Proportionalitätsfaktor (wie stark sinkt Preis, wenn Absatz um eine Einheit steigt). x = Menge. Sättigungsmenge = Menge bei p = 0.'},
+  {y:'formula',lbl:'Umsatzfunktion',f:'U = f(p, q, v, w)',note:'p = Preisforderung. q = Qualität. v = Vertriebsmethoden. w = Werbung.'},
+  {y:'h',v:'Gewinnmaximierung — Beispielrechnung:'},
+  {y:'info',v:'<b>Ausgangspunkte:</b> Nachfragefunktion Q = 10 − 0,5P · Kostenfunktion K = 5 + 4Q'},
+  {y:'formula',lbl:'Gewinnmaximierung (1. Ableitung = 0)',f:'G = PQ − K = PQ − (5+4Q) = P(10−0,5P) − [5+4(10−0,5P)] = −45 + 12P − 0,5P² | G\' = 12 − P = 0 → P* = 12,--',note:'Legende: Q = Menge, K = Gesamtkosten, G = Gesamtgewinn, P = Preis, U = Umsatz. Gewinnmaximum bei Grenzkosten = Grenzerlös (1. Ableitung = 0).'},
+  {y:'tip',v:'<b>Merkhilfe Nachfragefunktion vs. Kostenfunktion:</b> Nachfragefunktion Q = 10 − 0,5P: Je höher der Preis, desto geringer die verkaufte Menge. Kostenfunktion K = F + KvQ (allgemeine Form): F = Gesamtfixkosten, Kv = variable Stückkosten, Q = Menge.'}
+]},
+{t:'Empirische Erfassung der Preisbereitschaft',items:[
+  {y:'info',v:'Zur Berechnung der Preis-Absatz-Funktion muss die Preisbereitschaft gemessen werden. 3 Methoden: <b>Beobachtung, Befragung, Bietverfahren</b>.'},
+  {y:'tbl',heads:['Methode','Untertypen','Besonderheiten'],rows:[
+    ['<b>Beobachtung</b>','Preisexperimente (z.B. Storetest), Marktdaten','+ Erfassung des realen Kaufverhaltens. − Hohe Kosten, hoher Zeitaufwand, schwierige Kontrolle.'],
+    ['<b>Befragung — Expertenbefragung</b>','Geschätzte Absatzmenge bei unterschiedlichen Preisen','+ Schnell, einfach, kostengünstig. − Indirekte Berücksichtigung der Nachfragerperspektive.'],
+    ['<b>Befragung — Direkte Nachfragerbefragung</b>','Eine Frage: "Max. Zahlungsbereitschaft?" oder van Westendorp-Methode (4 Fragen)','+ Schnell, einfach, kostengünstig. − Geringe Realitätsnähe.'],
+    ['<b>Befragung — Indirekte Nachfragerbefragung</b>','Conjoint-Analyse (Preis als eine von vielen Eigenschaften)','+ Realistische Abwägung zwischen Bruttonutzen und Preis.'],
+    ['<b>Bietverfahren</b>','Vickrey-Auktion, BDM-Mechanismus','Probanden gehen i.d.R. Kaufverpflichtung ein. − Gewinnung von Teilnehmern, geringe Realitätsnähe.'],
+  ]},
+  {y:'h',v:'Eignung der Methoden (++ = sehr geeignet, − − = nicht geeignet):'},
+  {y:'tbl',heads:['Kriterium','Preisexperiment','Marktdaten','Expertenbefr.','Direkte Befr.','Indirekte Befr.','Auktionen'],rows:[
+    ['Vorhersagegenauigkeit/Realitätsnähe','++','0','0','0','+','0'],
+    ['Kosten','−−','+','+','0','−','0'],
+    ['Zeitaufwand','−−','+','++','+','0','−−'],
+    ['Berücksichtigung Nachfragerverhalten','++','0','−','0','+','+'],
+    ['Anwendbarkeit bei Innovationen','++','−−','+','−','+','+'],
+  ]}
+]},
+{t:'Konditionenpolitik — Rabatte, Lieferung, Zahlung & Kredit',items:[
+  {y:'info',v:'Konditionenpolitik = Katalog von Geschäftsbestimmungen und Regelungen im Rahmen eines Kaufvertrages, der Inhalt und Ausmaß der angebotenen bzw. erbrachten Leistungen spezifiziert.'},
+  {y:'h',v:'5 Rabattarten:'},
+  {y:'tbl',heads:['Rabattart','Definition'],rows:[
+    ['<b>1. Funktionsrabatt</b>','Für Übernahme von Leistungen, die der Hersteller an den Handel delegiert'],
+    ['<b>2. Barzahlungsrabatt (Skonto)</b>','Bei unverzüglicher Zahlung des Rechnungsbetrags'],
+    ['<b>3. Mengenrabatt</b>','Bei Abnahme bestimmter Mengen. Bonus = nachträglicher Mengenrabatt (Payback)'],
+    ['<b>4. Treuerabatt</b>','Für überwiegenden/ausschließlichen Bezug der Ware bei einem Lieferanten'],
+    ['<b>5. Zeitrabatt</b>','Für Leistungen des Abnehmers zum Zeitpunkt der Bestellung bzw. Abnahme des Produkts'],
+  ]},
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> Skonto = Barzahlungsrabatt (schnell zahlen!). Mengenrabatt = große Menge bestellen. NICHT verwechseln!'},
+  {y:'h',v:'Lieferungs- und Zahlungsbedingungen:'},
+  {y:'kv',items:[
+    {k:'Lieferbedingungen',v:'Legen Lieferungsverpflichtungen der <b>Lieferanten</b> fest: Ort und Zeitpunkt des Gefahren- u. Kostenübergangs, Konventionalstrafen, Umtauschrecht und Garantieleistungen, Mindestmengen und Mindermengenszuschläge.'},
+    {k:'Zahlungsbedingungen',v:'Legen Zahlungsverpflichtungen der <b>Käufer/innen</b> fest: Zahlungsweise (Zahlungsmittel, Gesamt- oder Teilzahlung), technische Abwicklung → Zahlungsrisiko.',c:'green'},
+  ]},
+  {y:'h',v:'Absatzkreditpolitik:'},
+  {y:'def',k:'Absatzkreditpolitik',v:'Alle Maßnahmen eines Unternehmens, um (potenzielle) Kunden mittels Gewährung oder Vermittlung von <b>Krediten oder Leasingangeboten</b> zum Kauf zu veranlassen.'},
+  {y:'kv',items:[
+    {k:'Absatzgeldkredit',v:'Vergabe NICHT an Bezug von Gütern des Kreditgebers geknüpft (z.B. allgemeiner Ratenkredit).'},
+    {k:'Absatzgüterkredit',v:'Vergabe direkt an Bezug von Gütern gebunden, da Kaufpreis der erworbenen Güter kreditiert wird (z.B. Autofinanzierung).',c:'amber'},
+  ]}
 ]}
 ]},
 {mod:6,chs:[
@@ -1216,12 +1462,34 @@ const CARDS=[
   {m:4,t:'Produktvariation vs. Produktdifferenzierung',d:'Variation: KONSTANTE Anzahl (altes wird verändert/ersetzt). Differenzierung: VERGRÖSSERTE Anzahl (altes bleibt, Neues kommt dazu). Kernunterschied: Anzahl der Produkte!'},
   {m:4,t:'Mass Customization',d:'Differenzierung i.e.S.: individuelle Anpassung des Produktes an Kundenwünsche bei gleichzeitig massenproduktionsähnlichen Kosten.'},
   {m:4,t:'Produktelimination — 5 Schritte',d:'(1) Kontrolle des Programms, (2) externe Anregungen, (3) Kriterien (quantitativ + qualitativ), (4) Verbundbeziehungen berücksichtigen, (5) Eliminierungsstrategie wählen.'},
-    {m:5,t:'Skimming vs. Penetration',d:'Skimming: hoher Startpreis → sinkt. Penetration: niedriger Startpreis → schnelle Durchdringung.'},
-  {m:5,t:'Preiselastizität — Formel',d:'η = (Δx/x) / (Δp/p). η > −1: unelastisch. η < −1: elastisch.'},
-  {m:5,t:'Referenzpreise — 5 Effekte',d:'Preisauslobungseffekt · Mondpreiseffekt · Preisgegenüberstellungseffekt · Nettopreiseffekt · Preisplatzierungseffekt'},
-  {m:5,t:'Skonto vs. Mengenrabatt',d:'Skonto = schnell zahlen (z.B. 2% in 10 Tagen). Mengenrabatt = viel bestellen.'},
-  {m:5,t:'7 Formen der Preisdifferenzierung',d:'Zeitlich · Räumlich · Personell · Mehr-Personen · Preisbündelung · Quantitativ · Revenue/Yield Management'},
-  {m:6,t:'Absatzmittler vs. Absatzhelfer',d:'Mittler = Eigentumsübergang (Groß-/Einzelhändler). Helfer = KEIN Eigentumsübergang (Spediteur, Makler, Bank).'},
+      {m:5,t:'Preispolitik (Definition)',d:'Umfasst alle Entscheidungen über das Entgelt des Leistungsangebots. Flexibel, wirkt schnell und stark, schwer revidierbar.'},
+  {m:5,t:'4 Teilbereiche der Preispolitik',d:'(1) Bestimmungsfaktoren preispolitischer Entscheidungen, (2) Preispolitische Strategien, (3) Methoden der Preisfindung, (4) Konditionenpolitik'},
+  {m:5,t:'2 Tatbestände der Preispolitik',d:'(1) Erstmalige Festlegung des Preises. (2) Preisänderungen. 7 Entscheidungsanlässe: Produktinnovationen, Markterschließung, Kostenveränderung, Programmänderung, Konkurrenzreaktionen, Veränderungen Absatz-/Marktvolumen.'},
+  {m:5,t:'Preiselastizität — Formel',d:'η = (Δxi/xi) : (Δpi/pi) = (Δxi/Δpi) · (pi/xi). η meist negativ (Preiserhöhung → Absatz sinkt).'},
+  {m:5,t:'Elastizität und Umsatz',d:'η > −1 (unelastisch): Preiserhöhung → Umsatzsteigerung. η = −1: konstanter Umsatz. η < −1 (elastisch): Preiserhöhung → Umsatzsenkung.'},
+  {m:5,t:'6 Elastizitätsdeterminanten',d:'(1) Verfügbarkeit Substitutionsgüter (schwer ersetzbar → unelastisch). (2) Vergleichbarkeit. (3) Leichtigkeit Nachfragebefriedigung. (4) Dauerhaftigkeit (dauerhafter → elastisch). (5) Dringlichkeit (hohe Dringlichkeit → unelastisch). (6) Vermarktung (Preisfokus → elastisch).'},
+  {m:5,t:'Behavioral Pricing',d:'Nachfragereaktionen auf Preis(änderungen) sind von psychologischen und sozialen Faktoren abhängig. 7 Konstrukte: Preisinteresse, Preiswissen, Referenzpreise, Preisschwellen, Psychologische Preise, Preisgünstigkeit/Preiswürdigkeit, Preisbeurteilung.'},
+  {m:5,t:'Preisinteresse',d:'Bedürfnis, nach Preisinformationen zu suchen. Steuerung: Preiswürdigkeit betonen → Preisinteresse steigt. Qualitätsvorteile betonen → Preisinteresse sinkt. Zweitmarke einführen → Preisinteresse lenken.'},
+  {m:5,t:'Smart Shopping vs. Preishybrides Kaufverhalten',d:'Smart Shopping: starkes Preisinteresse, geringe Markentreue, Arbitrage nutzen. Preishybrides Kaufverhalten: Preisinteresse stark von der Produktkategorie abhängig.'},
+  {m:5,t:'Preiskenntnis — explizit vs. implizit',d:'Explizit = bewusste akkurate Erinnerung. Implizit = vage, ungenaue Gedächtnisinhalte. Inhalte: allgemein, markenbezogen, geschäftsbezogen, preisaktionsbezogen.'},
+  {m:5,t:'Referenzpreise — 5 Steuerungseffekte',d:'Preisauslobungseffekt · Mondpreiseffekt · Preisgegenüberstellungseffekt · Nettopreiseffekt · Preisplatzierungseffekt. Referenzpreis = Preisanker (intern gespeichert oder extern wahrgenommen).'},
+  {m:5,t:'Preisschwellen — absolut vs. relativ',d:'Absolute Preisschwelle: Preisobergrenze (fehlende Kaufkraft) und Preisuntergrenze (Qualitätszweifel) → akzeptierte Preisspannweite. Relative Preisschwelle: Einteilung in Preiskategorien innerhalb einer Warengruppe.'},
+  {m:5,t:'3 Psychologische Preisformen',d:'Gebrochen (endet auf 1-9, z.B. 9,99€) → wirkt günstiger. Rund (endet auf volle 10 Cent, z.B. 9,90€) → neutral. Glatt (endet auf ganzen Euro, z.B. 10€) → signalisiert Qualität.'},
+  {m:5,t:'Preisgünstigkeit vs. Preiswürdigkeit',d:'Preisgünstigkeit = ausschließlich auf Preisunterschieden basierend (Qualität nicht berücksichtigt). Preiswürdigkeit = basiert auf Preis-Leistungs-Verhältnis (Nettonutzen). NICHT verwechseln!'},
+  {m:5,t:'Preisabhängige Qualitätsbeurteilung',d:'2 Gründe: (1) Nachfrager hält Produktionskosten für hauptausschlaggebend. (2) Nachfrager verbindet Kauf mit Risiko. Preis weniger als Qualitätsindikator, wenn: große Erfahrung, großes Vertrauen, starke Markenloyalität.'},
+  {m:5,t:'Marktform & Preispolitischer Spielraum',d:'Monopol: nur Nachfragerreaktionen beachten (max. Spielraum). Oligopol: Nachfrager + Konkurrenten beachten. Polypol: KEIN Spielraum → weitgehender Verzicht auf eigene Preispolitik!'},
+  {m:5,t:'Preispositionierungsmatrix',d:'Diagonale = korrekte Preis-Qualitäts-Kombination (Hochpreis/Mittelpreis/Niedrigpreis). Discountstrategie = hohe Qualität, niedriger Preis (vorteilhaft). Übervorteilungsstrategie = niedrige Qualität, hoher Preis (nachteilig).'},
+  {m:5,t:'Penetrationsstrategie vs. Skimmingstrategie',d:'Penetration: niedriger Startpreis → schnelle Diffusion → Massenmarkt. Skimming: hoher Startpreis → Konsumentenrente abschöpfen → sukzessiv senkend. Caution Penetration: lange Amortisation, Preiserhöhungen problematisch. Caution Skimming: lockt Konkurrenz.'},
+  {m:5,t:'3 Handlungsoptionen bei Konkurrenzeintritt',d:'(1) Proaktive Preissenkung (vor Eintritt, kurzfristiger Gewinnverzicht). (2) Reaktive Preissenkung (nach Eintritt, Marktanteil verteidigen). (3) Beibehaltung des Preises (Marktanteilsverlust in Kauf nehmen).'},
+  {m:5,t:'Konsumentenrente',d:'Betrag den ein Nachfrager WENIGER zahlt als er bereit wäre. Ziel der Preisdifferenzierung: Konsumentenrente abschöpfen. Idealfall: individuelles Aushandeln (orientalischer Basar).'},
+  {m:5,t:'7 Erscheinungsformen Preisdifferenzierung',d:'Zeitlich · Räumlich · Personell · Mehr-Personen-Preisbildung · Preisbündelung (Bundling) · Quantitativ · Revenue/Yield Management. + Internetbasiert: Dynamic Pricing, Versioning, Online-Auktionen.'},
+  {m:5,t:'Kosten-plus-Preisbildung',d:'P = gesamte od. variable Stückkosten · (1 + Gewinnzuschlag). Verkaufspreise mittels Aufschlag auf vorkalkulierte Stückkosten.'},
+  {m:5,t:'Preisuntergrenzen',d:'Kurzfristig (Kostenrechnung): p > kv (Teilkostendeckung reicht vorübergehend aus). Langfristig (Investitionsrechnung): Kapitalwert der Ein- und Auszahlungen = 0 (Vollkostendeckung).'},
+  {m:5,t:'Target Costing',d:'Integriertes Verfahren: Marktpreis ermitteln → Zielrendite → zulässige Kosten ↔ Vergleich mit geplanten Kosten. zulässige > geplante = mehr Rendite. geplante > zulässige = Kostensenkungsmaßnahmen.'},
+  {m:5,t:'Nachfrageorientierte Preisfindung — Gewinnmaximierung',d:'G\' = 0 setzen (Grenzkosten = Grenzerlös). Beispiel: Q = 10−0,5P; K = 5+4Q → G = −45+12P−0,5P² → G\' = 12−P = 0 → P = 12.'},
+  {m:5,t:'5 Rabattarten',d:'(1) Funktionsrabatt (für delegierte Leistungen). (2) Skonto/Barzahlungsrabatt (schnelle Zahlung). (3) Mengenrabatt (große Menge, Bonus = nachträglicher Mengenrabatt). (4) Treuerabatt (ausschließlicher Bezug). (5) Zeitrabatt (Bestellzeitpunkt).'},
+  {m:5,t:'Absatzkreditpolitik',d:'Absatzgeldkredit: nicht an Bezug von Gütern geknüpft. Absatzgüterkredit: direkt an Bezug von Gütern gebunden (Kaufpreis der Güter kreditiert).'},
+{m:6,t:'Absatzmittler vs. Absatzhelfer',d:'Mittler = Eigentumsübergang (Groß-/Einzelhändler). Helfer = KEIN Eigentumsübergang (Spediteur, Makler, Bank).'},
   {m:6,t:'Intensive vs. Exklusive Distribution',d:'Intensiv: so viele Händler wie möglich (Massenartikel). Exklusiv: Alleinverkaufsrecht + keine Konkurrenzprodukte (Luxusgüter).'},
   {m:6,t:'Franchisesystem',d:'Langfristige Beziehung. Geber: Name/Warenzeichen. Nehmer: fixe Eintrittsgebühr + variable Zahlungen.'},
   {m:6,t:'Push vs. Pull',d:'Push: Hersteller überzeugt Händler. Pull: Werbung an Endkunden zwingt Händler zur Listung.'},
@@ -1270,10 +1538,14 @@ const QQ=[
   {m:4,q:'Was ist eine "Radikale Innovation"?',o:['Kleine Verbesserung','Bestehende Technologie neu kombiniert','Einzelne Komponenten neu, Konzept bleibt','Produktkonzept VERWORFEN UND Komponentenverknüpfung VERÄNDERT — alles neu'],a:3,e:'Radikal: Produktkonzept verworfen (neu) + Verknüpfung der Produktkomponenten verändert (neu). Beispiel: erstes iPhone (2007). Alle vier Innovationstypen: inkremental, modular, architekturale, radikal.'},
   {m:4,q:'Welche Phase kommt beim Adoptionsprozess nach der "Bewertung"?',o:['Annahme','Interesse','Versuch','Erstkauf'],a:2,e:'Adoptionsprozess: Erkennen → Interesse → Bewertung → VERSUCH → Annahme → Erstkauf → Wiederkauf. Bei jeder Phase ist auch Ablehnung möglich!'},
   {m:4,q:'Welchen Anteil haben die "Frühadopter" im Rogers-Modell?',o:['2,5%','13,5%','34%','16%'],a:1,e:'Rogers: Innovatoren 2,5% · Frühadopter 13,5% · Frühe Mehrheit 34% · Späte Mehrheit 34% · Nachzügler 16%. Frühadopter = Meinungsführer mit hohem Ansehen, zweite Gruppe.'},
-    {m:5,q:'Was sind die 2 Grundtatbestände der Preispolitik?',o:['Kostenorientierung und Nachfrageorientierung','Erstmalige Preisfestlegung und Preisänderungen','Skimming und Penetration','Rabatte und Preisbündelung'],a:1,e:'(1) Erstmalige Preisfestlegung und (2) Preisänderungen.'},
-  {m:5,q:'Was ist der Unterschied zwischen Mengenrabatt und Skonto?',o:['Beide identisch','Mengenrabatt bei großen Bestellmengen; Skonto bei frühzeitiger Zahlung','Skonto für treue Kunden','Nur Skonto ist Konditionenpolitik'],a:1,e:'Mengenrabatt: Preisnachlass für große Bestellmengen. Skonto: Preisnachlass für schnelle Zahlung. NICHT verwechseln!'},
-  {m:5,q:'Was bedeutet η > -1 (Preiselastizität)?',o:['Elastisch — Preiserhöhung senkt Umsatz','Einheitliche Elastizität','Unelastisch — Preiserhöhung steigert Umsatz','Preis spielt keine Rolle'],a:2,e:'η > −1 = unelastisch. Preiserhöhung → proportional geringere Absatzmengenreduktion → Umsatz steigt.'},
-  {m:6,q:'Was ist der entscheidende Unterschied zwischen Absatzmittlern und Absatzhelfern?',o:['Absatzmittler sind teurer','Absatzmittler kaufen Ware (EIGENTUMSÜBERGANG!); Absatzhelfer ohne Eigentumsübergang','Beide kaufen und verkaufen','Absatzhelfer nur digital'],a:1,e:'SCHLÜSSELUNTERSCHIED: Absatzmittler = Eigentumsübergang! Absatzhelfer = kein Eigentumsübergang.'},
+      {m:5,q:'Was ist der Unterschied zwischen Preisgünstigkeit und Preiswürdigkeit?',o:['Beide sind identisch','Preisgünstigkeit = nur Preisvergleich (keine Qualität); Preiswürdigkeit = Preis-Leistungs-Verhältnis (Nettonutzen)','Preiswürdigkeit = nur Preisvergleich; Preisgünstigkeit = Preis-Leistungs-Verhältnis','Preisgünstigkeit = immer besser als Preiswürdigkeit'],a:1,e:'PRÜFUNGSFALLE: Preisgünstigkeit basiert AUSSCHLIESSLICH auf Preisunterschieden (Qualität NICHT berücksichtigt). Preiswürdigkeit basiert auf dem Preis-Leistungs-Verhältnis (Nettonutzen).'},
+  {m:5,q:'Was gilt für η > −1 bei einer Preiserhöhung?',o:['Umsatz sinkt (elastisch)','Umsatz bleibt konstant','Umsatz steigt (unelastisch)','Keine Aussage möglich'],a:2,e:'η > −1 = UNELASTISCH. Preiserhöhung → Nachfragemenge sinkt proportional weniger als der Preis steigt → Umsatz STEIGT. Merkhilfe: kleiner als -1 = elastisch, größer als -1 = unelastisch.'},
+  {m:5,q:'Was ist die Konsumentenrente?',o:['Der Gewinn des Unternehmens','Der Betrag den ein Nachfrager WENIGER zahlt als er bereit wäre zu zahlen','Der Betrag den ein Nachfrager MEHR zahlt als der Marktpreis','Die Differenz zwischen Fixkosten und variablen Kosten'],a:1,e:'Konsumentenrente = jener Betrag, den ein Nachfrager für ein bestimmtes Produkt WENIGER zahlen muss, als er aufgrund seiner Präferenz bereit wäre dafür zu zahlen. Ziel der Preisdifferenzierung: Konsumentenrente abschöpfen.'},
+  {m:5,q:'Was gilt im Polypol für die Preispolitik?',o:['Maximaler Spielraum für Preisgestaltung','Nur Nachfragerreaktionen müssen beachtet werden','Kein Spielraum bei der Preisbildung → weitgehender Verzicht auf eigene Preispolitik','Spielraum wie im Oligopol'],a:2,e:'Polypol: Vielzahl von Konkurrenten → Hersteller hat KEINEN Spielraum bei der Preisbildung → weitgehender Verzicht auf eigene Preispolitik! Monopol = maximaler Spielraum. Oligopol = eingeschränkter Spielraum.'},
+  {m:5,q:'Was versteht man unter der Skimmingstrategie?',o:['Niedriger Startpreis zur schnellen Marktdurchdringung','Hoher Startpreis zur schnellen Amortisation mit sukzessiver Preissenkung','Konstanter Preis über den gesamten Lebenszyklus','Preis immer unter dem der Konkurrenz'],a:1,e:'Skimming: hoher Startpreis → Abschöpfung der Konsumentenrente von Innovatoren → sukzessive Preissenkung mit zunehmender Markterschließung. Risiko: gute Gewinnchancen locken Konkurrenz.'},
+  {m:5,q:'Was ist der Skonto?',o:['Rabatt für große Bestellmengen','Rabatt für überwiegenden Bezug bei einem Lieferanten','Barzahlungsrabatt bei unverzüglicher Zahlung des Rechnungsbetrags','Rabatt für die Übernahme von Handelsfunktionen'],a:2,e:'Skonto = Barzahlungsrabatt bei unverzüglicher Zahlung. Mengenrabatt = bei Abnahme bestimmter Mengen. Treuerabatt = für ausschließlichen Bezug. Funktionsrabatt = für delegierte Handelsfunktionen. NICHT verwechseln!'},
+  {m:5,q:'Was ist die kurzfristige Preisuntergrenze?',o:['Kapitalwert der Ein- und Auszahlungen = 0','P > Gesamtstückkosten','P > variable Stückkosten kv (Teilkostendeckung reicht vorübergehend)','P > Marktpreis der Konkurrenz'],a:2,e:'Kurzfristige Preisuntergrenze (Kostenrechnung): p > kv. Annahme: Teilkostendeckung (variable Kosten) reicht vorübergehend aus. Langfristige Preisuntergrenze (Investitionsrechnung): Kapitalwert = 0 (Vollkostendeckung).'},
+{m:6,q:'Was ist der entscheidende Unterschied zwischen Absatzmittlern und Absatzhelfern?',o:['Absatzmittler sind teurer','Absatzmittler kaufen Ware (EIGENTUMSÜBERGANG!); Absatzhelfer ohne Eigentumsübergang','Beide kaufen und verkaufen','Absatzhelfer nur digital'],a:1,e:'SCHLÜSSELUNTERSCHIED: Absatzmittler = Eigentumsübergang! Absatzhelfer = kein Eigentumsübergang.'},
   {m:6,q:'Was ist exklusive Distribution?',o:['So viele Händler wie möglich','Ausgewählte Händler nach Qualitätskriterien','Alleinverkaufsrecht + Pflicht keine Konkurrenzprodukte zu führen','Direktvertrieb'],a:2,e:'Exklusiv: Alleinverkaufsrecht + keine Konkurrenzprodukte. Für Luxusmarken (Rolex, Ferrari).'},
   {m:6,q:'Was unterscheidet Messen von Ausstellungen?',o:['Messen für allgemeines Publikum','Messen für FACHBESUCHER (B2B); Ausstellungen für ALLGEMEINES PUBLIKUM (B2C)','Beide identisch','Messen nur für Großunternehmen'],a:1,e:'Messen: Fachbesucher, B2B, Wettbewerbsvergleich. Ausstellungen: allgemeines Publikum, B2C, Absatzziele.'},
   {m:7,q:'Was sind die 3 Kommunikationsziele?',o:['Preis, Qualität, Marke','Kognitiv (Wissen), Affektiv (Einstellung), Konativ (Verhalten)','Reichweite, Frequenz, Kosten','Werbung, PR, Sponsoring'],a:1,e:'(1) Kognitiv = Wissen, (2) Affektiv = Einstellungen, (3) Konativ = Verhalten. Hierarchie: Wissen → Einstellung → Kauf.'},
