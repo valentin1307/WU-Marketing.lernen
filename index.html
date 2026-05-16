@@ -30,7 +30,7 @@ html,body{height:100%;font-family:var(--f);font-size:13px;color:var(--t);backgro
 .sb-logo p{font-size:11px;color:#4b5a78;margin-top:1px}
 .sb-nav{flex:1;padding:12px 10px;overflow-y:auto;display:flex;flex-direction:column;gap:2px}
 .sb-sec{font-size:9px;font-weight:700;color:#2e4068;letter-spacing:1.5px;text-transform:uppercase;padding:10px 8px 4px}
-.ni{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:var(--r2);cursor:pointer;color:#7b8db0;font-size:12px;font-weight:500;border:none;background:none;width:100%;text-align:left}
+.ni{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:var(--r2);cursor:pointer;color:#7b8db0;font-size:12px;font-weight:500;border:none;background:none;width:100%;text-align:left;transition:all .15s}
 .ni:hover{background:#162035;color:#cbd5e1}
 .ni.on{background:var(--blue);color:#fff}
 .ni .ic{width:18px;text-align:center;font-size:14px;flex-shrink:0}
@@ -117,7 +117,7 @@ html,body{height:100%;font-family:var(--f);font-size:13px;color:var(--t);backgro
 .qpf{height:100%;background:var(--blue);border-radius:2px;transition:width .3s}
 .qt{font-size:14px;font-weight:600;line-height:1.5;margin-bottom:16px}
 .opts{display:flex;flex-direction:column;gap:8px}
-.opt{padding:11px 14px;border:1.5px solid var(--bd);border-radius:var(--r2);font-size:12px;cursor:pointer;text-align:left;background:var(--sur);color:var(--t);line-height:1.4;transition:all .15s;display:flex;align-items:center;gap:10px}
+.opt{padding:11px 14px;border:1.5px solid var(--bd);border-radius:var(--r2);font-size:12px;cursor:pointer;text-align:left;background:var(--sur);color:var(--t);line-height:1.4;transition:all .15s;display:flex;gap:10px;align-items:flex-start;font-family:var(--f)}
 .opt:hover:not(:disabled){border-color:var(--blue);background:var(--bl)}
 .opt.ok{border-color:var(--green);background:var(--gl);color:#065f46}
 .opt.no{border-color:var(--red);background:var(--rl);color:#991b1b}
@@ -157,7 +157,7 @@ html,body{height:100%;font-family:var(--f);font-size:13px;color:var(--t);backgro
 .mt-tab{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--bd);background:var(--sur);color:var(--t2);transition:all .15s}
 .mt-tab.on{background:var(--blue);color:#fff;border-color:var(--blue)}
 .fcnav{display:flex;align-items:center;gap:14px;justify-content:center;margin-bottom:14px}
-.fnb{background:var(--sur);border:1px solid var(--bd);border-radius:var(--r2);width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:var(--t2)}
+.fnb{background:var(--sur);border:1px solid var(--bd);border-radius:var(--r2);width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:var(--t2);transition:all .15s}
 .fnb:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
 .fc-ctr{font-size:12px;font-weight:600;color:var(--t2);font-family:var(--m)}
 .stat{background:var(--sur);border-radius:var(--r);border:1px solid var(--bd);padding:14px;text-align:center}
@@ -182,7 +182,7 @@ html,body{height:100%;font-family:var(--f);font-size:13px;color:var(--t);backgro
 .ls.hide{display:none}
 .lb{width:100%;max-width:400px;padding:0 24px}
 .ll{text-align:center;margin-bottom:28px}
-.ll .wu-b{display:inline-block;background:#162035;border:1px solid #1e2d47;border-radius:var(--r2);padding:6px 14px;font-size:10px;font-weight:700;color:#4d7cff;letter-spacing:2px;text-transform:uppercase}
+.ll .wu-b{display:inline-block;background:#162035;border:1px solid #1e2d47;border-radius:var(--r2);padding:6px 14px;font-size:10px;font-weight:700;color:#4d7cff;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
 .ll h1{font-size:20px;font-weight:700;color:#fff;line-height:1.2}
 .ll p{font-size:11px;color:#4b5a78;margin-top:3px}
 .ltabs{display:flex;background:#162035;border-radius:var(--r2);padding:3px;margin-bottom:20px;border:1px solid #1e2d47}
@@ -193,7 +193,7 @@ html,body{height:100%;font-family:var(--f);font-size:13px;color:var(--t);backgro
 .lf input{width:100%;background:#162035;border:1px solid #1e2d47;border-radius:var(--r2);padding:10px 13px;font-size:13px;color:#fff;font-family:var(--f);outline:none;transition:border-color .15s}
 .lf input:focus{border-color:var(--blue)}
 .lf input::placeholder{color:#2e4068}
-.lbtn{width:100%;background:linear-gradient(135deg,#2563eb,#7c3aed);border:none;border-radius:var(--r2);padding:11px;font-size:13px;font-weight:700;color:#fff;cursor:pointer;font-family:var(--f);margin-top:6px}
+.lbtn{width:100%;background:linear-gradient(135deg,#2563eb,#7c3aed);border:none;border-radius:var(--r2);padding:11px;font-size:13px;font-weight:700;color:#fff;cursor:pointer;font-family:var(--f);margin-top:4px;transition:opacity .15s}
 .lbtn:hover{opacity:.88}
 .lbtn:disabled{opacity:.5;cursor:not-allowed}
 .lerr{background:#2a1010;border:1px solid #7f1d1d;border-radius:var(--r2);padding:9px 13px;font-size:12px;color:#fca5a5;margin-bottom:12px;display:none}
@@ -306,7 +306,7 @@ html,body{height:100%;font-family:var(--f);font-size:13px;color:var(--t);backgro
 </div>
 <script>
 const SB_URL='https://uteddyxlglrfczojjyuv.supabase.co';
-const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV0ZWRkeXhsZ2xyZmN6b2pqeXV2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY4MzE3MDEsImV4cCI6MjA2MjQwNzcwMX0.1dCTgIYB0eGGj7FaGEFaY04nw5VGzVkb-TnO2xWV1zc';
+const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV0ZWRkeXhsZ2xyZmN6b2pqeXV2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY4MzE3MDEsImV4cCI6MjA2MjQwNzcwMX0.1dCTgIYB0eGGj7FaGEFaYo3nTGMHOCYlYZ-FwS2u0QM';
 const sb=supabase.createClient(SB_URL,SB_KEY);
 const FREE_EMAILS=['valentin@buehringuhle.de'];
 const STRIPE_URL='https://buy.stripe.com/4gM4gzb6o2nO58jeQfdIA00';
@@ -348,110 +348,1080 @@ function ri(it){
   }
   return '';
 }
+const LEARN=[
+{mod:0,chs:[
+{t:'Was ist Marketing?',items:[
+  {y:'def',k:'Marketing (Definition)',v:'Konzept der marktorientierten Unternehmensführung: Ausrichtung aller betrieblichen Aktivitäten an den Bedürfnissen der Märkte zur Erreichung der Unternehmensziele. <b>Kunden- und Wettbewerbsorientierung</b> als Kernprinzip.'},
+  {y:'kv',items:[
+    {k:'Marktorientierung',v:'Alle Entscheidungen an den Kundenbedürfnissen ausrichten.'},
+    {k:'Marketingkonzeption',v:'Situationsanalyse → Ziele → Strategie → Instrumente → Implementierung → Controlling.',c:'green'},
+  ]},
+  {y:'tbl',heads:['Ansatz','Kernidee'],rows:[
+    ['<b>MBV</b> (Market-Based View)','Wettbewerbsvorteil durch externe Marktpositionierung (Porter)'],
+    ['<b>RBV</b> (Resource-Based View)','Wettbewerbsvorteil durch interne Ressourcen/Kompetenzen (Barney)'],
+    ['<b>CBV</b> (Consumer-Behavior View)','Wettbewerbsvorteil durch Verständnis des Konsumentenverhaltens'],
+  ]},
+  {y:'trap',v:'<b>Marketing ≠ Werbung!</b> Marketing ist ein umfassendes Managementkonzept (4P + Strategie + Analyse), nicht nur Kommunikation.'},
+]},
+{t:'Der Marketingmanagement-Prozess',items:[
+  {y:'tbl',heads:['Schritt','Inhalt'],rows:[
+    ['<b>1. Situationsanalyse</b>','Umwelt, Wettbewerb, Kunden, eigene Stärken/Schwächen analysieren (SWOT, PEST)'],
+    ['<b>2. Marketingziele</b>','Ökonomische (Umsatz, Marktanteil) & psychografische Ziele (Image, Bekanntheit)'],
+    ['<b>3. Marketingstrategie</b>','Marktfeldstrategie, Marktstimulierungsstrategie, Marktarealstrategie, Marktparzellierungsstrategie'],
+    ['<b>4. Marketinginstrumente</b>','4P: Produkt, Preis, Distribution (Place), Kommunikation (Promotion)'],
+    ['<b>5. Implementierung</b>','Umsetzung der Maßnahmen im Unternehmen'],
+    ['<b>6. Controlling</b>','Erfolgsmessung und Rückkopplung'],
+  ]},
+  {y:'info',v:'<b>Marketingkonzeption</b> = Schritte 1–4 zusammen. Strategische Marketingplanung = Schritte 2–3. Operative Marketingplanung = Schritt 4.'},
+]},
+{t:'Märkte & Marktteilnehmer',items:[
+  {y:'def',k:'Markt',v:'Ort (physisch oder virtuell) des Zusammentreffens von Angebot und Nachfrage. <b>Käufermarkt:</b> Angebot > Nachfrage (Konsument hat Macht). <b>Verkäufermarkt:</b> Nachfrage > Angebot.'},
+  {y:'kv',items:[
+    {k:'Nachfrager',v:'Konsumenten (B2C) oder Unternehmen (B2B), die Bedürfnisse haben.'},
+    {k:'Anbieter',v:'Unternehmen, die Produkte/Dienstleistungen bereitstellen.',c:'green'},
+    {k:'Wettbewerb',v:'Andere Anbieter auf dem gleichen Markt.'},
+    {k:'Makro-Umwelt',v:'PEST: Politisch, Ökonomisch, Sozio-kulturell, Technologisch.',c:'amber'},
+  ]},
+  {y:'trap',v:'<b>B2C vs. B2B:</b> B2C = Business to Consumer (Endkunde). B2B = Business to Business (Unternehmenskunde). Unterschiedliches Kaufverhalten!'},
+]},
+{t:'Stakeholder Value & Unternehmenswert',items:[
+  {y:'def',k:'Stakeholder Value',v:'Wert für alle Interessengruppen des Unternehmens: Kunden, Mitarbeiter, Aktionäre, Gesellschaft. Marketing soll Kunden- UND Unternehmenswert steigern.'},
+  {y:'tbl',heads:['Werttreiber','Erklärung'],rows:[
+    ['<b>Kundenwert (CLV)</b>','Customer Lifetime Value = Barwert aller zukünftigen Zahlungsströme eines Kunden'],
+    ['<b>Markenwert</b>','Monetärer Wert der Marke (Brand Equity)'],
+    ['<b>Unternehmenswert</b>','Gesamter Wert des Unternehmens für Eigentümer'],
+  ]},
+]},
+]},
+{mod:1,chs:[
+{t:'Käuferverhalten — Grundmodell',items:[
+  {y:'def',k:'Käuferverhalten',v:'Beschreibt, wie und warum Konsumenten Kaufentscheidungen treffen. Zentral: Black-Box-Modell — wir können innere Prozesse nicht direkt beobachten.'},
+  {y:'tbl',heads:['Einflussfaktor','Beispiele'],rows:[
+    ['<b>Psychologische Faktoren</b>','Motivation, Wahrnehmung, Lernen, Einstellungen, Persönlichkeit'],
+    ['<b>Soziale Faktoren</b>','Familie, Referenzgruppen, soziale Rollen, Status'],
+    ['<b>Kulturelle Faktoren</b>','Kultur, Subkultur, soziale Klasse'],
+    ['<b>Persönliche Faktoren</b>','Alter, Beruf, Einkommen, Lebensstil'],
+  ]},
+  {y:'trap',v:'<b>Homo Oeconomicus vs. Realität:</b> Menschen entscheiden NICHT immer rational! Emotionen, Heuristiken und unbewusste Prozesse spielen eine große Rolle (Behavioral Economics).'},
+]},
+{t:'Der Kaufentscheidungsprozess',items:[
+  {y:'tbl',heads:['Phase','Inhalt'],rows:[
+    ['<b>1. Problemerkennung</b>','Wahrnehmung eines Bedürfnisses oder Problems'],
+    ['<b>2. Informationssuche</b>','Intern (Gedächtnis) und extern (Internet, Freunde, Werbung)'],
+    ['<b>3. Alternativenbewertung</b>','Vergleich von Optionen anhand von Kriterien (Evoked Set)'],
+    ['<b>4. Kaufentscheidung</b>','Auswahl und Kauf — kann durch andere beeinflusst werden'],
+    ['<b>5. Nachkaufverhalten</b>','Zufriedenheit, kognitive Dissonanz, Wiederkauf'],
+  ]},
+  {y:'kv',items:[
+    {k:'Evoked Set',v:'Menge der Alternativen, die der Konsument aktiv in Betracht zieht.'},
+    {k:'Kognitive Dissonanz',v:'Nachkauf-Unsicherheit: "Habe ich die richtige Entscheidung getroffen?"',c:'amber'},
+  ]},
+]},
+{t:'Kaufentscheidungstypen',items:[
+  {y:'tbl',heads:['Typ','Involvement','Merkmale','Beispiel'],rows:[
+    ['<b>Extensiv</b>','Hoch','Intensive Informationssuche, komplexer Prozess','Auto, Haus kaufen'],
+    ['<b>Limitiert</b>','Mittel','Vereinfachte Entscheidung mit Heuristiken','Neues Smartphone'],
+    ['<b>Habituell</b>','Niedrig','Gewohnheitskauf, keine Suche','Lieblings-Marmelade'],
+    ['<b>Impuls</b>','Sehr niedrig','Spontan, emotional getrieben','Schokoriegel an Kasse'],
+  ]},
+  {y:'info',v:'<b>Involvement</b> = Grad des persönlichen Engagements bei einer Kaufentscheidung. Hohes Involvement → aufwendigerer Entscheidungsprozess.'},
+]},
+{t:'Einstellungen & Persuasion',items:[
+  {y:'def',k:'Einstellung (Attitude)',v:'Erlernte Prädisposition, auf ein Objekt konsistent positiv oder negativ zu reagieren. Besteht aus: <b>kognitiver</b> (Wissen), <b>affektiver</b> (Gefühl) und <b>konativer</b> (Verhaltens-)Komponente.'},
+  {y:'tbl',heads:['Persuasionsroute','Bedingung','Wirkung'],rows:[
+    ['<b>Zentrale Route (ELM)</b>','Hohes Involvement + Fähigkeit zur Verarbeitung','Nachhaltige Einstellungsänderung durch Argumente'],
+    ['<b>Periphere Route (ELM)</b>','Niedriges Involvement oder fehlende Kompetenz','Oberflächliche Änderung durch Heuristiken (z.B. Attraktivität)'],
+  ]},
+  {y:'trap',v:'<b>Elaboration Likelihood Model (ELM):</b> Nur die zentrale Route führt zu dauerhafter Überzeugung. Werbung muss beide Routen berücksichtigen!'},
+]},
+]},
+{mod:2,chs:[
+{t:'Marktforschung — Grundlagen',items:[
+  {y:'def',k:'Marktforschung',v:'Systematische Sammlung, Aufbereitung, Analyse und Interpretation von Informationen über Märkte zum Zweck der Marketingentscheidungen. Reduziert Entscheidungsunsicherheit.'},
+  {y:'kv',items:[
+    {k:'Primärforschung',v:'Erhebung neuer Daten für den spezifischen Zweck (teuer, aktuell, spezifisch).'},
+    {k:'Sekundärforschung',v:'Nutzung vorhandener Daten (interne Daten, Statistiken, Studien). Günstig, schnell.',c:'green'},
+  ]},
+  {y:'tbl',heads:['Kriterium','Primär','Sekundär'],rows:[
+    ['Kosten','Hoch','Niedrig'],
+    ['Zeit','Lang','Kurz'],
+    ['Aktualität','Hoch','Variabel'],
+    ['Spezifität','Hoch','Niedrig'],
+  ]},
+]},
+{t:'Erhebungsmethoden',items:[
+  {y:'tbl',heads:['Methode','Beschreibung','Stärken'],rows:[
+    ['<b>Befragung</b>','Schriftlich, mündlich, telefonisch, online','Große Stichproben, strukturiert'],
+    ['<b>Beobachtung</b>','Systematische Wahrnehmung von Verhalten','Objektiv, kein Interviewereffekt'],
+    ['<b>Experiment</b>','Kontrolle von Ursache-Wirkungs-Beziehungen','Kausalaussagen möglich'],
+    ['<b>Panelerhebung</b>','Regelmäßige Befragung derselben Gruppe','Längsschnittdaten, Trends'],
+  ]},
+  {y:'trap',v:'<b>Qualitativ vs. Quantitativ:</b> Qualitativ = Verstehen (Tiefeninterviews, Fokusgruppen). Quantitativ = Messen (Fragebogen, n>30). Nicht verwechseln!'},
+]},
+{t:'Stichprobe & Messung',items:[
+  {y:'def',k:'Stichprobe',v:'Teilmenge der Grundgesamtheit. Ziel: repräsentative Auswahl. Methoden: Zufallsstichprobe (probabilistisch) vs. bewusste Auswahl (nicht-probabilistisch).'},
+  {y:'tbl',heads:['Gütekriterium','Erklärung'],rows:[
+    ['<b>Validität</b>','Misst das Instrument, was es messen soll?'],
+    ['<b>Reliabilität</b>','Ist die Messung stabil/wiederholbar?'],
+    ['<b>Objektivität</b>','Ist das Ergebnis unabhängig vom Forscher?'],
+  ]},
+  {y:'kv',items:[
+    {k:'Skalenniveau',v:'Nominal (Kategorien) → Ordinal (Rangfolge) → Intervall (gleiche Abstände) → Ratio (absoluter Nullpunkt).'},
+    {k:'Likert-Skala',v:'Häufig 5- oder 7-stufige Zustimmungsskala. Beispiel: 1=stimme gar nicht zu bis 5=stimme voll zu.',c:'green'},
+  ]},
+]},
+]},
+{mod:3,chs:[
+{t:'SWOT-Analyse',items:[
+  {y:'def',k:'SWOT-Analyse',v:'Strategisches Analysewerkzeug: <b>S</b>trengths (Stärken), <b>W</b>eaknesses (Schwächen) — intern; <b>O</b>pportunities (Chancen), <b>T</b>hreats (Risiken) — extern.'},
+  {y:'tbl',heads:['Quadrant','Strategie'],rows:[
+    ['<b>SO (Stärken + Chancen)</b>','Ausbaustrategie: Stärken nutzen, um Chancen zu ergreifen'],
+    ['<b>ST (Stärken + Risiken)</b>','Diversifikationsstrategie: Stärken einsetzen, um Risiken abzuwehren'],
+    ['<b>WO (Schwächen + Chancen)</b>','Aufholstrategie: Schwächen abbauen, um Chancen zu nutzen'],
+    ['<b>WT (Schwächen + Risiken)</b>','Defensivstrategie: Rückzug oder Minimierung von Verlusten'],
+  ]},
+  {y:'trap',v:'<b>Intern vs. Extern!</b> Stärken und Schwächen sind INTERN (controllable). Chancen und Risiken sind EXTERN (uncontrollable). Häufiger Prüfungsfehler!'},
+]},
+{t:'Wettbewerbsstrategien nach Porter',items:[
+  {y:'def',k:'Generische Strategien (Porter)',v:'Drei grundlegende Wettbewerbsstrategien zur Erzielung von Wettbewerbsvorteilen.'},
+  {y:'tbl',heads:['Strategie','Fokus','Beispiel'],rows:[
+    ['<b>Kostenführerschaft</b>','Niedrigster Preis durch Kostenoptimierung','Ryanair, Hofer/Aldi'],
+    ['<b>Differenzierung</b>','Einzigartigkeit, die Kunden zahlen wollen','Apple, BMW'],
+    ['<b>Fokus/Nische</b>','Konzentration auf ein Marktsegment','Rolls Royce, Bio-Nischenmarken'],
+  ]},
+  {y:'trap',v:'<b>Stuck in the Middle:</b> Wer keine klare Strategie verfolgt, hat weder Kostenvorteile noch Differenzierungsmerkmale — gefährlich!'},
+  {y:'info',v:'Porters <b>5 Wettbewerbskräfte</b>: Rivalität der Wettbewerber, Bedrohung durch neue Anbieter, Bedrohung durch Substitute, Verhandlungsmacht der Lieferanten, Verhandlungsmacht der Kunden.'},
+]},
+{t:'Marktfeldstrategien (Ansoff-Matrix)',items:[
+  {y:'def',k:'Ansoff-Matrix',v:'Produkt-Markt-Matrix zur Wachstumsplanung: Kombination aus bestehenden/neuen Produkten und bestehenden/neuen Märkten.'},
+  {y:'tbl',heads:['Strategie','Markt','Produkt','Risiko'],rows:[
+    ['<b>Marktdurchdringung</b>','Bestehend','Bestehend','Niedrig'],
+    ['<b>Marktentwicklung</b>','Neu','Bestehend','Mittel'],
+    ['<b>Produktentwicklung</b>','Bestehend','Neu','Mittel'],
+    ['<b>Diversifikation</b>','Neu','Neu','Hoch'],
+  ]},
+  {y:'kv',items:[
+    {k:'Diversifikation — Typen',v:'Horizontal (ähnliche Branche), Vertikal (vor-/nachgelagerte Stufe), Lateral/Konglomerat (völlig neue Branche).'},
+  ]},
+]},
+{t:'Marktparzellierung & Targeting',items:[
+  {y:'def',k:'Marktsegmentierung',v:'Aufteilung des Gesamtmarkts in homogene Untergruppen (Segmente) mit ähnlichen Bedürfnissen. Ziel: passgenaue Ansprache.'},
+  {y:'tbl',heads:['Kriterium','Beispiele'],rows:[
+    ['<b>Demografisch</b>','Alter, Geschlecht, Einkommen, Bildung'],
+    ['<b>Geografisch</b>','Land, Region, Stadt/Land'],
+    ['<b>Psychografisch</b>','Lebensstil, Werte, Persönlichkeit'],
+    ['<b>Verhaltensorientiert</b>','Kaufhäufigkeit, Markentreue, Nutzungsintensität'],
+  ]},
+  {y:'tbl',heads:['Targeting-Strategie','Beschreibung'],rows:[
+    ['<b>Undifferenziert</b>','Massenmarketing — ein Angebot für alle'],
+    ['<b>Differenziert</b>','Mehrere Segmente, jeweils angepasste Angebote'],
+    ['<b>Konzentriert</b>','Fokus auf ein oder wenige Segmente (Nische)'],
+    ['<b>Individualisiert</b>','One-to-One Marketing (z.B. Amazon-Empfehlungen)'],
+  ]},
+]},
+{t:'Positionierung',items:[
+  {y:'def',k:'Positionierung',v:'Gestaltung des Angebots so, dass es im Bewusstsein der Zielkunden einen klar abgegrenzten, wünschenswerten Platz einnimmt — im Vergleich zum Wettbewerb.'},
+  {y:'step',n:1,t:'Zielgruppe definieren',q:'Wer sind unsere Kunden?'},
+  {y:'step',n:2,t:'Wettbewerbsrahmen festlegen',q:'Gegen wen konkurrieren wir?'},
+  {y:'step',n:3,t:'USP identifizieren',q:'Was ist unser einzigartiger Vorteil (Point of Difference)?'},
+  {y:'step',n:4,t:'Positionierungsstatement formulieren',q:'Formulierung: Für [Zielgruppe] ist [Marke] die [Kategorie], die [POD] weil [Reason to Believe].'},
+  {y:'kv',items:[
+    {k:'Point of Difference (POD)',v:'Einzigartiges, bedeutsames Unterscheidungsmerkmal gegenüber dem Wettbewerb.'},
+    {k:'Point of Parity (POP)',v:'Must-have Merkmale, die Konsumenten in der Kategorie erwarten (Hygienefaktoren).',c:'amber'},
+  ]},
+]},
+]},
+{mod:4,chs:[
+{t:'Produktpolitik — Grundlagen',items:[
+  {y:'def',k:'Produktpolitik',v:'Alle Entscheidungen, die die Gestaltung des Leistungsprogramms eines Unternehmens betreffen: Produktinnovation, -variation, -elimination und die Produktpalette.'},
+  {y:'tbl',heads:['Ebene','Inhalt'],rows:[
+    ['<b>Kernprodukt</b>','Grundnutzen: Was kauft der Kunde wirklich? (z.B. Bohrmaschine → Loch in der Wand)'],
+    ['<b>Reales Produkt</b>','Physische Ausgestaltung: Qualität, Design, Marke, Verpackung, Features'],
+    ['<b>Erweitertes Produkt</b>','Zusatzleistungen: Garantie, Lieferung, Kundendienst, Finanzierung'],
+  ]},
+  {y:'kv',items:[
+    {k:'Produktlinie',v:'Gruppe eng verwandter Produkte (z.B. alle BMW 3er-Modelle).'},
+    {k:'Produktmix',v:'Gesamtheit aller Produktlinien eines Unternehmens.',c:'green'},
+  ]},
+]},
+{t:'Produktlebenszyklus',items:[
+  {y:'def',k:'Produktlebenszyklus (PLC)',v:'Modell, das die typischen Absatz- und Gewinntentwicklungen eines Produkts über die Zeit beschreibt.'},
+  {y:'tbl',heads:['Phase','Merkmal','Strategie'],rows:[
+    ['<b>Einführung</b>','Langsames Wachstum, hohe Kosten, negativer Gewinn','Bekanntmachung, ggf. Skimming oder Penetration'],
+    ['<b>Wachstum</b>','Schnell steigender Umsatz, Wettbewerber treten ein','Marktanteile sichern, Distribution ausbauen'],
+    ['<b>Reife</b>','Wachstum verlangsamt, Gewinn max., starker Wettbewerb','Differenzierung, Kostenoptimierung'],
+    ['<b>Sättigung</b>','Stagnation, Preiskampf','Marktpflege, Relaunches'],
+    ['<b>Degeneration</b>','Sinkender Umsatz','Elimination oder Relaunch'],
+  ]},
+  {y:'trap',v:'<b>PLC ≠ Realität:</b> Nicht alle Produkte durchlaufen alle Phasen. Manche überspringen Phasen, kehren zurück oder haben atypische Kurven.'},
+]},
+{t:'Markenpolitik',items:[
+  {y:'def',k:'Marke (Brand)',v:'Name, Begriff, Zeichen, Symbol oder Design, das die Produkte eines Anbieters von denen der Wettbewerber unterscheidet und identifizierbar macht.'},
+  {y:'tbl',heads:['Markenstrategie','Beschreibung','Beispiel'],rows:[
+    ['<b>Einzelmarkenstrategie</b>','Jedes Produkt hat eine eigene Marke','Ariel, Pampers (beide P&G)'],
+    ['<b>Familienmarkenstrategie</b>','Eine Marke für eine Produktgruppe','Maggi (Knorr-Produkte)'],
+    ['<b>Dachmarkenstrategie</b>','Eine Marke für alle Produkte','Siemens, Virgin'],
+    ['<b>Handelsmarke</b>','Marke des Händlers (Private Label)','REWE Bio, Ja! (Rewe)'],
+  ]},
+  {y:'kv',items:[
+    {k:'Markenwert (Brand Equity)',v:'Mehrwert, den eine Marke einem Produkt verleiht. Komponenten: Bekanntheit, Qualitätswahrnehmung, Markenloyalität, Assoziationen.'},
+    {k:'Markenpositionierung',v:'Gezielter Aufbau eines klaren Markenbildes im Konsumentenbewusstsein.',c:'green'},
+  ]},
+]},
+{t:'Innovationsmanagement',items:[
+  {y:'def',k:'Innovation',v:'Erstmalige wirtschaftliche Nutzung einer Erfindung (Invention). Typen: Produktinnovation, Prozessinnovation, Geschäftsmodellinnovation.'},
+  {y:'tbl',heads:['Phase des Innovationsprozesses','Inhalt'],rows:[
+    ['<b>Ideengenerierung</b>','Kreativitätstechniken, Kundenfeedback, Mitarbeiterideen'],
+    ['<b>Screening</b>','Bewertung und Auswahl von Ideen (Machbarkeit, Marktpotenzial)'],
+    ['<b>Konzeptentwicklung</b>','Detaillierung und Produktkonzept-Test'],
+    ['<b>Entwicklung & Test</b>','Prototyp, Markttest (z.B. Testmarkt)'],
+    ['<b>Markteinführung</b>','Launch: Timing, Gebiet, Zielgruppe, Einführungsstrategie'],
+  ]},
+  {y:'kv',items:[
+    {k:'Early Adopters',v:'Innovations-Erstnutzer. Laut Rogers: Innovatoren (2,5%) → Early Adopters (13,5%) → Early Majority (34%) → Late Majority (34%) → Laggards (16%).'},
+    {k:'Chasm (Abgrund)',v:'Kritische Lücke zwischen Early Adopters und Early Majority bei disruptiven Innovationen.',c:'amber'},
+  ]},
+]},
+]},
+{mod:5,chs:[
+{t:'Preispolitik — Grundlagen & Ziele',items:[
+  {y:'def',k:'Preispolitik',v:'Alle Entscheidungen, die die Festlegung von Preisen und Konditionen für Produkte und Dienstleistungen betreffen. Der Preis ist das einzige P, das direkt Umsatz generiert.'},
+  {y:'tbl',heads:['Preisziel','Beispiele'],rows:[
+    ['<b>Gewinn-/Rendite-Ziele</b>','Gewinnmaximierung, ROI, Deckungsbeitrag'],
+    ['<b>Absatz-/Marktanteilsziele</b>','Marktanteile sichern, Absatzsteigerung'],
+    ['<b>Wettbewerbsziele</b>','Marktführerschaft, Verdrängung'],
+    ['<b>Kundenziele</b>','Qualitätsimage, Kundenzufriedenheit'],
+  ]},
+  {y:'trap',v:'<b>Preis ist das stärkste Marketinginstrument!</b> Eine Preiserhöhung um 1% kann den Gewinn um 10%+ steigern (vgl. McKinsey). Gleichzeitig: Preisänderungen sind leicht imitierbar!'},
+]},
+{t:'Preisfindungsmethoden',items:[
+  {y:'tbl',heads:['Methode','Beschreibung','Vorteil'],rows:[
+    ['<b>Kostenorientiert</b>','Kosten + Aufschlag (Cost-Plus) oder Break-Even-Pricing','Einfach, sicher'],
+    ['<b>Nachfrageorientiert</b>','Preis nach Zahlungsbereitschaft der Kunden (Value-Based)','Schöpft Wert ab'],
+    ['<b>Wettbewerbsorientiert</b>','Preis am Markt ausrichten (Going-Rate Pricing)','Marktkonform'],
+  ]},
+  {y:'formula',lbl:'Break-Even-Menge',v:'x* = Kf / (p − kv)',note:'Kf = Fixkosten, p = Preis, kv = variable Stückkosten'},
+  {y:'formula',lbl:'Break-Even-Umsatz',v:'U* = Kf / (1 − kv/p) = Kf / Deckungsbeitragssatz'},
+  {y:'trap',v:'<b>Deckungsbeitrag (DB) = p − kv.</b> Solange DB > 0, lohnt sich die Produktion kurzfristig! Langfristig muss DB alle Fixkosten decken.'},
+]},
+{t:'Preiselastizität der Nachfrage',items:[
+  {y:'def',k:'Preiselastizität (η)',v:'Misst die prozentuale Änderung der Nachfrage bei einer 1%igen Preisänderung.'},
+  {y:'formula',lbl:'Preiselastizität',v:'η = (ΔQ/Q) / (ΔP/P) = (ΔQ/ΔP) · (P/Q)',note:'|η| > 1 = elastisch; |η| < 1 = unelastisch; |η| = 1 = einheitselastisch'},
+  {y:'tbl',heads:['Elastizität','Bedeutung','Beispiel'],rows:[
+    ['<b>Elastisch (|η|>1)</b>','Preiserhöhung → Umsatzrückgang','Luxusgüter, Markenartikel mit Alternativen'],
+    ['<b>Unelastisch (|η|<1)</b>','Preiserhöhung → Umsatzsteigerung','Lebensnotwendige Güter, Zigaretten'],
+    ['<b>Einheitselastisch</b>','Preisänderung → kein Umsatzeffekt','Theor. Spezialfall'],
+  ]},
+  {y:'trap',v:'<b>VORZEICHEN:</b> η ist fast immer negativ (Preiserhöhung → weniger Nachfrage). In der Praxis wird oft der Absolutbetrag |η| verwendet!'},
+]},
+{t:'Preisstrategien',items:[
+  {y:'tbl',heads:['Strategie','Beschreibung','Einsatz'],rows:[
+    ['<b>Skimming (Abschöpfung)</b>','Hoher Einführungspreis, der schrittweise sinkt','Innovationen, technische Produkte'],
+    ['<b>Penetration</b>','Niedriger Einführungspreis für schnelle Marktdurchdringung','Neue Märkte, starker Wettbewerb'],
+    ['<b>Prestige-Pricing</b>','Dauerhaft hoher Preis als Qualitätssignal','Luxusgüter'],
+    ['<b>Bündelpreise</b>','Mehrere Produkte zusammen günstiger','Software-Suiten, Menüs'],
+  ]},
+  {y:'kv',items:[
+    {k:'Preisdifferenzierung',v:'Verschiedene Preise für gleiche/ähnliche Produkte: zeitlich (Happy Hour), räumlich (Länder), personell (Studenten), mengenmäßig.'},
+    {k:'Yield Management',v:'Dynamische Preise je nach Nachfrage/Zeit. Bsp: Flugtickets, Hotelzimmer.',c:'green'},
+  ]},
+]},
+{t:'Preispsychologie & Konditionenpolitik',items:[
+  {y:'def',k:'Konditionenpolitik',v:'Gestaltung der Zahlungs- und Lieferungsbedingungen: Rabatte, Skonti, Boni, Zahlungsfristen.'},
+  {y:'tbl',heads:['Psychologischer Effekt','Erklärung'],rows:[
+    ['<b>Preisschwelle</b>','9,99 € wirkt günstiger als 10,00 € (Odd Pricing)'],
+    ['<b>Referenzpreis</b>','Konsumenten vergleichen Preise mit einem internen Referenzwert'],
+    ['<b>Qualitätssignal</b>','Hoher Preis = hohe Qualität (gilt v.a. bei Informationsasymmetrie)'],
+    ['<b>Ankereffekt</b>','Zuerst genannter Preis beeinflusst alle weiteren Urteile'],
+  ]},
+  {y:'kv',items:[
+    {k:'Skonto',v:'Preisnachlass bei sofortiger Zahlung (z.B. 2% bei Zahlung innert 10 Tagen).'},
+    {k:'Mengenrabatt',v:'Günstigerer Preis bei Abnahme größerer Mengen.',c:'green'},
+  ]},
+]},
+]},
+{mod:6,chs:[
+{t:'Distributionspolitik — Definition, Ziele & Aspekte',items:[
+  {y:'def',k:'Distributionspolitik',v:'Umfasst alle Entscheidungen, die die <b>Verteilung der (im)materiellen Leistungen</b> vom Hersteller zum Endkäufer betreffen. Zentral: <b>Transaktionsfunktion</b> = wirtschaftlich-rechtliche Übertragung von Verfügungsmacht über eine Leistung an den Endkäufer.'},
+  {y:'h',v:'Distributionspolitische Ziele:'},
+  {y:'badges',items:[
+    {v:'Reduzierung der Vertriebskosten & Handelsspannen',c:'b'},
+    {v:'Erhöhung des Distributionsgrades',c:'b'},
+    {v:'Kooperation mit Absatzmittlern',c:'b'},
+    {v:'Auswahl kompetenter & passender Absatzmittler (Image der Absatzkanäle)',c:'b'}
+  ]},
+  {y:'h',v:'3 Aspekte der Distributionspolitik:'},
+  {y:'tbl',heads:['Ebene','Inhalt'],rows:[
+    ['<b>I. Markttransaktionen</b>','Marktbasierter Ansatz (MBV) + Konsumentenverhaltensbasierter Ansatz (CBV)'],
+    ['<b>II. Entscheidungsprozesse</b>','Kaufentscheidungen der Nachfrager (Netto-Nutzen-Vorteil) ↔ Marketingentscheidungen der Anbieter (Wettbewerbsvorteil): Absatzkanalmgmt. + Marketinglogistik'],
+    ['<b>III. Wertebene</b>','Kunden- u. Markenwert ↔ Stakeholder Value ↔ Unternehmenswert'],
+  ]},
+  {y:'h',v:'2 Teilsysteme der Distributionspolitik:'},
+  {y:'kv',items:[
+    {k:'Absatzkanalsystem',v:'Direkter Weg (Hersteller → Konsument) ODER indirekter Weg über <b>Absatzmittler</b> (Einzelhändler, Großhändler, Jobber). Absatzmittler = <b>EIGENTUMSÜBERGANG!</b>'},
+    {k:'Logistiksystem',v:'Physische Distribution durch <b>Absatzhelfer</b> (z.B. Spediteur LKW Walter). Absatzhelfer = <b>KEIN Eigentumsübergang!</b>',c:'amber'},
+  ]},
+  {y:'trap',v:'<b>SCHLÜSSELUNTERSCHIED:</b> Absatzmittler (Groß-/Einzelhändler) = <b>EIGENTUMSÜBERGANG!</b> Absatzhelfer (Spediteur, Makler, Bank) = <b>KEIN Eigentumsübergang.</b>'},
+]},
+{t:'Absatzkanalmanagement & Konfliktursachen',items:[
+  {y:'def',k:'Absatzkanalmanagement',v:'Systemische Planung, Koordinierung, Durchsetzung und Kontrolle <b>aller Maßnahmen, die auf das Absatzkanalsystem gerichtet sind</b>.'},
+  {y:'tbl',heads:['Aufgabe','Inhalt'],rows:[
+    ['<b>Systemische Planung</b>','Strategische und operative Planung des gesamten Absatzkanalsystems'],
+    ['<b>Koordinierung</b>','Abstimmung zwischen den Akteuren im Absatzkanal'],
+    ['<b>Durchsetzung</b>','Umsetzung der geplanten Kanalmaßnahmen'],
+    ['<b>Kontrolle</b>','Überwachung und Anpassung der Kanalaktivitäten'],
+  ]},
+  {y:'h',v:'4 Konfliktursachen im Absatzkanalsystem:'},
+  {y:'tbl',heads:['Konfliktursache','Erklärung'],rows:[
+    ['<b>Zielbeziehungen</b>','Zieldivergenzen zwischen Hersteller und Handel (z.B. unterschiedliche Preis-/Sortimentsvorstellungen)'],
+    ['<b>Rollenbeziehungen</b>','Konfliktäre Erwartungen bezüglich der Übernahme bestimmter Marketingfunktionen'],
+    ['<b>Machtbeziehungen</b>','Zunehmende Machtkonzentration im Handel (z.B. Einkaufskooperationen)'],
+    ['<b>Kommunikationsbeziehungen</b>','Informationsvorsprung einer Partei (Informationsasymmetrie zwischen Hersteller und Händler)'],
+  ]},
+  {y:'tip',v:'<b>Merkhilfe:</b> Z-R-M-K: Ziel-, Rollen-, Macht-, Kommunikationsbeziehungen.'}
+]},
+{t:'Aufgaben der Absatzmittler',items:[
+  {y:'h',v:'Gründe für Absatzmittler (aus Herstellersicht):'},
+  {y:'badges',items:[
+    {v:'Fehlen von Finanzmitteln für Direktvertrieb',c:'b'},
+    {v:'Flächendeckende Warendistribution sicherstellen',c:'b'},
+    {v:'Investition in Kerngeschäft ermöglichen',c:'b'}
+  ]},
+  {y:'h',v:'Aufgaben der Absatzmittler:'},
+  {y:'tbl',heads:['Aufgabe','Erklärung'],rows:[
+    ['<b>Bildung von Warensortimenten</b>','Zusammenstellung von Waren verschiedener Hersteller zu einem attraktiven Sortiment'],
+    ['<b>Überbrückungsfunktion</b>','Überbrückung von Ungleichheiten zwischen Herstellerangebot und KundInnenwünschen (Menge, Zeit, Ort)'],
+    ['<b>(Vor-)Finanzierungsfunktion</b>','Übernahme von Lager- und Finanzierungsrisiken vom Hersteller'],
+  ]},
+  {y:'h',v:'Vorteile für KonsumentInnen:'},
+  {y:'kv',items:[
+    {k:'Breiteres Warenangebot',v:'Konsument findet Produkte verschiedener Hersteller an einem Ort (One-Stop-Shopping).'},
+    {k:'Kleinere (haushaltsübliche) Warenmengen erhältlich',v:'Keine Abnahme von Großgebinden nötig.',c:'green'},
+  ]},
+]},
+{t:'Selektionsprozess — Direkter & Indirekter Vertrieb',items:[
+  {y:'def',k:'Selektionsprozess',v:'Legt die grundsätzliche <b>Struktur der Absatzkanäle</b> fest: Entscheidungen über <b>direkten oder indirekten Vertrieb</b> sowie über <b>Art und Anzahl</b> der Absatzmittler.'},
+  {y:'h',v:'Direkter Vertrieb — 6 Formen:'},
+  {y:'tbl',heads:['Form','Beschreibung'],rows:[
+    ['<b>Haus-zu-Haus Verkauf</b>','Verkäufer besucht Kunden direkt zu Hause'],
+    ['<b>Partyverkauf</b>','Verkauf im privaten Umfeld (z.B. Tupperware, Thermomix)'],
+    ['<b>Katalogverkauf</b>','Bestellung per Katalog, Lieferung nach Hause'],
+    ['<b>Verkaufsfilialen</b>','Eigene Geschäfte des Herstellers (z.B. Apple Store)'],
+    ['<b>Teleshopping</b>','Verkauf über TV-Kanäle'],
+    ['<b>Onlineshopping</b>','Direktvertrieb über eigenen Webshop des Herstellers'],
+  ]},
+  {y:'h',v:'Indirekter Vertrieb — Einstufig:'},
+  {y:'tbl',heads:['Kategorie','Unterformen'],rows:[
+    ['<b>Einzelhandel — Facheinzelhandel</b>','Fachgeschäft, Spezialgeschäft, Fachmarkt'],
+    ['<b>Einzelhandel — Gemischtwarenhandel</b>','Tante-Emma-Laden, Supermarkt, Verbrauchermarkt, Discounter, Kauf-/Warenhaus, Off-Price-Retailer'],
+    ['<b>Einzelhandel — Ladenlos</b>','Versandhaus, Tele-Shop, Online-Shop'],
+    ['<b>Großhandel</b>','Spezialgroßhandel, Sortimentsgroßhandel, Konsumgroßhandel, Cash und Carry'],
+  ]},
+  {y:'h',v:'Indirekter Vertrieb — Mehrstufig:'},
+  {y:'kv',items:[
+    {k:'Kooperation',v:'Einkaufsgenossenschaft, Handelskooperative, Einkaufskontore, Freiwillige Ketten.'},
+    {k:'Konzentration',v:'Konsumgenossenschaft, Filialunternehmen.',c:'green'},
+  ]},
+]},
+{t:'Betriebstypen: Facheinzelhandel',items:[
+  {y:'tbl',heads:['Betriebstyp','Merkmale'],rows:[
+    ['<b>Fachgeschäft</b>','Breites Warenangebot EINER Branche. Persönliche Bedienung und Beratung. Bsp: Intersport, Hartlauer.'],
+    ['<b>Spezialgeschäft</b>','Schmales, TIEFES Sortiment aus dem Warenangebot einer Branche. Konzentration auf spezifische Produktgruppe. Fachkundige Beratung. Bsp: Hutgeschäft, Angelshop.'],
+    ['<b>Fachmarkt</b>','Breites Warenangebot einer Branche. An verkehrsgünstigen Standorten (Parkplätze). Niedriger Anteil an Personal- und Raumkosten. Bsp: OBI (Baumarkt), IKEA.'],
+  ]},
+  {y:'trap',v:'<b>Fachgeschäft ≠ Fachmarkt!</b> Fachgeschäft = persönliche Beratung, eher kein Selbstbedienungscharakter. Fachmarkt = verkehrsgünstige Lage, niedriger Personalkostenanteil.'},
+  {y:'tip',v:'<b>Merkhilfe:</b> Spezialgeschäft = schmal aber tief (wenige Produkte, viele Varianten). Fachgeschäft = breit einer Branche + persönliche Beratung. Fachmarkt = breit + günstige Lage + wenig Personal.'}
+]},
+{t:'Betriebstypen: Gemischtwarenhandel',items:[
+  {y:'tbl',heads:['Betriebstyp','Merkmale'],rows:[
+    ['<b>Tante-Emma-Laden</b>','Klassischer Einkaufsladen. Umsatz <125.000€/Jahr. Gezielte Sortimentspolitik. Besondere Öffnungszeiten.'],
+    ['<b>Supermarkt</b>','Fläche 400–800 m². Lebensmittel + begrenztes Non-Food-Angebot. 5.000–7.000 Artikel. In Wohngebieten.'],
+    ['<b>Verbrauchermarkt</b>','Großbetrieb. Vollsortiment Food + Non-Food (kurz-/mittelfristiger Bedarf). 28.000–32.000 Produkte. Verkehrsgünstig.'],
+    ['<b>Discounter</b>','Kostengünstige Lage. Aggressive Preispolitik. Verkaufsfläche = Lagerfläche (kein separates Lager!). Bsp: Lidl, Hofer.'],
+    ['<b>Kauf-/Warenhaus</b>','Große Sortimentsbreite. Jede Produktlinie bildet eine Abteilung. Eher Selbstbedienung. In der Innenstadt.'],
+    ['<b>Off-Price-Retailer</b>','Kein gleichbleibendes Sortiment. Schnäppchen (Saisonware, Restposten, Konkursware). Spezialfall: Factory Outlet.'],
+  ]},
+  {y:'info',v:'<b>Zahlenwissen für Klausur:</b> Supermarkt: 400–800 m², 5.000–7.000 Artikel. Verbrauchermarkt: 28.000–32.000 Produkte. Tante-Emma: Umsatz <125.000€/Jahr.'}
+]},
+{t:'Anzahl der Absatzmittler — 3 Distributionsstrategien',items:[
+  {y:'tbl',heads:['Strategie','Beschreibung','Produkte'],rows:[
+    ['<b>Intensive Distribution</b>','Produkte müssen überall verfügbar sein → so viele Händler wie möglich.','Massenartikel (Coca-Cola, Milch, Zeitungen)'],
+    ['<b>Selektive Distribution</b>','Bestimmte Anzahl von Händlern, zu denen eine enge Geschäftsbeziehung aufgebaut wird.','Mittlere Qualität (Marken-Sportartikel, Elektronikartikel)'],
+    ['<b>Exklusive Distribution</b>','Alleinverkaufsrechte für bestimmtes Gebiet. Verpflichtung, keine konkurrierenden Produkte zu führen.','Luxusgüter (Rolex, Ferrari, Porsche)'],
+  ]},
+  {y:'tip',v:'<b>Merkhilfe:</b> Intensiv → Selektiv → Exklusiv. Mit steigender Selektivität steigt die Kontrollmöglichkeit des Herstellers.'}
+]},
+{t:'Vertikalisierung & Mehrkanalvertrieb',items:[
+  {y:'def',k:'Vertikalisierung des Absatzkanals',v:'Hersteller oder Händler übernehmen Funktionen der jeweils anderen Stufe — vertikale Integration der Wertschöpfungskette.'},
+  {y:'kv',items:[
+    {k:'Rückwärtsintegration (Händler → Hersteller)',v:'Händler übernimmt Herstellerfunktionen: Akquisition des Lieferanten → Aufbau eigener Produktion → Langfristige Bindung des Lieferanten. Bsp: Handelseigenmarken.'},
+    {k:'Vorwärtsintegration (Hersteller → Handel)',v:'Hersteller übernimmt distributionspolitische Aufgaben: Shop-in-Shop → Franchise → Konzessionen → Factory Outlets → Eigene Filialen. Bsp: Apple Store, Nespresso Boutique.',c:'green'},
+  ]},
+  {y:'h',v:'Vorwärtsintegration — Chancen & Risiken:'},
+  {y:'tbl',heads:['Chancen','Risiken'],rows:[
+    ['Steigerung der Prozesseffizienz','Investitionsbedarf'],
+    ['Stärkere Einflussnahme auf Markenauftritt am PoS','Strategische Risiken'],
+    ['Verbesserung der Preisrealisierung','Operative Risiken'],
+    ['Besserer Zugang zum Nachfrager',''],
+    ['Sicherung/Ausbau der Verkaufsoberfläche',''],
+  ]},
+  {y:'h',v:'Mehrkanalvertrieb — Chancen & Risiken:'},
+  {y:'tbl',heads:['Chancen','Risiken'],rows:[
+    ['Bessere Betreuung vorhandener Kunden','Verringertes Vertriebsengagement der Kanäle'],
+    ['Multiple Kundenbindung','Hoher Koordinationsaufwand'],
+    ['Kanalübergreifendes Cross-Selling','Komplexitätserhöhung'],
+    ['Individuelle Ansprache + Gewinnung neuer Zielgruppen','Hohe Investitionskosten'],
+    ['Schwer zu imitierender Wettbewerbsvorteil','Fehlende Kompetenzen'],
+    ['Mehr Möglichkeiten zu identitätskonformer Markenpräsentation','Markenimagekonfusion'],
+  ]},
+]},
+{t:'Kontraktkonzept & Vertragshändlersystem',items:[
+  {y:'def',k:'Kontraktkonzept',v:'Im Mittelpunkt steht die <b>vertragliche Ausgestaltung der Beziehung</b> zu den Absatzmittlern. Zusammenarbeit grundsätzlich auch ohne Vertrag möglich; jedoch Trend zum Vertrag.'},
+  {y:'def',k:'Vertriebsbindung',v:'Vertragliche Verpflichtung zur Einhaltung eines bestimmten Absatzkanals.'},
+  {y:'h',v:'3 Klassen der Vertriebsbindung:'},
+  {y:'tbl',heads:['Klasse','Inhalt','Beispiel'],rows:[
+    ['<b>1. Räumliche Bindung</b>','Festlegung des zulässigen Absatzgebietes','Absatzgebietsfestlegung, Exportverbote'],
+    ['<b>2. Personelle Bindung</b>','Einschränkung der erlaubten Kundengruppen','Kundenbeschränkungsklausel'],
+    ['<b>3. Zeitbezogene Bindung</b>','Zeitliche Einschränkungen bei Lager und Lieferung','Max. Lagerzeiten, Auslieferungsfristen'],
+  ]},
+  {y:'def',k:'Vertragshändlersystem',v:'Längerfristig ausgerichteter Vertrag. Vertragshändler kauft und verkauft Vertragsware im <b>eigenen Namen und auf eigene Rechnung</b>. Verpflichtende Absatzförderung der Vertragswaren gemäß Herstellerinteressen → Verwendung des Herstellerzeichens.'},
+  {y:'tbl',heads:['Merkmal','Vertragshändler','Handelsvertreter'],rows:[
+    ['Eigentumsübergang','<b>JA</b> — kauft auf eigene Rechnung','<b>NEIN</b> — vermittelt nur'],
+    ['Risiko','Trägt eigenes Geschäftsrisiko','Risiko beim Auftraggeber'],
+    ['Rechtl. Status','<b>Absatzmittler</b>','<b>Absatzhelfer</b>'],
+  ]},
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> Vertragshändler = eigener Name + eigene Rechnung = Absatzmittler (Eigentumsübergang). Handelsvertreter = im Namen des Auftraggebers = Absatzhelfer (KEIN Eigentumsübergang).'}
+]},
+{t:'Franchisesystem — vollständig',items:[
+  {y:'def',k:'Franchising',v:'Vertikal-kooperativ organisiertes Vertriebssystem, basierend auf vertraglichem Dauerschuldverhältnis. Umfassend geregelte langfristige Beziehung zwischen Franchisegeber und rechtlich selbständigen Franchisenehmern.'},
+  {y:'kv',items:[
+    {k:'Franchisegeber (Systemführer)',v:'Erlaubt Franchisenehmern, bestimmte Leistungen unter Verwendung des <b>Namens, des Warenzeichens und der Ausstattung</b> des Franchisegebers an Dritte abzusetzen.'},
+    {k:'Franchisenehmer (rechtlich & finanziell selbständig)',v:'Bezahlen <b>fixe Eintrittsgebühr</b> und <b>variable Zahlungen</b> (z.B. umsatzabhängige Lizenzgebühr).',c:'green'},
+  ]},
+  {y:'h',v:'3 Grundtypen des Franchising:'},
+  {y:'tbl',heads:['Typ','Beschreibung','Beispiel'],rows:[
+    ['<b>1. Herstellergeführtes Einzelhändler-Franchising</b>','Vertrieb durch regionale, selbständige Händlerbetriebe.','VW-Händler, Mercedes-Autohäuser'],
+    ['<b>2. Herstellergeführtes Großhändler-Franchising</b>','Hersteller stellt Material, Maschinen und Know-how zur Verfügung. Großhandel übernimmt Fertigstellung und Vertrieb.','Coca-Cola Abfüller'],
+    ['<b>3. Dienstleistungs-Franchising auf Einzelhandelsstufe</b>','Lizenzvergabe an Einzelhändler, die dann die Dienstleistung des Franchisegebers erbringen.','McDonald&#39;s, Subway, Starbucks'],
+  ]},
+  {y:'h',v:'5 konstitutive Merkmale (Systemmerkmale) des Franchising:'},
+  {y:'badges',items:[
+    {v:'System (Systemcharakter)',c:'b'},
+    {v:'Vertrag (konstituierende Vereinbarungen)',c:'b'},
+    {v:'Status (Stellung der Systempartner)',c:'b'},
+    {v:'Marketing (Marktauftritt)',c:'b'},
+    {v:'Funktionen (Aufgabenverteilung)',c:'b'}
+  ]},
+  {y:'h',v:'6 Erfolgsfaktoren des Franchising:'},
+  {y:'tbl',heads:['#','Erfolgsfaktor'],rows:[
+    ['1','Franchise-Markenwert'],
+    ['2','Kosten des Franchise-Eintritts'],
+    ['3','Finanzielles Ergebnis'],
+    ['4','Wachstumspotenzial und Überlebensdauer'],
+    ['5','Innovationsfähigkeit'],
+    ['6','Persönliche Faktoren'],
+  ]},
+]},
+{t:'Push/Pull-Strategie (Stimulierungskonzept)',items:[
+  {y:'def',k:'Stimulierungskonzept',v:'Maßnahmen, um Absatzmittler aus Herstellersicht zu einem <b>zielkonformen Handeln</b> zu bewegen.'},
+  {y:'kv',items:[
+    {k:'Push-Strategie',v:'Hersteller bietet Absatzmittlern Anreize → Händler gelistet → Händler verkauft weiter. <b>Händlergerichtete</b> Anreize (z.B. Handelsspannen, Funktionsrabatte, Displays). In der Praxis: oft Kombination!'},
+    {k:'Pull-Strategie',v:'Hersteller spricht Nachfrager direkt durch eigene Kommunikationsmaßnahmen an → Nachfrager fragt beim Händler nach → Händler gezwungen zu listen. <b>Endkundengerichtete</b> Werbung.',c:'green'},
+  ]},
+  {y:'trap',v:'<b>Messen</b> (B2B, FACHBESUCHER) ≠ <b>Ausstellungen</b> (B2C, ALLGEMEINES PUBLIKUM).'}
+]},
+{t:'Supply Chain Management (SCM) & ECR',items:[
+  {y:'def',k:'Supply Chain (Lieferkette)',v:'= Gesamter Wertschöpfungsprozess vom Lieferanten der Lieferanten bis zum Endverbraucher, einschließlich aller Absatzmittler und Absatzhelfer.'},
+  {y:'def',k:'Supply Chain Management (SCM)',v:'Optimierung der <b>gesamten Lieferkette</b>, vor allem der Schnittstellen zwischen einzelnen Akteuren. Umfasst: Beschaffungs-/Lieferantenmanagement + Vertrieb und Auftragsabwicklung.'},
+  {y:'kv',items:[
+    {k:'Beschaffungs- & Lieferantenmanagement',v:'Lieferanten der Lieferanten → Lieferanten 1/2/3 → Endprodukthersteller. Optimierung der Einkaufsseite.'},
+    {k:'Vertrieb und Auftragsabwicklung',v:'Endprodukthersteller → Absatzmittler → Absatzhelfer → Endverbraucher. Optimierung der Verkaufsseite.',c:'green'},
+  ]},
+  {y:'def',k:'Efficient Consumer Response Management (ECR)',v:'Managementkonzept aus den USA der 1990er. Sicherstellung einer effizienten Reaktion auf Konsumentenwünsche basierend auf einer <b>kooperativen Partnerschaft zwischen Hersteller und Absatzmittler</b>. Konzentriert sich im Gegensatz zu SCM NUR auf Prozesse zwischen Hersteller und Absatzmittler.'},
+  {y:'tbl',heads:['Merkmal','SCM','ECR'],rows:[
+    ['Fokus','Gesamte Lieferkette','Nur Hersteller ↔ Absatzmittler'],
+    ['Perspektiven','Logistik + Beschaffung + Vertrieb','Nachfragerperspektive + Logistikperspektive'],
+    ['Ziel','Optimierung aller Schnittstellen','Effiziente Reaktion auf Konsumentenwünsche'],
+    ['Entstehung','—','USA, 1990er Jahre'],
+  ]},
+  {y:'trap',v:'<b>SCM vs. ECR:</b> SCM = optimiert die GESAMTE Lieferkette. ECR = konzentriert sich NUR auf die Schnittstelle Hersteller ↔ Absatzmittler.'}
+]}
+]},
+{mod:7,chs:[
+{t:'Kommunikationspolitik — Grundlagen',items:[
+  {y:'def',k:'Kommunikationspolitik',v:'Alle Maßnahmen, die auf eine bewusste Gestaltung der Kommunikation eines Unternehmens mit seinen Anspruchsgruppen (intern/extern) abzielen, um Kommunikationsziele zu erreichen.'},
+  {y:'tbl',heads:['Kommunikationsziel','Beispiel'],rows:[
+    ['<b>Kognitiv</b> (Wissen)','Bekanntheit steigern, Produktwissen vermitteln'],
+    ['<b>Affektiv</b> (Einstellung)','Image verbessern, Sympathie erzeugen'],
+    ['<b>Konativ</b> (Verhalten)','Kauf auslösen, Weiterempfehlung anregen'],
+  ]},
+  {y:'trap',v:'<b>Reihenfolge der Ziele:</b> Zuerst kognitiv (Bekanntheit), dann affektiv (Einstellung), dann konativ (Verhalten). Kein Kauf ohne vorherige Wahrnehmung!'},
+]},
+{t:'Werbung (Klassische Kommunikation)',items:[
+  {y:'def',k:'Werbung',v:'Bezahlte, nicht-persönliche Kommunikation über identifizierten Absender über Massenmedien (TV, Radio, Print, Online, Outdoor).'},
+  {y:'tbl',heads:['Medium','Stärken','Schwächen'],rows:[
+    ['<b>TV</b>','Reichweite, audiovisuell, Emotionalität','Hohe Kosten, kein Targeting'],
+    ['<b>Online/Social</b>','Targeting, messbar, interaktiv, günstig','Banner Blindness, Vertrauen'],
+    ['<b>Print</b>','Glaubwürdigkeit, Verweildauer','Reichweitenrückgang'],
+    ['<b>Outdoor</b>','Reichweite, 24h sichtbar','Kurze Botschaft, kein Targeting'],
+  ]},
+  {y:'kv',items:[
+    {k:'Reichweite',v:'Anteil der Zielpersonen, die eine Werbebotschaft mindestens 1x wahrnehmen (in %).'},
+    {k:'OTS (Opportunity to See)',v:'Durchschnittliche Kontakthäufigkeit mit einer Werbebotschaft.',c:'green'},
+  ]},
+]},
+{t:'Verkaufsförderung & PR',items:[
+  {y:'def',k:'Verkaufsförderung (Sales Promotion)',v:'Kurzfristige Anreize zur Steigerung von Kauf oder Verkauf. Ziele: Probenahme, Wiederkauf, Lagerabbau.'},
+  {y:'tbl',heads:['Instrument','Beschreibung'],rows:[
+    ['<b>Coupons/Rabatte</b>','Preisreduktionen für sofortigen Kauf'],
+    ['<b>Gewinnspiele</b>','Aktivierung und Aufmerksamkeitserzeugung'],
+    ['<b>Produktproben</b>','Trial generieren (Probenahme)'],
+    ['<b>Handelsaktionen</b>','Sonderplatzierungen, Händlerwettbewerbe'],
+  ]},
+  {y:'def',k:'Public Relations (PR)',v:'Kommunikation mit der Öffentlichkeit zur Schaffung von Vertrauen und positivem Image. NICHT bezahlt — daher glaubwürdiger als Werbung. Zielgruppen: Medien, Politik, NGOs, allgemeine Öffentlichkeit.'},
+]},
+{t:'Direktmarketing & Digitale Kommunikation',items:[
+  {y:'def',k:'Direktmarketing',v:'Direkte, individualisierte Ansprache einzelner Kunden mit dem Ziel einer messbaren Reaktion. Instrumente: Direct Mail, E-Mail, Telefonmarketing, Kataloge.'},
+  {y:'kv',items:[
+    {k:'E-Mail-Marketing',v:'Kostengünstig, personalisierbar, messbar (Öffnungsrate, CTR). Wichtig: Permission-based!'},
+    {k:'Content Marketing',v:'Bereitstellung nützlicher Inhalte, die Zielgruppe anziehen und binden.',c:'green'},
+    {k:'SEO/SEA',v:'Suchmaschinenoptimierung (organisch) und Search Engine Advertising (bezahlt).'},
+    {k:'Social Media Marketing',v:'Facebook, Instagram, TikTok, LinkedIn — interaktiv, viral möglich.',c:'amber'},
+  ]},
+]},
+{t:'Messen & Ausstellungen',items:[
+  {y:'def',k:'Messen',v:'Zeitlich befristete Veranstaltungen für <b>Fachbesucher (B2B)</b>. Ziele: Neukundengewinnung, Produktpräsentation, Networking, Wettbewerbsbeobachtung.'},
+  {y:'def',k:'Ausstellungen',v:'Zeitlich befristete Veranstaltungen für das <b>allgemeine Publikum (B2C)</b>. Ziele: Markenimage, Absatz, Breitenwirkung.'},
+  {y:'tbl',heads:['Kriterium','Messen','Ausstellungen'],rows:[
+    ['Zielgruppe','Fachbesucher (B2B)','Allgemeines Publikum (B2C)'],
+    ['Hauptziel','Geschäftsanbahnung, Networking','Absatz, Image, Breitenwirkung'],
+    ['Beispiel','IAA (Automesse Frankfurt)','Wiener Festwochen'],
+  ]},
+  {y:'trap',v:'<b>Messen</b> (B2B, FACHBESUCHER) ≠ <b>Ausstellungen</b> (B2C, ALLGEMEINES PUBLIKUM). Häufige Prüfungsfrage!'}
+]},
+]},
+];
+const CARDS=[
+  {m:0,t:'Marketing (Definition)',d:'Konzept der marktorientierten Unternehmensführung. Ausrichtung aller Aktivitäten an den Bedürfnissen der Märkte zur Erreichung der Unternehmensziele. Kunden- und Wettbewerbsorientierung als Kernprinzip.'},
+  {m:0,t:'4P des Marketing',d:'Product (Produkt) · Price (Preis) · Place (Distribution) · Promotion (Kommunikation). Die klassischen 4 Marketinginstrumente.'},
+  {m:0,t:'MBV vs. RBV vs. CBV',d:'MBV = Market-Based View (externe Positionierung, Porter). RBV = Resource-Based View (interne Stärken, Barney). CBV = Consumer-Behavior View (Konsumentenverständnis).'},
+  {m:0,t:'Käufermarkt vs. Verkäufermarkt',d:'Käufermarkt: Angebot > Nachfrage → Konsument hat Macht. Verkäufermarkt: Nachfrage > Angebot → Anbieter hat Macht.'},
+  {m:0,t:'B2C vs. B2B',d:'B2C = Business to Consumer (Endkunde, emotionalere Entscheidungen). B2B = Business to Business (Unternehmenskunde, rationalere, komplexere Kaufentscheidungen).'},
+  {m:1,t:'Elaboration Likelihood Model (ELM)',d:'Zwei Routen der Überzeugung: Zentrale Route (hohes Involvement, Argumente) → dauerhafte Einstellungsänderung. Periphere Route (niedriges Involvement, Heuristiken) → oberflächliche Änderung.'},
+  {m:1,t:'Kaufentscheidungstypen',d:'Extensiv (komplex, hohes Involvement) · Limitiert (vereinfacht, Heuristiken) · Habituell (Gewohnheit) · Impuls (spontan, emotional). Mit steigendem Involvement wird der Prozess aufwendiger.'},
+  {m:1,t:'5 Phasen des Kaufentscheidungsprozesses',d:'(1) Problemerkennung. (2) Informationssuche. (3) Alternativenbewertung (Evoked Set). (4) Kaufentscheidung. (5) Nachkaufverhalten (kognitive Dissonanz).'},
+  {m:1,t:'Kognitive Dissonanz',d:'Nachkauf-Unsicherheit und Zweifel an der getroffenen Entscheidung. Marketing-Reaktion: positive Bestätigung nach dem Kauf (Dankes-E-Mails, Bewertungen zeigen).'},
+  {m:2,t:'Primär- vs. Sekundärforschung',d:'Primär: neue Daten erheben (teuer, aktuell, spezifisch). Sekundär: vorhandene Daten nutzen (günstig, schnell, weniger spezifisch).'},
+  {m:2,t:'Gütekriterien der Messung',d:'Validität (misst was es messen soll) · Reliabilität (stabile, wiederholbare Messung) · Objektivität (unabhängig vom Forscher). Alle drei müssen erfüllt sein.'},
+  {m:2,t:'Qualitativ vs. Quantitativ',d:'Qualitativ = Verstehen, explorativ (Tiefeninterviews, Fokusgruppen, kleine Stichproben). Quantitativ = Messen, bestätigend (Fragebogen, große Stichproben, statistisch auswertbar).'},
+  {m:3,t:'SWOT-Analyse',d:'Strengths + Weaknesses = intern (controllable). Opportunities + Threats = extern (uncontrollable). SO=Ausbaustrategie · ST=Diversifikation · WO=Aufholstrategie · WT=Defensivstrategie.'},
+  {m:3,t:'Porters 3 Wettbewerbsstrategien',d:'(1) Kostenführerschaft (niedrigster Preis). (2) Differenzierung (Einzigartigkeit). (3) Fokus/Nische (Spezialisierung). Stuck in the Middle = keine klare Strategie = gefährlich!'},
+  {m:3,t:'Ansoff-Matrix',d:'Marktdurchdringung (bestehend/bestehend, niedrigstes Risiko) · Marktentwicklung (neu/bestehend) · Produktentwicklung (bestehend/neu) · Diversifikation (neu/neu, höchstes Risiko).'},
+  {m:3,t:'Marktsegmentierung — Kriterien',d:'Demografisch (Alter, Einkommen) · Geografisch (Land, Region) · Psychografisch (Lebensstil, Werte) · Verhaltensorientiert (Kaufhäufigkeit, Markentreue).'},
+  {m:3,t:'Positionierung — POD vs. POP',d:'POD (Point of Difference) = einzigartiges Unterscheidungsmerkmal ggü. Wettbewerb. POP (Point of Parity) = Hygienefaktoren, die Konsumenten in der Kategorie erwarten.'},
+  {m:4,t:'Die 3 Produktebenen',d:'Kernprodukt (Grundnutzen/wahrer Kaufgrund) · Reales Produkt (physische Ausgestaltung: Qualität, Design, Marke) · Erweitertes Produkt (Zusatzleistungen: Garantie, Service).'},
+  {m:4,t:'Produktlebenszyklus (PLC)',d:'5 Phasen: Einführung (neg. Gewinn) → Wachstum (Gewinn steigt) → Reife (max. Gewinn) → Sättigung (stagnierend) → Degeneration (sinkend). Nicht alle Produkte durchlaufen alle Phasen!'},
+  {m:4,t:'Markenstrategie — 4 Typen',d:'Einzelmarkenstrategie (jedes Produkt eigene Marke, z.B. P&G) · Familienmarkenstrategie · Dachmarkenstrategie (alle Produkte eine Marke) · Handelsmarke (Private Label des Händlers).'},
+  {m:4,t:'Diffusion of Innovation (Rogers)',d:'Innovatoren (2,5%) → Early Adopters (13,5%) → Early Majority (34%) → Late Majority (34%) → Laggards (16%). Chasm = kritische Lücke zwischen Early Adopters und Early Majority.'},
+  {m:5,t:'Break-Even-Analyse',d:'x* = Kf / (p − kv). Kf = Fixkosten, p = Preis, kv = variable Stückkosten. Bei x* ist Gewinn = 0. DB = p − kv (Deckungsbeitrag pro Stück). Klausurstoff!'},
+  {m:5,t:'Preiselastizität der Nachfrage',d:'η = (ΔQ/Q) / (ΔP/P). |η| > 1 = elastisch (Preiserhöhung → Umsatz sinkt). |η| < 1 = unelastisch (Preiserhöhung → Umsatz steigt). η ist fast immer negativ!'},
+  {m:5,t:'Skimming vs. Penetration',d:'Skimming = hoher Einführungspreis, der sinkt (für Innovationen, technische Produkte). Penetration = niedriger Einführungspreis für schnelle Marktdurchdringung (neue Märkte, starker Wettbewerb).'},
+  {m:5,t:'Preisdifferenzierung',d:'Verschiedene Preise für gleiche/ähnliche Produkte: zeitlich (Happy Hour, Off-Peak), räumlich (Länderpreise), personell (Studentenrabatt), mengenmäßig (Mengenrabatt).'},
+  {m:5,t:'Konditionenpolitik',d:'Rabatte (Mengen-, Treue-, Aktionsrabatt) · Skonto (Preisnachlass bei schneller Zahlung, z.B. 2/10 netto 30) · Boni (nachträgliche Vergütungen) · Zahlungsfristen.'},
+  {m:6,t:'Absatzmittler vs. Absatzhelfer',d:'Absatzmittler (Groß-/Einzelhändler) = EIGENTUMSÜBERGANG! Sie kaufen und verkaufen die Ware. Absatzhelfer (Spediteur, Makler, Bank) = KEIN Eigentumsübergang. Sie unterstützen nur.'},
+  {m:6,t:'Intensive vs. Exklusive Distribution',d:'Intensive Distribution = Produkte überall verfügbar (Massenartikel). Selektive Distribution = ausgewählte Händler. Exklusive Distribution = Alleinverkaufsrecht + keine Konkurrenzprodukte (Luxusgüter).'},
+  {m:6,t:'Franchisesystem',d:'Umfassend geregelte langfristige Beziehung. Franchisegeber erlaubt Nutzung von Name/Warenzeichen/Ausstattung. Franchisenehmer (rechtlich selbständig) zahlt fixe Eintrittsgebühr + variable Zahlungen.'},
+  {m:6,t:'Push vs. Pull',d:'Push: Hersteller überzeugt Händler. Pull: Werbung an Endkunden zwingt Händler zur Listung.'},
+  {m:6,t:'Distributionspolitik (Definition)',d:'Alle Entscheidungen über Verteilung der (im)materiellen Leistungen vom Hersteller zum Endkäufer. Zentral: Transaktionsfunktion = wirtschaftlich-rechtliche Übertragung von Verfügungsmacht.'},
+  {m:6,t:'4 Distributionspolitische Ziele',d:'(1) Reduzierung Vertriebskosten/Handelsspannen. (2) Erhöhung Distributionsgrad. (3) Kooperation mit Absatzmittlern. (4) Auswahl kompetenter/passender Absatzmittler (Image der Absatzkanäle).'},
+  {m:6,t:'Absatzkanalmanagement — 4 Aufgaben',d:'Systemische Planung · Koordinierung · Durchsetzung · Kontrolle. = Alle Maßnahmen, die auf das Absatzkanalsystem gerichtet sind.'},
+  {m:6,t:'4 Konfliktursachen im Absatzkanalsystem',d:'Z-R-M-K: Zielbeziehungen (Zieldivergenzen Hersteller/Handel), Rollenbeziehungen (konfliktäre Erwartungen Marketingfunktionen), Machtbeziehungen (Machtkonzentration im Handel), Kommunikationsbeziehungen (Informationsvorsprung einer Partei).'},
+  {m:6,t:'3 Gründe für Absatzmittler (Herstellersicht)',d:'(1) Fehlen von Finanzmitteln für Direktvertrieb. (2) Flächendeckende Warendistribution sicherstellen. (3) Investition in Kerngeschäft ermöglichen.'},
+  {m:6,t:'Aufgaben der Absatzmittler',d:'(1) Bildung von Warensortimenten. (2) Überbrückungsfunktion (Menge, Zeit, Ort). (3) (Vor-)Finanzierungsfunktion. Vorteile für Konsumenten: breiteres Warenangebot + haushaltsübliche Mengen.'},
+  {m:6,t:'Selektionsprozess',d:'Legt die grundsätzliche Struktur der Absatzkanäle fest: Entscheidungen über direkten oder indirekten Vertrieb sowie Art und Anzahl der Absatzmittler.'},
+  {m:6,t:'Direkter Vertrieb — 6 Formen',d:'Haus-zu-Haus Verkauf · Partyverkauf · Katalogverkauf · Verkaufsfilialen · Teleshopping · Onlineshopping. Kein Absatzmittler dazwischen!'},
+  {m:6,t:'Fachgeschäft vs. Spezialgeschäft vs. Fachmarkt',d:'Fachgeschäft = breit einer Branche + persönliche Beratung. Spezialgeschäft = schmal, tief + fachkundige Beratung. Fachmarkt = breit, verkehrsgünstig, niedriger Personalkostenanteil.'},
+  {m:6,t:'Supermarkt & Verbrauchermarkt — Kennzahlen',d:'Supermarkt: 400–800 m², 5.000–7.000 Artikel, in Wohngebieten. Verbrauchermarkt: Großbetrieb, 28.000–32.000 Produkte, verkehrsgünstig. Tante-Emma: Umsatz <125.000€/Jahr.'},
+  {m:6,t:'Discounter vs. Kauf-/Warenhaus',d:'Discounter: kostengünstige Lage, aggressive Preispolitik, Verkaufsfläche = Lagerfläche. Kauf-/Warenhaus: große Sortimentsbreite, jede Produktlinie = Abteilung, Selbstbedienung, Innenstadt.'},
+  {m:6,t:'Off-Price-Retailer',d:'Kein gleichbleibendes Sortiment. Bietet Schnäppchen (Saisonware, Restposten, Konkursware). Spezialfall: Factory Outlet (Direktverkauf des Herstellers zu günstigen Preisen).'},
+  {m:6,t:'Vertikalisierung — Vorwärts vs. Rückwärts',d:'Rückwärtsintegration: Händler übernimmt Herstellerfunktionen (Akquisition Lieferant, eigene Produktion, Eigenmarken). Vorwärtsintegration: Hersteller übernimmt Distributionsaufgaben (Shop-in-Shop, Franchise, Factory Outlet, eigene Filialen).'},
+  {m:6,t:'Vorwärtsintegration — Chancen & Risiken',d:'Chancen: Prozesseffizienz, Markenauftritt am PoS stärken, bessere Preisrealisierung, Zugang zum Nachfrager, Ausbau Verkaufsoberfläche. Risiken: Investitionsbedarf, strategische Risiken, operative Risiken.'},
+  {m:6,t:'Mehrkanalvertrieb — Chancen vs. Risiken',d:'Chancen: bessere Kundenbetreuung, Cross-Selling, schwer imitierbarer Wettbewerbsvorteil, identitätskonforme Markenpräsentation. Risiken: verringertes Vertriebsengagement, hoher Koordinationsaufwand, Markenimagekonfusion.'},
+  {m:6,t:'Kontraktkonzept + 3 Klassen Vertriebsbindung',d:'Kontraktkonzept = vertragliche Ausgestaltung der Beziehung zu Absatzmittlern. Vertriebsbindung (3 Klassen): (1) Räumlich (Absatzgebiet). (2) Personell (Kundenbeschränkung). (3) Zeitbezogen (max. Lagerzeiten, Auslieferung).'},
+  {m:6,t:'Vertragshändlersystem',d:'Vertragshändler = kauft Vertragsware im EIGENEN Namen und auf EIGENE Rechnung. Verpflichtende Absatzförderung gemäß Herstellerinteressen. Verwendet Herstellerzeichen. = Absatzmittler (Eigentumsübergang!). ≠ Handelsvertreter (Absatzhelfer)!'},
+  {m:6,t:'3 Grundtypen des Franchising',d:'(1) Herstellergeführtes Einzelhändler-Franchising (regionale Händlerbetriebe, z.B. VW). (2) Herstellergeführtes Großhändler-Franchising (Hersteller stellt Know-how, z.B. Coca-Cola Abfüller). (3) Dienstleistungs-Franchising EH-Stufe (Lizenzvergabe, z.B. McDonald&#39;s).'},
+  {m:6,t:'5 konstitutive Merkmale Franchising',d:'System (Systemcharakter) · Vertrag (konstituierende Vereinbarungen) · Status (Stellung der Systempartner) · Marketing (Marktauftritt) · Funktionen (Aufgabenverteilung).'},
+  {m:6,t:'6 Erfolgsfaktoren Franchising',d:'(1) Franchise-Markenwert. (2) Kosten des Franchise-Eintritts. (3) Finanzielles Ergebnis. (4) Wachstumspotenzial und Überlebensdauer. (5) Innovationsfähigkeit. (6) Persönliche Faktoren.'},
+  {m:6,t:'SCM vs. ECR',d:'SCM = Supply Chain Management: Optimierung der GESAMTEN Lieferkette (alle Schnittstellen von Lieferanten bis Endkunde). ECR = Efficient Consumer Response: NUR Prozesse zwischen Hersteller und Absatzmittler. ECR: Nachfrager- + Logistikperspektive. Aus USA, 1990er.'},
+  {m:7,t:'Kognitive → Affektive → Konative Ziele',d:'"Was weiß?" → "Wie fühlt?" → "Was tut der Kunde?" Reihenfolge wichtig: erst Bekanntheit (kognitiv), dann Einstellung (affektiv), dann Verhalten (konativ).'},
+  {m:7,t:'Above-the-Line vs. Below-the-Line',d:'Above-the-Line = klassische Massenmedien (TV, Radio, Print, Outdoor). Below-the-Line = direkte, zielgerichtete Maßnahmen (Direct Mail, Events, Sponsoring, PR).'},
+  {m:7,t:'Reichweite vs. OTS',d:'Reichweite = Anteil der Zielpersonen, die eine Werbebotschaft mind. 1x wahrnehmen (%). OTS (Opportunity to See) = durchschnittliche Kontakthäufigkeit mit einer Werbebotschaft.'},
+  {m:7,t:'PR vs. Werbung',d:'PR = nicht bezahlt, daher glaubwürdiger, zielt auf Image/Vertrauen, Zielgruppe: breite Öffentlichkeit. Werbung = bezahlt, kontrollierte Botschaft, direktes Absatzziel.'},
+  {m:7,t:'Messen vs. Ausstellungen',d:'Messen = Fachbesucher (B2B), Geschäftsanbahnung, Networking, Wettbewerbsbeobachtung. Ausstellungen = allgemeines Publikum (B2C), Markenimage, breite Wirkung.'},
+];
+const QQ=[
+  {m:0,q:'Was ist der Hauptunterschied zwischen B2C und B2B?',o:['B2C ist teurer als B2B','B2C richtet sich an Endkonsumenten; B2B an Unternehmen','B2B hat weniger Wettbewerb','B2C gibt es nur im Internet'],a:1,e:'B2C = Business to Consumer (Endkunde, emotionalere Entscheidungen, größere Zielgruppe). B2B = Business to Business (Unternehmenskunde, rationalere, komplexere Kaufentscheidungen mit mehreren Entscheidern).'},
+  {m:0,q:'Was beschreibt der Resource-Based View (RBV)?',o:['Wettbewerbsvorteil durch externe Marktpositionierung','Wettbewerbsvorteil durch interne Ressourcen und Kernkompetenzen','Wettbewerbsvorteil durch Konsumentenverständnis','Wettbewerbsvorteil durch niedrige Preise'],a:1,e:'RBV (Resource-Based View, Barney): Wettbewerbsvorteile entstehen durch einzigartige, schwer imitierbare interne Ressourcen und Kompetenzen. Im Gegensatz: MBV (Porter) = externe Marktpositionierung.'},
+  {m:0,q:'Was sind die 4P des Marketing-Mix?',o:['Preis, Promotion, People, Process','Product, Price, Place, Promotion','Planning, Positioning, Profit, Performance','Produkt, Preis, Prozess, Publikum'],a:1,e:'Die klassischen 4P: Product (Produkt), Price (Preis), Place (Distribution/Vertrieb), Promotion (Kommunikation). Alle 4 Instrumente müssen aufeinander abgestimmt sein (Marketing-Mix).'},
+  {m:1,q:'Was unterscheidet die zentrale von der peripheren Route im ELM?',o:['Beide Routen führen zu gleichen Ergebnissen','Zentrale Route = Argumente → dauerhaft; Periphere Route = Heuristiken → oberflächlich','Periphere Route ist effektiver als zentrale Route','Zentrale Route ist nur für B2B relevant'],a:1,e:'Elaboration Likelihood Model (Petty & Cacioppo): Zentrale Route = hohes Involvement, starke Argumente → dauerhafte Einstellungsänderung. Periphere Route = niedriges Involvement, Heuristiken (Attraktivität, Expertise) → oberflächliche, weniger stabile Überzeugung.'},
+  {m:1,q:'Was ist kognitive Dissonanz?',o:['Unwissenheit über ein Produkt','Nachkauf-Unsicherheit und Zweifel an der Kaufentscheidung','Entscheidungsschwierigkeiten vor dem Kauf','Preisvergleich nach dem Kauf'],a:1,e:'Kognitive Dissonanz = Nachkauf-Unbehagen und Zweifel ("War das wirklich die richtige Entscheidung?"). Marketing-Reaktion: positive Bestätigung nach dem Kauf (Dankesmail, positive Bewertungen zeigen, Garantien).'},
+  {m:1,q:'Welcher Kaufentscheidungstyp involviert die intensivste Informationssuche?',o:['Impulsiver Kauf','Habitueller Kauf','Extensiver Kauf','Limitierter Kauf'],a:2,e:'Extensiver Kauf = höchstes Involvement, intensivste Informationssuche und Bewertung von Alternativen (z.B. Hauskauf, Autokauf). Im Gegensatz: Habituell = Gewohnheit, Impuls = spontan/emotional.'},
+  {m:2,q:'Was unterscheidet Primär- von Sekundärforschung?',o:['Primär ist günstiger als Sekundär','Primär erhebt neue Daten; Sekundär nutzt vorhandene Daten','Sekundär ist aktueller als Primär','Es gibt keinen Unterschied'],a:1,e:'Primärforschung = neue Daten für spezifischen Zweck erheben (teuer, zeitaufwendig, aber aktuell und spezifisch). Sekundärforschung = vorhandene Daten nutzen (günstig, schnell, aber weniger spezifisch und eventuell veraltet).'},
+  {m:2,q:'Was misst die Validität einer Messung?',o:['Ob die Messung wiederholbar ist','Ob die Messung misst, was sie messen soll','Ob die Messung unabhängig vom Forscher ist','Ob die Stichprobe groß genug ist'],a:1,e:'Validität = das Instrument misst tatsächlich das, was gemessen werden soll (Inhaltsvalidität, Konstruktvalidität). Reliabilität = Wiederholbarkeit/Stabilität. Objektivität = Unabhängigkeit vom Forscher.'},
+  {m:3,q:'Was ist der Unterschied zwischen internen und externen SWOT-Faktoren?',o:['Es gibt keinen Unterschied','Stärken und Schwächen sind intern; Chancen und Risiken sind extern','Chancen und Risiken sind intern; Stärken und Schwächen extern','Alle SWOT-Faktoren sind extern'],a:1,e:'INTERN (vom Unternehmen beeinflussbar): Stärken (Strengths) und Schwächen (Weaknesses). EXTERN (nicht direkt beeinflussbar): Chancen (Opportunities) und Risiken (Threats). Klassische Prüfungsfrage!'},
+  {m:3,q:'Was ist "Stuck in the Middle" laut Porter?',o:['Eine Nischenstrategie','Weder Kostenführerschaft noch Differenzierung — strategisch gefährlich','Eine Wachstumsstrategie','Ein Marketing-Mix-Problem'],a:1,e:'Porters Warnung: Unternehmen ohne klare Strategie (weder günstigster Anbieter noch differenziert) haben weder Kostenvorteile noch Alleinstellungsmerkmale. Sie konkurrieren auf allen Ebenen und gewinnen auf keiner.'},
+  {m:3,q:'Welche Ansoff-Strategie hat das höchste Risiko?',o:['Marktdurchdringung','Marktentwicklung','Produktentwicklung','Diversifikation'],a:3,e:'Diversifikation (neues Produkt + neuer Markt) hat das höchste Risiko, da in beiden Dimensionen keine Erfahrung vorhanden ist. Marktdurchdringung (bestehend/bestehend) hat das niedrigste Risiko.'},
+  {m:4,q:'Was sind die 3 Produktebenen?',o:['Basis-, Standard-, Premiumprodukt','Kernprodukt, reales Produkt, erweitertes Produkt','Rohstoff, Halbfertigprodukt, Fertigprodukt','Konzept, Design, Verpackung'],a:1,e:'Kernprodukt = Grundnutzen (warum kauft man es wirklich?). Reales Produkt = physische Ausgestaltung (Qualität, Design, Marke, Verpackung). Erweitertes Produkt = Zusatzleistungen (Garantie, Lieferung, After-Sales-Service).'},
+  {m:4,q:'Was ist der "Chasm" in der Diffusionstheorie?',o:['Die Gesamtheit aller Innovatoren','Die kritische Lücke zwischen Early Adopters und Early Majority','Der Übergang von Reife zu Degeneration','Der Break-Even-Punkt einer Innovation'],a:1,e:'Geoffrey Moore: Der "Chasm" (Abgrund) ist die kritische Lücke zwischen Early Adopters (Visionäre) und Early Majority (Pragmatiker). Viele Innovationen scheitern daran, diese Lücke zu überbrücken.'},
+  {m:5,q:'Wie lautet die Break-Even-Formel?',o:['x* = p / kv','x* = Kf / (p - kv)','x* = Kf + kv / p','x* = (p - kv) / Kf'],a:1,e:'Break-Even-Menge: x* = Kf / (p - kv). Dabei: Kf = Fixkosten, p = Preis, kv = variable Stückkosten, (p-kv) = Deckungsbeitrag pro Stück. Bei x* = Break-Even-Punkt ist der Gewinn = 0.'},
+  {m:5,q:'Was bedeutet |η| > 1 bei der Preiselastizität?',o:['Inelastische Nachfrage — Preiserhöhung steigert Umsatz','Elastische Nachfrage — Preiserhöhung senkt Umsatz','Einheitselastische Nachfrage','Keine Auswirkung auf den Umsatz'],a:1,e:'|η| > 1 = elastische Nachfrage: Bei Preiserhöhung geht die Menge prozentual stärker zurück → Umsatz sinkt. |η| < 1 = unelastische Nachfrage: Preiserhöhung → Umsatz steigt. η ist fast immer negativ (Gesetz der Nachfrage).'},
+  {m:5,q:'Was ist der Unterschied zwischen Skimming und Penetrationsstrategie?',o:['Skimming = niedriger Einführungspreis; Penetration = hoher Einführungspreis','Skimming = hoher Einführungspreis (sinkt); Penetration = niedriger Einführungspreis','Beide Strategien sind identisch','Skimming ist nur für Dienstleistungen geeignet'],a:1,e:'Skimming (Abschöpfung) = hoher Einführungspreis, der schrittweise gesenkt wird. Geeignet für Innovationen mit zahlungsbereiten Early Adopters. Penetration = niedriger Einführungspreis für schnelle Marktdurchdringung und Marktanteile.'},
+  {m:6,q:'Was ist der entscheidende Unterschied zwischen Absatzmittler und Absatzhelfer?',o:['Absatzmittler sind günstiger','Absatzmittler = Eigentumsübergang; Absatzhelfer = KEIN Eigentumsübergang','Absatzhelfer haben direkten Kundenkontakt','Es gibt keinen Unterschied'],a:1,e:'Absatzmittler (Groß-/Einzelhändler) kaufen die Ware und verkaufen sie weiter = EIGENTUMSÜBERGANG. Absatzhelfer (Spediteur, Makler, Handelsvertreter) unterstützen den Vertrieb, ohne Eigentümer zu werden = KEIN Eigentumsübergang.'},
+  {m:6,q:'Was ist exklusive Distribution?',o:['Produkt ist überall erhältlich','Nur ausgewählte Händler dürfen verkaufen','Alleinverkaufsrecht für Händler + Verpflichtung, keine Konkurrenzprodukte zu führen','Distribution über Internet'],a:2,e:'Exklusive Distribution = ein Händler erhält Alleinverkaufsrecht für ein bestimmtes Gebiet UND ist verpflichtet, keine konkurrierenden Produkte zu führen. Typisch für Luxusgüter (Rolex, Ferrari, Porsche).'},
+  {m:6,q:'Was unterscheidet Messen von Ausstellungen?',o:['Messen für allgemeines Publikum','Messen für FACHBESUCHER (B2B); Ausstellungen für ALLGEMEINES PUBLIKUM (B2C)','Beide identisch','Messen nur für Großunternehmen'],a:1,e:'Messen: Fachbesucher, B2B, Wettbewerbsvergleich. Ausstellungen: allgemeines Publikum, B2C, Absatzziele.'},
+  {m:6,q:'Was sind die 4 Konfliktursachen im Absatzkanalsystem?',o:['Preis-, Produkt-, Distributions-, Kommunikationskonflikte','Zielbeziehungen, Rollenbeziehungen, Machtbeziehungen, Kommunikationsbeziehungen','Lieferanten-, Händler-, Kunden-, Wettbewerberkonflikte','Kosten-, Qualitäts-, Mengen-, Zeitkonflikte'],a:1,e:'4 Konfliktursachen (Z-R-M-K): Zielbeziehungen (unterschiedliche Ziele Hersteller/Handel), Rollenbeziehungen (wer übernimmt welche Marketingfunktionen), Machtbeziehungen (Konzentration im Handel), Kommunikationsbeziehungen (Informationsvorsprung einer Partei).'},
+  {m:6,q:'Was ist der entscheidende Unterschied zwischen SCM und ECR?',o:['Beide sind identisch','SCM optimiert nur Einkauf; ECR optimiert Verkauf','SCM optimiert die GESAMTE Lieferkette; ECR konzentriert sich NUR auf Hersteller ↔ Absatzmittler','ECR ist älter als SCM und umfassender'],a:2,e:'SCM = Supply Chain Management: gesamte Lieferkette optimieren. ECR = Efficient Consumer Response: fokussiert NUR auf die Schnittstelle Hersteller ↔ Absatzmittler, mit Nachfrager- und Logistikperspektive. ECR aus USA, 1990er.'},
+  {m:6,q:'Was sind die 3 Grundtypen des Franchising?',o:['Einzel-, Groß-, Dienstleistungsfranchising','Produkt-, Service-, Handelsfranchising','Herstellergeführtes EH-Franchising, Herstellergeführtes GH-Franchising, Dienstleistungs-Franchising auf EH-Stufe','National-, Regional-, Lokalfranchising'],a:2,e:'3 Grundtypen: (1) Herstellergeführtes Einzelhändler-Franchising (z.B. VW-Händler). (2) Herstellergeführtes Großhändler-Franchising (z.B. Coca-Cola Abfüller). (3) Dienstleistungs-Franchising auf Einzelhandelsstufe (z.B. McDonald&#39;s, Subway).'},
+  {m:6,q:'Was ist eine Rückwärtsintegration im Absatzkanal?',o:['Hersteller baut eigene Filialen auf','Händler übernimmt Herstellerfunktionen (z.B. Akquisition des Lieferanten, Aufbau eigener Produktion)','Hersteller nutzt Franchising','Händler kooperiert mit anderen Händlern'],a:1,e:'Rückwärtsintegration: Händler übernimmt Funktionen des Herstellers. Formen: Akquisition des Lieferanten → Aufbau eigener Produktion → Langfristige vertragliche Bindung des Lieferanten. Bsp: Handels-Eigenmarken. Vorwärtsintegration = Hersteller übernimmt Distributionsaufgaben.'},
+  {m:6,q:'Was kennzeichnet das Kontraktkonzept?',o:['Strategie zur Preisgestaltung im Handel','Vertragliche Ausgestaltung der Beziehung zu den Absatzmittlern (inkl. Vertriebsbindung)','System zur Qualitätskontrolle im Handel','Regelung der Lieferkonditionen'],a:1,e:'Kontraktkonzept: Im Mittelpunkt steht die vertragliche Ausgestaltung der Beziehung zu den Absatzmittlern. Vertriebsbindung = vertragliche Verpflichtung zur Einhaltung eines bestimmten Absatzkanals. 3 Klassen: räumlich, personell, zeitbezogen.'},
+  {m:6,q:'Was charakterisiert den Vertragshändler?',o:['Verkauft im Namen des Herstellers ohne Eigentumsübergang (= Absatzhelfer)','Kauft und verkauft im EIGENEN Namen und auf EIGENE Rechnung = Absatzmittler (Eigentumsübergang!)','Hat keine Verpflichtung zur Absatzförderung','Ist identisch mit einem Handelsvertreter'],a:1,e:'Vertragshändler = kauft Vertragsware im EIGENEN Namen und auf EIGENE Rechnung → Eigentumsübergang → Absatzmittler. Verpflichtet zur Absatzförderung der Vertragswaren + Verwendung des Herstellerzeichens. ≠ Handelsvertreter (verkauft im Namen des Auftraggebers = Absatzhelfer).'},
+  {m:6,q:'Was kennzeichnet den Discounter (Merkmale)?',o:['Große Sortimentsbreite + Innenstadtlage + Selbstbedienung','Kostengünstige Lage + aggressive Preispolitik + Verkaufsfläche = Lagerfläche','Persönliche Beratung + breites Sortiment einer Branche','Kein gleichbleibendes Sortiment + Schnäppchen/Restposten'],a:1,e:'Discounter: (1) Kostengünstige Lage. (2) Aggressive Preispolitik. (3) Verkaufsfläche = Lagerfläche (kein separates Lager!). Bsp: Lidl, Hofer, Aldi. NICHT zu verwechseln mit Off-Price-Retailer (Restposten) oder Fachmarkt.'},
+  {m:6,q:'Welche Kennzahlen beschreiben den Supermarkt?',o:['Fläche 2.000-5.000 m², 20.000+ Artikel','Fläche 400-800 m², 5.000-7.000 Artikel, in Wohngebieten','Fläche >10.000 m², 30.000-40.000 Artikel, verkehrsgünstig','Fläche 100-200 m², 1.000-2.000 Artikel, Innenstadtlage'],a:1,e:'Supermarkt: Fläche 400–800 m². Lebensmittel + begrenztes Non-Food-Angebot. 5.000–7.000 Artikel. In Wohngebieten. Verbrauchermarkt dagegen: Großbetrieb, 28.000–32.000 Produkte, verkehrsgünstig.'},
+  {m:7,q:'Was sind die 3 Kommunikationsziele?',o:['Preis-, Produkt-, Vertriebsziele','Kognitive (Wissen), Affektive (Einstellung), Konative (Verhalten) Ziele','Reichweite, Frequenz, Impact','Kurz-, Mittel-, Langfristziele'],a:1,e:'3 Kommunikationsziele: Kognitiv = Bekanntheit, Wissen (Was weiß der Kunde?). Affektiv = Einstellungen, Image (Wie fühlt der Kunde?). Konativ = Verhalten, Kauf (Was tut der Kunde?). Reihenfolge wichtig!'},
+  {m:7,q:'Was ist PR im Vergleich zu Werbung?',o:['PR ist teurer als Werbung','PR ist bezahlt und kontrolliert wie Werbung','PR ist nicht bezahlt und daher glaubwürdiger; zielt auf Image/Vertrauen','PR ist nur für B2B geeignet'],a:2,e:'PR (Public Relations) = nicht bezahlt, daher glaubwürdiger. Zielgruppe: breite Öffentlichkeit, Medien, Politik. Ziel: Vertrauen, Image. Werbung = bezahlt, kontrollierte Botschaft, direktes Absatzziel.'},
+  {m:7,q:'Was ist der Unterschied zwischen Messen und Ausstellungen?',o:['Messen sind günstiger','Messen richten sich an Fachbesucher (B2B); Ausstellungen an allgemeines Publikum (B2C)','Ausstellungen sind international, Messen national','Messen finden drinnen statt, Ausstellungen draußen'],a:1,e:'Messen = Fachbesucher (B2B), Hauptziel: Geschäftsanbahnung, Networking, Wettbewerbsbeobachtung. Ausstellungen = allgemeines Publikum (B2C), Hauptziel: Absatz, Markenimage, Breitenwirkung.'},
+];
 let user=null,paid=false,curMod=null,curView='home';
 let qIdx=0,qAns=null,qScore=0,qWrong=[];
 let fcMod=null,fcIdx=0,fcFlipped=false;
 let examMode=false,examQs=[],examIdx=0,examScore=0,examWrong=[],examTimer=null,examSec=3600;
 let quizMod=null,quizFiltered=[];
 function showLTab(t){
-  ['login','reg','reset'].forEach(x=>document.getElementById('lpanel-'+x).style.display=x===t?'block':'none');
-  document.getElementById('lt-login').className='ltab'+(t==='login'?' on':'');
-  document.getElementById('lt-reg').className='ltab'+(t==='reg'?' on':'');
-}
-function init(){
-  document.getElementById('lo').classList.add('hide');
-  supabase.auth.onAuthStateChange((e,s)=>{
-    user=s?.user||null;
-    if(user){
-      document.getElementById('ls').classList.add('hide');
-      document.getElementById('app').style.display='flex';
-      updateBadge();
-      checkPaid();
-      nav('home');
-    }
+  ['login','reg','reset'].forEach(x=>{
+    document.getElementById('lpanel-'+x).style.display='none';
+    document.getElementById('lt-'+x)&&document.getElementById('lt-'+x).classList.remove('on');
   });
-  supabase.auth.getSession().then(({data:{session}})=>{
-    user=session?.user||null;
-    if(user){
-      document.getElementById('ls').classList.add('hide');
-      document.getElementById('app').style.display='flex';
-      updateBadge();
-      checkPaid();
-      nav('home');
-    }
-  });
-}
-function updateBadge(){
-  const initials=(user?.user_metadata?.name||'U').split(' ').map(p=>p[0]).join('').toUpperCase().slice(0,2);
-  document.getElementById('ubadge').innerHTML=`<div class="uav">${initials}</div><div class="uname">${user?.user_metadata?.name||'User'}</div>`;
-}
-function checkPaid(){
-  paid=FREE_EMAILS.includes(user?.email);
-}
-function nav(v,m){
-  curView=v;
-  curMod=m;
-  document.querySelectorAll('.ni').forEach(el=>el.classList.remove('on'));
-  if(v==='mod') document.getElementById('ni-'+m).classList.add('on');
-  else if(v==='home') document.getElementById('ni-home').classList.add('on');
-  else if(v==='cards') document.getElementById('ni-cards').classList.add('on');
-  else if(v==='quiz') document.getElementById('ni-quiz').classList.add('on');
-  renderView();
-}
-function renderView(){
-  const cnt=document.getElementById('cnt');
-  cnt.innerHTML='';
-  if(curView==='home'){
-    document.getElementById('page-title').textContent='Übersicht';
-    document.getElementById('page-sub').textContent='Marketing — WU Wien';
-    cnt.innerHTML=`<div class="hero"><h2>Willkommen zurück!</h2><p>Starten Sie Ihre Klausurvorbereitung mit den 8 Marketing-Modulen.</p></div>`;
-  }else if(curView==='mod'){
-    const m=MODS[curMod];
-    document.getElementById('page-title').textContent=m.name;
-    document.getElementById('page-sub').textContent=m.lbl;
-    cnt.innerHTML='Modul wird geladen...';
-  }else if(curView==='cards'){
-    document.getElementById('page-title').textContent='Karteikarten';
-    document.getElementById('page-sub').textContent='Lernmaterial';
-    cnt.innerHTML='Karteikarten-Modul';
-  }else if(curView==='exam'){
-    document.getElementById('page-title').textContent='Klausur-Simulation';
-    document.getElementById('page-sub').textContent='Examen üben';
-    cnt.innerHTML='Exam-Modul';
-  }else if(curView==='imp'){
-    document.getElementById('page-title').textContent='Impressum';
-    cnt.innerHTML=`<div class="card"><h3 class="imp-section"><b>Marketing Lernapp</b></h3><p>Entwickelt für WU Wien Studierende</p></div>`;
-  }
+  document.getElementById('lpanel-'+t).style.display='block';
+  document.getElementById('lt-'+t)&&document.getElementById('lt-'+t).classList.add('on');
 }
 async function doLogin(){
-  const email=document.getElementById('lin-email').value;
-  const pw=document.getElementById('lin-pw').value;
-  if(!email||!pw) return;
-  const {error}=await sb.auth.signInWithPassword({email,password:pw});
-  if(error) document.getElementById('lerr-login').textContent=error.message,document.getElementById('lerr-login').classList.add('show');
+  const e=document.getElementById('lin-email').value.trim();
+  const p=document.getElementById('lin-pw').value;
+  const errEl=document.getElementById('lerr-login');
+  errEl.classList.remove('show');
+  if(!e||!p){errEl.textContent='Bitte E-Mail und Passwort eingeben.';errEl.classList.add('show');return;}
+  document.getElementById('lbtn-login').disabled=true;
+  const {data,error}=await sb.auth.signInWithPassword({email:e,password:p});
+  document.getElementById('lbtn-login').disabled=false;
+  if(error){errEl.textContent=error.message;errEl.classList.add('show');return;}
+  await initUser(data.user);
 }
 async function doReg(){
-  const name=document.getElementById('rin-name').value;
-  const email=document.getElementById('rin-email').value;
-  const pw=document.getElementById('rin-pw').value;
-  if(!name||!email||!pw) return;
-  const {error}=await sb.auth.signUp({email,password:pw,options:{data:{name}}});
-  if(error) document.getElementById('lerr-reg').textContent=error.message,document.getElementById('lerr-reg').classList.add('show');
+  const n=document.getElementById('rin-name').value.trim();
+  const e=document.getElementById('rin-email').value.trim();
+  const p=document.getElementById('rin-pw').value;
+  const errEl=document.getElementById('lerr-reg');
+  const sucEl=document.getElementById('lsuc-reg');
+  errEl.classList.remove('show');sucEl.classList.remove('show');
+  if(!n||!e||!p){errEl.textContent='Alle Felder ausfüllen.';errEl.classList.add('show');return;}
+  if(p.length<6){errEl.textContent='Passwort mind. 6 Zeichen.';errEl.classList.add('show');return;}
+  document.getElementById('lbtn-reg').disabled=true;
+  const {data,error}=await sb.auth.signUp({email:e,password:p,options:{data:{full_name:n}}});
+  document.getElementById('lbtn-reg').disabled=false;
+  if(error){errEl.textContent=error.message;errEl.classList.add('show');return;}
+  sucEl.textContent='Bestätigungs-E-Mail gesendet! Bitte prüfe dein Postfach.';sucEl.classList.add('show');
 }
 async function doReset(){
-  const email=document.getElementById('rsin-email').value;
-  if(!email) return;
-  const {error}=await sb.auth.resetPasswordForEmail(email);
-  if(error) document.getElementById('lerr-reset').textContent=error.message,document.getElementById('lerr-reset').classList.add('show');
+  const e=document.getElementById('rsin-email').value.trim();
+  const errEl=document.getElementById('lerr-reset');
+  const sucEl=document.getElementById('lsuc-reset');
+  errEl.classList.remove('show');sucEl.classList.remove('show');
+  if(!e){errEl.textContent='Bitte E-Mail eingeben.';errEl.classList.add('show');return;}
+  document.getElementById('lbtn-reset').disabled=true;
+  const {error}=await sb.auth.resetPasswordForEmail(e,{redirectTo:window.location.origin});
+  document.getElementById('lbtn-reset').disabled=false;
+  if(error){errEl.textContent=error.message;errEl.classList.add('show');return;}
+  sucEl.textContent='Reset-Link gesendet! Prüfe dein Postfach.';sucEl.classList.add('show');
 }
-function doLogout(){
-  supabase.auth.signOut();
-  user=null;
+async function doLogout(){
+  await sb.auth.signOut();
+  user=null;paid=false;
   document.getElementById('app').style.display='none';
   document.getElementById('ls').classList.remove('hide');
-  showLTab('login');
 }
-window.onload=init;
+async function initUser(u){
+  user=u;
+  const email=u.email||'';
+  paid=FREE_EMAILS.includes(email)||false;
+  if(!paid){
+    const {data}=await sb.from('subscribers').select('active').eq('user_id',u.id).single();
+    paid=!!(data&&data.active);
+  }
+  document.getElementById('ls').classList.add('hide');
+  document.getElementById('app').style.display='flex';
+  const name=u.user_metadata?.full_name||email.split('@')[0]||'User';
+  const initials=name.split(' ').map(w=>w[0]||'').join('').toUpperCase().slice(0,2)||'U';
+  document.getElementById('ubadge').innerHTML=`<div class="uav">${initials}</div><span class="uname">${name}</span>`;
+  nav('home');
+}
+function nav(v,mod){
+  if(examMode&&v!=='exam'){if(!confirm('Klausur abbrechen?'))return;stopExam();}
+  curView=v;curMod=mod??null;
+  document.querySelectorAll('.ni').forEach(n=>n.classList.remove('on'));
+  const ni=document.getElementById(v==='mod'?'ni-'+mod:'ni-'+v);
+  if(ni)ni.classList.add('on');
+  if(v==='home')rHome();
+  else if(v==='mod')rMod(mod);
+  else if(v==='cards')rCards();
+  else if(v==='quiz')rQuiz();
+  else if(v==='exam')rExam();
+  else if(v==='imp')rImp();
+}
+function setPage(title,sub,pills='',content=''){
+  document.getElementById('page-title').textContent=title;
+  document.getElementById('page-sub').textContent=sub;
+  document.getElementById('top-pills').innerHTML=pills;
+  document.getElementById('cnt').innerHTML=content;
+}
+function rHome(){
+  const mc=MODS.map((m,i)=>{
+    const total=QQ.filter(q=>q.m===i).length;
+    const cards=CARDS.filter(c=>c.m===i).length;
+    const chs=LEARN[i].chs.length;
+    return `<div class="mc b${i}" onclick="nav('mod',${i})">
+      <div class="mn c${i}">${m.lbl} — ${m.icon}</div>
+      <div class="mt">${m.name}</div>
+      <div class="ms">${chs} Kapitel · ${cards} Karten · ${total} Fragen</div>
+      <div class="mpb"><div class="mpf f${i}" style="width:${Math.round(Math.random()*30+20)}%"></div></div>
+    </div>`}).join('');
+  const totalQ=QQ.length,totalC=CARDS.length,totalCh=LEARN.reduce((a,m)=>a+m.chs.length,0);
+  setPage('Übersicht','Marketing — WU Wien','',`
+    <div class="hero">
+      <h2>Marketing Lernapp</h2>
+      <p>WU Wien · Mag. Dr. Margit Kastner</p>
+      <div class="hstats">
+        <div class="hs"><div class="v">${LEARN.length}</div><div class="l">Module</div></div>
+        <div class="hs"><div class="v">${totalCh}</div><div class="l">Kapitel</div></div>
+        <div class="hs"><div class="v">${totalC}</div><div class="l">Karten</div></div>
+        <div class="hs"><div class="v">${totalQ}</div><div class="l">Quiz-Fragen</div></div>
+      </div>
+    </div>
+    ${paid?'':`<div class="al info" style="margin-bottom:14px"><span class="al-ic">🔒</span><div>
+      <strong>Vollzugang freischalten</strong> — Jetzt alle Inhalte für die Klausurvorbereitung sichern!
+      <br><button class="btn btn-p" style="margin-top:8px" onclick="window.open('${STRIPE_URL}','_blank')">Vollzugang kaufen</button>
+    </div></div>`}
+    <div class="g4">${mc}</div>`);
+}
+function rMod(mod){
+  if(mod>0&&!paid){showPaywall();return;}
+  const m=MODS[mod],lm=LEARN[mod];
+  const chs=lm.chs.map((ch,i)=>`
+    <div class="ch">
+      <div class="ch-h" id="ch-h-${mod}-${i}" onclick="toggleCh(${mod},${i})">
+        <span>${ch.t}</span><span class="arr">▾</span>
+      </div>
+      <div class="ch-b" id="ch-b-${mod}-${i}">
+        ${ch.items.map(it=>ri(it)).join('')}
+      </div>
+    </div>`).join('');
+  const qCount=QQ.filter(q=>q.m===mod).length;
+  const cCount=CARDS.filter(c=>c.m===mod).length;
+  setPage(m.lbl+': '+m.name,m.icon+' Lernmodul',
+    `<span class="pil b">${lm.chs.length} Kapitel</span><span class="pil g">${cCount} Karten</span>`,
+    `${chs}
+    <div class="g2" style="margin-top:16px">
+      <div class="card" style="cursor:pointer" onclick="nav('cards')">
+        <div style="font-size:13px;font-weight:700;margin-bottom:4px">🃏 Karteikarten</div>
+        <div style="font-size:11px;color:var(--t2)">${cCount} Karten für dieses Modul</div>
+      </div>
+      <div class="card" style="cursor:pointer" onclick="startQuizMod(${mod})">
+        <div style="font-size:13px;font-weight:700;margin-bottom:4px">❓ Quiz starten</div>
+        <div style="font-size:11px;color:var(--t2)">${qCount} Fragen für dieses Modul</div>
+      </div>
+    </div>`);
+  const ch0=document.getElementById('ch-h-'+mod+'-0');
+  if(ch0)setTimeout(()=>toggleCh(mod,0),50);
+}
+function toggleCh(mod,i){
+  const h=document.getElementById('ch-h-'+mod+'-'+i);
+  const b=document.getElementById('ch-b-'+mod+'-'+i);
+  if(!h||!b)return;
+  const open=b.classList.toggle('op');
+  h.classList.toggle('op',open);
+}
+function showPaywall(){
+  setPage('Vollzugang erforderlich','Premium-Inhalt','',`
+    <div class="res">
+      <div class="res-ring" style="background:#eff4ff;color:var(--blue)">🔒</div>
+      <div class="res-g">Inhalte freischalten</div>
+      <div class="res-s">Dieses Modul ist Teil des Vollzugangs. Einmaliger Kauf — alle 8 Module, Karteikarten, Quiz und Klausur-Simulation.</div>
+      <button class="btn btn-p" onclick="window.open('${STRIPE_URL}','_blank')">Jetzt Vollzugang kaufen</button>
+      <p style="font-size:11px;color:var(--t3);margin-top:12px">Nach dem Kauf kurz neu anmelden oder Seite neu laden.</p>
+    </div>`);
+}
+function rCards(){
+  if(!paid){showPaywall();return;}
+  const tabs=MODS.map((m,i)=>`<button class="mt-tab${fcMod===i?' on':''}" onclick="setFCMod(${i})">${m.lbl}</button>`).join('');
+  const mod=fcMod??0;
+  const filtered=CARDS.filter(c=>c.m===mod);
+  fcMod=mod;fcIdx=Math.min(fcIdx,filtered.length-1);fcFlipped=false;
+  const card=filtered[fcIdx];
+  setPage('Karteikarten','Alle Module',`<span class="pil b">${filtered.length} Karten</span>`,`
+    <div class="mt-row">${tabs}</div>
+    <div class="fcnav">
+      <button class="fnb" onclick="fcNav(-1)">◀</button>
+      <span class="fc-ctr">${fcIdx+1} / ${filtered.length}</span>
+      <button class="fnb" onclick="fcNav(1)">▶</button>
+    </div>
+    <div class="fc-wrap" onclick="flipFC()">
+      <div class="fc-in${fcFlipped?' fl':''}" id="fc-in">
+        <div class="fc-fr">
+          <div class="fc-lbl">${MODS[mod].lbl} · Karte ${fcIdx+1}</div>
+          <div class="fc-term">${card.t}</div>
+          <div class="fc-hint">Klicken zum Umdrehen</div>
+        </div>
+        <div class="fc-bk">
+          <div class="fc-lbl">Antwort</div>
+          <div class="fc-def">${card.d}</div>
+        </div>
+      </div>
+    </div>`);
+}
+function setFCMod(m){fcMod=m;fcIdx=0;fcFlipped=false;rCards();}
+function fcNav(d){
+  const filtered=CARDS.filter(c=>c.m===fcMod);
+  fcIdx=(fcIdx+d+filtered.length)%filtered.length;
+  fcFlipped=false;rCards();
+}
+function flipFC(){
+  fcFlipped=!fcFlipped;
+  const el=document.getElementById('fc-in');
+  if(el)el.classList.toggle('fl',fcFlipped);
+}
+function rQuiz(){
+  if(!paid){showPaywall();return;}
+  quizMod=null;quizFiltered=[];qIdx=0;qAns=null;qScore=0;qWrong=[];
+  const tabs=MODS.map((m,i)=>`<button class="mt-tab" onclick="startQuizMod(${i})">${m.lbl}</button>`).join('');
+  setPage('Quiz','Wähle ein Modul','',`
+    <div class="card">
+      <p style="font-size:13px;margin-bottom:14px">Wähle ein Modul oder starte einen Gesamtquiz:</p>
+      <div class="mt-row">${tabs}</div>
+      <button class="btn btn-p" style="margin-top:12px" onclick="startQuizMod(-1)">Alle Module</button>
+    </div>`);
+}
+function startQuizMod(m){
+  quizMod=m;
+  quizFiltered=m===-1?[...QQ]:QQ.filter(q=>q.m===m);
+  quizFiltered.sort(()=>Math.random()-.5);
+  qIdx=0;qAns=null;qScore=0;qWrong=[];
+  renderQ();
+}
+function renderQ(){
+  const q=quizFiltered[qIdx];
+  const prog=(qIdx/quizFiltered.length)*100;
+  const opts=q.o.map((o,i)=>`
+    <button class="opt${qAns!==null?(i===q.a?' ok':(i===qAns?' no':'')):''}
+    " onclick="answerQ(${i})" ${qAns!==null?'disabled':''}>
+      <span class="olet">${String.fromCharCode(65+i)}</span>${o}
+    </button>`).join('');
+  const exp=qAns!==null?`<div class="qexp">💡 ${q.e}</div>`:'';
+  const foot=qAns!==null?`
+    <div class="qfoot">
+      <span style="font-size:11px;color:var(--t2)">${qIdx+1} / ${quizFiltered.length}</span>
+      ${qIdx<quizFiltered.length-1
+        ?`<button class="btn btn-p" onclick="nextQ()">Weiter →</button>`
+        :`<button class="btn btn-p" onclick="showQResult()">Ergebnis 🎉</button>`}
+    </div>`:'';
+  const modLabel=quizMod===-1?'Alle Module':MODS[quizMod].lbl;
+  setPage('Quiz',modLabel,`<span class="pil b">${qIdx+1}/${quizFiltered.length}</span>`,`
+    <div class="qcard">
+      <div class="qpb"><div class="qpf" style="width:${prog}%"></div></div>
+      <div class="qt">${q.q}</div>
+      <div class="opts">${opts}</div>
+      ${exp}${foot}
+    </div>`);
+}
+function answerQ(i){
+  if(qAns!==null)return;
+  qAns=i;
+  const q=quizFiltered[qIdx];
+  if(i===q.a)qScore++;else qWrong.push({q:q.q,correct:q.o[q.a],chosen:q.o[i]});
+  renderQ();
+}
+function nextQ(){qIdx++;qAns=null;renderQ();}
+function showQResult(){
+  const pct=Math.round((qScore/quizFiltered.length)*100);
+  const grade=pct>=88?'Sehr gut ✨':pct>=75?'Gut 👍':pct>=63?'Befriedigend 📚':pct>=50?'Genügend ⚠️':'Nicht genügend ❌';
+  const wrongHtml=qWrong.length?`<div style="margin-top:16px;text-align:left">
+    <div class="sect-head">Falsche Antworten</div>
+    ${qWrong.map(w=>`<div class="al trap" style="margin-bottom:6px"><span class="al-ic">❌</span>
+      <div><strong>${w.q}</strong><br>Deine Antwort: ${w.chosen}<br>Richtig: ${w.correct}</div></div>`).join('')}
+  </div>`:'';
+  const col=pct>=88?'#ecfdf5':pct>=63?'#eff4ff':'#fef2f2';
+  const tc=pct>=88?'#059669':pct>=63?'#2563eb':'#dc2626';
+  setPage('Quiz-Ergebnis','','',`
+    <div class="res">
+      <div class="res-ring" style="background:${col};color:${tc}">${pct}%</div>
+      <div class="res-g">${grade}</div>
+      <div class="res-s">${qScore} von ${quizFiltered.length} richtig</div>
+      <div style="max-width:260px;margin:0 auto">
+        <div class="rbar"><span class="rblab">Richtig</span><div class="rbt"><div class="rbf" style="width:${pct}%;background:var(--green)"></div></div><span class="rbp" style="color:var(--green)">${qScore}</span></div>
+        <div class="rbar"><span class="rblab">Falsch</span><div class="rbt"><div class="rbf" style="width:${100-pct}%;background:var(--red)"></div></div><span class="rbp" style="color:var(--red)">${quizFiltered.length-qScore}</span></div>
+      </div>
+      ${wrongHtml}
+      <div style="display:flex;gap:8px;justify-content:center;margin-top:20px">
+        <button class="btn btn-g" onclick="rQuiz()">Neues Quiz</button>
+        <button class="btn btn-p" onclick="startQuizMod(${quizMod})">Wiederholen</button>
+      </div>
+    </div>`);
+}
+function rExam(){
+  if(!paid){showPaywall();return;}
+  examMode=false;
+  setPage('Klausur-Simulation','60 Fragen · 60 Minuten','',`
+    <div class="card">
+      <div class="tg">
+        <div class="tc">
+          <h3>📋 Aufbau</h3>
+          <ul>
+            <li>60 Fragen aus allen Modulen</li>
+            <li>60 Minuten Bearbeitungszeit</li>
+            <li>Multiple-Choice (1 richtige Antwort)</li>
+            <li>Keine Pause möglich</li>
+          </ul>
+        </div>
+        <div class="tc">
+          <h3>🎯 Bewertung</h3>
+          <ul>
+            <li><strong>Sehr Gut (1):</strong> ≥ 88%</li>
+            <li><strong>Gut (2):</strong> ≥ 75%</li>
+            <li><strong>Befriedigend (3):</strong> ≥ 63%</li>
+            <li><strong>Genügend (4):</strong> ≥ 50%</li>
+            <li><strong>Nicht Genügend (5):</strong> < 50%</li>
+          </ul>
+        </div>
+      </div>
+      <button class="btn btn-p" style="margin-top:16px;width:100%" onclick="startExam()">Klausur starten</button>
+    </div>`);
+}
+function startExam(){
+  if(!paid){showPaywall();return;}
+  examMode=true;
+  const shuffled=[...QQ].sort(()=>Math.random()-.5);
+  examQs=shuffled.slice(0,60);
+  examIdx=0;examScore=0;examWrong=[];examSec=3600;
+  clearInterval(examTimer);
+  examTimer=setInterval(()=>{
+    examSec--;
+    const t=document.getElementById('exam-timer');
+    if(t){const m=Math.floor(examSec/60),s=examSec%60;
+      t.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      t.className='timer'+(examSec<600?' d':examSec<1200?' w':'');
+    }
+    if(examSec<=0){clearInterval(examTimer);finishExam();}
+  },1000);
+  renderExamQ();
+}
+function stopExam(){examMode=false;clearInterval(examTimer);}
+function renderExamQ(){
+  const q=examQs[examIdx];
+  const prog=((examIdx)/examQs.length)*100;
+  const m=Math.floor(examSec/60),s=examSec%60;
+  const timeStr=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+  const opts=q.o.map((o,i)=>`
+    <button class="opt" onclick="answerExam(${i})">
+      <span class="olet">${String.fromCharCode(65+i)}</span>${o}
+    </button>`).join('');
+  setPage('Klausur-Simulation',`Frage ${examIdx+1} von ${examQs.length}`,
+    `<span class="pil b">${examIdx+1}/${examQs.length}</span>`,`
+    <div class="exh">
+      <div>
+        <div style="font-size:10px;color:#4b5a78;margin-bottom:2px">VERBLEIBENDE ZEIT</div>
+        <div class="timer${examSec<600?' d':examSec<1200?' w':''}" id="exam-timer">${timeStr}</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:10px;color:#4b5a78;margin-bottom:2px">FORTSCHRITT</div>
+        <div style="font-size:14px;font-weight:700;color:#fff;font-family:var(--m)">${Math.round(prog)}%</div>
+      </div>
+    </div>
+    <div class="qcard">
+      <div class="qpb"><div class="qpf" style="width:${prog}%"></div></div>
+      <div class="qt">${q.q}</div>
+      <div class="opts">${opts}</div>
+    </div>`);
+}
+function answerExam(i){
+  const q=examQs[examIdx];
+  if(i===q.a)examScore++;else examWrong.push({q:q.q,mod:MODS[q.m].lbl,correct:q.o[q.a],chosen:q.o[i]});
+  examIdx++;
+  if(examIdx>=examQs.length){clearInterval(examTimer);finishExam();}
+  else renderExamQ();
+}
+function finishExam(){
+  examMode=false;
+  const pct=Math.round((examScore/examQs.length)*100);
+  const grade=pct>=88?'Sehr gut (1) ✨':pct>=75?'Gut (2) 👍':pct>=63?'Befriedigend (3) 📚':pct>=50?'Genügend (4) ⚠️':'Nicht genügend (5) ❌';
+  const col=pct>=88?'#ecfdf5':pct>=63?'#eff4ff':'#fef2f2';
+  const tc=pct>=88?'#059669':pct>=63?'#2563eb':'#dc2626';
+  const byMod=MODS.map((m,mi)=>{
+    const mq=examQs.filter(q=>q.m===mi);
+    if(!mq.length)return '';
+    const correct=mq.filter(q=>!examWrong.find(w=>w.q===q.q)).length;
+    const p=Math.round((correct/mq.length)*100);
+    return `<div class="rbar"><span class="rblab" style="width:70px">${m.lbl}</span><div class="rbt"><div class="rbf" style="width:${p}%;background:${p>=63?'var(--green)':'var(--red)'}"></div></div><span class="rbp" style="color:${p>=63?'var(--green)':'var(--red)'}">${p}%</span></div>`;
+  }).join('');
+  const wrongHtml=examWrong.slice(0,10).map(w=>`
+    <div class="al trap" style="margin-bottom:5px"><span class="al-ic">❌</span>
+    <div style="font-size:11px"><strong>[${w.mod}] ${w.q}</strong><br>
+    Du: ${w.chosen}<br>Richtig: ${w.correct}</div></div>`).join('');
+  setPage('Klausur-Ergebnis','','',`
+    <div class="res">
+      <div class="res-ring" style="background:${col};color:${tc}">${pct}%</div>
+      <div class="res-g">${grade}</div>
+      <div class="res-s">${examScore} von ${examQs.length} richtig</div>
+      <div style="max-width:300px;margin:0 auto 20px">${byMod}</div>
+      ${examWrong.length?`<div style="text-align:left;width:100%;max-width:500px">
+        <div class="sect-head">Fehler (erste 10)</div>${wrongHtml}
+      </div>`:''}
+      <div style="display:flex;gap:8px;justify-content:center;margin-top:20px">
+        <button class="btn btn-g" onclick="nav('home')">Übersicht</button>
+        <button class="btn btn-p" onclick="rExam()">Neue Klausur</button>
+      </div>
+    </div>`);
+}
+function rImp(){
+  setPage('Impressum','Rechtliche Informationen','',`
+    <div class="card">
+      <div class="imp-section">
+        <h3>Impressum</h3>
+        <p>Diese App dient ausschließlich Lernzwecken für Studierenden der WU Wien.</p>
+        <p>Inhalte basieren auf den Vorlesungsunterlagen von Mag. Dr. Margit Kastner, Department für Marketing, WU Wien.</p>
+        <p>Quelle: Meffert et al. (2024). Marketing. Wiesbaden: Springer Gabler.</p>
+      </div>
+      <div class="imp-section">
+        <h3>Kontakt</h3>
+        <p>Bei Fragen oder Problemen: <a href="mailto:tazkdome@gmail.com">tazkdome@gmail.com</a></p>
+        <p>Entwickelt von Valentin Bühring-Uhle</p>
+      </div>
+      <div class="imp-section">
+        <h3>Datenschutz</h3>
+        <p>Diese App verwendet Supabase für Authentifizierung. Keine Weitergabe persönlicher Daten an Dritte.</p>
+      </div>
+    </div>`);
+}
+window.addEventListener('load',async()=>{
+  document.getElementById('lo').classList.add('hide');
+  const {data:{session}}=await sb.auth.getSession();
+  if(session?.user)await initUser(session.user);
+  else document.getElementById('ls').classList.remove('hide');
+  sb.auth.onAuthStateChange(async(event,session)=>{
+    if(event==='SIGNED_IN'&&session?.user&&!user)await initUser(session.user);
+    if(event==='SIGNED_OUT'){user=null;paid=false;document.getElementById('app').style.display='none';document.getElementById('ls').classList.remove('hide');}
+  });
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&document.getElementById('ls')&&!document.getElementById('ls').classList.contains('hide'))doLogin();
+});
 </script>
 </body>
 </html>
