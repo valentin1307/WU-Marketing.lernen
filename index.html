@@ -1757,79 +1757,75 @@ function showSuc(m){const e=document.getElementById('lsuc');e.textContent=m;e.cl
 function setLoading(id,v){const b=document.getElementById(id);if(b){b.disabled=v;b.style.opacity=v?.5:1;}}
 
 // ─── AUTH ─────────────────────────────────────────────────────────────────────
-async function checkPaidAccess(uid){
-  try{
-    const {data}=await sb.from('paid_users').select('id').eq('user_id',uid).single();
-    return !!data;
-  }catch(e){return false;}
+const FREE_EMAILS = ['valentin@buehringuhle.de'];
+
+async function checkPaidAccess(userId) {
+  try {
+    const timeout = new Promise((resolve) => setTimeout(() => resolve(null), 3000));
+    const query = sb.from('paid_users').select('user_id').eq('user_id', userId).maybeSingle();
+    const result = await Promise.race([query, timeout]);
+    return !!(result && result.data);
+  } catch(e) { return false; }
 }
-async function doLogin(){
-  const email=document.getElementById('l-email').value.trim();
-  const pass=document.getElementById('l-pass').value;
-  if(!email||!pass){showErr('Bitte E-Mail und Passwort eingeben.');return;}
-  setLoading('login-btn',true);
-  const {data,error}=await sb.auth.signInWithPassword({email,password:pass});
-  setLoading('login-btn',false);
-  if(error){showErr('Login fehlgeschlagen: '+error.message);return;}
-  loginSuccess(data.user);
+async function doLogin() {
+  const email = document.getElementById('l-email').value.trim();
+  const pass = document.getElementById('l-pass').value;
+  if (!email || !pass) { showErr('Bitte E-Mail und Passwort eingeben.'); return; }
+  setLoading('login-btn', true);
+  const { data, error } = await sb.auth.signInWithPassword({ email, password: pass });
+  setLoading('login-btn', false);
+  if (error) { showErr('Fehler: ' + error.message); return; }
+  if (FREE_EMAILS.includes(email.toLowerCase())) { await loginSuccess(data.user); return; }
+  const isPaid = await checkPaidAccess(data.user.id);
+  if (isPaid) {
+    await loginSuccess(data.user);
+  } else {
+    await sb.auth.signOut();
+    window.location.href = `https://buy.stripe.com/4gM4gzb6o2nO58jeQfdIA00?prefilled_email=${encodeURIComponent(email)}&client_reference_id=${data.user.id}`;
+  }
 }
-async function doRegister(){
-  const email=document.getElementById('r-email').value.trim();
-  const pass=document.getElementById('r-pass').value;
-  const pass2=document.getElementById('r-pass2').value;
-  if(!email||!pass||!pass2){showErr('Bitte alle Felder ausfüllen.');return;}
-  if(pass!==pass2){showErr('Passwörter stimmen nicht überein.');return;}
-  if(pass.length<6){showErr('Passwort muss mindestens 6 Zeichen haben.');return;}
-  setLoading('reg-btn',true);
-  const {data,error}=await sb.auth.signUp({email,password:pass});
-  setLoading('reg-btn',false);
-  if(error){showErr('Registrierung fehlgeschlagen: '+error.message);return;}
-  document.getElementById('paywall-email').textContent=email;
-  document.getElementById('login-form').style.display='none';
-  document.getElementById('reg-form').style.display='none';
-  document.getElementById('ltabs-wrap').style.display='none';
-  document.getElementById('paywall').style.display='block';
-}
-async function loginSuccess(user){
-  CU=user;
-  const paid=await checkPaidAccess(user.id);
-  if(!paid){
-    document.getElementById('paywall-email').textContent=user.email;
-    document.getElementById('login-form').style.display='none';
-    document.getElementById('reg-form').style.display='none';
-    document.getElementById('ltabs-wrap').style.display='none';
-    document.getElementById('paywall').style.display='block';
-    document.getElementById('loading-overlay').classList.add('hide');
-    document.getElementById('login-screen').classList.remove('hide');
+async function doRegister() {
+  const email = document.getElementById('r-email').value.trim();
+  const pass = document.getElementById('r-pass').value;
+  const pass2 = document.getElementById('r-pass2').value;
+  if (!email || !pass) { showErr('Bitte alle Felder ausfüllen.'); return; }
+  if (pass.length < 6) { showErr('Passwort muss mindestens 6 Zeichen haben.'); return; }
+  if (pass !== pass2) { showErr('Passwörter stimmen nicht überein.'); return; }
+  setLoading('reg-btn', true);
+  const { data, error } = await sb.auth.signUp({ email, password: pass });
+  if (error) { setLoading('reg-btn', false); showErr(error.message === 'User already registered' ? 'Diese E-Mail ist bereits registriert.' : error.message); return; }
+  setLoading('reg-btn', false);
+  if (FREE_EMAILS.includes(email.toLowerCase())) {
+    if (data.session) { await loginSuccess(data.user); } else { showSuc('✅ Registrierung erfolgreich! Bitte einloggen.'); switchTab('login'); }
     return;
   }
-  await loadScoresFromDB();
+  window.location.href = `https://buy.stripe.com/4gM4gzb6o2nO58jeQfdIA00?prefilled_email=${encodeURIComponent(email)}&client_reference_id=${data.user.id}`;
+}
+async function loginSuccess(user) {
+  CU = user;
+  await loadScoresFromDB(user.id);
   document.getElementById('login-screen').classList.add('hide');
   document.getElementById('loading-overlay').classList.add('hide');
-  const wrap=document.getElementById('user-badge-wrap');
-  const av=user.email.substring(0,2).toUpperCase();
-  wrap.innerHTML=`<div class="uav">${av}</div><span class="uname">${user.email}</span><button class="logoutb" onclick="logout()">Logout</button>`;
-  wrap.style.display='flex';
+  updateTopbar();
   render();
 }
-async function logout(){
+async function logout() {
+  await saveScoresNow();
   await sb.auth.signOut();
-  CU=null;
-  MODS.forEach(m=>S.scores[m.id]={correct:0,total:0});
-  document.getElementById('user-badge-wrap').style.display='none';
+  CU = null;
+  MODS.forEach(m => S.scores[m.id] = {c:0, t:0});
   document.getElementById('login-screen').classList.remove('hide');
-  document.getElementById('ltabs-wrap').style.display='block';
-  document.getElementById('login-form').style.display='block';
-  document.getElementById('reg-form').style.display='none';
-  document.getElementById('paywall').style.display='none';
-  switchTab('login');
-}
-function showPaywallLogin(){
-  document.getElementById('paywall').style.display='none';
-  document.getElementById('ltabs-wrap').style.display='block';
-  document.getElementById('login-form').style.display='block';
+  document.getElementById('user-badge-wrap').style.display = 'none';
   document.getElementById('lerr').classList.remove('show');
   document.getElementById('lsuc').classList.remove('show');
+  document.getElementById('l-email').value = '';
+  document.getElementById('l-pass').value = '';
+  switchTab('login');
+}
+function showPaywallLogin() {
+  document.getElementById('paywall').style.display = 'none';
+  document.getElementById('ltabs-wrap').style.display = '';
+  switchTab('login');
 }
 function switchTab(t){
   document.getElementById('login-form').style.display=t==='login'?'block':'none';
@@ -2220,21 +2216,46 @@ function rImpressum(){
 }
 
 // ─── AUTH INIT ────────────────────────────────────────────────────────────────
-(async()=>{
-  const {data:{session}}=await sb.auth.getSession();
-  if(session?.user){
-    await loginSuccess(session.user);
-  } else {
-    document.getElementById('loading-overlay').classList.add('hide');
-    document.getElementById('login-screen').classList.remove('hide');
-  }
+function showLogin() {
+  document.getElementById('login-screen').classList.remove('hide');
+  document.getElementById('loading-overlay').classList.add('hide');
+}
+const initTimeout = setTimeout(showLogin, 5000);
+
+(async () => {
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('payment') === 'success') {
+      clearTimeout(initTimeout);
+      window.history.replaceState({}, '', window.location.pathname);
+      const { data: { session } } = await sb.auth.getSession();
+      if (session) {
+        let paid = false;
+        for (let i = 0; i < 5; i++) {
+          const { data } = await sb.from('paid_users').select('user_id').eq('user_id', session.user.id).maybeSingle();
+          if (data) { paid = true; break; }
+          await new Promise(r => setTimeout(r, 2000));
+        }
+        if (paid) { await loginSuccess(session.user); return; }
+      }
+      showLogin();
+      document.getElementById('lsuc').textContent = '✅ Zahlung erfolgreich! Du kannst dich jetzt einloggen.';
+      document.getElementById('lsuc').classList.add('show');
+      return;
+    }
+    const { data: { session } } = await sb.auth.getSession();
+    clearTimeout(initTimeout);
+    if (session?.user) {
+      try {
+        if (FREE_EMAILS.includes(session.user.email.toLowerCase())) { await loginSuccess(session.user); return; }
+        const isPaid = await checkPaidAccess(session.user.id);
+        if (isPaid) { await loginSuccess(session.user); } else { await sb.auth.signOut(); showLogin(); }
+      } catch(e) { showLogin(); }
+    } else { showLogin(); }
+  } catch(e) { clearTimeout(initTimeout); showLogin(); }
 })();
 
-sb.auth.onAuthStateChange(async(event,session)=>{
-  if(event==='SIGNED_IN'&&session?.user&&!CU){
-    await loginSuccess(session.user);
-  }
-});
+sb.auth.onAuthStateChange(async (event, session) => { if (event === 'SIGNED_OUT') CU = null; });
 </script>
 </body>
 </html>
