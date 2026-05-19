@@ -263,6 +263,9 @@ html,body{height:100%;font-family:var(--f);font-size:13px;color:var(--t);backgro
       <div class="lf"><label>E-Mail</label><input id="l-email" type="email" placeholder="deine@email.com" autocomplete="email"></div>
       <div class="lf"><label>Passwort</label><input id="l-pass" type="password" placeholder="Passwort..." autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"></div>
       <button class="lbtn" id="login-btn" onclick="doLogin()">Anmelden →</button>
+<div style="text-align:center;margin-top:12px">
+  <span onclick="showReset()" style="font-size:11px;color:#4b5a78;cursor:pointer;text-decoration:underline">Passwort vergessen?</span>
+</div>
     </div>
     <div id="reg-form" style="display:none">
       <div class="lf"><label>E-Mail</label><input id="r-email" type="email" placeholder="deine@email.com"></div>
