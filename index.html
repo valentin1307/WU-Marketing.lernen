@@ -804,72 +804,323 @@ const LEARN=[
   ]},
   {y:'trap',v:'<b>Intrapersonal</b> (innerhalb der Person) ≠ <b>Interpersonal</b> (zwischen Personen/soziale Umwelt). Häufiger Klausurfehler!'}
 ]}
-]},{mod:2,chs:[
+]},
+{mod:2,chs:[
 {t:'Marketingforschung ≠ Marktforschung',items:[
   {y:'kv',items:[
-    {k:'Marketingforschung',v:'Systematische Erfassung über die <b>Marketingsituationen und Entscheidungen</b> (umfassender Begriff)'},
-    {k:'Marktforschung',v:'Systematische Gewinnung über die <b>Absatz- und Beschaffungsmärkte</b> (engerer Begriff)',c:'amber'},
+    {k:'Marketingforschung (übergeordnet)',v:'Systematische Erfassung und Auswertung von Informationen über die <b>Marketingsituationen</b> und <b>Entscheidungen</b> eines Unternehmens.'},
+    {k:'Marktforschung (enger Begriff)',v:'Systematische Gewinnung, Aufbereitung und Interpretation von Informationen über die <b>Absatz- und Beschaffungsmärkte</b> eines Unternehmens.',c:'amber'},
   ]},
-  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> Marktforschung ≠ Marketingforschung! Marktforschung ist nur ein Teilbereich der Marketingforschung.'}
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> Marktforschung ≠ Marketingforschung! Marketingforschung ist der <b>übergeordnete</b> Begriff — Marktforschung ist nur ein Teilbereich davon.'}
 ]},
 {t:'7 Funktionen der Marketingforschung',items:[
   {y:'tbl',heads:['#','Funktion','Erklärung'],rows:[
-    ['1','<b>Selektion</b>','Auswahl marketingrelevanter Informationen'],
-    ['2','<b>Frühwarnung</b>','Frühzeitige Erkennung von Risiken'],
+    ['1','<b>Selektion</b>','Auswahl und Aufbereitung von marketingrelevanten Informationen (Strategie- und Maßnahmenentscheidungen)'],
+    ['2','<b>Frühwarnung</b>','Frühzeitige Erkennung und Abschätzung von Risiken'],
     ['3','<b>Innovation</b>','Erkennen und Nutzen von Chancen'],
-    ['4','<b>Strukturierung</b>','Gewinnung, Analyse, Interpretation und Empfehlungen'],
+    ['4','<b>Strukturierung</b>','Gewinnung, Analyse und Interpretation der Daten bzw. Empfehlungen'],
     ['5','<b>Unsicherheitsreduktion</b>','Präzisieren und Objektivieren von Sachverhalten'],
     ['6','<b>Kontrolle</b>','Erforschung der Ursachen von (Miss-)Erfolgen'],
-    ['7','<b>Intelligenzverstärkung</b>','Unterstützung bei komplexen Entscheidungen'],
+    ['7','<b>Intelligenzverstärkung</b>','Unterstützung des Marketingverantwortlichen bei komplexen Entscheidungen'],
   ]},
-  {y:'tip',v:'<b>Merkhilfe S-F-I-S-U-K-I:</b> Selektion, Frühwarnung, Innovation, Strukturierung, Unsicherheitsreduktion, Kontrolle, Intelligenzverstärkung.'}
+  {y:'tip',v:'<b>Merkhilfe S-F-I-S-U-K-I:</b> Selektion · Frühwarnung · Innovation · Strukturierung · Unsicherheitsreduktion · Kontrolle · Intelligenzverstärkung'}
 ]},
-{t:'Phasen & Gütekriterien der Marketingforschung',items:[
-  {y:'tbl',heads:['Phase','Inhalt'],rows:[
-    ['<b>1. Problemdefinition</b>','Was soll untersucht werden?'],
-    ['<b>2. Informationsgewinnung</b>','Datenquelle, Erhebungsmethode, Stichprobenplan, Erhebungszeitpunkt'],
-    ['<b>3. Informationsverarbeitung</b>','Auswertungsplan, Analyseverfahren, Interpretation'],
-    ['<b>4. Kommunikation der Ergebnisse</b>','Präsentation, Handlungsempfehlungen'],
+{t:'Prozess der Marketingforschung & Detailentscheidungen',items:[
+  {y:'info',v:'Der <b>Prozess der Marketingforschung</b> umfasst 4 Phasen in fester Reihenfolge. Phase 2 (Informationsgewinnung) enthält die wesentlichsten Forschungsentscheidungen.'},
+  {y:'step',n:1,q:'Was soll untersucht werden?',t:'Problemdefinition',d:'Genaue Festlegung des Untersuchungsproblems. Ausgangspunkt für alle weiteren Entscheidungen.'},
+  {y:'step',n:2,q:'Wie werden Informationen gewonnen?',t:'Informationsgewinnung',d:'Detailentscheidungen: (1) Datenquelle (Primär- oder Sekundärquelle), (2) Datenerhebungsmethode (z.B. Befragung, Beobachtung, Experiment), (3) Stichprobenplan (Grundgesamtheit, Größe und Auswahl der Stichprobe), (4) Erhebungszeitpunkt.'},
+  {y:'step',n:3,q:'Wie werden Daten ausgewertet?',t:'Informationsverarbeitung',d:'Auswertungsplan erstellen, Analyseverfahren auswählen (uni-/bi-/multivariate Methoden), Ergebnisse interpretieren und bewerten.'},
+  {y:'step',n:4,q:'Wie werden Ergebnisse kommuniziert?',t:'Kommunikation der Ergebnisse',d:'Präsentation der Ergebnisse, Handlungsempfehlungen ableiten.'},
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> Die 4 Phasen in Reihenfolge kennen! Problemdefinition IMMER zuerst — dann Gewinnung → Verarbeitung → Kommunikation.'}
+]},
+{t:'Gütekriterien der Informationsgewinnung',items:[
+  {y:'info',v:'<b>Gütekriterien</b> beurteilen die Qualität von Methoden der Informationsgewinnung. Es gibt 4 zentrale Kriterien — alle sind prüfungsrelevant!'},
+  {y:'kv',items:[
+    {k:'Reliabilität (= Zuverlässigkeit)',v:'Wie zuverlässig / fehlerfrei misst das Instrument Daten? Ist die Messung wiederholbar? → Reproduzierbarkeit der Messung.'},
+    {k:'Validität (= Gültigkeit)',v:'Misst das Instrument das, was gemessen werden soll? Sind die Messergebnisse auf die Realität übertragbar? → Richtigkeit der Messung.',c:'green'},
+    {k:'Reaktivität',v:'Beeinflussen das Instrument und die Situation das Messergebnis? → Verändert der Messprozess selbst das Ergebnis?',c:'amber'},
+    {k:'Objektivität',v:'Sind die Messvorgänge unabhängig von der durchführenden Person? → Unabhängigkeit vom Forscher.',c:'pur'},
   ]},
-  {y:'tbl',heads:['Gütekriterium','Leitfrage'],rows:[
-    ['<b>Reliabilität</b>','Ist die Messung wiederholbar und fehlerfrei?'],
-    ['<b>Validität</b>','Misst das Instrument, was es messen soll?'],
-    ['<b>Reaktivität</b>','Beeinflusst die Situation das Messergebnis?'],
-    ['<b>Objektivität</b>','Sind Ergebnisse unabhängig vom Durchführenden?'],
-  ]}
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> Reliabilität = Wiederholbarkeit (= zuverlässig). Validität = misst das Richtige (= gültig). NICHT verwechseln! Ein Instrument kann reliabel aber NICHT valide sein (misst konsistent, aber das Falsche!).'}
 ]},
-{t:'Primär- vs. Sekundärforschung & Beobachtung',items:[
+{t:'Primär- vs. Sekundärforschung',items:[
   {y:'tbl',heads:['','Primärforschung','Sekundärforschung'],rows:[
-    ['Definition','Neue Daten eigens erheben','Vorhandene Daten nutzen und analysieren'],
-    ['Vorteil','Aktuell, spezifisch, maßgeschneidert','Schnell, günstig, einfach zugänglich'],
-    ['Nachteil','Teuer, zeitaufwendig','Oft veraltet, nicht problemspezifisch'],
+    ['<b>Definition</b>','Originäre Datenerhebung — neue Daten werden eigens für den Untersuchungszweck erhoben','Beschaffung, Zusammenstellung und Analyse von bereits vorhandenem Material (intern + extern)'],
+    ['<b>Vorteil</b>','Aktuell, spezifisch, maßgeschneidert','Schnell, günstig, einfach zugänglich'],
+    ['<b>Nachteil</b>','Teuer, zeitaufwendig','Oft veraltet, nicht problemspezifisch'],
   ]},
-  {y:'def',k:'Mystery Shopping',v:'Forscher/innen treten als normale Kunden auf und nehmen reale Kundensituationen wahr. Varianten: Mystery Calling, Mystery Mailing.'},
-  {y:'def',k:'Panelerhebung — 3 Einschränkungen',v:'<b>Panelsterblichkeit</b> (Fluktuation), <b>Paneleffekt</b> (Verhaltensänderung durch Selbstkontrolle), <b>Panelerstarrung</b> (Zusammensetzung ≠ Grundgesamtheit)'}
+  {y:'h',v:'Methoden der Primärforschung:'},
+  {y:'kv',items:[
+    {k:'Standardmethoden',v:'Beobachtung · Befragung · Experiment'},
+    {k:'Spezialformen',v:'Panelerhebung · Apparative Verfahren · Computergestützte Verfahren · Psychologische Testverfahren · Testmärkte · Testmarktkombinationen',c:'green'},
+  ]},
+  {y:'h',v:'Sekundärforschung — Quellen:'},
+  {y:'kv',items:[
+    {k:'Interne Quellen',v:'Eigene Unternehmensberichte, Umsatzstatistiken, CRM-Daten, frühere Forschungsberichte.'},
+    {k:'Externe Quellen',v:'Statistik Austria, Eurostat, Branchenverbände, Marktstudien, wissenschaftliche Publikationen.',c:'amber'},
+  ]},
+  {y:'tip',v:'<b>Reihenfolge in der Praxis:</b> Zuerst Sekundärforschung (günstig, schnell) → dann Primärforschung nur wenn nötig (teuer aber spezifisch).'}
 ]},
-{t:'Befragung — Fragetypen & Skalenarten',items:[
-  {y:'tbl',heads:['Verfahren','Beschreibung'],rows:[
-    ['<b>Semantisches Differential</b>','Gegensatzpaare auf Skala bewerten'],
-    ['<b>Likert-Skala</b>','Zustimmungsgrad angeben'],
-    ['<b>Ballon-Test</b>','Leere Sprechblase in Cartoon ausfüllen → enthüllt unbewusste Meinungen'],
-    ['<b>Wortassoziation</b>','Welches Wort fällt Ihnen zuerst ein, wenn Sie X hören?'],
+{t:'Beobachtung — Grundlagen, Methoden & Spezialformen',items:[
+  {y:'def',k:'Beobachtung',v:'Systematische Erfassung von wahrnehmbaren Sachverhalten (z.B. Sortimentsbestand, physische Verhaltensweise) zum Zeitpunkt des Geschehens.'},
+  {y:'kv',items:[
+    {k:'Vorteil (+)',v:'<b>Realitätsnahe Erfassung</b> — zeitgleich mit dem Auftreten des Ereignisses. Kein Rückgriff auf Erinnerungen.'},
+    {k:'Nachteile (−)',v:'<b>Flüchtigkeit</b> → schwierige Erfassung längerer Handlungen. <b>Subjektive Sachverhalte</b> (z.B. Meinungen) nur durch Befragungen möglich. <b>Beobachtungseffekt:</b> Probanden verhalten sich beobachtet anders → Verzerrung.',c:'red'},
   ]},
-  {y:'tbl',heads:['Skala','Eigenschaft','Beispiel'],rows:[
-    ['<b>Nominal</b>','Klassifikation','Geschlecht, PLZ'],
-    ['<b>Ordinal</b>','Rangordnung','Schulnoten, Windstärke'],
-    ['<b>Intervall</b>','Rangordnung + Abstände; KEIN absoluter Nullpunkt','Temperatur °C, IQ'],
-    ['<b>Ratio</b>','Wie Intervall + absoluter Nullpunkt','Alter, Umsatz, Gewicht'],
+  {y:'h',v:'4 Dimensionen der Beobachtungsmethoden:'},
+  {y:'tbl',heads:['Dimension','Methode A','Methode B'],rows:[
+    ['<b>Subjekt</b>','<b>Fremdbeobachtung</b> — Vorgänge außerhalb des Beobachters','<b>Selbstbeobachtung</b> — eigene psychische Vorgänge'],
+    ['<b>Instrument</b>','<b>Persönliche Beobachtung</b> — durch Beobachter selbst','<b>Unpersönliche Beobachtung</b> — durch Beobachtungsgeräte'],
+    ['<b>Teilnahme</b>','<b>Teilnehmende Beobachtung</b> — Beobachter und Beobachtete auf gleicher Ebene','<b>Nicht-teilnehmende Beobachtung</b> — ausschließlich Wahrnehmung von Aktionen'],
+    ['<b>Umgebung</b>','<b>Feldbeobachtung</b> — gewohntes Umfeld der Beobachteten (hohe Validität)','<b>Laborbeobachtung</b> — künstlich geschaffene Situation (bessere Kontrolle, höhere Reliabilität)'],
   ]},
-  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> 0°C ist NICHT "keine Temperatur" → Intervallskala. 0 kg = kein Gewicht → Ratioskala. Hierarchie: Nominal < Ordinal < Intervall < Ratio.'}
+  {y:'h',v:'Spezialformen der Beobachtung:'},
+  {y:'def',k:'Compagnonverfahren',v:'Methode, bei der durch Videoaufzeichnung die Aufmerksamkeit beim Lesen von Printmedien bzw. bei der Betrachtung von Werbung in Printmedien gemessen wird.'},
+  {y:'def',k:'Mystery Shopping',v:'Methode, bei der Forscher/innen als normale Kund/inn/en auftreten und reale Kundensituationen wahrnehmen (z.B. Testkäufe). → Objektive Messung der Servicequalität ohne Beobachtungseffekt (Beobachtete wissen es nicht)!'},
+  {y:'badges',items:[{v:'Mystery Shopping',c:'b'},{v:'Mystery Calling (Telefon)',c:'b'},{v:'Mystery Mailing (schriftlich)',c:'b'}]},
+  {y:'tip',v:'<b>Merkhilfe 4 Dimensionen:</b> Fremd/Selbst · Persönlich/Unpersönlich · Teilnehmend/Nicht-teilnehmend · Feld/Labor. Mystery Shopping = verdeckte Feldbeobachtung (kein Beobachtungseffekt!).'}
 ]},
-{t:'Experiment & Absatzprognosen',items:[
-  {y:'def',k:'Experiment',v:'Einzige Methode zur Feststellung <b>ursächlicher Beziehungen (Kausalität)</b>. Feld (natürliche Umgebung, höhere Validität) vs. Labor (künstlich, mehr Kontrolle).'},
-  {y:'tbl',heads:['Methode','Beschreibung'],rows:[
-    ['<b>Gleitender Durchschnitt</b>','Prognose = Durchschnitt der letzten n Perioden. Reagiert träge auf Trends.'],
-    ['<b>Exponentielle Glättung</b>','Neuere Perioden stärker gewichtet (Glättungsparameter α).'],
-    ['<b>Delphi-Methode</b>','Mehrere Experten in mehreren anonymen Runden bis Konsens. Für Langfristprognosen.'],
-  ]}
+{t:'Befragung — Grundlagen & Fragetypen',items:[
+  {y:'def',k:'Befragung',v:'Personen geben über einen bestimmten Sachverhalt Auskunft. Erfasst <b>beobachtbares UND nicht-beobachtbares Verhalten</b>. <b>Reaktives Instrument</b> — der Befragte ist sich der Messsituation bewusst.'},
+  {y:'kv',items:[
+    {k:'Schriftliche Befragung',v:'Fragebogen · Online-/Internetbefragung'},
+    {k:'Mündliche Befragung',v:'Interview (auch telefonisch)',c:'green'},
+  ]},
+  {y:'h',v:'2 zentrale Verzerrungsquellen:'},
+  {y:'kv',items:[
+    {k:'Interviewer-Effekt',v:'Einfluss durch bloße Anwesenheit des Interviewers → Befragter antwortet anders als ohne Interviewer.',c:'red'},
+    {k:'Soziale Erwünschtheit',v:'Angst vor "falschen" Antworten → Befragte antworten, wie sie glauben, dass es erwartet wird. → Verzerrung der Ergebnisse.',c:'amber'},
+  ]},
+  {y:'h',v:'4 Fragetypen nach Funktion im Interview:'},
+  {y:'tbl',heads:['Fragetyp','Ziel / Funktion'],rows:[
+    ['<b>Einleitungs-/Kontakt-/Eisbrecherfragen</b>','Aufgeschlossenheit gegenüber dem Interview herbeiführen'],
+    ['<b>Sachfragen</b>','Hauptteil der Befragung — eigentlicher Untersuchungsinhalt'],
+    ['<b>Kontroll- und Plausibilitätsfragen</b>','Auskünfte bzw. deren Konsistenz überprüfen'],
+    ['<b>Fragen zur Person</b>','Soziodemographische und ökonomische Merkmale erfassen'],
+  ]},
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> Befragung = REAKTIVES Instrument (Befragter weiß, dass er befragt wird). Beobachtung kann nicht-reaktiv (verdeckt) sein. Dieser Unterschied ist prüfungsrelevant!'}
+]},
+{t:'Frageformulierungen — offen, geschlossen, direkt, indirekt',items:[
+  {y:'tbl',heads:['','Geschlossene Frage','Offene Frage'],rows:[
+    ['<b>Definition</b>','Vorgegebene Antwortmöglichkeiten; Beantwortung anhand von Skalen','Keine festen Antwortkategorien → freie Antwort'],
+    ['<b>Vorteil</b>','Leicht auswertbar, vergleichbar, standardisiert','Tiefe Einblicke, unerwartete Antworten möglich'],
+    ['<b>Nachteil</b>','Kategorien begrenzen Antwortspektrum','Schwer auswertbar, zeitaufwendig'],
+  ]},
+  {y:'h',v:'Direkte vs. Indirekte Frageform:'},
+  {y:'kv',items:[
+    {k:'Direkte Frageform',v:'Auskunft über eigene Person bzw. eigenes Verhalten. Schwierig bei Tabuthemen. Problem der sozialen Erwünschtheit.'},
+    {k:'Indirekte Frageform',v:'Auskunft über Sachverhalte, über die sich Befragter sonst nicht oder nur verzerrt äußern würde. Geschickte Frageformulierung umgeht soziale Erwünschtheit.',c:'green'},
+  ]},
+  {y:'h',v:'Beispiele für offene Fragemethoden:'},
+  {y:'tbl',heads:['Methode','Beschreibung','Beispiel'],rows:[
+    ['<b>Unstrukturierte Fragestellung</b>','Vollständig offene Frage ohne Vorgaben','"Was hat Ihren letzten Urlaub ausgemacht?"'],
+    ['<b>Wortassoziation</b>','Erstes Wort, das zum Begriff einfällt nennen','"Welches Wort fällt Ihnen zuerst ein, wenn Sie <i>Manner-Schnitten</i> hören?"'],
+    ['<b>Ballon-Test</b>','Leere Sprechblase in Cartoon ausfüllen','Enthüllt unbewusste Meinungen und Einstellungen'],
+    ['<b>Bilder-Erzähl-Test</b>','Kurze Geschichte zu einem Bild erzählen','Projektivische Technik zur Motivforschung'],
+  ]},
+  {y:'tip',v:'<b>Merkhilfe:</b> Geschlossen = vorgegebene Kategorien (leicht auswertbar). Offen = freie Antwort (tiefere Einblicke). Direkt = über sich selbst. Indirekt = "was würden die meisten tun?" → umgeht soziale Erwünschtheit.'}
+]},
+{t:'Skalenarten unterschiedlicher Messniveaus',items:[
+  {y:'info',v:'Skalen unterscheiden sich im <b>Informationsgehalt</b>. Hierarchie: Nominal < Ordinal < Intervall < Ratio. Höhere Skalenniveaus erlauben mehr statistische Operationen.'},
+  {y:'tbl',heads:['Skala','Merkmale','Statistische Maße','Beispiele'],rows:[
+    ['<b>Nominal</b>','Klassifikation: Rangwerte sind (nicht) identisch. Nur Gleichheit/Ungleichheit feststellbar. NICHT-metrisch.','Modus (häufigster Wert)','Geschlecht, Nationalität, PLZ, Wohnort'],
+    ['<b>Ordinal</b>','Rangordnung: Werte lassen sich als < > = einordnen. Abstände NICHT quantifizierbar. NICHT-metrisch.','+ Median','Schulnoten, Windstärke, Präferenzranking'],
+    ['<b>Intervall</b>','Rangordnung + Abstandsbestimmung. KEIN absoluter Nullpunkt. Metrisch.','+ Mittelwert, Standardabweichung','Temperatur °C, IQ-Werte'],
+    ['<b>Ratio (Verhältnis)</b>','Wie Intervallskala + absoluter Nullpunkt. Alle mathematischen Operationen möglich. Metrisch.','Alle Operationen möglich','Alter, Jahresumsatz, Gewicht, Einkommen'],
+  ]},
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> 0°C = NICHT "keine Temperatur" → Intervallskala (kein absoluter Nullpunkt!). 0 kg = tatsächlich kein Gewicht → Ratioskala. 0 Euro Umsatz = wirklich kein Umsatz → Ratioskala. Schulnoten = Ordinalskala (Abstände nicht gleich)!'},
+  {y:'h',v:'Skalierungsverfahren für geschlossene Fragen:'},
+  {y:'tbl',heads:['Verfahren','Beschreibung','Skalentyp'],rows:[
+    ['<b>Rangordnungsverfahren</b>','Merkmale nach Wichtigkeit ordnen (Rang 1-4). Bsp: Preis=1, Farbe=2, Marke=3, Material=4.','Ordinal'],
+    ['<b>Konstantsummenverfahren</b>','100 Punkte auf Merkmale verteilen. Bsp: Preis=40, Farbe=35, Marke=15, Material=10.','Ordinal'],
+    ['<b>Semantisches Differential</b>','Bewertung auf bipolaren Gegensatzpaaren (aufmerksam ↔ unaufmerksam), 5 oder 7 Stufen.','Intervall'],
+    ['<b>Stapelskalierung</b>','Eindimensionale Skala — nur eine Eigenschaft pro Skala (z.B. aufmerksam: +3 bis −3).','Intervall'],
+    ['<b>Rating-/Likert-Skalierung</b>','Zustimmungsgrad (stimme voll zu → stimme nicht zu). Werden <b>synonym</b> verwendet!','Intervall'],
+    ['<b>Nominalskalierung</b>','Auswahl einer Kategorie. Bsp: "Wer hat Sie beim Kauf begleitet? niemand / Partner / Kind"','Nominal'],
+  ]},
+  {y:'tip',v:'<b>Merkhilfe Hierarchie (N-O-I-R):</b> <b>N</b>ominal → <b>O</b>rdinal → <b>I</b>ntervall → <b>R</b>atio. Jede Stufe enthält alle Eigenschaften der vorherigen + neue Eigenschaft.'}
+]},
+{t:'Standardisierungsgrad von Interviews',items:[
+  {y:'tbl',heads:['Interviewtyp','Beschreibung','Vorteile','Nachteile'],rows:[
+    ['<b>Vollstandardisiertes Interview</b>','Vorgegebener Fragebogen — Fragen UND Reihenfolge fest. Kein Spielraum.','Vermeidung von Einflussmöglichkeiten → hohe Vergleichbarkeit','Interviewer kann auf Befragten nicht eingehen → möglicher Informationsverlust'],
+    ['<b>Teilstandardisiertes Interview</b>','Vorgegebenes Grobgerüst (offene Fragen oder Fragenkatalog). Leitfadengespräch oder Telefoninterview.','Interviewer kann Situation mitstrukturieren (Sondierungs- und Zwischenfragen)','Interviewereinfluss möglich'],
+    ['<b>Freies (nicht-standardisiertes) Interview</b>','Nur Themen- und Zielvorgabe. Größtmögliche Anpassung an Gesprächspartner.','Erhalt wertvoller Zusatzinformationen — tiefste Einblicke','Geringste Vergleichbarkeit, stärkster Interviewereinfluss'],
+  ]},
+  {y:'tip',v:'<b>Merkhilfe:</b> Mehr Standardisierung → mehr Vergleichbarkeit, weniger Tiefe. Weniger Standardisierung → mehr Tiefe, weniger Vergleichbarkeit. Vollstandardisiert = für quantitative Studien. Frei = für explorative/qualitative Forschung.'}
+]},
+{t:'Gegenüberstellung der Befragungsarten',items:[
+  {y:'tbl',heads:['Befragungsart','Vorteile','Nachteile'],rows:[
+    ['<b>Schriftliche Befragung</b>','Abdeckung eines großen Gebietes · Niedrige Kosten · Kein Interviewer-Effekt','Adresse muss bekannt sein · Rücklaufquote nur <b>5–30%</b> · Limitierter Fragenumfang · Verringerte Repräsentativität · Keine Kontrolle über Ausfüllsituation'],
+    ['<b>Mündliche Befragung</b>','Hohe Erfolgsquote und Repräsentativität · Freie Fragengestaltung (Anzahl, Inhalt, Reihenfolge) · Kontrollierbare Befragungssituation · Erhebung zusätzlicher Infos (z.B. emotionale Reaktionen)','Hohe Kosten · Interviewer-Effekt'],
+    ['<b>Telefonische Befragung</b>','Kurzfristig einsetzbar · Geringere Kosten als mündliche Befragung','Eingeschränkte Themen (Anonymität, kein Sichtkontakt) · Keine visuellen Hilfsmittel einsetzbar'],
+    ['<b>Online-Befragung</b>','Geringe Kosten · Schnelle Kontaktierung (Zeitvorteil) · Hohe Reichweite (auch international) · Automatische Datenerfassung','Ggf. geringe Rücklaufquoten · Selbstselektion der Internetnutzer · Keine Kontrolle über Ausfüllsituation · Antwortverzerrung durch Anonymität'],
+  ]},
+  {y:'tip',v:'<b>Merkhilfe:</b> Schriftlich = günstig, aber niedrige Rücklaufquote (5–30%!). Mündlich = teuer, aber repräsentativ. Telefonisch = günstig, aber eingeschränkt. Online = günstig + schnell + Reichweite, aber eingeschränkte Repräsentativität.'}
+]},
+{t:'Experiment — Grundlagen & Grenzen',items:[
+  {y:'def',k:'Experiment',v:'Wiederholbare Versuchsanordnung unter kontrollierten und zuvor festgelegten Umweltbedingungen. Feststellung ursächlicher Beziehungen zwischen Marketingvariablen und abhängigen Zielgrößen (z.B. Umsatz, Marktanteil) zur Überprüfung von Hypothesen.'},
+  {y:'info',v:'<b>Das Experiment ist die EINZIGE Methode zur Feststellung von Kausalität!</b> Beobachtung und Befragung zeigen nur Zusammenhänge, keine Ursache-Wirkungs-Beziehungen.'},
+  {y:'tbl',heads:['','Feldexperiment','Laborexperiment'],rows:[
+    ['<b>Umgebung</b>','Natürliche Umgebung — Ursache-Wirkungs-Beziehungen im echten Markt','Künstlich geschaffene Situation — stark von Forschern beeinflusst'],
+    ['<b>Kontrollierbarkeit</b>','Gering (Störvariablen schwer kontrollierbar)','Hoch → hohe Reliabilität'],
+    ['<b>Realitätsnähe</b>','Hoch → hohe externe Validität','Gering → geringere Validität'],
+  ]},
+  {y:'h',v:'3 Grenzen experimenteller Methoden:'},
+  {y:'tbl',heads:['#','Grenze','Folge'],rows:[
+    ['1','Langfristige Auswirkungen sind nur schwer messbar','→ Geringe Reliabilität'],
+    ['2','Störeinflüsse schränken die Aussagekraft ein','→ Geringe Validität'],
+    ['3','Bei Laborsituation werden Ergebnisse schon durch den Versuchsaufbau beeinflusst','→ Reaktivitätsproblem'],
+  ]},
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> Experiment = EINZIGE Methode für Kausalität! Feldexperiment = hohe Validität, geringe Kontrolle. Laborexperiment = hohe Kontrolle (Reliabilität), geringe Validität. Nicht verwechseln!'}
+]},
+{t:'Panelerhebung — Grundlagen & Arten',items:[
+  {y:'def',k:'Panelerhebung',v:'Untersuchungen werden bei <b>derselben Gruppe</b> von Untersuchungseinheiten (Personen, Einkaufsstätten, Unternehmen) zum gleichen Untersuchungsgegenstand in <b>regelmäßigen Abständen wiederholt</b> durchgeführt. Ziel: Erforschung von Markt- bzw. Verhaltensänderungen im Zeitablauf.'},
+  {y:'h',v:'3 Einschränkungen der Panelerhebung:'},
+  {y:'kv',items:[
+    {k:'Panelsterblichkeit',v:'Ausscheiden von Teilnehmern durch laufende Fluktuation → sinkende Stichprobengröße.'},
+    {k:'Paneleffekt (= Panelreaktivität)',v:'Teilnehmer reagieren auf ständige Selbstkontrolle mit (un)bewussten Verhaltensänderungen → Ergebnisse verzerrt.',c:'red'},
+    {k:'Panelerstarrung',v:'Zusammensetzung der Stichprobe entspricht aufgrund Veränderungen soziodemographischer Merkmale nicht mehr der Grundgesamtheit → Validitätsproblem.',c:'amber'},
+  ]},
+  {y:'h',v:'3 Arten der Panelerhebung:'},
+  {y:'tbl',heads:['Art','Beschreibung','Erhebungsmethode'],rows:[
+    ['<b>Verbraucherpanel</b>','Differenzierung anhand der Zielgruppe (z.B. Individualpanel ↔ Haushaltspanel). Aktive Beteiligung der Teilnehmer.','Meist schriftliche Befragung'],
+    ['<b>Unternehmerpanel</b>','Repräsentative Stichprobe von Unternehmen/Branchen. Regelmäßige Befragung zu allgemeinen Einschätzungen (z.B. Konsumklima) und konkreten Tendenzen (z.B. Umsatzentwicklung).','Befragung'],
+    ['<b>Handelspanel</b> (Sonderform des Unternehmerpanels)','Großhandels- und Einzelhandelsbetriebe. Analyse von breitem Aufgabenspektrum oder speziellem Tatbestand. Auf jeder Stufe des Distributionssystems möglich.','V.a. Beobachtung (z.B. Lagerbestände)'],
+  ]},
+  {y:'tip',v:'<b>Merkhilfe:</b> Panelsterblichkeit = Teilnehmer gehen. Paneleffekt = Teilnehmer ändern Verhalten. Panelerstarrung = Stichprobe passt nicht mehr zur Grundgesamtheit.'}
+]},
+{t:'Psychologische Testverfahren — MLD, Laddering, Fokusgruppen',items:[
+  {y:'def',k:'Psychologische Testverfahren',v:'Hervorlocken von subjektiven Wertvorstellungen, Meinungen und Emotionen. Erfassung von Verarbeitungs- und Verhaltensprozessen → Rückschlüsse auf Persönlichkeit, Einstellungen, Wünsche und Motive. Achtung: Ergebnisse müssen interpretiert werden → eingeschränkte Vergleichbarkeit.'},
+  {y:'h',v:'Methode 1: Methode des lauten Denkens (MLD)'},
+  {y:'def',k:'MLD',v:'Nachfrager äußern synchron alles, was ihnen zur Lösung einer Aufgabe oder bei alltäglichen Handlungen in den Sinn kommt (<b>Protokollanalyse</b>). Vorteil: direkte Einblicke in Denkprozesse. Nachteil: gleichzeitiges Denken und Verbalisieren schwierig.'},
+  {y:'h',v:'Methode 2: Laddering-Technik (Leitertechnik)'},
+  {y:'def',k:'Laddering-Technik',v:'Befragungsform, bei der Nachfrager <b>Means-end-chains (Ziel-Mittel-Ketten)</b> äußern. Die Frage "Warum ist das wichtig?" wird immer weiter gestellt → von konkreten Produktmerkmalen über Konsequenzen bis zu tieferliegenden Werten. Ziel: Analyse von Kaufverhaltensursachen und Motivationsstrukturen.'},
+  {y:'tbl',heads:['Ebene','Art','Was wird gefragt?'],rows:[
+    ['<b>Produktmerkmale</b>','Konkret / Abstrakt','"Was ist das Merkmal des Produktes?"'],
+    ['<b>Konsequenzen</b>','Funktional / Psychosozial','"Welche Folgen hat das Merkmal für Sie?"'],
+    ['<b>Werte</b>','Instrumental / Terminal','"Welche tieferliegenden Werte werden erfüllt?"'],
+  ]},
+  {y:'h',v:'Methode 3: Gruppenexploration (Fokusgruppe)'},
+  {y:'def',k:'Fokusgruppe',v:'Gleichzeitige Befragung von <b>6–10 Personen mit Moderator</b>. Interaktionen untereinander erlaubt → Gruppenverhalten wird ebenfalls untersucht. Mischform aus Befragung und Beobachtung → näher an natürlicher Gesprächsform.'},
+  {y:'kv',items:[
+    {k:'Charakteristika',v:'6–10 Personen · Gruppenleiter/Moderator · gewisse Heterogenität notwendig · explorativer Charakter/Vorstudie'},
+    {k:'Einschränkung',v:'<b>Keine Repräsentativität</b> für den Gesamtmarkt → eignet sich als Explorationsinstrument (Vorstudie), nicht für Hochrechnungen.',c:'red'},
+  ]},
+  {y:'tip',v:'<b>Merkhilfe 3 Methoden:</b> MLD = gleichzeitig denken & sprechen (synchron). Laddering = "Warum ist das wichtig?" immer weiter fragen (Leiter nach oben). Fokusgruppe = 6–10 Personen diskutieren gemeinsam.'}
+]},
+{t:'Apparative Verfahren, Testmarkt & Mini-Testmarkt',items:[
+  {y:'def',k:'Apparative Verfahren',v:'Objektive Messungen mittels technischer Apparaturen. Ziel: Messung psychischer Zustände und Reaktionen des Menschen.'},
+  {y:'kv',items:[
+    {k:'Beispiele',v:'Messung der Lidschlagfrequenz · Blickregistrierungsverfahren (Eye-Tracking) · Tachistoskopische Tests (kurzzeitige Bildpräsentation)'},
+    {k:'Einsatz',v:'Verhaltensbeobachtung von Wahrnehmungs-, Entscheidungs- und Handlungsabläufen · Erfassung psychischer Reaktionen (z.B. Ablehnung, Interesse)',c:'green'},
+  ]},
+  {y:'h',v:'Testmarkt vs. Mini-Testmarkt:'},
+  {y:'tbl',heads:['','Testmarkt (Storetest & Markttest)','Mini-Testmarkt (z.B. BehaviorScan/GfK)'],rows:[
+    ['<b>Zweck</b>','Test gesamter Marketingkonzeptionen im <b>realen Markt</b> in einem abgegrenzten Teilmarkt · Erstellung von Prognosen','Kombiniert Storetest (kontrollierter Markttest in ausgewählten Testgeschäften) und Panel'],
+    ['<b>Umgebung</b>','Feld','Feld + kontrolliert'],
+    ['<b>4P testbar?</b>','<b>Ja</b> — gesamter Mix','Nein — nur ausgewählte Instrumente'],
+    ['<b>Konkurrenz sieht es?</b>','Ja — keine Geheimhaltung','Kaum'],
+  ]},
+  {y:'tip',v:'<b>Merkhilfe:</b> Apparative Verfahren = Maschinen messen Reaktionen (Lidschlag, Blick). Testmarkt = echter Markt, alle 4P testbar, aber keine Geheimhaltung. Mini-Testmarkt = Testgeschäfte + Panel, günstiger.'}
+]},
+{t:'Internetbasierte Informationsgewinnung — Web Analytics',items:[
+  {y:'def',k:'Web Analytics',v:'Messung, Sammlung, Analyse und Auswertung von internetbasierten Daten, um Nutzerverhalten im Internet besser zu verstehen und zu optimieren.'},
+  {y:'tbl',heads:['Kennzahl','Englisch','Erklärung'],rows:[
+    ['<b>Seitenaufrufe</b>','Page Impressions / Page Views','Anzahl der Aufrufe einer Webseite'],
+    ['<b>Werbeeinblendungen</b>','Ad Impressions','Aufrufe von Werbemitteln auf einem AdServer'],
+    ['<b>Klickrate</b>','Clickthrough-Rate','Wirksamkeit von Online-Werbung (Klicks/Einblendungen)'],
+    ['<b>Besuche</b>','Visits','Nutzung des Internetangebots pro Monat'],
+    ['<b>Besucher</b>','Unique Visitors','Anzahl individueller Besucher (Cookies/IP-Adressen)'],
+    ['<b>Neue Besucher</b>','New Visitors','Erstmalige Besucher'],
+    ['<b>Besuchsdauer</b>','Usetime','Durchschnittliche Verweildauer auf der Seite'],
+    ['<b>Absprungrate</b>','Bounce Rate','Kurzbesuche (sofort wieder weg) → Hinweis auf Optimierungspotenziale'],
+    ['<b>Umwandlungsrate</b>','Conversion Rate','Anteil der Besucher, die zu Kunden werden'],
+  ]},
+  {y:'tip',v:'<b>Merkhilfe — Die 3 wichtigsten:</b> Unique Visitors (wie viele?) · Bounce Rate (springen sie ab?) · Conversion Rate (kaufen / handeln sie?).'}
+]},
+{t:'Auswahl der Analyseelemente & Stichprobengröße',items:[
+  {y:'info',v:'Bei der <b>Teilerhebung</b> wird nur ein Teil der Grundgesamtheit untersucht. Bei der <b>Vollerhebung</b> die gesamte GG (teuer, selten möglich). Der Stichprobenumfang hängt von 2 Größen ab: <b>Signifikanzniveau/Sicherheitsgrad (t)</b> und <b>Konfidenzintervall/Schwankungsbreite (e)</b>.'},
+  {y:'tbl',heads:['Auswahl','Methoden','Voraussetzung'],rows:[
+    ['<b>Zufällige Auswahl</b> (wahrscheinlichkeitsgesteuert)','Einfache Zufallsauswahl (gleiche Chance) · Geschichtete Zufallsauswahl (GG in homogene Teile → Zufallsauswahl aus allen Schichten) · Klumpen-/Flächen-Auswahl (Auswahl einiger Flächen)','Vollständiges Verzeichnis der GG nötig'],
+    ['<b>Bewusste Auswahl</b> (nicht-wahrscheinlichkeitsgesteuert)','Quotenauswahlverfahren (Quotenplan: z.B. 60% Frauen, 40% Männer · 40% ohne Matura, 30% mit Matura, 30% Akademiker) · Convenience Sample (z.B. Schneeballsystem)','Kein vollständiges Verzeichnis nötig'],
+  ]},
+  {y:'h',v:'Formeln — Repräsentationsschluss (homograder Fall):'},
+  {y:'formula',lbl:'Konfidenzintervall',f:'e = ± t × √(p × q / n)',note:'p = Anteil in Stichprobe. q = 1 − p. n = Stichprobengröße. t: 1,96 → 95% | 2,0 → 95,5% | 2,58 → 99%.'},
+  {y:'formula',lbl:'Stichprobenumfang',f:'n = (t² × p × q) / e²',note:'Bei unbekannten p und q: 50:50-Verteilung (= p=q=0,50) verwenden — ergibt größten n! e = HALBE Breite des Konfidenzintervalls!'},
+  {y:'info',v:'<b>Beispiel Konfidenzintervall:</b> Raucheranteil p=30%, q=70%, n=2.000, Signifikanzniveau 95,5% (t=2): e = ±2 × √(0,30×0,70/2000) = ±0,0205. → Mit 95,5% Wahrscheinlichkeit liegt der Raucheranteil in der GG zwischen <b>28% und 32%</b>.'},
+  {y:'info',v:'<b>Beispiel Stichprobenumfang:</b> Signifikanzniveau 95% (t=1,96), Konfidenzintervall ±4% (e=0,04), p=q=0,50: n = (1,96² × 0,50 × 0,50) / 0,04² = 600,25 → <b>601 Personen</b> müssen befragt werden.'},
+  {y:'trap',v:'<b>PRÜFUNGSFALLE:</b> Bei höherem Sicherheitsgrad (bei gleicher Stichprobe) wird die Schwankungsbreite GRÖSSER — eine Aussage wird sicherer, aber unschärfer! e steht für die HALBE Breite des Konfidenzintervalls!'}
+]},
+{t:'Informationsauswertung & Statistische Verfahren',items:[
+  {y:'h',v:'3 Aufgaben der Informationsauswertung:'},
+  {y:'step',n:1,q:'',t:'Auswertungsplan erstellen',d:'Abhängig von Untersuchungsaufbau und Zielsetzung. Auflistung und Strukturierung der zu untersuchenden Abhängigkeiten.'},
+  {y:'step',n:2,q:'',t:'Auswertungsverfahren auswählen',d:'Uni-/bi-/multivariate Analyseverfahren auswählen und anwenden.'},
+  {y:'step',n:3,q:'',t:'Interpretation und Bewertung',d:'Ergebnisse im Kontext der Forschungsfrage bewerten und Handlungsempfehlungen ableiten.'},
+  {y:'h',v:'Bivariate Auswertungsverfahren (2 Variablen):'},
+  {y:'tbl',heads:['Verfahren','Kernaussage','Schlüsselbegriff'],rows:[
+    ['<b>Korrelationsanalyse</b>','Misst Stärke von Zusammenhängen (gleichgerichtete Entwicklung zwischen Variablen).','Interdependenzanalyse (keine Richtung festgelegt)'],
+    ['<b>Regressionsanalyse</b>','Basiert auf Korrelation. Festlegung WELCHE Variable durch eine andere vorhergesagt wird.','Dependenzanalyse (Richtung festgelegt!) → Wirkungsprognose'],
+    ['<b>Varianzanalyse</b>','Überprüft Unterschied der Mittelwerte von MINDESTENS 3 Gruppen. Bei 2 Gruppen: t-Test.','Gruppenvergleiche'],
+    ['<b>Diskriminanzanalyse</b>','(1) Suche nach Variablen, die Gruppen unterscheiden. (2) Klassifizierung von Objekten unbekannter Gruppenzugehörigkeit.','Gruppenunterschiede / Klassifizierung'],
+  ]},
+  {y:'h',v:'Multivariate Auswertungsverfahren (mehrere Variablen):'},
+  {y:'tbl',heads:['Verfahren','Kernaussage'],rows:[
+    ['<b>Clusteranalyse</b>','Bringt Objekte (Personen, Produkte, Unternehmen) je nach Ähnlichkeit in natürliche Gruppen (Cluster). z.B. Marktsegmentierung.'],
+    ['<b>Faktorenanalyse</b>','Gleichzeitige Analyse mehrerer Variablen. Hauptziel: Identifikation von Supervariablen. Keine Unterteilung in (un)abhängige Variablen.'],
+    ['<b>Kausalanalyse</b>','Überprüfung, ob theoretische Beziehungen mit empirisch gemessenen Zusammenhängen übereinstimmen.'],
+    ['<b>Multidimensionale Skalierung (MDS)</b>','Positionierung von Objekten (z.B. Marken, Einkaufsstätten) als Punkte in einem 2- oder 3-dimensionalen Raum.'],
+    ['<b>Conjoint-Analyse</b>','Psychometrisches, empirisches Verfahren zur Ermittlung von Nutzenvorstellungen bzw. Präferenzen der Testpersonen (Means-end).'],
+  ]},
+  {y:'tip',v:'<b>Merkhilfe:</b> Korrelation = Zusammenhang (Inter). Regression = Vorhersage (Dependenz, Richtung). Varianzanalyse = ≥3 Gruppen vergleichen. Clusteranalyse = Gruppen bilden (Segmentierung). Conjoint = Präferenzen messen. MDS = Positionierungskarte.'}
+]},
+{t:'Absatzprognosen — Grundlagen & Arten',items:[
+  {y:'def',k:'Absatzprognose',v:'Empirisch gestützte Vorhersage des zukünftigen Absatzes — von bestimmten Käuferschichten, in bestimmtem Zeitabschnitt, bei bestimmter Kombination absatzpolitischer Instrumente. Ziel: Entwicklung von Markt-/Absatzpotenzial, -volumen und Marktanteil zu prognostizieren.'},
+  {y:'h',v:'3 Klassifizierungsdimensionen von Prognosen:'},
+  {y:'tbl',heads:['Dimension','Art A','Art B'],rows:[
+    ['<b>Untersuchungszweck</b>','<b>Entwicklungsprognose:</b> Beeinflussende Variablen NICHT direkt kontrollierbar (z.B. Geburtsrate, Konjunktur)','<b>Wirkungsprognose:</b> Beeinflussende Variablen DIREKT kontrollierbar (z.B. Werbeausgaben, Preis)'],
+    ['<b>Gültigkeit</b>','<b>Kurzfristige Prognose</b> (≤ 1 Jahr): Vorhersage von Wochen-/Monatswerten','<b>Langfristige Prognose</b> (> 1 Jahr): Zeitreihenverlauf → Trend'],
+    ['<b>Art der Vorhersage</b>','<b>Quantitative (exakte) Prognose:</b> Mathematische Verfahren (Gleitender Durchschnitt, Exponentielle Glättung, Trendextrapolation)','<b>Qualitative (intuitive) Prognose:</b> Erfahrungen und Expertenwissen → verbale Aussagen (weniger zuverlässig)'],
+  ]},
+  {y:'tip',v:'<b>Merkhilfe:</b> Entwicklungsprognose = externe Faktoren (unkontrollierbar). Wirkungsprognose = eigene Instrumente (kontrollierbar). Kurzfristig ≤ 1 Jahr. Langfristig > 1 Jahr.'}
+]},
+{t:'Quantitative Kurzfristprognosen — Gleitender Durchschnitt & Exponentielle Glättung',items:[
+  {y:'h',v:'Methode 1: Gleitender Durchschnitt'},
+  {y:'def',k:'Gleitender Durchschnitt',v:'Mittelwert aus einer Reihe von Beobachtungswerten zur Schätzung der Folgeperiode. Neue Werte kommen herein, ältere Werte fallen heraus. <b>Alle Daten gleich gewichtet.</b>'},
+  {y:'info',v:'<b>Beispiel (3 Perioden, Hotelauslastung):</b> P4=85, P5=78, P6=82 → Prognose P7 = (85+78+82)/3 = 81,67 → gerundet 82.'},
+  {y:'h',v:'Methode 2: Exponentielle Glättung'},
+  {y:'formula',lbl:'Exponentielle Glättung',f:'Q_t^smooth = α · Q_t + (1 − α) · Q_{t-1}^smooth',note:'α = Glättungskonstante (0 < α < 1). Q_t = Marktvolumen in Planperiode t. Q_t^smooth = geglättetes MV in t = gleichzeitig Prognose für t+1.'},
+  {y:'kv',items:[
+    {k:'Sehr kleines α (z.B. 0,1)',v:'Prognose reagiert kaum auf Änderungen. Sehr starke Glättung der Zeitreihe. Sehr alte Daten stark gewichtet.'},
+    {k:'Sehr großes α (z.B. 0,9)',v:'Prognose reagiert sehr nervös auf Schwankungen. Vergangenheitsinformationen gehen zum Großteil verloren.',c:'red'},
+  ]},
+  {y:'info',v:'<b>Beispiel (α=0,3):</b> P1=80 (Start). P2: [0,3×77] + [0,7×80] = 79,1 → Prognose P3 = 79. P3: [0,3×81] + [0,7×79,1] = 79,67 → Prognose P4 = 80.'},
+  {y:'tip',v:'<b>Vergleich:</b> Gleitender Durchschnitt = alle gleich gewichtet (einfach). Exponentielle Glättung = neueste stärker gewichtet mit α (flexibler, berücksichtigt Trends und Saisonschwankungen).'}
+]},
+{t:'Quantitative Langfristprognosen — Trendtypen, Indikator- & Wirkungsmodelle',items:[
+  {y:'info',v:'<b>Langfristige Prognosen (> 1 Jahr)</b> verwenden Trend- und Indikatormodelle. Je mehr Beobachtungen einfließen → desto niedrigere Varianz → desto höhere Genauigkeit des Prognosewertes.'},
+  {y:'h',v:'3 Trendtypen:'},
+  {y:'tbl',heads:['Trendtyp','Eigenschaft','Bestes Einsatzgebiet'],rows:[
+    ['<b>1. Linearer Trend</b>','Konstante <b>absolute</b> Zuwächse/Abnahmen pro Zeiteinheit. Unterstellung unveränderter Markt-/Wettbewerbssituation. Marktsättigung NICHT berücksichtigt.','Am <b>häufigsten</b> verwendet. Einfachste Berechnung. Stabile, gleichmäßige Märkte.'],
+    ['<b>2. Exponentieller Trend</b>','Konstante <b>Zuwachsrate</b> pro Zeiteinheit (nicht absoluter Zuwachs). Kurve wird immer steiler.','Wenn Bestands-/Absatzentwicklungen in zunehmend steigender Weise erfolgen (Wachstumsmärkte).'],
+    ['<b>3. Logistischer Trend</b>','Bis zum Wendepunkt progressiver Anstieg, danach degressive Entwicklung (<b>S-Kurve</b>). Berücksichtigt Marktsättigungsniveau!','Prognose bei langlebigen Produkten (z.B. Autos). Diffusionskurven neuer Produkte.'],
+  ]},
+  {y:'h',v:'Indikatormodelle:'},
+  {y:'def',k:'Indikatormodelle',v:'Entwicklungsprognosen, die Vorhersagen aus dem Zusammenhang zwischen Prognosegröße und einer oder mehreren <b>Indikatoren</b> (beeinflussende Variablen) ableiten. Indikatoren beeinflussen den Absatz stark, können aber vom Unternehmen nur gering beeinflusst werden. <b>Vorteil ggü. Trendextrapolation:</b> Entwicklungsrichtung kann geändert werden.'},
+  {y:'h',v:'Wirkungsbedingte Absatzprognosen:'},
+  {y:'def',k:'Wirkungsbedingte Absatzprognosen',v:'Beruhen auf Marktreaktionsfunktionen. Verlauf von ökonomischen oder psychographischen Zielvariablen (z.B. Umsatz, Bekanntheitsgrad) ist abhängig von veränderten Parametern der Marketinginstrumente. Vorhersagen bei unterschiedlichen Reaktionsannahmen des Konkurrenzverhaltens. Wichtig für Planung des optimalen Marketing-Mix.'},
+  {y:'tip',v:'<b>Merkhilfe Trendtypen:</b> Linear = Gerade (gleiche Zuwächse, am häufigsten). Exponentiell = immer steiler (gleiche Rate). Logistisch = S-Kurve (Sättigung berücksichtigt → Sonderfall für langlebige Produkte).'}
+]},
+{t:'Qualitative Absatzprognosen',items:[
+  {y:'def',k:'Qualitative (intuitive) Absatzprognosen',v:'Basieren auf Erfahrungen, Kenntnissen und "Fingerspitzengefühl" → verbale Aussagen. Relativ unsichere Basis für Absatzprognosen allein. Ausnahmen: Koppelung mit quantitativen Prognosen, unternehmensinterne Befragungen für Kurzfristprognosen, Expertenurteile (z.B. Delphi-Methode) häufig für Langfristprognosen bevorzugt.'},
+  {y:'tbl',heads:['Befragungsgruppe','Vorteile','Nachteile'],rows:[
+    ['<b>Geschäftsführung</b>','Schnell · Nutzung von Expertenwissen','Gefahr unrealistischer Prognosen durch Eigeninteresse (überhöhte Schätzungen)'],
+    ['<b>Verkaufsorganisation</b> (Sales Force Composite)','Schnell · Kostengünstig · Spezifische Marktkenntnisse · Große Anzahl Befragter','Fehlende Übersicht über Markttendenzen · Absatz oft zu niedrig prognostiziert · Nachlässiges Ausfüllen der Außendienstberichte'],
+    ['<b>Handel</b>','—','Zufällige oder lückenhafte Beobachtungen · Angaben massiv durch Eigeninteresse beeinflusst (z.B. erhöhte Angaben bei lukrativen Handelsspannen)'],
+    ['<b>Endverbraucher</b>','Sinnvoll bei Investitionsgütern','Problematisch im Konsumgüterbereich'],
+  ]},
+  {y:'tip',v:'<b>Merkhilfe:</b> Qualitative Prognosen = Meinungen/Erfahrungen → weniger zuverlässig. Quantitative Prognosen = Mathematik → genauer. In der Praxis: Kombination beider Ansätze empfohlen.'}
 ]}
+]},
 ]},{mod:3,chs:[
 {t:'SWOT-Analyse & Unternehmensziele',items:[
   {y:'info',v:'<b>SWOT-Analyse:</b> Instrument um die aktuelle Unternehmenssituation transparent zu machen. S/W = unternehmensintern. O/T = unternehmensextern.'},
@@ -2006,12 +2257,38 @@ const CARDS=[
   {m:1,t:'Fishbein-Modell',d:'A_ij = Σ B_ijk × a_ijk. KOMPENSATORISCH: schlechte Merkmale werden durch gute ausgeglichen.'},
   {m:1,t:'Trommsdorff-Modell',d:'E_ij = Σ |B_ijk − I_ik|. NICHT-KOMPENSATORISCH: je kleiner der Unterschied, desto positiver.'},
   {m:1,t:'Bedürfnispyramide Maslow',d:'Von unten: Physiologisch → Sicherheit → Sozial → Prestige → Selbstverwirklichung. Defizitmotive (1-3) vs. Wachstumsmotive (4-5).'},
-  {m:2,t:'Marketingforschung vs. Marktforschung',d:'Marketingforschung (übergeordnet) = Infos über Marketingsituationen. Marktforschung (enger) = Infos über Absatz- und Beschaffungsmärkte.'},
-  {m:2,t:'7 Funktionen Marketingforschung',d:'S-F-I-S-U-K-I: Selektion, Frühwarnung, Innovation, Strukturierung, Unsicherheitsreduktion, Kontrolle, Intelligenzverstärkung'},
-  {m:2,t:'Reliabilität',d:'Zuverlässigkeit: Messung ist wiederholbar und fehlerfrei.'},
-  {m:2,t:'Validität',d:'Gültigkeit: Das Instrument misst das, was es messen soll.'},
-  {m:2,t:'Ratioskala',d:'Wie Intervallskala + absoluter Nullpunkt. Bsp: Alter, Umsatz.'},
-  {m:2,t:'Experiment',d:'Einzige Methode für KAUSALITÄT. Feld (natürlich, hohe Validität) vs. Labor (künstlich, mehr Kontrolle).'},
+  {m:2,t:'Marketingforschung vs. Marktforschung',d:'Marketingforschung (übergeordnet) = Infos über Marketingsituationen und Entscheidungen. Marktforschung (enger) = Infos über Absatz- und Beschaffungsmärkte.'},
+{m:2,t:'7 Funktionen Marketingforschung (S-F-I-S-U-K-I)',d:'Selektion · Frühwarnung · Innovation · Strukturierung · Unsicherheitsreduktion · Kontrolle · Intelligenzverstärkung'},
+{m:2,t:'4 Phasen des Marketingforschungsprozesses',d:'(1) Problemdefinition. (2) Informationsgewinnung (Datenquelle, Methode, Stichprobenplan, Zeitpunkt). (3) Informationsverarbeitung. (4) Kommunikation der Ergebnisse.'},
+{m:2,t:'4 Gütekriterien der Informationsgewinnung',d:'Reliabilität (Zuverlässigkeit, Wiederholbarkeit) · Validität (Gültigkeit, misst das Richtige) · Reaktivität (beeinflusst Messprozess das Ergebnis?) · Objektivität (unabhängig vom Forscher?). WICHTIG: Reliabilität ≠ Validität!'},
+{m:2,t:'Reliabilität',d:'Zuverlässigkeit: Wie fehlerfrei misst das Instrument? Ist die Messung wiederholbar? → Reproduzierbarkeit. Ein Instrument kann reliabel sein, aber NICHT valide (misst konsistent das Falsche)!'},
+{m:2,t:'Validität',d:'Gültigkeit: Misst das Instrument, was es messen soll? Sind Messergebnisse auf die Realität übertragbar? → Richtigkeit der Messung.'},
+{m:2,t:'Primärforschung vs. Sekundärforschung',d:'Primär = neue Daten eigens erheben (teuer, aktuell, spezifisch). Sekundär = vorhandene Daten nutzen (günstig, schnell, aber ggf. veraltet). In der Praxis: erst Sekundär → dann Primär.'},
+{m:2,t:'Beobachtung — 4 Dimensionen',d:'(1) Fremd-/Selbstbeobachtung. (2) Persönlich/Unpersönlich (durch Geräte). (3) Teilnehmend/Nicht-teilnehmend. (4) Feld (hohe Validität) / Labor (hohe Reliabilität).'},
+{m:2,t:'Beobachtungseffekt & Mystery Shopping',d:'Beobachtungseffekt: Probanden verhalten sich anders wenn sie wissen, dass sie beobachtet werden → Ergebnisverzerrung. Mystery Shopping umgeht das: Forscher treten als normale Kunden auf → kein Beobachtungseffekt!'},
+{m:2,t:'Befragung — reaktives Instrument',d:'Befragung = REAKTIVES Instrument (Befragter ist sich der Messsituation bewusst). Zwei Verzerrungsquellen: (1) Interviewer-Effekt (Einfluss der Anwesenheit). (2) Soziale Erwünschtheit (Angst vor falschen Antworten).'},
+{m:2,t:'Offen vs. Geschlossene Frage',d:'Geschlossen: vorgegebene Kategorien (leicht auswertbar, vergleichbar). Offen: keine Vorgaben, freie Antwort (tiefere Einblicke, schwer auswertbar). Indirekte Frage umgeht soziale Erwünschtheit!'},
+{m:2,t:'Skalenarten — Hierarchie N-O-I-R',d:'Nominal (Klassifikation, Modus) → Ordinal (Rangordnung, +Median) → Intervall (Abstände, +Mittelwert, KEIN absoluter Nullpunkt!) → Ratio (+absoluter Nullpunkt, alle Operationen). 0°C ≠ keine Temp. (Intervall!). 0 kg = kein Gewicht (Ratio!).'},
+{m:2,t:'Semantisches Differential vs. Likert-Skala',d:'Semantisches Differential: bipolare Gegensatzpaare (aufmerksam↔unaufmerksam). Likert-Skala: Zustimmungsgrad (stimme voll zu→stimme nicht zu). Rating- und Likert-Skalierung werden SYNONYM verwendet! Beide = Intervallskala.'},
+{m:2,t:'3 Standardisierungsgrade von Interviews',d:'Vollstandardisiert: fester Fragebogen, hohe Vergleichbarkeit. Teilstandardisiert: Grobgerüst (Leitfaden), Interviewer kann nachfragen. Frei (nicht-standardisiert): nur Themenvorgabe, tiefste Einblicke.'},
+{m:2,t:'Befragungsarten im Vergleich — Rücklaufquote',d:'Schriftliche Befragung: Rücklaufquote NUR 5–30%! Online: geringe Kosten, Selbstselektion der Internetnutzer. Mündlich: teuer aber repräsentativ (Interviewer-Effekt!). Telefonisch: günstig, eingeschränkte Themen.'},
+{m:2,t:'Experiment — Kausalität',d:'Experiment = EINZIGE Methode zur Feststellung von Kausalität! Beobachtung und Befragung zeigen nur Zusammenhänge, keine Ursache-Wirkungs-Beziehungen. Feld = hohe Validität. Labor = hohe Reliabilität.'},
+{m:2,t:'3 Grenzen experimenteller Methoden',d:'(1) Langfristige Auswirkungen schwer messbar → geringe Reliabilität. (2) Störeinflüsse schränken Aussagekraft ein → geringe Validität. (3) Laborversuchsaufbau beeinflusst bereits Ergebnisse → Reaktivitätsproblem.'},
+{m:2,t:'Panelerhebung — 3 Einschränkungen',d:'Panelsterblichkeit (Teilnehmer scheiden aus durch Fluktuation). Paneleffekt/Panelreaktivität (Verhalten ändert sich durch Selbstkontrolle). Panelerstarrung (Stichprobe entspricht nicht mehr der Grundgesamtheit → Validitätsproblem).'},
+{m:2,t:'3 Panel-Arten',d:'Verbraucherpanel (Haushalte/Individuen, schriftliche Befragung). Unternehmerpanel (repräsentative Stichprobe von Unternehmen, z.B. Konsumklima). Handelspanel (Sonderform des Unternehmerpanels, Groß-/Einzelhandel, v.a. Beobachtung).'},
+{m:2,t:'3 Psychologische Testverfahren',d:'(1) MLD = synchron alles äußern was einem in den Sinn kommt (Protokollanalyse). (2) Laddering-Technik = Means-end-chains, "Warum?" immer weiter fragen (Produktmerkmale → Konsequenzen → Werte). (3) Fokusgruppe = 6–10 Personen + Moderator, explorativer Charakter, KEINE Repräsentativität.'},
+{m:2,t:'Web Analytics — 3 wichtigste Kennzahlen',d:'Unique Visitors (wie viele individuelle Besucher?) · Bounce Rate/Absprungrate (springen Besucher sofort ab? → Optimierungspotenzial) · Conversion Rate/Umwandlungsrate (wie viele werden zu Kunden?).'},
+{m:2,t:'Ratioskala',d:'Wie Intervallskala + absoluter Nullpunkt. Alle mathematischen Operationen möglich. Bsp: Alter, Jahresumsatz, Gewicht, Einkommen. 0 Euro = wirklich kein Umsatz (echter Nullpunkt)!'},
+{m:2,t:'Stichprobengröße — Formeln',d:'Konfidenzintervall: e = ±t × √(p×q/n). Stichprobenumfang: n = (t²×p×q)/e². Bei unbekannten p,q: 50:50-Verteilung (größter n). t: 1,96→95% | 2→95,5% | 2,58→99%. e = HALBE Breite des KI!'},
+{m:2,t:'Statistische Auswertungsverfahren — Überblick',d:'Bivariat: Korrelation (Zusammenhang, Interdependenz) · Regression (Vorhersage, Dependenz, Richtung!) · Varianzanalyse (≥3 Gruppen, bei 2: t-Test) · Diskriminanzanalyse (Gruppen unterscheiden/klassifizieren). Multivariat: Cluster (Segmentierung) · Faktorenanalyse (Supervariablen) · MDS (Positionierungskarte) · Conjoint (Präferenzen).'},
+{m:2,t:'Korrelation vs. Regression',d:'Korrelation = Stärke des ZUSAMMENHANGS zwischen 2 Variablen (Interdependenzanalyse — keine Richtung!). Regression = basiert auf Korrelation, aber Richtung festgelegt: welche Variable wird durch welche andere VORHERGESAGT? (Dependenzanalyse)'},
+{m:2,t:'Clusteranalyse vs. Faktorenanalyse',d:'Clusteranalyse: Objekte nach Ähnlichkeit in natürliche Gruppen (Cluster) einteilen → Marktsegmentierung. Faktorenanalyse: mehrere Variablen gleichzeitig analysieren → Supervariablen identifizieren. Keine Unterteilung in abhängige/unabhängige Variablen.'},
+{m:2,t:'Conjoint-Analyse & MDS',d:'Conjoint-Analyse: psychometrisches Verfahren zur Ermittlung von Nutzenvorstellungen und Präferenzen der Testpersonen. MDS (Multidimensionale Skalierung): Positionierung von Objekten (z.B. Marken) als Punkte in einem 2- oder 3-dimensionalen Raum.'},
+{m:2,t:'3 Arten von Absatzprognosen',d:'Nach Zweck: Entwicklungsprognose (unkontrollierbare Variable) vs. Wirkungsprognose (kontrollierbare Variable). Nach Gültigkeit: kurzfristig (≤1 Jahr) vs. langfristig (>1 Jahr). Nach Art: quantitativ (Mathematik) vs. qualitativ (Expertenwissen).'},
+{m:2,t:'Exponentielle Glättung — Formel & α',d:'Q_t^smooth = α·Q_t + (1−α)·Q_{t-1}^smooth. α = Glättungskonstante. Kleines α → starke Glättung, reagiert träge (alte Daten stark gewichtet). Großes α → nervöse Reaktion, Vergangenheitsdaten verloren.'},
+{m:2,t:'3 Trendtypen',d:'Linear: gleiche absolute Zuwächse (Gerade), am häufigsten! Exponentiell: gleiche Zuwachsrate (immer steiler, keine Sättigung). Logistisch: S-Kurve (bis Wendepunkt progressiv, dann degressiv), berücksichtigt Marktsättigungsniveau → für langlebige Produkte.'},
+{m:2,t:'Qualitative Absatzprognosen — 4 Quellen',d:'Geschäftsführung (schnell, Eigeninteresse!), Verkaufsorganisation/Sales Force Composite (Marktkenntnisse, Absatz oft zu niedrig prognostiziert), Handel (Eigeninteresse!), Endverbraucher (gut bei Investitionsgütern, problematisch bei Konsumgütern).'},
+{m:2,t:'Experiment — Feld vs. Labor',d:'Feldexperiment: natürliche Umgebung, hohe externe Validität, geringe Kontrolle. Laborexperiment: künstliche Umgebung, hohe Reliabilität/Kontrolle, geringere Validität (Versuchsaufbau beeinflusst Ergebnis bereits!).'},
   {m:3,t:'BCG — relativer Marktanteil',d:'Eigener MA / MA des GRÖSSTEN Konkurrenten. X-Achse geht von RECHTS nach LINKS!'},
   {m:3,t:'SWOT — intern vs. extern',d:'S/W = unternehmensintern. O/T = unternehmensextern.'},
   {m:3,t:'SMART-Regel',d:'Spezifisch · Messbar · Anspruchsvoll · Realistisch · Terminiert'},
@@ -2137,9 +2414,22 @@ const QQ=[
   {m:1,q:'Was beschreibt das "Paradigma des Kaufverhaltens"?',o:['Ein Modell des Kaufprozesses in 5 Stufen','7 grundlegende W-Fragen: Wer? Was? Warum? Wie? Wie viel? Wann? Wo/Bei wem?','Das S-O-R-Modell','Die 4 Kaufentscheidungstypen'],a:1,e:'Das Paradigma des Kaufverhaltens stellt 7 grundlegende Forschungsfragen.'},
   {m:1,q:'Was unterscheidet den S-R-Ansatz vom S-O-R-Ansatz?',o:['S-R hat einen Organismus dazwischen','S-R = Black Box (inneres unbekannt); S-O-R = messbarer Organismus dazwischen','Beide sind identisch','S-O-R ist älter als S-R'],a:1,e:'S-R: Inneres = Black Box. S-O-R: Organismus mit inneren Zuständen ist messbar.'},
   {m:1,q:'Was sind die 5 Rollen im Buying Center?',o:['Käufer, Verkäufer, Manager, Techniker, Logistiker','Benutzer, Einkäufer, Entscheider, Einflussagenten, Gatekeeper','Initiator, Beeinflusser, Entscheider, Käufer, Nutzer','Produzent, Händler, Makler, Berater, Endkunde'],a:1,e:'5 Rollen: Benutzer, Einkäufer, Entscheider, Einflussagenten, Gatekeeper. Eine Person kann mehrere Rollen einnehmen!'},
-  {m:2,q:'Was ist der Unterschied zwischen Marketingforschung und Marktforschung?',o:['Beide identisch','Marktforschung ist der übergeordnete Begriff','Marketingforschung (übergeordnet) = Infos über Marketingsituationen; Marktforschung (enger) = Absatz-/Beschaffungsmärkte','Marktforschung = nur quantitativ'],a:2,e:'Marketingforschung ≠ Marktforschung! Marketingforschung ist der übergeordnete Begriff.'},
-  {m:2,q:'Was beschreibt "Validität"?',o:['Messung ist wiederholbar','Das Instrument misst das, was es messen soll','Situation beeinflusst das Ergebnis nicht','Ergebnisse unabhängig vom Durchführenden'],a:1,e:'Validität (Gültigkeit) = Instrument misst tatsächlich das Gewollte.'},
-  {m:2,q:'Welche Skalenart hat einen absoluten Nullpunkt?',o:['Nominalskala','Ordinalskala','Intervallskala','Ratio-/Verhältnisskala'],a:3,e:'Ratio-Skala: absoluter Nullpunkt + alle Operationen. Bsp: Alter, Umsatz.'},
+ {m:2,q:'Was ist der Unterschied zwischen Marketingforschung und Marktforschung?',o:['Beide sind identisch','Marktforschung ist der übergeordnete Begriff','Marketingforschung (übergeordnet) = Infos über Marketingsituationen; Marktforschung (enger) = Absatz-/Beschaffungsmärkte','Marktforschung = nur quantitativ'],a:2,e:'Marketingforschung ≠ Marktforschung! Marketingforschung ist der übergeordnete Begriff. Marktforschung ist nur ein Teilbereich, der sich auf Absatz- und Beschaffungsmärkte konzentriert.'},
+{m:2,q:'Was beschreibt "Validität" als Gütekriterium?',o:['Messung ist wiederholbar und fehlerfrei','Das Instrument misst das, was es messen soll','Situation beeinflusst das Ergebnis nicht','Ergebnisse unabhängig vom Durchführenden'],a:1,e:'Validität (Gültigkeit) = das Instrument misst tatsächlich das Gewollte. Reliabilität = Wiederholbarkeit. NICHT verwechseln! Ein Instrument kann reliabel aber nicht valide sein.'},
+{m:2,q:'Welche Skalenart hat einen absoluten Nullpunkt?',o:['Nominalskala','Ordinalskala','Intervallskala (z.B. Temperatur °C)','Ratio-/Verhältnisskala (z.B. Alter, Umsatz)'],a:3,e:'Ratio-Skala: absoluter Nullpunkt + alle mathematischen Operationen. 0 kg = wirklich kein Gewicht. 0°C = NICHT "keine Temperatur" → das ist Intervallskala (kein absoluter Nullpunkt)!'},
+{m:2,q:'Was ist das Ziel der Panelerhebung?',o:['Einmalige Erhebung einer repräsentativen Stichprobe','Erforschung von Markt- und Verhaltensänderungen im Zeitablauf durch wiederholte Befragung derselben Gruppe','Messung psychischer Zustände mit Apparaturen','Qualitative Tiefeninterviews mit Experten'],a:1,e:'Panelerhebung = dieselbe Gruppe wird zum gleichen Gegenstand in regelmäßigen Abständen wiederholt befragt/beobachtet. Ziel: Veränderungen im Zeitablauf erforschen.'},
+{m:2,q:'Was ist der "Paneleffekt"?',o:['Ausscheiden von Teilnehmern durch Fluktuation','Stichprobe entspricht nicht mehr der Grundgesamtheit','Teilnehmer ändern Verhalten durch ständige Selbstkontrolle (Panelreaktivität)','Messung wird durch Beobachter verfälscht'],a:2,e:'Paneleffekt = Panelreaktivität: Teilnehmer reagieren auf die ständige Selbstkontrolle mit (un)bewussten Verhaltensänderungen → Ergebnisse werden verzerrt. Panelsterblichkeit = Fluktuation. Panelerstarrung = GG-Problem.'},
+{m:2,q:'Warum ist das Experiment die wichtigste Erhebungsmethode für Kausalaussagen?',o:['Es ist die günstigste Methode','Es ist die einzige Methode zur Feststellung ursächlicher Beziehungen (Kausalität)','Es liefert immer repräsentative Ergebnisse','Es kann verdeckt durchgeführt werden'],a:1,e:'Das Experiment ist die EINZIGE Methode zur Feststellung von Kausalität! Beobachtung und Befragung zeigen nur Zusammenhänge, aber keine Ursache-Wirkungs-Beziehungen.'},
+{m:2,q:'Was kennzeichnet ein Feldexperiment im Vergleich zum Laborexperiment?',o:['Höhere Kontrolle, aber geringere Validität','Natürliche Umgebung → höhere externe Validität, aber geringere Kontrolle','Niedrigere Kosten und schnellere Durchführung','Strengere Standardisierung der Variablen'],a:1,e:'Feldexperiment: natürliche Umgebung → hohe externe Validität, aber Störvariablen schwer kontrollierbar. Laborexperiment: künstliche Umgebung → hohe Kontrolle (Reliabilität), aber geringere Realitätsnähe (Validität).'},
+{m:2,q:'Welche Fragestellung gehört zur geschlossenen Befragung?',o:['Unstrukturierte Fragestellung','Wortassoziation','Ballon-Test','Likert-Skala mit vorgegebenen Antwortkategorien'],a:3,e:'Geschlossene Fragen = vorgegebene Antwortmöglichkeiten (z.B. Likert-Skala, Semantisches Differential, Nominalskalierung). Offene Fragen = keine Vorgaben (Wortassoziation, Ballon-Test, unstrukturierte Fragestellung).'},
+{m:2,q:'Was ist der wesentliche Unterschied zwischen Rating- und Likert-Skalierung?',o:['Likert-Skala ist immer 7-stufig, Rating ist 5-stufig','Rating misst Häufigkeiten, Likert misst Intensitäten','Beide werden synonym verwendet — es gibt keinen wesentlichen Unterschied!','Likert-Skalierung ist ordinal, Rating-Skalierung ist metrisch'],a:2,e:'Rating-/Likert-Skalierung werden SYNONYM verwendet! Beide messen den Zustimmungsgrad (stimme voll zu → stimme nicht zu) und gelten als Intervallskala.'},
+{m:2,q:'Was beschreibt die Laddering-Technik?',o:['Messung von Augenbewegungen beim Lesen','Forscher tritt als normaler Kunde auf','Befragungsform mit Means-end-chains: "Warum ist das wichtig?" immer weiter fragen bis zu Werten','Gleichzeitige Befragung von 6-10 Personen in einer Gruppe'],a:2,e:'Laddering-Technik = Befragungsform, bei der Means-end-chains (Ziel-Mittel-Ketten) gebildet werden. "Warum ist das wichtig?" → von Produktmerkmalen über Konsequenzen bis zu tieferliegenden Werten. Für Kaufverhaltensursachen.'},
+{m:2,q:'Was ist der Unterschied zwischen Korrelationsanalyse und Regressionsanalyse?',o:['Beide sind identisch','Korrelation = Zusammenhang (keine Richtung); Regression = Vorhersage (Richtung festgelegt — welche Variable erklärt welche?)','Korrelation analysiert Gruppen; Regression analysiert Trends','Regressionsanalyse ist immer bivariat, Korrelation multivariat'],a:1,e:'Korrelation = Stärke des ZUSAMMENHANGS (Interdependenzanalyse — keine Richtung). Regression = basiert auf Korrelation, aber RICHTUNG festgelegt (Dependenzanalyse — welche Variable sagt welche vorher?).'},
+{m:2,q:'Welchen Trendtyp soll man für Prognosen bei langlebigen Produkten (z.B. Autos) verwenden?',o:['Linearer Trend (am häufigsten)','Exponentieller Trend (konstante Zuwachsrate)','Logistischer Trend (S-Kurve mit Sättigungsniveau)','Gleitender Durchschnitt'],a:2,e:'Logistischer Trend (S-Kurve): bis zum Wendepunkt progressiver Anstieg, danach degressiv → berücksichtigt Marktsättigungsniveau. Besonders geeignet für Bestandsveränderungen bei langlebigen Produkten. Linearer Trend = am häufigsten, aber ignoriert Sättigung.'},
+{m:2,q:'Was gilt für die Rücklaufquote bei schriftlichen Befragungen?',o:['60-80%','80-95%','5-30%','Immer über 50%'],a:2,e:'Schriftliche Befragungen haben eine Rücklaufquote von nur 5–30%! Das ist ein wesentlicher Nachteil gegenüber mündlichen Befragungen (hohe Erfolgsquote). Online-Befragungen haben ebenfalls oft geringe Rücklaufquoten.'},
+{m:2,q:'Was bedeutet ein sehr kleines α (Glättungskonstante) bei der exponentiellen Glättung?',o:['Prognose reagiert sehr nervös auf Schwankungen','Sehr starke Glättung — Prognose reagiert kaum auf Änderungen, alte Daten stark gewichtet','Exakt identisch mit dem gleitenden Durchschnitt','Vergangenheitsinformationen gehen zum Großteil verloren'],a:1,e:'Sehr kleines α: Prognose reagiert kaum auf Änderungen der Nachfrage. Sehr starke Glättung der Zeitreihe. Sehr alte Daten relativ stark gewichtet. Sehr großes α: reagiert nervös, Vergangenheitsdaten gehen verloren.'},
+{m:2,q:'Was ist eine Fokusgruppe und was ist ihre wesentliche Einschränkung?',o:['Vollstandardisierte Massenerhebung mit 100+ Personen — repräsentativ für die Gesamtbevölkerung','6-10 Personen mit Moderator — explorativer Charakter, KEINE Repräsentativität für den Gesamtmarkt','Verdeckte Beobachtung in natürlicher Umgebung (Mystery Shopping)','Metho des lauten Denkens bei alltäglichen Handlungen'],a:1,e:'Fokusgruppe = 6-10 Personen + Moderator. Mischform aus Befragung und Beobachtung. Interaktionen untereinander erlaubt. Explorativer Charakter = Vorstudie. KEINE Repräsentativität für den Gesamtmarkt — wesentliche Einschränkung!'},
+{m:2,q:'Was misst die Conversion Rate (Umwandlungsrate) im Web Analytics?',o:['Wie viele Besucher die Seite sofort wieder verlassen (Absprungrate)','Den Anteil der Website-Besucher, die zu Kunden werden','Die Anzahl der Seitenaufrufe pro Monat','Den Anteil wiederkehrender Besucher'],a:1,e:'Conversion Rate (Umwandlungsrate) = Anteil der Besucher, die zu Kunden werden (z.B. Kauf abschließen). Bounce Rate = Absprungrate (Kurzbesuche → Optimierungspotenzial). Unique Visitors = individuelle Besucher.'}
   {m:3,q:'Im BCG-Portfolio: Wie steigt der relative Marktanteil?',o:['Y-Achse, von unten nach oben','X-Achse, von links nach rechts','X-Achse, von RECHTS nach LINKS','Y-Achse, von oben nach unten'],a:2,e:'PRÜFUNGSFALLE: X-Achse, aber von RECHTS nach LINKS! 10x ganz links = sehr hoher relativer Marktanteil.'},
   {m:3,q:'Was sind "Cash Cows" und die empfohlene Strategie?',o:['Hoch Wachstum + hoch MA → investieren','Niedrig Wachstum + niedrig MA → desinvestieren','Niedrig Wachstum + hoch MA → ABSCHÖPFEN','Hoch Wachstum + niedrig MA → selektieren'],a:2,e:'Cash Cows: niedriges Wachstum + hoher relativer MA. Abschöpfen → Cash für Stars und Question Marks.'},
   {m:3,q:'Was ist die "Diversifikationsstrategie" in der Ansoff-Matrix?',o:['Bestehende Produkte in bestehenden Märkten','Bestehende Produkte in neue Märkte','Neue Produkte für bestehende Märkte','Neue Produkte in neue Märkte — höchstes Risiko!'],a:3,e:'Diversifikation = neu/neu. Höchstes Risiko weil sowohl Produkt als auch Markt neu sind.'},
