@@ -2634,6 +2634,58 @@ async function doReset() {
   if (error) { showErr('Fehler: ' + error.message); }
   else { showSuc('✅ E-Mail gesendet! Prüfe deinen Posteingang.'); }
 }
+  function showReset() {
+  document.getElementById('login-form').style.display = 'none';
+  document.getElementById('reset-form').style.display = '';
+  document.getElementById('ltabs-wrap').style.display = 'none';
+  document.getElementById('lerr').classList.remove('show');
+  document.getElementById('lsuc').classList.remove('show');
+}
+
+function showResetLogin() {
+  document.getElementById('reset-form').style.display = 'none';
+  document.getElementById('login-form').style.display = '';
+  document.getElementById('ltabs-wrap').style.display = '';
+  document.getElementById('lerr').classList.remove('show');
+  document.getElementById('lsuc').classList.remove('show');
+}
+
+async function doReset() {
+  const email = document.getElementById('reset-email').value.trim();
+  if (!email) { showErr('Bitte E-Mail eingeben.'); return; }
+  const btn = document.getElementById('reset-btn');
+  btn.disabled = true; btn.textContent = 'Bitte warten...';
+  const { error } = await sb.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.href
+  });
+  btn.disabled = false; btn.textContent = 'Link zusenden →';
+  if (error) { showErr('Fehler: ' + error.message); }
+  else { showSuc('✅ E-Mail gesendet! Prüfe deinen Posteingang.'); }
+}
+
+async function doSetNewPassword() {
+  const pass = document.getElementById('new-pass').value;
+  const pass2 = document.getElementById('new-pass2').value;
+  if (pass.length < 6) { showErr('Passwort muss mindestens 6 Zeichen haben.'); return; }
+  if (pass !== pass2) { showErr('Passwörter stimmen nicht überein.'); return; }
+  const btn = document.getElementById('newpass-btn');
+  btn.disabled = true; btn.textContent = 'Bitte warten...';
+  const { error } = await sb.auth.updateUser({ password: pass });
+  btn.disabled = false; btn.textContent = 'Passwort speichern →';
+  if (error) { showErr('Fehler: ' + error.message); }
+  else {
+    showSuc('✅ Passwort gespeichert! Du kannst dich jetzt einloggen.');
+    document.getElementById('newpass-form').style.display = 'none';
+    document.getElementById('login-form').style.display = '';
+    document.getElementById('ltabs-wrap').style.display = '';
+  }
+}
+
+function showPaywallLogin() {
+  document.getElementById('paywall').style.display = 'none';
+  document.getElementById('ltabs-wrap').style.display = '';
+  switchTab('login');
+}
 function showPaywallLogin() {
   document.getElementById('paywall').style.display = 'none';
   document.getElementById('ltabs-wrap').style.display = '';
@@ -2991,6 +3043,19 @@ function showLogin() { document.getElementById('login-screen').classList.remove(
 const initTimeout = setTimeout(showLogin, 5000);
 
 (async () => {
+  // Passwort-Reset aus E-Mail-Link abfangen
+  const hash = window.location.hash;
+  if (hash.includes('type=recovery')) {
+    clearTimeout(initTimeout);
+    await sb.auth.getSession();
+    document.getElementById('login-screen').classList.remove('hide');
+    document.getElementById('loading-overlay').classList.add('hide');
+    document.getElementById('login-form').style.display = 'none';
+    document.getElementById('ltabs-wrap').style.display = 'none';
+    document.getElementById('newpass-form').style.display = '';
+    window.history.replaceState({}, '', window.location.pathname);
+    return;
+  }
   try {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('payment') === 'success') {
