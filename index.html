@@ -2616,6 +2616,7 @@ function updateTopbar() {
 }
 
 function nav(s) {
+  if (S.exTimer) { clearInterval(S.exTimer); S.exTimer = null; S.ex = false; }
   saveScoresToDB();
   S.sc = s;
   document.querySelectorAll('.ni').forEach(el => el.classList.remove('on'));
