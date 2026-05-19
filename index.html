@@ -2857,7 +2857,7 @@ function ansEx(i) {
   S.exAnswers.push({ q, sel: i, ok: i === q.a }); render();
 }
 function nxEx() { S.exIdx++; S.exAns = false; S.exSel = null; if (S.exIdx >= S.exQ.length) { finExam(); } else { render(); } }
-function finExam() { if (S.exTimer) clearInterval(S.exTimer); S.ex = false; render(); }
+function finExam() { if (S.exTimer) { clearInterval(S.exTimer); S.exTimer = null; } S.ex = false; render(); }
 
 function rExRes() {
   const tot = S.exAnswers.length; const pct = tot > 0 ? Math.round(S.exScore / tot * 100) : 0;
