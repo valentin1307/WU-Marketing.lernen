@@ -2561,7 +2561,13 @@ async function doLogin() {
     await loginSuccess(data.user);
   } else {
     await sb.auth.signOut();
-    window.location.href = `https://buy.stripe.com/4gM4gzb6o2nO58jeQfdIA00?prefilled_email=${encodeURIComponent(email)}&client_reference_id=${data.user.id}`;
+    const resp = await fetch('https://uteddyxlglrfczojjyuv.supabase.co/functions/v1/create-checkout', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ email: email, userId: data.user.id })
+});
+const { url } = await resp.json();
+window.location.href = url;
   }
 }
 
@@ -2581,7 +2587,13 @@ async function doRegister() {
     if (data.session) { await loginSuccess(data.user); } else { showSuc('✅ Registrierung erfolgreich! Bitte einloggen.'); switchTab('login'); }
     return;
   }
-  window.location.href = `https://buy.stripe.com/4gM4gzb6o2nO58jeQfdIA00?prefilled_email=${encodeURIComponent(email)}&client_reference_id=${data.user.id}`;
+ const resp = await fetch('https://uteddyxlglrfczojjyuv.supabase.co/functions/v1/create-checkout', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ email: email, userId: data.user.id })
+});
+const { url } = await resp.json();
+window.location.href = url;
 }
 
 async function loginSuccess(user) {
