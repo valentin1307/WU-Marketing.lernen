@@ -2561,13 +2561,23 @@ async function doLogin() {
     await loginSuccess(data.user);
   } else {
     await sb.auth.signOut();
-    const resp = await fetch('https://uteddyxlglrfczojjyuv.supabase.co/functions/v1/create-checkout', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ email: email, userId: data.user.id })
-});
-const { url } = await resp.json();
-window.location.href = url;
+    try {
+  const resp = await fetch('https://uteddyxlglrfczojjyuv.supabase.co/functions/v1/create-checkout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, userId: data.user.id })
+  });
+  const data2 = await resp.json();
+  if (data2.url) {
+    window.location.href = data2.url;
+  } else {
+    console.error('Kein URL:', data2);
+    showErr('Fehler beim Erstellen der Zahlung: ' + JSON.stringify(data2));
+  }
+} catch(e) {
+  console.error('Fetch Fehler:', e);
+  showErr('Verbindungsfehler: ' + e.message);
+}
   }
 }
 
@@ -2587,13 +2597,23 @@ async function doRegister() {
     if (data.session) { await loginSuccess(data.user); } else { showSuc('✅ Registrierung erfolgreich! Bitte einloggen.'); switchTab('login'); }
     return;
   }
- const resp = await fetch('https://uteddyxlglrfczojjyuv.supabase.co/functions/v1/create-checkout', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ email: email, userId: data.user.id })
-});
-const { url } = await resp.json();
-window.location.href = url;
+ try {
+  const resp = await fetch('https://uteddyxlglrfczojjyuv.supabase.co/functions/v1/create-checkout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, userId: data.user.id })
+  });
+  const data2 = await resp.json();
+  if (data2.url) {
+    window.location.href = data2.url;
+  } else {
+    console.error('Kein URL:', data2);
+    showErr('Fehler beim Erstellen der Zahlung: ' + JSON.stringify(data2));
+  }
+} catch(e) {
+  console.error('Fetch Fehler:', e);
+  showErr('Verbindungsfehler: ' + e.message);
+}
 }
 
 async function loginSuccess(user) {
