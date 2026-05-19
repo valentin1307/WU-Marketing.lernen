@@ -267,6 +267,13 @@ html,body{height:100%;font-family:var(--f);font-size:13px;color:var(--t);backgro
   <span onclick="showReset()" style="font-size:11px;color:#4b5a78;cursor:pointer;text-decoration:underline">Passwort vergessen?</span>
 </div>
     </div>
+    <div id="reset-form" style="display:none">
+  <div class="lf"><label>E-Mail</label><input id="reset-email" type="email" placeholder="deine@email.com"></div>
+  <button class="lbtn" id="reset-btn" onclick="doReset()">Link zusenden →</button>
+  <div style="text-align:center;margin-top:12px">
+    <span onclick="showResetLogin()" style="font-size:11px;color:#4b5a78;cursor:pointer;text-decoration:underline">← Zurück zum Login</span>
+  </div>
+</div>
     <div id="reg-form" style="display:none">
       <div class="lf"><label>E-Mail</label><input id="r-email" type="email" placeholder="deine@email.com"></div>
       <div class="lf"><label>Passwort wählen</label><input id="r-pass" type="password" placeholder="Mindestens 6 Zeichen..."></div>
@@ -2593,7 +2600,34 @@ async function logout() {
   document.getElementById('l-pass').value = '';
   switchTab('login');
 }
+function showReset() {
+  document.getElementById('login-form').style.display = 'none';
+  document.getElementById('reset-form').style.display = '';
+  document.getElementById('ltabs-wrap').style.display = 'none';
+  document.getElementById('lerr').classList.remove('show');
+  document.getElementById('lsuc').classList.remove('show');
+}
 
+function showResetLogin() {
+  document.getElementById('reset-form').style.display = 'none';
+  document.getElementById('login-form').style.display = '';
+  document.getElementById('ltabs-wrap').style.display = '';
+  document.getElementById('lerr').classList.remove('show');
+  document.getElementById('lsuc').classList.remove('show');
+}
+
+async function doReset() {
+  const email = document.getElementById('reset-email').value.trim();
+  if (!email) { showErr('Bitte E-Mail eingeben.'); return; }
+  const btn = document.getElementById('reset-btn');
+  btn.disabled = true; btn.textContent = 'Bitte warten...';
+  const { error } = await sb.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.href
+  });
+  btn.disabled = false; btn.textContent = 'Link zusenden →';
+  if (error) { showErr('Fehler: ' + error.message); }
+  else { showSuc('✅ E-Mail gesendet! Prüfe deinen Posteingang.'); }
+}
 function showPaywallLogin() {
   document.getElementById('paywall').style.display = 'none';
   document.getElementById('ltabs-wrap').style.display = '';
