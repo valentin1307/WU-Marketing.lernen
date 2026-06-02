@@ -2575,14 +2575,12 @@ async function doRegister() {
     if (data.session) { await loginSuccess(data.user); } else { showSuc('✅ Registrierung erfolgreich! Bitte einloggen.'); switchTab('login'); }
     return;
   }
- try {
-if (data.session) {
+ if (data.session) {
     await loginSuccess(data.user);
   } else {
     showSuc('✅ Registrierung erfolgreich! Bitte einloggen.');
     switchTab('login');
   }
-}
 }
 
 async function loginSuccess(user) {
