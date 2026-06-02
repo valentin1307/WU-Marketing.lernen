@@ -2556,29 +2556,7 @@ async function doLogin() {
   if (error) { showErr('Fehler: ' + error.message); return; }
   const FREE_EMAILS = ['valentin@buehringuhle.de'];
   if (FREE_EMAILS.includes(email.toLowerCase())) { await loginSuccess(data.user); return; }
-  const isPaid = await checkPaidAccess(data.user.id);
-  if (isPaid) {
-    await loginSuccess(data.user);
-  } else {
-    await sb.auth.signOut();
-    try {
-  const resp = await fetch('https://uteddyxlglrfczojjyuv.supabase.co/functions/v1/create-checkout', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: email, userId: data.user.id })
-  });
-  const data2 = await resp.json();
-  if (data2.url) {
-    window.location.href = data2.url;
-  } else {
-    console.error('Kein URL:', data2);
-    showErr('Fehler beim Erstellen der Zahlung: ' + JSON.stringify(data2));
-  }
-} catch(e) {
-  console.error('Fetch Fehler:', e);
-  showErr('Verbindungsfehler: ' + e.message);
-}
-  }
+  await loginSuccess(data.user);
 }
 
 async function doRegister() {
@@ -2598,21 +2576,12 @@ async function doRegister() {
     return;
   }
  try {
-  const resp = await fetch('https://uteddyxlglrfczojjyuv.supabase.co/functions/v1/create-checkout', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: email, userId: data.user.id })
-  });
-  const data2 = await resp.json();
-  if (data2.url) {
-    window.location.href = data2.url;
+if (data.session) {
+    await loginSuccess(data.user);
   } else {
-    console.error('Kein URL:', data2);
-    showErr('Fehler beim Erstellen der Zahlung: ' + JSON.stringify(data2));
+    showSuc('✅ Registrierung erfolgreich! Bitte einloggen.');
+    switchTab('login');
   }
-} catch(e) {
-  console.error('Fetch Fehler:', e);
-  showErr('Verbindungsfehler: ' + e.message);
 }
 }
 
@@ -3113,8 +3082,7 @@ const initTimeout = setTimeout(showLogin, 5000);
       try {
         const FREE_EMAILS = ['valentin@buehringuhle.de'];
         if (FREE_EMAILS.includes(session.user.email.toLowerCase())) { await loginSuccess(session.user); return; }
-        const isPaid = await checkPaidAccess(session.user.id);
-        if (isPaid) { await loginSuccess(session.user); } else { await sb.auth.signOut(); showLogin(); }
+        await loginSuccess(session.user);
       } catch(e) { showLogin(); }
     } else { showLogin(); }
   } catch(e) { clearTimeout(initTimeout); showLogin(); }
